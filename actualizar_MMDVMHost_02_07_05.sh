@@ -137,7 +137,8 @@ clear
 echo "${VERDE}***************************************************"
 echo "* RESTAURANDO LOS DATOS DE LA COPIA DE SEGURIDAD  *"
 echo "***************************************************"
-
+echo "pausa"
+read a
 
                     # Crea los ejecutables para estas 4 aplicaciones  
                     sudo cp MMDVMHost MMDVMBM
@@ -147,6 +148,10 @@ echo "***************************************************"
                     sudo cp MMDVMHost DMR2NXDN
                     sudo cp MMDVMHost DMR2YSF
                     #===============================================
+
+
+                    echo "pausa"
+                    read a
                     # Rutina solo para el LIBRE ======================
                     cd /home/pi/$SCRIPTS_version
                     sudo cp MMDVMHostLIBRE /home/pi/MMDVMHost
