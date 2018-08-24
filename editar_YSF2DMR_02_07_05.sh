@@ -8,7 +8,7 @@ clear
                     sed -i "24c $frec" /home/pi/info_panel_control.ini
                     tg=$(awk "NR==30" /home/pi/YSF2DMR/YSF2DMR.ini)
                     sed -i "26c $tg" /home/pi/info_panel_control.ini
-                    master=$(awk "NR==33" /home/pi/YSF2DMR/YSF2DMR.ini)
+                    master=$(awk "NR==31" /home/pi/YSF2DMR/YSF2DMR.ini)
                     sed -i "25c $master" /home/pi/info_panel_control.ini
 
 ROJO="\033[1;31m"

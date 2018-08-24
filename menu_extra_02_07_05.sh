@@ -265,6 +265,7 @@ clear
                         echo "*******************************************"
                         echo "*         INSTALANDO DMR2YSF             *"
                         echo "*******************************************"
+                        cd /home/pi/DMR2YSF/
                         make clean
                         make
                         clear                      
