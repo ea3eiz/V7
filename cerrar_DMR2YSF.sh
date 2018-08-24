@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo killall MMDVMHost
 sudo killall DMR2YSF
 sudo killall YSFGateway
 SCRIPTS_version=$(awk "NR==1" /home/pi/.config/autostart/version)

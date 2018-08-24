@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo killall MMDVMHost
 sudo killall DMR2NXDN
 sudo killall NXDNGateway
 SCRIPTS_version=$(awk "NR==1" /home/pi/.config/autostart/version)
