@@ -1,0 +1,7 @@
+# NXDNHosts.txt
+#
+# The format of this file is the number of the Talk Group followed by the host name or address and port
+#
+
+# SPAIN GROUP ASSOCIATIONS, 10304
+10304	176.31.161.9	41400

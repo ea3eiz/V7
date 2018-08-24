@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Dvrptr
+Comment=EA3EIZ
+Exec=sh -c 'cd /home/pi/V6; sudo sh ejecutar_dvrptr_02_07_05.sh'
+Icon=/home/pi/V6/DVRPTR.png
+Path=/home/pi/V6
+Terminal=false
+StartupNotify=false
+Name[es_ES]=Abrir Dvrptr
