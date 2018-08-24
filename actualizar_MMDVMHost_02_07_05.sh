@@ -144,6 +144,8 @@ echo "***************************************************"
                     sudo cp MMDVMHost MMDVMPLUS
                     sudo cp MMDVMHost MMDVMDSTAR
                     sudo cp MMDVMHost MMDVMFUSION
+                    sudo cp MMDVMHost DMR2NXDN
+                    sudo cp MMDVMHost DMR2YSF
                     #===============================================
                     # Rutina solo para el LIBRE ======================
                     cd /home/pi/$SCRIPTS_version

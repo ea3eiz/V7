@@ -34,7 +34,7 @@ cd /home/pi/DMR2YSF
 
 sudo lxterminal --geometry=80x12 -e ./DMR2YSF DMR2YSF.ini & 
 cd /home/pi/MMDVMHost
-sudo lxterminal --geometry=80x12 -e ./MMDVMHost MMDVMDMR2YSF.ini &
+sudo lxterminal --geometry=80x12 -e ./DMR2YSF MMDVMDMR2YSF.ini &
 cd /home/pi/YSFClients/YSFGateway
 sudo ./YSFGateway YSFGateway.ini
 
