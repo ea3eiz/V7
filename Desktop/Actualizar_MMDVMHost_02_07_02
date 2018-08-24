@@ -1,8 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
 TryExec=lxterminal
-Exec=sh -c 'cd /home/pi/V6; lxterminal --geometry=75x15 -e sudo sh actualizar_MMDVMHost_02_07_05.sh'
-Icon=/home/pi/V6/ACTUALIZAR.png
+Exec=sh -c 'cd /home/pi/V7; lxterminal --geometry=75x15 -e sudo sh actualizar_MMDVMHost_02_07_05.sh'
+Icon=/home/pi/V7/ACTUALIZAR.png
 Type=Application
 StartupNotify=false
 Categories=GTK;Utility;TerminalEmulator;

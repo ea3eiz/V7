@@ -2,7 +2,7 @@
 Encoding=UTF-8
 TryExec=lxterminal
 Exec=ls
-Icon=/home/pi/V6/RXF_LIBRE.png
+Icon=/home/pi/V7/RXF_LIBRE.png
 Type=Application
 StartupNotify=false
 Categories=GTK;Utility;TerminalEmulator;
