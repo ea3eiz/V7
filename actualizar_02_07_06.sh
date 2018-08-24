@@ -1,5 +1,5 @@
 ﻿#!/bin/bash
-SCRIPTS_version="V6"
+SCRIPTS_version="V7"
 #pone todos los status de inicio en OFF
 sed -i "1c D-STAR=OFF" /home/pi/status.ini
 sed -i "2c BlueDV=OFF" /home/pi/status.ini
