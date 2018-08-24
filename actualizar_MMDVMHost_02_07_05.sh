@@ -137,8 +137,7 @@ clear
 echo "${VERDE}***************************************************"
 echo "* RESTAURANDO LOS DATOS DE LA COPIA DE SEGURIDAD  *"
 echo "***************************************************"
-echo "pausa"
-read a
+
 
                     # Crea los ejecutables para estas 4 aplicaciones  
                     sudo cp MMDVMHost MMDVMBM
@@ -148,10 +147,6 @@ read a
                     sudo cp MMDVMHost DMR2NXDN
                     sudo cp MMDVMHost DMR2YSF
                     #===============================================
-
-
-                    echo "pausa"
-                    read a
                     # Rutina solo para el LIBRE ======================
                     cd /home/pi/$SCRIPTS_version
                     sudo cp MMDVMHostLIBRE /home/pi/MMDVMHost
@@ -7432,7 +7427,7 @@ clear
 
                     HOY=$(date +%Y%m%d)
                     FIJA="const char* VERSION = "\"
-                    PI="ADER6"\"
+                    PI="ADER7"\"
                     HOY1=$HOY$PI
                     PUNTO=";"   
                     
@@ -7457,11 +7452,14 @@ clear
                     sudo cp MMDVM.ini MMDVMDMR2YSF.ini
                     sudo cp MMDVM.ini MMDVMDMR2NXDN.ini
 
-                    # Crea los ejecutables para estas 4 aplicaciones 
-                    cp MMDVMHost MMDVMBM
-                    cp MMDVMHost MMDVMPLUS
-                    cp MMDVMHost MMDVMDSTAR
-                    cp MMDVMHost MMDVMFUSION
+                    # Crea los ejecutables para estas aplicaciones 
+                    sudo cp MMDVMHost MMDVMBM
+                    sudo cp MMDVMHost MMDVMPLUS
+                    sudo cp MMDVMHost MMDVMDSTAR
+                    sudo cp MMDVMHost MMDVMFUSION
+                    sudo cp MMDVMHost DMR2NXDN
+                    sudo cp MMDVMHost DMR2YSF
+
                     #=================================================
 
                     # Rutina solo para el LIBRE ======================
