@@ -163,7 +163,7 @@ echo -n "\33[1;36m  10)\33[0m Habilitar FCS         - \33[1;33m"
 echo "$FCS"
 
 echo -n "\33[1;36m  11)\33[0m InactivityTimeout     - "
-echo -n "${AMARILLO}$Inactiv ${CIAN}<Este valor ha de ser 0"
+echo -n "${AMARILLO}$Inactiv"
 
 echo ""
 echo ""
