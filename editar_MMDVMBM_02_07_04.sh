@@ -28,7 +28,7 @@ CIAN="\033[1;36m"
 GRIS="\033[0m"
 echo "${VERDE}"
 echo "   **************************************************************************"
-echo "   *          ddddd Script para Modificar MMDVMBM.ini               \33[1;31m by EA3EIZ\33[1;32m   *"
+echo "   *          Script para Modificar MMDVMBM.ini               \33[1;31m by EA3EIZ\33[1;32m   *"
 echo "   **************************************************************************"
 echo -n "\33[1;36m   1)\33[0m Modificar indicativo  - \33[1;33m"
 ind=`grep -n -m 1 "Callsign" /home/pi/MMDVMHost/MMDVMBM.ini`
