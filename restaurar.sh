@@ -2,8 +2,6 @@
 cd /var/www/html/upload/files
 sudo chmod -R 777 /home/pi/Downloads
 cp copia.tar.gz /home/pi/Downloads
-echo "pausa"
-read a
 cd /home/pi/Downloads
 tar -xvzf copia.tar.gz
 cd /home/pi/Downloads/Downloads
