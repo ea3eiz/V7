@@ -189,7 +189,7 @@ sed -i "27c $svxlink" /home/pi/info_panel_control.ini
 #YSF2DMR
 frec=$(awk "NR==2" /home/pi/YSF2DMR/YSF2DMR.ini)
 master=$(awk "NR==33" /home/pi/YSF2DMR/YSF2DMR.ini)
-tg=$(awk "NR==30" /home/pi/YSF2DMR/YSF2DMR.ini)
+tg=$(awk "NR==28" /home/pi/YSF2DMR/YSF2DMR.ini)
 sed -i "24c $frec" /home/pi/info_panel_control.ini
 sed -i "25c $master" /home/pi/info_panel_control.ini
 sed -i "26c $tg" /home/pi/info_panel_control.ini
