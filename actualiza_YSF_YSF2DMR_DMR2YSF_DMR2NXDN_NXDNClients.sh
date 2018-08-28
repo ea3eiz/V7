@@ -32,14 +32,8 @@ GRIS="\033[0m"
                         cd /home/pi/YSFClients/YSFGateway
                         make clean
                         make                       
-                        fi                   
-                        
+                        fi                                      
 
-
-
-                        cp -R /home/pi/DMR2YSF/ /home/pi/Documents
-                        echo "pausa"
-                        read a
                         clear
                         cd /home/pi/
                         sudo rm -R /home/pi/MMDVM_CM
@@ -55,7 +49,7 @@ GRIS="\033[0m"
                         if [ "$version_YSF2DMR_actual" = "$version_YSF2DMR_instalada" ];
                         # =================================
                         then
-                        cp -R /home/pi/Documents/DMR2YSF/ home/pi/ 
+                       
 
                         clear
                         echo "${VERDE}"
@@ -81,11 +75,10 @@ GRIS="\033[0m"
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_03
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_04
                         fi
-                        
-
-
-
-
+                      
+                        cp -R /home/pi/DMR2YSF/ /home/pi/Documents
+                        echo "pausa"
+                        read a
                         clear
                         cd /home/pi/
                         sudo rm -R /home/pi/MMDVM_CM
@@ -101,6 +94,7 @@ GRIS="\033[0m"
                         if [ "$version_DMR2YSF_actual" = "$version_DMR2YSF_instalada" ];
                         # =================================
                         then
+                        cp -R /home/pi/Documents/DMR2YSF/ home/pi/ 
                         clear
                         echo "${BLANCO}"
                         echo "***************************************"
