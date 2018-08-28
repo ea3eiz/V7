@@ -304,13 +304,13 @@ clear
                         echo "*   YA TIENES LA ÚLTIMA VERSIÓN NXDNClients/NXDNGateway    *"
                         echo "*   $version_NXDNClients_actual                      *"
                         echo "************************************************************"
-                        sleep 5
+                        sleep 4
                         clear
                         else
                         sed -i "9c Versión NXDNClients/NXDNGateway:" /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini
                         sed -i "10c $version_NXDNClients_actual" /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini 
                         echo "${VERDE}DESCARGANDO E INSTALANDO EL ÚLTIMO NXDNClients${CIAN}"
-                        sleep 3
+                        sleep 4
                         sudo rm -R /home/pi/NXDNClients
                         cd /home/pi
                         git clone https://github.com/g4klx/NXDNClients
