@@ -146,6 +146,9 @@ clear
                         case $instalarsi in
                         [sS]* ) echo ""
                         clear
+                        cp -R /home/pi/DMR2YSF/ /home/pi/Documents
+                        echo "pausa"
+                        read a
                         cd /home/pi/
                         sudo rm -R /home/pi/MMDVM_CM
                         sudo rm -R /home/pi/DMR2YSF
