@@ -43,10 +43,9 @@ echo "***************************************************"
             cp -f YSF2DMR.ini_copia_02 /home/pi/YSF2DMR
             cp -f YSF2DMR.ini_copia_03 /home/pi/YSF2DMR
             cp -f YSF2DMR.ini_copia_04 /home/pi/YSF2DMR
-            cp -f TG-YSFList.txt /home/pi/YSF2DMR
             
-            
-
+            cp -f TG-YSFList.txt /home/pi/DMR2YSF
+                      
             cp -f MMDVMDMR2NXDN.ini /home/pi/MMDVMHost
             cp -f MMDVMDMR2YSF.ini /home/pi/MMDVMHost
 
