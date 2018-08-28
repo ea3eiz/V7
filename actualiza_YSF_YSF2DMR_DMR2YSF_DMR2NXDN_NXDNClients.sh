@@ -76,9 +76,14 @@ GRIS="\033[0m"
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_04
                         fi
                       
+
+
+
+
+
+
+
                         cp -R /home/pi/DMR2YSF/ /home/pi/Documents
-                        echo "pausa"
-                        read a
                         clear
                         cd /home/pi/
                         sudo rm -R /home/pi/MMDVM_CM
@@ -121,7 +126,7 @@ GRIS="\033[0m"
 
 
 
-
+                        cp -R /home/pi/DMR2NXDN/ /home/pi/Documents
                         clear
                         cd /home/pi/
                         sudo rm -R /home/pi/MMDVM_CM
@@ -137,6 +142,7 @@ GRIS="\033[0m"
                         if [ "$version_DMR2NXDN_actual" = "$version_DMR2NXDN_instalada" ];
                         # =================================
                         then
+                        cp -R /home/pi/Documents/DMR2NXDN/ /home/pi/ 
                         clear
                         echo "${VERDE}"
                         echo "****************************************"
