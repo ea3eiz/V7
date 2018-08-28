@@ -94,7 +94,7 @@ GRIS="\033[0m"
                         if [ "$version_DMR2YSF_actual" = "$version_DMR2YSF_instalada" ];
                         # =================================
                         then
-                        cp -R /home/pi/Documents/DMR2YSF/ home/pi/ 
+                        cp -R /home/pi/Documents/DMR2YSF/ /home/pi/ 
                         clear
                         echo "${BLANCO}"
                         echo "***************************************"
