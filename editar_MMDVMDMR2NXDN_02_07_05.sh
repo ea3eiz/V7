@@ -1282,7 +1282,7 @@ do
                           cd /home/pi/NXDNClients/NXDNGateway/
                           rm -R private
                           mkdir private
-                          cd /home/pi/V6
+                          cd /home/pi/V7
                           cp NXDNHosts.txt /home/pi/NXDNClients/NXDNGateway/private
                           cd /home/pi/NXDNClients/NXDNGateway/
                           rm NXDNHosts.txt
