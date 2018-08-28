@@ -8,7 +8,6 @@ CIAN="\033[1;36m"
 GRIS="\033[0m"
 
 
-
                         #comprueba si la versión a cambiado
                         version_YSFClients_actual=$(awk "NR==22" /home/pi/YSFClients/YSFGateway/Version.h)
                         version_YSFClients_instalada=$(awk "NR==1" /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini)
