@@ -85,6 +85,7 @@ sed -i "1c $match1" /home/pi/info.ini
             cp -f YSF2DMR.ini_copia_02 /home/pi/Downloads
             cp -f YSF2DMR.ini_copia_03 /home/pi/Downloads
             cp -f YSF2DMR.ini_copia_04 /home/pi/Downloads
+            cp -f TG-YSFList.txt /home/pi/Downloads
 
             cd  /home/pi/YSFClients/YSFGateway/
             sudo cp -f YSFGateway.ini /home/pi/Downloads
@@ -153,6 +154,7 @@ sleep 3
             cp -f YSF2DMR.ini_copia_02 /home/pi/YSF2DMR
             cp -f YSF2DMR.ini_copia_03 /home/pi/YSF2DMR
             cp -f YSF2DMR.ini_copia_04 /home/pi/YSF2DMR
+            cp -f TG-YSFList.txt /home/pi/YSF2DMR
 
             cp -f MMDVMDMR2NXDN.ini /home/pi/MMDVMHost
             cp -f MMDVMDMR2YSF.ini /home/pi/MMDVMHost

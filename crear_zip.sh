@@ -36,6 +36,7 @@
             cp -f YSF2DMR.ini_copia_02 /home/pi/Downloads
             cp -f YSF2DMR.ini_copia_03 /home/pi/Downloads
             cp -f YSF2DMR.ini_copia_04 /home/pi/Downloads
+            cp -f TG-YSFList.txt /home/pi/Downloads
 
             cd  /home/pi/YSFClients/YSFGateway/
             sudo cp -f YSFGateway.ini /home/pi/Downloads
