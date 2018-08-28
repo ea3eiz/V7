@@ -37,7 +37,9 @@ GRIS="\033[0m"
 
 
 
-
+                        cp -R /home/pi/DMR2YSF/ /home/pi/Documents
+                        echo "pausa"
+                        read a
                         clear
                         cd /home/pi/
                         sudo rm -R /home/pi/MMDVM_CM
@@ -53,6 +55,8 @@ GRIS="\033[0m"
                         if [ "$version_YSF2DMR_actual" = "$version_YSF2DMR_instalada" ];
                         # =================================
                         then
+                        cp -R /home/pi/Documents/DMR2YSF/ home/pi/ 
+
                         clear
                         echo "${VERDE}"
                         echo "***************************************"
