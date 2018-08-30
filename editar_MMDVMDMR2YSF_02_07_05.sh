@@ -1199,7 +1199,7 @@ do
                           case $actualizar in
                           [sS]* ) echo ""
                           cd /home/pi/YSFClients/YSFGateway          
-                          sudo leafpad YSFHosts.txt │ sudo geany /home/pi/DMR2YSF/TG-YSFList.txt
+                          sudo leafpad YSFHosts.txt & sudo geany /home/pi/DMR2YSF/TG-YSFList.txt
                           break;;
                           [nN]* ) echo ""
                           break;;
