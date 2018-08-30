@@ -1198,6 +1198,8 @@ do
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
+          wget -O YSFHosts.txt https://register.ysfreflector.de/export_csv.php?noresolve=1
+          sudo geany /home/pi/YSFHosts.txt
                           sudo geany /home/pi/DMR2YSF/TG-YSFList.txt
                           break;;
                           [nN]* ) echo ""
