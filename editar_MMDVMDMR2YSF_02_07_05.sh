@@ -1197,9 +1197,8 @@ while true
 do
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
-                          cd /home/pi/YSFClients/YSFGateway          
-                          sudo leafpad YSFHosts.txt & sudo geany /home/pi/DMR2YSF/TG-YSFList.txt
+                          [sS]* ) echo ""         
+                          more /home/pi/YSFClients/YSFGatewayYSFHosts.txt & sudo geany /home/pi/DMR2YSF/TG-YSFList.txt
                           break;;
                           [nN]* ) echo ""
                           break;;
