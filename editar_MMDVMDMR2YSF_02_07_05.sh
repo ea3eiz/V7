@@ -1198,7 +1198,7 @@ do
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""         
-                          lxterminal --geometry=105x30 -e less /home/pi/YSFClients/YSFGateway/YSFHosts.txt & sudo geany /home/pi/DMR2YSF/TG-YSFList.txt
+                          lxterminal --geometry=110x30 -e less /home/pi/YSFClients/YSFGateway/YSFHosts.txt & sudo geany /home/pi/DMR2YSF/TG-YSFList.txt
                           break;;
                           [nN]* ) echo ""
                           break;;
