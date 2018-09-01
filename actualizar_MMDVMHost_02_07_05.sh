@@ -181,9 +181,9 @@ echo "***************************************************"
                     cp -f MMDVMDMR2NXDN.ini /home/pi/MMDVMHost
                     cp -f MMDVMDMR2YSF.ini /home/pi/MMDVMHost
 
-                    cp -f DMR2NXDN.ini  /home/pi/DMR2NXDN
-                    cp -f NXDNGateway.ini /home/pi/NXDNClients/NXDNGateway
-                    cp -f DMR2YSF.ini /home/pi/DMR2YSF
+                    #cp -f DMR2NXDN.ini  /home/pi/DMR2NXDN
+                    #cp -f NXDNGateway.ini /home/pi/NXDNClients/NXDNGateway
+                    #cp -f DMR2YSF.ini /home/pi/DMR2YSF
 
                     sudo chmod +x -R /home/pi/MMDVMHost
 
