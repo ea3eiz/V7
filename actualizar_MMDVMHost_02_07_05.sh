@@ -186,8 +186,8 @@ echo "***************************************************"
                     #cp -f DMR2YSF.ini /home/pi/DMR2YSF
 
                     sudo chmod +x -R /home/pi/MMDVMHost
-
                     sudo chmod +x -R /home/pi/Downloads
+                    
 #*** restaura solo los datos de la copia en Downloads**************
 #======================= MMDVM.ini   ============================
 #******************************************************************
