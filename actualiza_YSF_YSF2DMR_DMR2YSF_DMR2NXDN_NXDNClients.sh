@@ -32,8 +32,24 @@ GRIS="\033[0m"
                         make clean
                         make 
 
+
+echo "${VERDE}"
+clear
+echo "*************************************"
+echo "* ACTUALIZANDO LISTADO DE SALAS YSF *"
+echo "* ***********************************"
+sleep 3
                         cd /home/pi/YSFClients/YSFGateway
                         sudo wget -O YSFHosts.txt http://register.ysfreflector.de/export_csv.php
+                        sleep 3
+clear
+
+echo "${AMARILLO}"                      
+echo "**********************************************************"
+echo "* El fichero YSFHost.txt se ha actualizado correctamente *"
+echo "**********************************************************"
+sleep 3
+
 
                         fi                                      
 
@@ -51,7 +67,8 @@ GRIS="\033[0m"
                         version_YSF2DMR_instalada=$(awk "NR==2" /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini)
                         if [ "$version_YSF2DMR_actual" = "$version_YSF2DMR_instalada" ];
                         # =================================
-                        then                   
+                        then
+                       
 
                         clear
                         echo "${VERDE}"
@@ -76,7 +93,14 @@ GRIS="\033[0m"
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_02
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_03
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_04
-                        fi               
+                        fi
+                      
+
+
+
+
+
+
 
                         cp -R /home/pi/DMR2YSF/ /home/pi/Documents
                         clear
