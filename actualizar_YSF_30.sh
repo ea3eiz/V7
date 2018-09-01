@@ -14,5 +14,10 @@ sleep 3
 			cd /home/pi/YSFClients/YSFGateway
 			sudo wget -O YSFHosts.txt http://register.ysfreflector.de/export_csv.php
 			sleep 3
+clear
 
-
+echo "${AMARILLO}"			
+echo "**********************************************************"
+echo "* El fichero YSFHost.txt se ha actualizado correctamente *"
+echo "* ********************************************************"
+sleep 3
