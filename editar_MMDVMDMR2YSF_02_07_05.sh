@@ -535,7 +535,7 @@ echo "Valor  actual  del Id: \33[1;33m${idd#*=}\33[1;37m"
                           case $actualizar in
 			                    [sS]* ) echo ""
                           sed -i "3c Id=$miid" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini
-                          sed -i "$numero_linea_idd Id=$miid" /home/pi/DMR2YSF/DMR2YSF.ini
+                          sed -i "$numero_linea_idd Id=$idd1" /home/pi/DMR2YSF/DMR2YSF.ini
 
 ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
 sed -i "2c $ide" /home/pi/info_panel_control.ini
