@@ -515,7 +515,6 @@ do
 			  break;;
 esac
 done;;
-
 10) echo ""
 while true
 do
@@ -540,12 +539,12 @@ echo "Valor  actual  del Id: \33[1;33m${idd#*=}\33[1;37m"
                           sed -i "3c Id=$miid" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini
                           sed -i "$numero_linea_idd Id=$miid" /home/pi/DMR2YSF/DMR2YSF.ini
 
-ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
-sed -i "2c $ide" /home/pi/info_panel_control.ini
+                          ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
+                          sed -i "2c $ide" /home/pi/info_panel_control.ini
                         
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 11) echo ""
