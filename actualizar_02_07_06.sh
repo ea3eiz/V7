@@ -197,6 +197,12 @@ sed -i "26c $tg" /home/pi/info_panel_control.ini
 #=================================================================================
 #ACTUALIZA EL  PANEL DE CONTROL"
 cp /home/pi/$SCRIPTS_version/panel_control.php /var/www/html/panel_control
+cp /home/pi/$SCRIPTS_version/conectar_Radio.php /var/www/html/panel_control
+cp /home/pi/$SCRIPTS_version/desconectar_Radio.php /var/www/html/panel_control
+cp /home/pi/$SCRIPTS_version/conectar_MMDVMBM.php /var/www/html/panel_control
+cp /home/pi/$SCRIPTS_version/desconectar_MMDVMBM.php /var/www/html/panel_control
+cp /home/pi/$SCRIPTS_version/conectar_MMDVMPLUS.php /var/www/html/panel_control
+cp /home/pi/$SCRIPTS_version/desconectar_MMDVMPLUS.php /var/www/html/panel_control
 
 						#comprueba si el fichero existe
 						if [ -f /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini ];
