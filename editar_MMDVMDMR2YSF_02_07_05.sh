@@ -298,11 +298,18 @@ presentar_valor= sed -n $numero_linea_p  /home/pi/MMDVMHost/MMDVMDMR2YSF.ini; #p
 echo ""
 
 indicativo=$(awk "NR==2" /home/pi/DMR2YSF/DMR2YSF.ini)
-idd=$(awk "NR==10" /home/pi/DMR2YSF/DMR2YSF.ini)
+
+idd1=`grep -n -m 1 "^Id=" /home/pi/DMR2YSF/DMR2YSF.ini`
+buscar=":"
+caracteres=`expr index $idd1 $buscar`
+caracteres_linea=`expr $caracteres - 1`
+numero_linea_idd=`expr substr $idd1 1 $caracteres_linea`
+idd1=$(awk "NR==$numero_linea_idd" /home/pi/DMR2YSF/DMR2YSF.ini)
+
 echo "  PARAMETROS DMR2YSF.ini ${BLANCO}"
 echo "  ${VERDE}======================"
 echo "  ${CIAN} 1) \33[0mModificar indicativo  - ${VERDE}$indicativo"
-echo "  ${CIAN}10) \33[0mModificar ID          - ${VERDE}$idd"
+echo "  ${CIAN}10) \33[0mModificar ID          - ${VERDE}$idd1"
 
 echo ""
 echo "\33[1;36m  30)${AMARILLO} Editar listado salas TG-YSFList \33[1;33m"
@@ -312,7 +319,6 @@ echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl
 echo ""
 echo -n "\33[1;36m   Elige una opción: " 
 read escoger_menu
-
 case $escoger_menu in
 1) echo ""
 while true
@@ -529,7 +535,7 @@ echo "Valor  actual  del Id: \33[1;33m${idd#*=}\33[1;37m"
                           case $actualizar in
 			                    [sS]* ) echo ""
                           sed -i "3c Id=$miid" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini
-                          sed -i "10c Id=$miid" /home/pi/DMR2YSF/DMR2YSF.ini
+                          sed -i "$numero_linea_idd Id=$miid" /home/pi/DMR2YSF/DMR2YSF.ini
 
 ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
 sed -i "2c $ide" /home/pi/info_panel_control.ini
