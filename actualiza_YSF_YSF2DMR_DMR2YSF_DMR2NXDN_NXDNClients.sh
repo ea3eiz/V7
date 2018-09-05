@@ -32,7 +32,6 @@ GRIS="\033[0m"
                         make clean
                         make 
 
-
 echo "${VERDE}"
 clear
 echo "*************************************"
@@ -58,8 +57,6 @@ sleep 3
                         cp /home/pi/MMDVM_CM/YSF2DMR/* /home/pi/YSF2DMR/
                         cd /home/pi/YSF2DMR/                  
 
-                        echo "pasusa"
-                        read a
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_01
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_02
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_03
@@ -71,7 +68,7 @@ sleep 3
                         if [ "$version_YSF2DMR_actual" = "$version_YSF2DMR_instalada" ];
                         # =================================
                         then 
-                                           
+
                         clear
                         echo "${VERDE}"
                         echo "***************************************"
