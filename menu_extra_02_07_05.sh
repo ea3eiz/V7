@@ -101,13 +101,14 @@ clear
                         cp /home/pi/MMDVM_CM/YSF2DMR/* /home/pi/YSF2DMR/
                         cd /home/pi/YSF2DMR/                  
 
-                        
+                        echo "pasusa"
+                        read a
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_01
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_02
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_03
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_04
-
-                        
+echo "pasusa"
+                        read a
                         #comprueba si la versión a cambiado
                         version_YSF2DMR_actual=$(awk "NR==23" /home/pi/YSF2DMR/Version.h)
                         version_YSF2DMR_instalada=$(awk "NR==2" /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini)
