@@ -43,16 +43,12 @@ sleep 3
                         sudo wget -O YSFHosts.txt http://register.ysfreflector.de/export_csv.php
                         sleep 3
 clear
-
 echo "${AMARILLO}"                      
 echo "**********************************************************"
 echo "* El fichero YSFHost.txt se ha actualizado correctamente *"
 echo "**********************************************************"
 sleep 3
-
-
                         fi                                      
-
                         clear
                         cd /home/pi/
                         sudo rm -R /home/pi/MMDVM_CM
@@ -62,14 +58,20 @@ sleep 3
                         cp /home/pi/MMDVM_CM/YSF2DMR/* /home/pi/YSF2DMR/
                         cd /home/pi/YSF2DMR/                  
 
+                        echo "pasusa"
+                        read a
+                        cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_01
+                        cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_02
+                        cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_03
+                        cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_04
+
                         #comprueba si la versión a cambiado
                         version_YSF2DMR_actual=$(awk "NR==23" /home/pi/YSF2DMR/Version.h)
                         version_YSF2DMR_instalada=$(awk "NR==2" /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini)
                         if [ "$version_YSF2DMR_actual" = "$version_YSF2DMR_instalada" ];
                         # =================================
-                        then
-                       
-
+                        then 
+                                           
                         clear
                         echo "${VERDE}"
                         echo "***************************************"
