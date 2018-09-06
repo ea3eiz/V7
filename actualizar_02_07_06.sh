@@ -116,7 +116,7 @@ rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 						#comprueba si el fichero existe
 						if [ -f /home/pi/prueba.sh ];
 						then
-						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07_correcion.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
+						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07_correccion.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
 						sudo rm -r associacioader.com
 						else
 						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
