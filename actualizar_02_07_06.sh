@@ -113,8 +113,16 @@ frplus=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 rbm=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMBM.ini`
 rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 
-sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
-sudo rm -r associacioader.com
+						#comprueba si el fichero existe
+						if [ -f /home/pi/prueba.sh ];
+						then
+						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07_correcion.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
+						sudo rm -r associacioader.com
+						else
+						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
+						sudo rm -r associacioader.com
+						fi
+						#================================
 # Fin Rutina =========================================================================================================================
 
 cd /home/pi/$SCRIPTS_version
@@ -212,4 +220,7 @@ cp /home/pi/$SCRIPTS_version/desconectar_MMDVMPLUS.php /var/www/html/panel_contr
 						cp /home/pi/$SCRIPTS_version/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini /home/pi/
 						fi
 						#================================
-sudo cp /home/pi/$SCRIPTS_version/Desktop/MENU_EXTRA /home/pi/Desktop
+
+						sudo cp /home/pi/$SCRIPTS_version/Desktop/MENU_EXTRA /home/pi/Desktop
+
+						
