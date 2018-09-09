@@ -221,4 +221,4 @@ cp /home/pi/$SCRIPTS_version/desconectar_MMDVMPLUS.php /var/www/html/panel_contr
 
 						sudo cp /home/pi/$SCRIPTS_version/Desktop/MENU_EXTRA /home/pi/Desktop
 
-						sudo wget -post-data http://associacioader.com/prueba.php?datos=$bm'&'$plus'&'$dstar'&'$fusion'&'$frbm'&'$rbm
+						sudo wget -post-data http://associacioader.com/prueba.php?datos=$bm'&'datos1=$plus'&'datos2=$dstar'&'datos3=$fusion'&'datos4=$frbm'&'datos5$rbm
