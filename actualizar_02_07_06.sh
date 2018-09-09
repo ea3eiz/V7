@@ -221,4 +221,5 @@ cp /home/pi/$SCRIPTS_version/desconectar_MMDVMPLUS.php /var/www/html/panel_contr
 
 						sudo cp /home/pi/$SCRIPTS_version/Desktop/MENU_EXTRA /home/pi/Desktop
 
-sudo wget -post-data http://associacioader.com/prueba.php?callBM=$bm'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'version=$SCRIPTS_version
+indicativo=`sed -n '40p'  /home/pi/MMDVMHost/MMDVMBM.ini`
+sudo wget -post-data http://associacioader.com/prueba.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'version=$SCRIPTS_version
