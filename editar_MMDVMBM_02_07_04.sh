@@ -18,7 +18,7 @@ largo=`expr substr $master 1 $largo1`
 letra=c            
 linea_master=$largo$letra
 master=$(awk "NR==$linea_master" /home/pi/MMDVMHost/MMDVMBM.ini)
-                  sed -i "4c $master" /home/pi/info_panel_control.ini
+sed -i "4c $master" /home/pi/info_panel_control.ini
 
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
