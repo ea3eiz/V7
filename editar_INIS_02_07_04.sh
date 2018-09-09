@@ -124,6 +124,8 @@ echo "Valor actual Indicativo: \33[1;33m${ind#*=}\33[1;37m"
                           case $actualizar in
 			        [sS]* ) echo ""
 
+sed -i "40c $tu_indicativo" /home/pi/info_panel_control.ini #escribe solo el indicativo
+
                           #Convierte indicativo si se introduce en minúsculas a Mayúsculas
                           tu_indicativo=`echo "$tu_indicativo" | tr [:lower:] [:upper:]`
 
