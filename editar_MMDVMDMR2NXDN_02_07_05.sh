@@ -379,7 +379,7 @@ sed -i "$linea Callsign=$indicativo" /home/pi/MMDVMHost/MMDVMDMR2NXDN.ini
 sed -i "2c Callsign=$indicativo" /home/pi/NXDNClients/NXDNGateway/NXDNGateway.ini
 indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVMDMR2NXDN.ini)
 sed -i "1c $indi" /home/pi/info_panel_control.ini
-
+sed -i "40c $indicativo" /home/pi/info_panel_control.ini #escribe solo el indicativ
 			  break;;
 			  [nN]* ) echo ""
 			  break;;

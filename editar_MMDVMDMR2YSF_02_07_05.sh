@@ -348,7 +348,7 @@ indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
 
 indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
 sed -i "1c $indi" /home/pi/info_panel_control.ini
-
+sed -i "40c $indicativo" /home/pi/info_panel_control.ini #escribe solo el indicativ
 			  break;;
 			  [nN]* ) echo ""
 			  break;;
