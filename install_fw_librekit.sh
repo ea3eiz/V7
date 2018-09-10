@@ -76,7 +76,7 @@ sudo killall MMDVMHost >/dev/null 2>&1
 eval sudo $DFU_RST $DEV_USB_SER 750
 
 # Upload the firmware
-eval sudo $DFU_UTIL -D mmdvm_f1bl.bin -d 1eaf:0003 -a 2 -R -R
+eval sudo $DFU_UTIL -D mmdvm_f1bl.bin -d 1eaf:0004 -a 2 -R -R
 
 echo
 echo "Please RESET your ZUMspot !"
