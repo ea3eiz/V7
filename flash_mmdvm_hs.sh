@@ -82,8 +82,8 @@ clear
                         cd /home/pi/MMDVM_HS/
                         make clean
                         make bl
-                        #cp /home/pi/$SCRIPTS_version/install_fw_librekit.sh /home/pi/MMDVM_HS/bin/
-                        #cd /home/pi/MMDVM_HS/bin
+                        cp /home/pi/$SCRIPTS_version/install_fw_librekit.sh /home/pi/MMDVM_HS/bin/
+                        cd /home/pi/MMDVM_HS/bin
                         sleep 2
                         sudo chmod 777 install_fw_librekit.sh
                         ./install_fw_librekit.sh
