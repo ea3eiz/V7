@@ -168,7 +168,7 @@ sed -i "13c $frec" /home/pi/info_panel_control.ini
 sed -i "14c $master" /home/pi/info_panel_control.ini
 
 #Radio
-indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVM.ini)
+indiradio=$(awk "NR==2" /home/pi/MMDVMHost/MMDVM.ini)
 ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVM.ini)
 frec=$(awk "NR==13" /home/pi/MMDVMHost/MMDVM.ini)
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVM.ini`
@@ -223,4 +223,4 @@ cp /home/pi/$SCRIPTS_version/desconectar_MMDVMPLUS.php /var/www/html/panel_contr
 						sudo cp /home/pi/$SCRIPTS_version/Desktop/MENU_EXTRA /home/pi/Desktop
 
 indicativo=`sed -n '2p'  /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
-sudo wget -post-data http://associacioader.com/prueba.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$indi'&'version=$SCRIPTS_version
+sudo wget -post-data http://associacioader.com/prueba.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$indiradio'&'version=$SCRIPTS_version
