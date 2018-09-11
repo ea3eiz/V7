@@ -168,7 +168,7 @@ sed -i "13c $frec" /home/pi/info_panel_control.ini
 sed -i "14c $master" /home/pi/info_panel_control.ini
 
 #Radio
-indiradio=$(awk "NR==2" /home/pi/MMDVMHost/MMDVM.ini)
+indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVM.ini)
 ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVM.ini)
 frec=$(awk "NR==13" /home/pi/MMDVMHost/MMDVM.ini)
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVM.ini`
@@ -179,7 +179,7 @@ largo1=`expr $largo - 2`
 largo=`expr substr $master 1 $largo1`
 letra=c            
 linea_master=$largo$letra
-master=$(awk "NR==$linea_master" /home/pi/MMDVMHost/MMDVM.ini)
+masterradio=$(awk "NR==$linea_master" /home/pi/MMDVMHost/MMDVM.ini)
 sed -i "6c $indi" /home/pi/info_panel_control.ini
 sed -i "7c $ide" /home/pi/info_panel_control.ini
 sed -i "8c $frec" /home/pi/info_panel_control.ini
@@ -223,4 +223,4 @@ cp /home/pi/$SCRIPTS_version/desconectar_MMDVMPLUS.php /var/www/html/panel_contr
 						sudo cp /home/pi/$SCRIPTS_version/Desktop/MENU_EXTRA /home/pi/Desktop
 
 indicativo=`sed -n '2p'  /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
-sudo wget -post-data http://associacioader.com/prueba.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$indiradio'&'version=$SCRIPTS_version
+sudo wget -post-data http://associacioader.com/prueba.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version
