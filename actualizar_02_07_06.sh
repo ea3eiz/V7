@@ -188,7 +188,8 @@ masterDMR2YSF=$(awk "NR==$largo" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
 
 #YSFGateway.ini
 master=`grep -n -m 1 "^Startup=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
-
+#Quita los espacios
+master=`echo "$master" | tr -d '[[:space:]]'`
 buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 1`
