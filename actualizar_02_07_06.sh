@@ -178,13 +178,13 @@ sed -i "25c $master" /home/pi/info_panel_control.ini
 sed -i "26c $tg" /home/pi/info_panel_control.ini
 
 #DMR2YSF busca el Address DMR2YSF
-master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini.ini`
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini`
 buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 1`
 largo1=`expr $largo - 2`
 largo=`expr substr $master 1 $largo1`
-masterDMR2YSF=$(awk "NR==$linea_master" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini.ini)
+masterDMR2YSF=$(awk "NR==$linea_master" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
 
 #=================================================================================
 #ACTUALIZA EL  PANEL DE CONTROL"
