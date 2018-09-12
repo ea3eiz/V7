@@ -224,3 +224,4 @@ rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 
 indicativo=`sed -n '2p'  /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
 sudo wget -post-data http://associacioader.com/prueba.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version
+sudo wget -post-data http://associacioader.com/prueba1.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
