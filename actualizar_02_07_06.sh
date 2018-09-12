@@ -184,7 +184,7 @@ largo=`expr index $master $buscar`
 largo=`expr $largo + 1`
 largo1=`expr $largo - 2`
 largo=`expr substr $master 1 $largo1`
-masterDMR2YSF=$(awk "NR==$linea_master" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
+masterDMR2YSF=$(awk "NR==$largo" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
 
 #YSFGateway.ini
 master=`grep -n -m 1 "^Startup=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
@@ -193,7 +193,7 @@ largo=`expr index $master $buscar`
 largo=`expr $largo + 1`
 largo1=`expr $largo - 2`
 largo=`expr substr $master 1 $largo1`
-masterYSFGateway=$(awk "NR==$linea_master" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+masterYSFGateway=$(awk "NR==$largo" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
 
 #=================================================================================
 #ACTUALIZA EL  PANEL DE CONTROL"
