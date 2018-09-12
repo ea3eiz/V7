@@ -196,7 +196,8 @@ largo=`expr $largo + 1`
 largo1=`expr $largo - 2`
 linea_YSFGateway=`expr substr $master 1 $largo1`
 masterYSFGateway=$(awk "NR==$linea_YSFGateway" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
-
+#Quita los espacios
+masterYSFGateway=`echo "$masterYSFGateway" | tr -d '[[:space:]]'`
 #=================================================================================
 #ACTUALIZA EL  PANEL DE CONTROL"
 cp /home/pi/$SCRIPTS_version/panel_control.php /var/www/html/panel_control
