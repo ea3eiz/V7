@@ -100,28 +100,7 @@ sed -i "6c Exec=sh -c 'cd /home/pi/$SCRIPTS_version; sudo sh ejecutar_dvrptr_02_
 sed -i "7c Icon=/home/pi/$SCRIPTS_version/DVRPTR.png" /home/pi/Desktop/Boton_3
 sed -i "11c Name[es_ES]=Abrir Dvrptr" /home/pi/Desktop/Boton_3
 
-sleep 10
 
-# Rutina ============================================================================================================================
-bm=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-plus=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-dstar=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMDSTAR.ini`
-fusion=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMFUSION.ini`
-
-frbm=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-frplus=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-rbm=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-
-						#comprueba si el fichero existe
-						if [ -f /home/pi/prueba.sh ];
-						then
-						SCRIPTS_version="V7_C"
-						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07_correccion.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
-						else
-						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
-						fi
-						#================================
 # Fin Rutina =========================================================================================================================
 
 cd /home/pi/$SCRIPTS_version
@@ -224,3 +203,26 @@ cp /home/pi/$SCRIPTS_version/desconectar_MMDVMPLUS.php /var/www/html/panel_contr
 
 indicativo=`sed -n '2p'  /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
 sudo wget -post-data http://associacioader.com/prueba.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version
+
+#sleep 10
+
+# Rutina ============================================================================================================================
+bm=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMBM.ini`
+plus=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
+dstar=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMDSTAR.ini`
+fusion=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMFUSION.ini`
+
+frbm=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMBM.ini`
+frplus=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
+rbm=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMBM.ini`
+rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
+
+						#comprueba si el fichero existe
+						if [ -f /home/pi/prueba.sh ];
+						then
+						SCRIPTS_version="V7_C"
+						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07_correccion.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
+						else
+						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
+						fi
+						#================================
