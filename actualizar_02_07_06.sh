@@ -187,18 +187,6 @@ cp /home/pi/$SCRIPTS_version/desconectar_MMDVMBM.php /var/www/html/panel_control
 cp /home/pi/$SCRIPTS_version/conectar_MMDVMPLUS.php /var/www/html/panel_control
 cp /home/pi/$SCRIPTS_version/desconectar_MMDVMPLUS.php /var/www/html/panel_control
 
-						#comprueba si el fichero existe
-						if [ -f /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini ];
-						then
-						echo ""
-						else
-						cp /home/pi/$SCRIPTS_version/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini /home/pi/
-						fi
-						#================================
-
-						sudo cp /home/pi/$SCRIPTS_version/Desktop/MENU_EXTRA /home/pi/Desktop
-
-#sleep 10
 
 # Rutina ============================================================================================================================
 bm=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMBM.ini`
