@@ -192,8 +192,8 @@ buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 1`
 largo1=`expr $largo - 2`
-largo=`expr substr $master 1 $largo1`
-masterYSFGateway=$(awk "NR==$largo" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+linea_YSFGateway=`expr substr $master 1 $largo1`
+masterYSFGateway=$(awk "NR==$linea_YSFGateway" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
 
 #=================================================================================
 #ACTUALIZA EL  PANEL DE CONTROL"
