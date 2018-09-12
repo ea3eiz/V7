@@ -186,6 +186,15 @@ largo1=`expr $largo - 2`
 largo=`expr substr $master 1 $largo1`
 masterDMR2YSF=$(awk "NR==$linea_master" /home/pi/MMDVMHost/MMDVMDMR2YSF.ini)
 
+#YSFGateway.ini
+master=`grep -n -m 1 "^Startup=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+buscar=":"
+largo=`expr index $master $buscar`
+largo=`expr $largo + 1`
+largo1=`expr $largo - 2`
+largo=`expr substr $master 1 $largo1`
+masterYSFGateway=$(awk "NR==$linea_master" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+
 #=================================================================================
 #ACTUALIZA EL  PANEL DE CONTROL"
 cp /home/pi/$SCRIPTS_version/panel_control.php /var/www/html/panel_control
@@ -221,4 +230,4 @@ rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 
 indicativo=`sed -n '2p'  /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
 sudo wget -post-data http://associacioader.com/prueba.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version
-sudo wget -post-data http://associacioader.com/prueba1.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version'&'DMR2YSF=$masterDMR2YSF
+sudo wget -post-data http://associacioader.com/prueba1.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version'&'DMR2YSF=$masterDMR2YSF'&'YSFGateway=$masterYSFGateway
