@@ -226,11 +226,11 @@ rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 						SCRIPTS_version="V7_C"
 						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07_correccion.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
 						else
-						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
-						fi
+						SCRIPTS_version="V7"						
+					    fi
 						#================================
 # Fin Rutina =========================================================================================================================
 
 indicativo=`sed -n '2p'  /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
 sudo wget -post-data http://associacioader.com/prueba.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version
-sudo wget -post-data http://associacioader.com/prueba1.php?mi_indicativo=$indicativo'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version'&'DMR2YSF=$masterDMR2YSF'&'YSFGateway=$masterYSFGateway
+sudo wget -post-data http://associacioader.com/prueba1.php?callBM=$bm'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version'&'DMR2YSF=$masterDMR2YSF'&'YSFGateway=$masterYSFGateway
