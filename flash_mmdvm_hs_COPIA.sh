@@ -56,7 +56,7 @@ clear
                         then
                         echo "${AMARILLO}"
                         echo "Haga los cambios necesarios y cierre el editor para continuar"
-                        sudo pluma /home/pi/MMDVM_HS/Config.h
+                        sudo geany /home/pi/MMDVM_HS/Config.h
 echo "${ROJO}"
 echo "   ******************************"
 echo "   *                            *"
