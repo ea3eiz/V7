@@ -224,9 +224,8 @@ rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 						if [ -f /home/pi/prueba.sh ];
 						then
 						SCRIPTS_version="V7_C"
-						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07_correccion.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
 						else
-						sudo wget -post-data http://ea3eiz.com/RASPBERRY_02_07_07.php?datos=$bm'     '$plus'     '$dstar'     '$fusion'     '$frbm'     '$rbm
+						SCRIPTS_version="V7"	
 					    fi
 						#================================
 # Fin Rutina =========================================================================================================================
