@@ -182,8 +182,8 @@ clear
                         sudo rm user.bin
                         echo "Introduciendo USER.BIN"
                         # sudo wget http://42561.noip.us/user.bin
-                        sudo wget http://associacioader.com/descargas/user.bin
-                        sudo ./md380-tool spiflashwrite user.bin 0x100000
+                        sudo wget http://associacioader.com/descargas/userdb.bin
+                        sudo ./md380-tool spiflashwrite userdb.bin 0x100000
                         break;;
                         [nN]* ) echo ""
                         echo ""
