@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 while true
 do
 clear
@@ -1155,12 +1155,12 @@ do
                           letra1=c
                           linea4=$linea33port$letra1
                           sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/MMDVMHost/MMDVM.ini
-			  break;;
-			  [nN]* ) echo ""
+			   break;;
+			   [nN]* ) echo ""
 			                    letra1=c
                           linea4=$linea33port$letra1
 			                    sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/MMDVM.ini
-			  break;;
+			   break;;
 esac
 done;;
 #27) echo ""
