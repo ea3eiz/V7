@@ -1147,20 +1147,19 @@ done;;
 27) echo ""
 while true
 do
-              read -p 'Estas en DMR+ ? S/N ' actualizar     
-           	 
+         read -p 'Estas en DMR+ ? S/N ' actualizar          	 
                           
-                          case $actualizar in
-			  [sS]* ) echo ""
+         case $actualizar in
+			   [sS]* ) echo ""
 			   read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
                           letra1=c
                           linea4=$linea33port$letra1
                           sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/MMDVMHost/MMDVM.ini
 			  break;;
 			  [nN]* ) echo ""
-			  letra1=c
+			                    letra1=c
                           linea4=$linea33port$letra1
-			  sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/MMDVM.ini
+			                    sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/MMDVM.ini
 			  break;;
 esac
 done;;
