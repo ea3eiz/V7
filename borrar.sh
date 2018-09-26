@@ -46,17 +46,17 @@ echo "$txf1"
 
 echo -n "\33[1;36m   4)\33[0m Modificar Location    - \33[1;33m"
 loc=`grep -n "^Location=" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
-var2=`echo "$loc" | tr -d '[[:space:]]'`
+loc1=`echo "$loc" | tr -d '[[:space:]]'`
 buscar=":"
-largo_linea=`expr index $var2 $buscar` #comprueba el largo incluyendo los dos puntos (:)
+largo_linea=`expr index $loc1 $buscar` #comprueba el largo incluyendo los dos puntos (:)
 largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $var2 1 $largo_linea` # recoge el numero de linea (74)
+numero_linea=`expr substr $loc1 1 $largo_linea` # recoge el numero de linea (74)
 letra=p
 numero_linea_letrap=$numero_linea$letra #crea 74p
 letrac=c
 numero_linea_letrac=$numero_linea$letrac #crea 74c
-loca=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
-echo "$loca"
+contenido_location=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+echo "$contenido_location"
 
 
 
@@ -455,9 +455,7 @@ done;;
 4) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $loca $buscar`
-echo "Valor de la Ciudad: \33[1;33m${loca#*=}\33[1;37m"
+echo "Valor de la Ciudad: \33[1;33m${contenido_location#*=}\33[1;37m"
         read -p 'Introduce tu Ciudad ' loc1
         actualizar=S 
         case $actualizar in
