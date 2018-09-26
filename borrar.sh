@@ -45,7 +45,7 @@ txf1=`expr substr $txf 4 30`
 echo "$txf1"
 
 echo -n "\33[1;36m   4)\33[0m Modificar Location    - \33[1;33m"
-loc=`grep -n "^Location=" | tr -d '[[:space:]]' /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
+loc=`grep -n "^Location=" | tr [:blank:] /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
 buscar=":"
 largo_linea=`expr index $loc $buscar` #comprueba el largo incluyendo los dos puntos (:)
 largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
