@@ -600,7 +600,7 @@ do
 buscar=":"
 largo=`expr index $pas $buscar`
 echo "   Valor actual del Password: \33[1;33m${pas#*=}\33[1;37m"
-           	          read -p '   Introduce el password que corresponda: ' pas1
+           	          read -p 'Brandmeister=passw0rd   DMR+=PASSWORD: ' pas1
                           letra=c
                           if [ $largo = 3 ]
                           then
