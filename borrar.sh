@@ -457,20 +457,11 @@ do
 buscar=":"
 largo=`expr index $loca $buscar`
 echo "Valor de la Ciudad: \33[1;33m${loca#*=}\33[1;37m"
-           	          read -p 'Introduce tu Ciudad ' loc1
-                          letra=c
-                          if [ $largo = 3 ]
-                          then
-                          linea=`expr substr $loca 1 2`
-                          else
-                          linea=`expr substr $loca 1 3`
-                          fi
-                          linea=$linea$letra
-                          actualizar=S 
-                          case $actualizar in
+        read -p 'Introduce tu Ciudad ' loc1
+        actualizar=S 
+        case $actualizar in
 			  [sS]* ) echo ""
-			  loc1=`echo "$loc1" | tr -d '[[:space:]]'`
-              sed -i "$numero_linea_letrac Location=$loc1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+        sed -i "$numero_linea_letrac Location=$loc1" /home/pi/MMDVMHost/MMDVMPLUS.ini
 			  break;;
 			  [nN]* ) echo ""
 			  break;;
