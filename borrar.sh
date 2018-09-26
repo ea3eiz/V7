@@ -1118,7 +1118,7 @@ while true
 do                         
                           valor=$(awk "NR==$numero_linea_jiter_letrap" /home/pi/MMDVMHost/MMDVMPLUS.ini)
                           echo "Valor actual del Jitter: \33[1;33m$valor"
-                          read -p 'Valor entre 360 a 600: '   JITTER
+                          read -p 'Introduce valor entre 360 a 600: '   JITTER
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
