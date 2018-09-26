@@ -299,7 +299,30 @@ echo "$long1"
 echo -n "\33[1;36m  26)\33[0m Modulo D-STAR         - \33[1;33m"
 modu=`grep -n -m 1 '\<Module\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
 modu1=`expr substr $modu 4 30`
-echo "$modu1"
+echo -n "$modu1"
+
+
+
+
+echo -n "\33[1;36m        d)\33[0m P25         - \33[1;33m"
+p25=`grep -n "\[P25\]" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
+buscar=":"
+largo_linea=`expr index $p25 $buscar` #comprueba el largo incluyendo los dos puntos (:)
+largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
+numero_linea=`expr substr $p25 1 $largo_linea` # recoge el numero de linea (74)
+numero_linea_p25=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
+letra=p
+numero_linea_p25_letrap=$numero_linea_p25$letra #crea 74p
+letrac=c
+numero_linea_p25_letrac=$numero_linea_p25$letrac #crea 74c
+presentar_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
+
+
+
+
+
+
+
 
 echo -n "\33[1;36m  27)\33[0m Entra reflector DMR+  - \33[1;33m"
 OPCION=`expr substr $pas 1 $largo1`
