@@ -55,7 +55,8 @@ letra=p
 numero_linea_letrap=$numero_linea$letra #crea 74p
 letrac=c
 numero_linea_letrac=$numero_linea$letrac #crea 74c
-echo "$var2"
+loca=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+echo "$loca"
 
 
 
