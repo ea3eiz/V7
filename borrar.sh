@@ -303,18 +303,23 @@ echo -n "$modu1"
 
 
 
-
-echo -n "\33[1;36m        k)\33[0m Jitter      - \33[1;33m"
+# k) Jitter
 Jitter=`grep -n "Jitter" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
 buscar=":"
 largo_linea=`expr index $Jitter $buscar` #comprueba el largo incluyendo los dos puntos (:)
 largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
 numero_linea=`expr substr $Jitter 1 $largo_linea` # recoge el numero de linea (74)
-letrap=p
-numero_linea_jiter_letrap=$numero_linea$letrap #crea 74p
+Jitter=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letrac=c
-numero_linea_jiter_letrac=$numero_linea$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_jiter_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
+numero_linea_jiter_letrac=$numero_linea$letrac
+echo "  ${CIAN} k) ${GRIS}Jitter      - ${AMARILLO}$Jitter"
+
+
+
+
+
+
+
 
 
 
