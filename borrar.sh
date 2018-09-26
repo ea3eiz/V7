@@ -46,11 +46,11 @@ echo "$txf1"
 
 echo -n "\33[1;36m   4)\33[0m Modificar Location    - \33[1;33m"
 loc=`grep -n "^Location=" /home/pi/MMDVMHost/MMDVMPLUS.ini`
-#loc1=`echo "$loc" | tr -d '[[:space:]]'`
+loc1=`echo "$loc" | tr -d '[[:space:]]'`
 buscar=":"
-largo_linea=`expr index $loc $buscar`
+largo_linea=`expr index $loc1 $buscar`
 largo_linea=`expr $largo_linea - 1`
-numero_linea=`expr substr $loc 1 $largo_linea`
+numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 contenido_location=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
