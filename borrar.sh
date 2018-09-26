@@ -304,12 +304,12 @@ echo -n "$modu1"
 
 
 
-echo -n "\33[1;36m        d)\33[0m P25         - \33[1;33m"
-p25=`grep -n "\[P25\]" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
+echo -n "\33[1;36m        d)\33[0m Jitter      - \33[1;33m"
+Jitter=`grep -n "Jitter" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
 buscar=":"
-largo_linea=`expr index $p25 $buscar` #comprueba el largo incluyendo los dos puntos (:)
+largo_linea=`expr index $Jitter $buscar` #comprueba el largo incluyendo los dos puntos (:)
 largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $p25 1 $largo_linea` # recoge el numero de linea (74)
+numero_linea=`expr substr $Jitter 1 $largo_linea` # recoge el numero de linea (74)
 numero_linea_p25=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
 letra=p
 numero_linea_p25_letrap=$numero_linea_p25$letra #crea 74p
