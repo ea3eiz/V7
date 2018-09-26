@@ -259,17 +259,16 @@ letra=c
 linea_sed_NXDN=$numero_linea$letra
 echo "  ${CIAN}i) ${GRIS}NXDN        - ${AMARILLO}$NXDN"
 
-# 23) Brightness=
-var=`grep -n -m 1 "\[Nextion\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+# 23) IdleBrightness=
+var=`grep -n -m 1 "^IdleBrightness=" /home/pi/MMDVMHost/MMDVMPLUS.ini`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 3`
-Brightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+IdleBrightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letra=c
-linea_sed_Brightness=$numero_linea$letra
-echo -n "  ${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$Brightness"
+linea_sed_IdleBrightness=$numero_linea$letra
+echo -n "  ${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$IdleBrightness"
 
 # j) POCSAG Enable=
 var=`grep -n -m 1 "\[POCSAG\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
@@ -866,12 +865,12 @@ done;;
 while true
 do
 
-                          read -p 'Introduce el brillo Brightness: ' V
+                          read -p 'Introduce el brillo IdleBrightness: ' V
                           actualizar=S 
                           case $actualizar in                                            
                           [sS]* ) echo ""
                           V=`echo "$V" | tr -d '[[:space:]]'`      
-                          sed -i "$linea_sed_Brightness Brightness=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
+                          sed -i "$linea_sed_IdleBrightness IdleBrightness=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
                           break;;
                           [nN]* ) echo ""
                           break;;
