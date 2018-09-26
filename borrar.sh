@@ -312,7 +312,7 @@ numero_linea=`expr substr $Jitter 1 $largo_linea` # recoge el numero de linea (7
 Jitter=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letrac=c
 numero_linea_jiter_letrac=$numero_linea$letrac
-echo "  ${CIAN} k) ${GRIS}Jitter      - ${AMARILLO}$Jitter"
+echo "  ${CIAN}      k) ${GRIS}Jitter      - ${AMARILLO}$Jitter"
 
 
 
