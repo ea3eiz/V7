@@ -304,7 +304,7 @@ echo -n "$modu1"
 
 
 
-echo -n "\33[1;36m        d)\33[0m Jitter      - \33[1;33m"
+echo -n "\33[1;36m        k)\33[0m Jitter      - \33[1;33m"
 Jitter=`grep -n "Jitter" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
 buscar=":"
 largo_linea=`expr index $Jitter $buscar` #comprueba el largo incluyendo los dos puntos (:)
@@ -1113,6 +1113,25 @@ do
                           break;;
 esac
 done;;
+
+
+
+k) echo ""
+while true
+do
+                          echo "Valor actual del Jitter: \33[1;33m$presentar_valor"
+                          read -p 'Valor entre 360 a 600: '   JITTER
+                          actualizar=S 
+                          case $actualizar in
+                          [sS]* ) echo ""
+                          sed -i "$numero_linea_jiter_letrac Jitter=$JITTER" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
+esac
+done;;
+
+
 24) echo ""
 while true
 do
