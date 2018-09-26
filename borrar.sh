@@ -54,8 +54,7 @@ letra=p
 numero_linea_letrap=$numero_linea$letra #crea 74p
 letrac=c
 numero_linea_letrac=$numero_linea$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
-
+echo "$loc"
 
 
 
