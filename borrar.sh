@@ -268,7 +268,7 @@ numero_linea=`expr substr $var 1 $largo_linea`
 IdleBrightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letra=c
 linea_sed_IdleBrightness=$numero_linea$letra
-echo -n "${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$IdleBrightness"
+echo -n "  ${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$IdleBrightness"
 
 # j) POCSAG Enable=
 var=`grep -n -m 1 "\[POCSAG\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
@@ -280,7 +280,7 @@ numero_linea=`expr $numero_linea + 1`
 POCSAG=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letra=c
 linea_sed_POCSAG=$numero_linea$letra
-echo "  ${CIAN} j) ${GRIS}POCSAG      - ${AMARILLO}$POCSAG"
+echo "${CIAN}j) ${GRIS}POCSAG      - ${AMARILLO}$POCSAG"
 
 # 24) Latitude=
 echo -n "\33[1;36m  24)\33[0m Coordenada Latitud    - \33[1;33m"
