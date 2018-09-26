@@ -552,16 +552,12 @@ echo "Valor  actual  del Id: \33[1;33m${idd#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea Id=$miid" /home/pi/MMDVMHost/MMDVMPLUS.ini
-
-
-ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVMPLUS.ini)
-sed -i "2c $ide" /home/pi/info_panel_control.ini
-                        
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          sed -i "2c Id=$miid" /home/pi/info_panel_control.ini
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 11) echo ""
@@ -569,23 +565,16 @@ while true
 do
 echo "Valor actual del Master: \33[1;33m${master#*=}\33[1;37m"
                       read -p 'Brandmeister=master.spain-dmr.es / DMR+=212.237.3.141: ' master1
-                          actualizar=S 
-                          case $actualizar in
-                    [sS]* ) echo ""
-                    master1=`echo "$master1" | tr -d '[[:space:]]'`
-
-
-#Convierte mayusculas en minúsculas
-master1=`echo "$master1" | tr [:upper:] [:lower:]`
-
-                          sed -i "$linea_master Address=$master1" /home/pi/MMDVMHost/MMDVMPLUS.ini
-
-master=$(awk "NR==139" /home/pi/MMDVMHost/MMDVMPLUS.ini)
-sed -i "4c $master" /home/pi/info_panel_control.ini
-
-        break;;
-        [nN]* ) echo ""
-        break;;
+                      actualizar=S 
+                      case $actualizar in
+                      [sS]* ) echo ""
+                      master1=`echo "$master1" | tr -d '[[:space:]]'`
+                      master1=`echo "$master1" | tr [:upper:] [:lower:]`
+                      sed -i "$linea_master Address=$master1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                      sed -i "4c Address=$master1" /home/pi/info_panel_control.ini
+                      break;;
+                      [nN]* ) echo ""
+                      break;;
 esac
 done;;
 12) echo ""
@@ -593,16 +582,16 @@ while true
 do
                           echo -n "Valor actual del \33[1;37m${var100port#*=}\33[1;37m"
                           var100port= sed -n $linea2port  /home/pi/MMDVMHost/MMDVMPLUS.ini;
-                      read -p 'Puerto para Brandmeister=62031 puerto para DMR+=55555 : ' miid
+                          read -p 'Puerto para Brandmeister=62031 puerto para DMR+=55555 : ' miid
                           actualizar=S 
                           case $actualizar in
-        [sS]* ) echo ""
+                          [sS]* ) echo ""
                           letra1=c
                           linea4=$linea3port$letra1
                           sed -i "$linea4 Port=$miid" /home/pi/MMDVMHost/MMDVMPLUS.ini
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 13) echo ""
@@ -622,12 +611,12 @@ echo "   Valor actual del Password: \33[1;33m${pas#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			              [sS]* ) echo ""
-			              pas1=`echo "$pas1" | tr -d '[[:space:]]'`
+			                    [sS]* ) echo ""
+			                    pas1=`echo "$pas1" | tr -d '[[:space:]]'`
                           sed -i "$linea Password=$pas1" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 14) echo ""
@@ -636,9 +625,9 @@ do
 buscar=":"
 largo=`expr index $txinv $buscar`
 echo "Valor  actual del  TXInvert: \33[1;33m${txinv#*=}\33[1;37m"
-           	          read -p 'Valor óptimo para DVMEGA=1 : ' txinv1
+           	              read -p 'Valor óptimo para DVMEGA=1 : ' txinv1
                           letra=c
-                         if [ $largo = 3 ]
+                          if [ $largo = 3 ]
                           then
                           linea=`expr substr $txinv 1 2`
                           else
@@ -647,11 +636,11 @@ echo "Valor  actual del  TXInvert: \33[1;33m${txinv#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea TXInvert=$txinv1" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 15) echo ""
@@ -660,7 +649,7 @@ do
 buscar=":"
 largo=`expr index $rx $buscar`
 echo "Valor  actual  del  RXLevel : \33[1;33m${rx#*=}\33[1;37m"
-           	          read -p 'Valor óptimo para DVMEGA=45 : ' var2
+           	              read -p 'Valor óptimo para DVMEGA=45 : ' var2
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -671,11 +660,11 @@ echo "Valor  actual  del  RXLevel : \33[1;33m${rx#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea RXLevel=$var2" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 16) echo ""
@@ -684,7 +673,7 @@ do
 buscar=":"
 largo=`expr index $tx $buscar`
 echo "Valor  actual  del  TXLevel : \33[1;33m${tx#*=}\33[1;37m"
-           	          read -p 'Valor óptimo para DVMEGA=50 : ' var2
+           	              read -p 'Valor óptimo para DVMEGA=50 : ' var2
                           letra=c
                           if [ $largo = 3 ]3
                           then
@@ -695,11 +684,11 @@ echo "Valor  actual  del  TXLevel : \33[1;33m${tx#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea TXLevel=$var2" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 17) echo ""
@@ -719,11 +708,11 @@ echo "Valor actual del Duplex: \33[1;33m${dup#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea Duplex=$dup1" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 18) echo ""
@@ -732,7 +721,7 @@ do
 buscar=":"
 largo=`expr index $txh $buscar`
 echo "Valor actual del TXHang: \33[1;33m${txh#*=}\33[1;37m"
-           	          read -p 'Para un repetidor TXHang=4 Para un DVMEGA TXHang=0: ' txh1
+           	              read -p 'Para un repetidor TXHang=4 Para un DVMEGA TXHang=0: ' txh1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -743,11 +732,11 @@ echo "Valor actual del TXHang: \33[1;33m${txh#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea TXHang=$txh1" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 19) echo ""
@@ -756,7 +745,7 @@ do
 buscar=":"
 largo=`expr index $lg $buscar`
 echo "Valor actual del DisplayLevel: \33[1;33m${lg#*=}\33[1;37m"
-           	     read -p 'Para visualizar tramas seguidas introduce 1, para una sola trama introduce 2:' lg1
+           	              read -p 'Para visualizar tramas seguidas introduce 1, para una sola trama introduce 2:' lg1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -767,11 +756,11 @@ echo "Valor actual del DisplayLevel: \33[1;33m${lg#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea DisplayLevel=$lg1" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 20) echo ""
@@ -788,7 +777,7 @@ fi
 buscar=":"
 largo=`expr index $sl $buscar`
 echo "Valor actual del Slot1=: \33[1;33m${sl#*=}\33[1;37m"
-           	          read -p 'Para DVMEGA Modificar el valor del Slot1=0: ' V
+           	              read -p 'Para DVMEGA Modificar el valor del Slot1=0: ' V
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -799,12 +788,12 @@ echo "Valor actual del Slot1=: \33[1;33m${sl#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-			              [sS]* ) echo ""
-			              V=`echo "$V" | tr -d '[[:space:]]'`			  
+			                    [sS]* ) echo ""
+			                    V=`echo "$V" | tr -d '[[:space:]]'`			  
                           sed -i "$linea Slot1=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 21) echo ""
@@ -821,7 +810,7 @@ fi
 buscar=":"
 largo=`expr index $Display $buscar`
 echo "Valor actual del Display=: \33[1;33m${Display1#*=}\33[1;37m"
-                      read -p 'Introcuce el nombre de tu Dispaly: ' V
+                          read -p 'Introcuce el nombre de tu Dispaly: ' V
                           letra=c
                           if [ $largo = 2 ]
                           then
@@ -832,12 +821,12 @@ echo "Valor actual del Display=: \33[1;33m${Display1#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-                    [sS]* ) echo ""
-                    V=`echo "$V" | tr -d '[[:space:]]'`       
+                          [sS]* ) echo ""
+                          V=`echo "$V" | tr -d '[[:space:]]'`       
                           sed -i "$linea Display=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 22) echo ""
@@ -854,7 +843,7 @@ fi
 buscar=":"
 largo=`expr index $ScreenLayout $buscar`
 echo "Valor actual del ScreenLayout=: \33[1;33m${ScreenLayout1#*=}\33[1;37m"
-                      read -p 'Este parametro puede ser 0 ó 1: ' V
+                          read -p 'Este parametro puede ser 0 ó 1: ' V
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -865,12 +854,12 @@ echo "Valor actual del ScreenLayout=: \33[1;33m${ScreenLayout1#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-                    [sS]* ) echo ""
-                    V=`echo "$V" | tr -d '[[:space:]]'`       
+                          [sS]* ) echo ""
+                          V=`echo "$V" | tr -d '[[:space:]]'`       
                           sed -i "$linea ScreenLayout=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 23) echo ""
@@ -883,9 +872,9 @@ do
                           [sS]* ) echo ""
                           V=`echo "$V" | tr -d '[[:space:]]'`      
                           sed -i "$linea_sed_Brightness Brightness=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 26) echo ""
@@ -894,9 +883,9 @@ do
 buscar=":"
 largo=`expr index $modu $buscar`
 echo "Valor  actual  del  Module: \33[1;33m${modu#*=}\33[1;37m"
-           	          read -p 'Valor óptimo para D-STAR=B: '  modu1
+           	              read -p 'Valor óptimo para D-STAR=B: '  modu1
                           letra=c
-                         if [ $largo = 3 ]
+                          if [ $largo = 3 ]
                           then
                           linea=`expr substr $modu 1 2`
                           else
@@ -906,14 +895,12 @@ echo "Valor  actual  del  Module: \33[1;33m${modu#*=}\33[1;37m"
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-
-#Convierte indicativo si se introduce en minúsculas a Mayúsculas
-modu1=`echo "$modu1" | tr [:lower:] [:upper:]`
-
+                          #Convierte indicativo si se introduce en minúsculas a Mayúsculas
+                          modu1=`echo "$modu1" | tr [:lower:] [:upper:]`
                           sed -i "$linea Module=$modu1" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 a) echo ""
@@ -1002,7 +989,7 @@ fi
 buscar=":"
 largo=`expr index $modehang $buscar`
 echo "Valor actual del RFModeHang = : \33[1;33m${modehang1#*=}\33[1;37m"
-                      read -p 'Introcuce el valor para RFModeHang (optimo=3): ' V
+                          read -p 'Introcuce el valor para RFModeHang (optimo=3): ' V
                           letra=c
                           if [ $largo = 2 ]
                           then
@@ -1013,12 +1000,12 @@ echo "Valor actual del RFModeHang = : \33[1;33m${modehang1#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-                    [sS]* ) echo ""
-                    V=`echo "$V" | tr -d '[[:space:]]'`       
+                          [sS]* ) echo ""
+                          V=`echo "$V" | tr -d '[[:space:]]'`       
                           sed -i "$linea RFModeHang=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 g) echo ""
@@ -1034,7 +1021,7 @@ fi
 buscar=":"
 largo=`expr index $timeo $buscar`
 echo "Valor actual del Timeout = : \33[1;33m${timeo1#*=}\33[1;37m"
-                      read -p 'Introcuce el valor para Timeout (valor optimo=0): ' V
+                          read -p 'Introcuce el valor para Timeout (valor optimo=0): ' V
                           letra=c
                           if [ $largo = 2 ]
                           then
@@ -1045,18 +1032,18 @@ echo "Valor actual del Timeout = : \33[1;33m${timeo1#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-                    [sS]* ) echo ""
-                    V=`echo "$V" | tr -d '[[:space:]]'`       
+                          [sS]* ) echo ""
+                          V=`echo "$V" | tr -d '[[:space:]]'`       
                           sed -i "$linea Timeout=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 h) echo ""
 while true
 do
-echo "Valor del Port: \33[1;33m$MODEMNEXTION"
+                          echo "Valor del Port: \33[1;33m$MODEMNEXTION"
                           read -p 'Ejp. modem, /dev/ttyAMA0, /dev/rfcomm0, /dev/ttyUSB0 :' lat1
                           actualizar=S 
                           case $actualizar in
@@ -1070,7 +1057,7 @@ done;;
 i) echo ""
 while true
 do
-echo "Valor actual NXDN: \33[1;33m$NXDN"
+                          echo "Valor actual NXDN: \33[1;33m$NXDN"
                           read -p 'Desactivado=0 Activado=1: '   NXDN1
                           actualizar=S 
                           case $actualizar in
@@ -1113,10 +1100,10 @@ done;;
 24) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $lat $buscar`
-echo "Valor de la Latitud: \33[1;33m${lat#*=}\33[1;37m"
-           	          read -p 'Introduce la Latitud ' lat1
+                          buscar=":"
+                          largo=`expr index $lat $buscar`
+                          echo "Valor de la Latitud: \33[1;33m${lat#*=}\33[1;37m"
+           	              read -p 'Introduce la Latitud ' lat1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -1127,21 +1114,21 @@ echo "Valor de la Latitud: \33[1;33m${lat#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea Latitude=$lat1" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 
 25) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $long $buscar`
-echo "Valor de la Longitud: \33[1;33m${long#*=}\33[1;37m"
-           	          read -p 'Introduce la Longitud ' long1
+                          buscar=":"
+                          largo=`expr index $long $buscar`
+                          echo "Valor de la Longitud: \33[1;33m${long#*=}\33[1;37m"
+           	              read -p 'Introduce la Longitud ' long1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -1152,57 +1139,31 @@ echo "Valor de la Longitud: \33[1;33m${long#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea Longitude=$long1" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 27) echo ""
 while true
 do
-              read -p 'Estas en DMR+ ? S/N ' actualizar     
-           	 
-                          
+                          read -p 'Estas en DMR+ ? S/N ' actualizar             	                           
                           case $actualizar in
-			  [sS]* ) echo ""
-			   read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
+			                    [sS]* ) echo ""
+			                    read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
                           letra1=c
                           linea4=$linea33port$letra1
                           sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
-			  [nN]* ) echo ""
-			  letra1=c
+			                    break;;
+			                    [nN]* ) echo ""
+			                    letra1=c
                           linea4=$linea33port$letra1
-			  sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/MMDVMPLUS.ini
-			  break;;
+			                    sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/MMDVMPLUS.ini
+			                    break;;
 esac
 done;;
-#27) echo ""
-#while true
-#do
-#buscar=":"
-#largo=`expr index $rxinv $buscar`
-#echo "Valor  actual del  RXInvert: \33[1;33m${rxinv#*=}\33[1;37m"
-                     #read -p 'Valor óptimo para Motorola=0 para otras=1 : ' rxinv11
-                          #letra=c
-                         #if [ $largo = 3 ]
-                         #then
-                          #linea=`expr substr $rxinv 1 2`
-                          #else
-                          #linea=`expr substr $rxinv 1 3`
-                          #fi
-                          #linea=$linea$letra
-                          #actualizar=S 
-                          #case $actualizar in
-        #[sS]* ) echo ""
-                          #sed -i "$linea RXInvert=$rxinv11" /home/pi/MMDVMHost/MMDVMPLUS.ini
-        #break;;
-        #[nN]* ) echo ""
-        #break;;
-#esac
-#done;;
 28) echo ""
 while true
 do
@@ -1309,16 +1270,16 @@ done;;
 while true
 do
           	        
-           	        read -p 'Quieres restaurar el fichero original MMDVMPLUS.ini? S/N ' restaurar1   
+           	            read -p 'Quieres restaurar el fichero original MMDVMPLUS.ini? S/N ' restaurar1   
                         case $restaurar1 in
-			[sS]* ) echo ""
+			                  [sS]* ) echo ""
                         clear
                         echo "<<<<<< Restaurando el fichero original MMDVMPLUS.ini >>>>>"
                         sleep 3
                         sudo cp -f /home/pi/MMDVMHost/MMDVM.ini_original /home/pi/MMDVMHost/MMDVMPLUS.ini
-			break;;
-			[nN]* ) echo ""
-			break;;
+			                  break;;
+			                  [nN]* ) echo ""
+			                  break;;
 esac
 done;;
 0) echo ""
