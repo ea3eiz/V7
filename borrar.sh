@@ -310,12 +310,11 @@ buscar=":"
 largo_linea=`expr index $Jitter $buscar` #comprueba el largo incluyendo los dos puntos (:)
 largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
 numero_linea=`expr substr $Jitter 1 $largo_linea` # recoge el numero de linea (74)
-numero_linea_p25=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
 letra=p
-numero_linea_p25_letrap=$numero_linea_p25$letra #crea 74p
+numero_linea_jiter_letrap=$numero_linea$letrap #crea 74p
 letrac=c
-numero_linea_p25_letrac=$numero_linea_p25$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
+numero_linea_jiter_letrac=$numero_linea$letrac #crea 74c
+presentar_valor= sed -n $numero_linea_jiter_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
 
 
 
