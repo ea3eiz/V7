@@ -2,13 +2,13 @@
 while true
 do
 clear
-                  # Datos para el panel de control
-                  indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVMPLUS.ini)
-                  sed -i "1c $indi" /home/pi/info_panel_control.ini
-                  ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVMPLUS.ini)
-                  sed -i "2c $ide" /home/pi/info_panel_control.ini
-                  frec=$(awk "NR==13" /home/pi/MMDVMHost/MMDVMPLUS.ini)
-                  sed -i "3c $frec" /home/pi/info_panel_control.ini
+# Datos para el panel de control
+indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+sed -i "1c $indi" /home/pi/info_panel_control.ini
+ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+sed -i "2c $ide" /home/pi/info_panel_control.ini
+frec=$(awk "NR==13" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+sed -i "3c $frec" /home/pi/info_panel_control.ini
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVMPLUS.ini`
 buscar=":"
 largo=`expr index $master $buscar`
@@ -18,7 +18,8 @@ largo=`expr substr $master 1 $largo1`
 letra=c            
 linea_master=$largo$letra
 master=$(awk "NR==$linea_master" /home/pi/MMDVMHost/MMDVMPLUS.ini)
-                  sed -i "4c $master" /home/pi/info_panel_control.ini
+sed -i "4c $master" /home/pi/info_panel_control.ini
+#Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
 BLANCO="\033[1;37m"
@@ -111,17 +112,17 @@ txinv1=`expr substr $txinv 4 30`
 echo -n "$txinv1"
 
 echo -n "\33[1;36m      a)\33[0m D-STAR      - \33[1;33m"
-dstar=`grep -n "\[D-Star\]" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
+dstar=`grep -n "\[D-Star\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
 buscar=":"
-largo_linea=`expr index $dstar $buscar` #comprueba el largo incluyendo los dos puntos (:)
-largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $dstar 1 $largo_linea` # recoge el numero de linea (74)
-numero_linea_dstar=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
+largo_linea=`expr index $dstar $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $dstar 1 $largo_linea`
+numero_linea_dstar=`expr $numero_linea + 1`
 letra=p
-numero_linea_dstar_letrap=$numero_linea_dstar$letra #crea 74p
+numero_linea_dstar_letrap=$numero_linea_dstar$letra
 letrac=c
-numero_linea_dstar_letrac=$numero_linea_dstar$letrac #crea 74c
-presentar_valo= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
+numero_linea_dstar_letrac=$numero_linea_dstar$letrac
+presentar_valo= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
 
 echo -n "\33[1;36m  15)\33[0m Modificar RXLevel     - \33[1;33m"
 rx=`grep -n '\<RXLevel\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
@@ -129,17 +130,17 @@ rx1=`expr substr $rx 4 30`
 echo -n "$rx1"
 
 echo -n "\33[1;36m      b)\33[0m DMR         - \33[1;33m"
-dmr=`grep -n "\[DMR\]" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
+dmr=`grep -n "\[DMR\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
 buscar=":"
-largo_linea=`expr index $dmr $buscar` #comprueba el largo incluyendo los dos puntos (:)
-largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $dmr 1 $largo_linea` # recoge el numero de linea (74)
-numero_linea_dmr=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
+largo_linea=`expr index $dmr $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $dmr 1 $largo_linea`
+numero_linea_dmr=`expr $numero_linea + 1`
 letra=p
 numero_linea_dmr_letrap=$numero_linea_dmr$letra #crea 74p
 letrac=c
 numero_linea_dmr_letrac=$numero_linea_dmr$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
+presentar_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
 
 echo -n "\33[1;36m  16)\33[0m Modificar TXLevel     - \33[1;33m"
 tx=`grep -n -m 1 '\<TXLevel\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
@@ -147,36 +148,35 @@ tx1=`expr substr $tx 4 30`
 echo -n "$tx1"
 
 echo -n "\33[1;36m      c)\33[0m FUSION      - \33[1;33m"
-fusion=`grep -n "LowDeviation" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
+fusion=`grep -n "LowDeviation" /home/pi/MMDVMHost/MMDVMPLUS.ini`
 buscar=":"
-largo_linea=`expr index $fusion $buscar` #comprueba el largo incluyendo los dos puntos (:)
-largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $fusion 1 $largo_linea` # recoge el numero de linea ejemplo (74)
-numero_linea_fusion=`expr $numero_linea - 1` # y le resta uno quedando como: ejemplo (73)
+largo_linea=`expr index $fusion $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $fusion 1 $largo_linea`
+numero_linea_fusion=`expr $numero_linea - 1`
 letra=p
-numero_linea_fusion_letrap=$numero_linea_fusion$letra #crea 74p
+numero_linea_fusion_letrap=$numero_linea_fusion$letra
 letrac=c
-numero_linea_fusion_letrac=$numero_linea_fusion$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
+numero_linea_fusion_letrac=$numero_linea_fusion$letrac
+presentar_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
 
 echo -n "\33[1;36m  17)\33[0m Modificar Duplex      - \33[1;33m"
 dup=`grep -n -m 1 '\<Duplex\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
 dup1=`expr substr $dup 3 30`
 echo -n "$dup1"
 
-
 echo -n "\33[1;36m        d)\33[0m P25         - \33[1;33m"
-p25=`grep -n "\[P25\]" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
+p25=`grep -n "\[P25\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
 buscar=":"
-largo_linea=`expr index $p25 $buscar` #comprueba el largo incluyendo los dos puntos (:)
-largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $p25 1 $largo_linea` # recoge el numero de linea (74)
-numero_linea_p25=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
+largo_linea=`expr index $p25 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $p25 1 $largo_linea`
+numero_linea_p25=`expr $numero_linea + 1`
 letra=p
-numero_linea_p25_letrap=$numero_linea_p25$letra #crea 74p
+numero_linea_p25_letrap=$numero_linea_p25$letra
 letrac=c
-numero_linea_p25_letrac=$numero_linea_p25$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
+numero_linea_p25_letrac=$numero_linea_p25$letrac
+presentar_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
 
 echo -n "\33[1;36m  18)\33[0m Modificar TXHang      - \33[1;33m"
 txh=`grep -n -m 1 '\<TXHang\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
@@ -184,7 +184,7 @@ txh1=`expr substr $txh 5 30`
 echo -n "$txh1"
 
 echo -n "\33[1;36m        e)\33[0m Baliza      - \33[1;33m"
-cw= sed -n "31p"  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
+cw= sed -n "31p"  /home/pi/MMDVMHost/MMDVMPLUS.ini;
 
 echo -n "\33[1;36m  19)\33[0m Modificar Tramas      - \33[1;33m"
 lg=`grep -n -m 1 '\<DisplayLevel\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
@@ -227,12 +227,11 @@ echo -n "$Display1"
 fi
 
 var=`grep -n -m 1 "\[Nextion\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
-#var1=`grep -m 1 "\[Nextion\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 2` # y le suma uno qudando coomo: (75)
+numero_linea=`expr $numero_linea + 2`
 MODEMNEXTION=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letra=c
 linea_sed_MN=$numero_linea$letra
@@ -254,7 +253,7 @@ buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 1` # Se le suma 1 al número de linea
+numero_linea=`expr $numero_linea + 1`
 NXDN=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letra=c
 linea_sed_NXDN=$numero_linea$letra
@@ -266,7 +265,7 @@ buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 3` # Se le suma 3 al número de linea
+numero_linea=`expr $numero_linea + 3`
 Brightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letra=c
 linea_sed_Brightness=$numero_linea$letra
@@ -278,7 +277,7 @@ buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 1` # Se le suma 1 al número de linea
+numero_linea=`expr $numero_linea + 1`
 POCSAG=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letra=c
 linea_sed_POCSAG=$numero_linea$letra
@@ -301,32 +300,16 @@ modu=`grep -n -m 1 '\<Module\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
 modu1=`expr substr $modu 4 30`
 echo -n "$modu1"
 
-
-
-# k) Jitter
-Jitter=`grep -n "Jitter" /home/pi/MMDVMHost/MMDVMPLUS.ini` # devuelve ejem: 74:Enable=1
+# k) Jitter=
+Jitter=`grep -n "Jitter" /home/pi/MMDVMHost/MMDVMPLUS.ini`
 buscar=":"
-largo_linea=`expr index $Jitter $buscar` #comprueba el largo incluyendo los dos puntos (:)
-largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $Jitter 1 $largo_linea` # recoge el numero de linea (74)
+largo_linea=`expr index $Jitter $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $Jitter 1 $largo_linea`
 Jitter=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letrac=c
 numero_linea_jiter_letrac=$numero_linea$letrac
 echo "  ${CIAN}      k) ${GRIS}Jitter      - ${AMARILLO}$Jitter"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 echo -n "\33[1;36m  27)\33[0m Entra reflector DMR+  - \33[1;33m"
 OPCION=`expr substr $pas 1 $largo1`
@@ -381,7 +364,7 @@ do
 buscar=":"
 largo=`expr index $ind $buscar`
 echo "Valor actual Indicativo: \33[1;33m${ind#*=}\33[1;37m"
-           	          read -p 'Introduce tu indicativo: ' indicativo
+           	              read -p 'Introduce tu indicativo: ' indicativo
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -392,11 +375,10 @@ echo "Valor actual Indicativo: \33[1;33m${ind#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			              [sS]* ) echo ""
-#Convierte indicativo si se introduce en minúsculas a Mayúsculas
-indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
+			                    [sS]* ) echo ""
+                          indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
 
-			              indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
+			                    indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
                           sed -i "$linea Callsign=$indicativo" /home/pi/MMDVMHost/MMDVMPLUS.ini
 
 indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVMPLUS.ini)
@@ -413,8 +395,7 @@ do
 buscar=":"
 largo=`expr index $rxf $buscar`
 echo "Valor actual del RXFrequency: \33[1;33m${rxf#*=}\33[1;37m"
-
-           	          read -p 'Introduce RXFrequency:        ' var2
+           	              read -p 'Introduce RXFrequency:        ' var2
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -425,16 +406,12 @@ echo "Valor actual del RXFrequency: \33[1;33m${rxf#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                              sed -i "$linea RXFrequency=$var2" /home/pi/MMDVMHost/MMDVMPLUS.ini
-
-frec=$(awk "NR==13" /home/pi/MMDVMHost/MMDVMPLUS.ini)
-sed -i "3c $frec" /home/pi/info_panel_control.ini
-
-
-			break;;
-			[nN]* ) echo ""
-			break;;
+			                    [sS]* ) echo ""
+                          sed -i "$linea RXFrequency=$var2" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "3c RXFrequency=$var2" /home/pi/info_panel_control.ini
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 3) echo ""
