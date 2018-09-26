@@ -268,7 +268,7 @@ numero_linea=`expr substr $var 1 $largo_linea`
 IdleBrightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letra=c
 linea_sed_IdleBrightness=$numero_linea$letra
-echo -n "  ${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$IdleBrightness"
+echo -n "${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$IdleBrightness"
 
 # j) POCSAG Enable=
 var=`grep -n -m 1 "\[POCSAG\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
