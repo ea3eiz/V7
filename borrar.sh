@@ -54,7 +54,8 @@ letra=p
 numero_linea_letrap=$numero_linea$letra #crea 74p
 letrac=c
 numero_linea_letrac=$numero_linea$letrac #crea 74c
-echo "$loc"
+presentar_valor= sed -n $numero_linea_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini; #presenta el valor en pantalla
+
 
 
 
@@ -469,7 +470,7 @@ echo "Valor de la Ciudad: \33[1;33m${loca#*=}\33[1;37m"
                           case $actualizar in
 			  [sS]* ) echo ""
 			  loc1=`echo "$loc1" | tr -d '[[:space:]]'`
-              sed -i "$linea Location=$loc1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+              sed -i "$numero_linea_letrac Location=$loc1" /home/pi/MMDVMHost/MMDVMPLUS.ini
 			  break;;
 			  [nN]* ) echo ""
 			  break;;
