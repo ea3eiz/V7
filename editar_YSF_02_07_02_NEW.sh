@@ -74,9 +74,6 @@ LONGITUD=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
 letra=c
 linea_sed_LO=$numero_linea$letra
 
-
-
-
 loc=`grep -n "^Name=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 loc1=`echo "$loc" | tr -d '[[:space:]]'`
 buscar=":"
@@ -86,21 +83,6 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 linea_sed_NAME=$numero_linea$letrac
 NAME=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var=`grep -n -m 1 "\[Network\]" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 var1=`grep -m 1 "\[Network\]" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`

@@ -28,9 +28,16 @@ txf1=`expr substr $txf 4 30`
 echo "$txf1"
 
 echo -n "\33[1;36m   4)\33[0m Modificar Location    - \33[1;33m"
-loca=`grep -n "Locatio" /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
-loca1=`expr substr $loca 4 30`
-echo "$loca1"
+loc=`grep -n "^Location=" /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
+loc1=`echo "$loc" | tr -d '[[:space:]]'`
+buscar=":"
+largo_linea=`expr index $loc1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $loc1 1 $largo_linea`
+letrac=c
+numero_linea_letrac=$numero_linea$letrac
+contenido_location=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+echo "$contenido_location"
 
 echo -n "\33[1;36m   5)\33[0m Modificar URL         - \33[1;33m"
 url=`grep -n "URL" /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
@@ -307,23 +314,12 @@ done;;
 4) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $loca $buscar`
-echo "Valor de la Ciudad: \33[1;33m${loca#*=}\33[1;37m"
-           	          read -p 'Introduce tu Ciudad ' tu_ciudad
-                          letra=c
-                          if [ $largo = 3 ]
-                          then
-                          linea=`expr substr $loca 1 2`
-                          else
-                          linea=`expr substr $loca 1 3`
-                          fi
-                          linea=$linea$letra
-                          actualizar=S 
-                          case $actualizar in
-			  [sS]* ) echo ""
-			  tu_ciudad=`echo "$tu_ciudad" | tr -d '[[:space:]]'`
-              sed -i "$linea Location=$tu_ciudad" /home/pi/MMDVMHost/TODOS_LOS_INIS.ini
+            echo "Valor de la Ciudad: \33[1;33m${loca#*=}\33[1;37m"
+           	read -p 'Introduce tu Ciudad ' tu_ciudad                                                                       
+            actualizar=S 
+            case $actualizar in
+			      [sS]* ) echo ""
+            sed -i "$numero_linea_letrac Location=$tu_ciudad" /home/pi/MMDVMHost/TODOS_LOS_INIS.ini
             #DMR+
             sed -i "19c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMPLUS.ini
             sed -i "19c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMPLUS.ini_copia
