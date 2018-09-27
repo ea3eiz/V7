@@ -266,7 +266,7 @@ largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
 IdleBrightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
-IdleBrightness_CORTO=`expr substr $IdleBrightness 1 12`
+IdleBrightness_CORTO=`expr substr $IdleBrightness 3 22`
 letra=c
 linea_sed_IdleBrightness=$numero_linea$letra
 echo -n "  ${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$IdleBrightness_CORTO"
