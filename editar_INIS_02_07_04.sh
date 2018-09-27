@@ -49,10 +49,8 @@ idd=`grep -n "Id=" /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
 idd1=`expr substr $idd 3 30`
 echo "$idd1"
 
-
 echo -n "\33[1;36m   7)\33[0m Baliza                - \33[1;33m"
 cw= sed -n "31p"  /home/pi/MMDVMHost/TODOS_LOS_INIS.ini; #presenta el valor en pantalla
-
 
 echo -n "\33[1;36m   8)\33[0m RFModeHang            - \33[1;33m"
 modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
@@ -73,7 +71,6 @@ timeo=`grep -n -m 1 '\<Timeout\>' /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
 timeo1=`expr substr $timeo 3 30`
 echo "$timeo1"
 fi
-
 
 echo -n "\33[1;36m  10)\33[0m Modificar Duplex      - \33[1;33m"
 dup=`grep -n -m 1 '\<Duplex\>' /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
