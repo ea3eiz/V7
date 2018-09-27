@@ -2,14 +2,15 @@
 while true
 do
 clear
+PLUS="MMDVMPLUS.ini"
 # Datos para el panel de control
-indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+indi=$(awk "NR==2" /home/pi/MMDVMHost/$PLUS)
 sed -i "11c $indi" /home/pi/info_panel_control.ini
-ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+ide=$(awk "NR==3" /home/pi/MMDVMHost/$PLUS)
 sed -i "12c $ide" /home/pi/info_panel_control.ini
-frec=$(awk "NR==13" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+frec=$(awk "NR==13" /home/pi/MMDVMHost/$PLUS)
 sed -i "13c $frec" /home/pi/info_panel_control.ini
-master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 1`
@@ -17,7 +18,7 @@ largo1=`expr $largo - 2`
 largo=`expr substr $master 1 $largo1`
 letra=c            
 linea_master=$largo$letra
-master=$(awk "NR==$linea_master" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+master=$(awk "NR==$linea_master" /home/pi/MMDVMHost/$PLUS)
 sed -i "14c $master" /home/pi/info_panel_control.ini
 #Colores
 ROJO="\033[1;31m"
@@ -28,25 +29,25 @@ CIAN="\033[1;36m"
 GRIS="\033[0m"
 echo "${VERDE}"
 echo "   **************************************************************************"
-echo "   *           Script para Modificar MMDVMPLUS.ini             \33[1;31m by EA3EIZ\33[1;32m   *"
+echo "   *           Script para Modificar $PLUS             \33[1;31m by EA3EIZ\33[1;32m   *"
 echo "   **************************************************************************"
 echo -n "\33[1;36m   1)\33[0m Modificar indicativo  - \33[1;33m"
-ind=`grep -n -m 1 "Callsign" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+ind=`grep -n -m 1 "Callsign" /home/pi/MMDVMHost/$PLUS`
 ind1=`expr substr $ind 3 30`
 echo "$ind1"
 
 echo -n "\33[1;36m   2)\33[0m Modificar RXFrequency - \33[1;33m"
-rxf=`grep -n "RXFrequency" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+rxf=`grep -n "RXFrequency" /home/pi/MMDVMHost/$PLUS`
 rxf1=`expr substr $rxf 4 30`
 echo "$rxf1"
 
 echo -n "\33[1;36m   3)\33[0m Modificar TXFrequency - \33[1;33m"
-txf=`grep -n "TXFrequency" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+txf=`grep -n "TXFrequency" /home/pi/MMDVMHost/$PLUS`
 txf1=`expr substr $txf 4 30`
 echo "$txf1"
 
 echo -n "\33[1;36m   4)\33[0m Modificar Location    - \33[1;33m"
-loc=`grep -n "^Location=" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+loc=`grep -n "^Location=" /home/pi/MMDVMHost/$PLUS`
 loc1=`echo "$loc" | tr -d '[[:space:]]'`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
@@ -54,11 +55,11 @@ largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
-contenido_location=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+contenido_location=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$PLUS)
 echo "$contenido_location"
 
 echo -n "\33[1;36m   5)\33[0m Modificar URL         - \33[1;33m"
-url=`grep -n "URL" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+url=`grep -n "URL" /home/pi/MMDVMHost/$PLUS`
 url1=`expr substr $url 4 30`
 echo "$url1"
 
@@ -68,21 +69,21 @@ echo "\33[1;36m   8)\33[0m Puerto para placa NTH/ZUM en arduino y Pincho Low Cos
 echo "\33[1;36m   9)\33[0m Puerto para DVMEGA + Bluestack conectado por USB a Raspberry Pi(ttyUSB0)\33[1;33m"
 echo -n "                            - "
 
-mode=`grep -n -m 1 "^Port=" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+mode=`grep -n -m 1 "^Port=" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 caracteres=`expr index $mode $buscar`
 caracteres_linea=`expr $caracteres - 1`
 numero_linea_port=`expr substr $mode 1 $caracteres_linea`
-mode=$(awk "NR==$numero_linea_port" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+mode=$(awk "NR==$numero_linea_port" /home/pi/MMDVMHost/$PLUS)
 echo "$mode"
 
 echo -n "\33[1;36m  10)\33[0m Modificar ID          - \33[1;33m"
-idd=`grep -n "Id=" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+idd=`grep -n "Id=" /home/pi/MMDVMHost/$PLUS`
 idd1=`expr substr $idd 3 30`
 echo "$idd1"
 
 echo -n "\33[1;36m  11)\33[0m Modificar Address     - \33[1;33m"
-master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 1`
@@ -99,20 +100,20 @@ lineaport=`expr $lineaport + 1`
 linea3port=$lineaport
 letra=p
 linea2port=$lineaport$letra
-var100port= sed -n $linea2port  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+var100port= sed -n $linea2port  /home/pi/MMDVMHost/$PLUS;
 
 echo -n "\33[1;36m  13)\33[0m Modificar Password    - \33[1;33m"
-pas=`grep -n '\<Password\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+pas=`grep -n '\<Password\>' /home/pi/MMDVMHost/$PLUS`
 pas1=`expr substr $pas 5 30`
 echo "$pas1"
 
 echo -n "\33[1;36m  14)\33[0m Modificar TXInvert    - \33[1;33m"
-txinv=`grep -n '\<TXInvert\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+txinv=`grep -n '\<TXInvert\>' /home/pi/MMDVMHost/$PLUS`
 txinv1=`expr substr $txinv 4 30`
 echo -n "$txinv1"
 
 echo -n "\33[1;36m      a)\33[0m D-STAR      - \33[1;33m"
-dstar=`grep -n "\[D-Star\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+dstar=`grep -n "\[D-Star\]" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo_linea=`expr index $dstar $buscar`
 largo_linea=`expr $largo_linea - 1`
@@ -122,15 +123,15 @@ letra=p
 numero_linea_dstar_letrap=$numero_linea_dstar$letra
 letrac=c
 numero_linea_dstar_letrac=$numero_linea_dstar$letrac
-presentar_valo= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+presentar_valo= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/$PLUS;
 
 echo -n "\33[1;36m  15)\33[0m Modificar RXLevel     - \33[1;33m"
-rx=`grep -n '\<RXLevel\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+rx=`grep -n '\<RXLevel\>' /home/pi/MMDVMHost/$PLUS`
 rx1=`expr substr $rx 4 30`
 echo -n "$rx1"
 
 echo -n "\33[1;36m      b)\33[0m DMR         - \33[1;33m"
-dmr=`grep -n "\[DMR\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+dmr=`grep -n "\[DMR\]" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo_linea=`expr index $dmr $buscar`
 largo_linea=`expr $largo_linea - 1`
@@ -140,15 +141,15 @@ letra=p
 numero_linea_dmr_letrap=$numero_linea_dmr$letra #crea 74p
 letrac=c
 numero_linea_dmr_letrac=$numero_linea_dmr$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+presentar_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/$PLUS;
 
 echo -n "\33[1;36m  16)\33[0m Modificar TXLevel     - \33[1;33m"
-tx=`grep -n -m 1 '\<TXLevel\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+tx=`grep -n -m 1 '\<TXLevel\>' /home/pi/MMDVMHost/$PLUS`
 tx1=`expr substr $tx 4 30`
 echo -n "$tx1"
 
 echo -n "\33[1;36m      c)\33[0m FUSION      - \33[1;33m"
-fusion=`grep -n "LowDeviation" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+fusion=`grep -n "LowDeviation" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo_linea=`expr index $fusion $buscar`
 largo_linea=`expr $largo_linea - 1`
@@ -158,15 +159,15 @@ letra=p
 numero_linea_fusion_letrap=$numero_linea_fusion$letra
 letrac=c
 numero_linea_fusion_letrac=$numero_linea_fusion$letrac
-presentar_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+presentar_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/$PLUS;
 
 echo -n "\33[1;36m  17)\33[0m Modificar Duplex      - \33[1;33m"
-dup=`grep -n -m 1 '\<Duplex\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+dup=`grep -n -m 1 '\<Duplex\>' /home/pi/MMDVMHost/$PLUS`
 dup1=`expr substr $dup 3 30`
 echo -n "$dup1"
 
 echo -n "\33[1;36m        d)\33[0m P25         - \33[1;33m"
-p25=`grep -n "\[P25\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+p25=`grep -n "\[P25\]" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo_linea=`expr index $p25 $buscar`
 largo_linea=`expr $largo_linea - 1`
@@ -176,137 +177,137 @@ letra=p
 numero_linea_p25_letrap=$numero_linea_p25$letra
 letrac=c
 numero_linea_p25_letrac=$numero_linea_p25$letrac
-presentar_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+presentar_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/$PLUS;
 
 echo -n "\33[1;36m  18)\33[0m Modificar TXHang      - \33[1;33m"
-txh=`grep -n -m 1 '\<TXHang\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+txh=`grep -n -m 1 '\<TXHang\>' /home/pi/MMDVMHost/$PLUS`
 txh1=`expr substr $txh 5 30`
 echo -n "$txh1"
 
 echo -n "\33[1;36m        e)\33[0m Baliza      - \33[1;33m"
-cw= sed -n "31p"  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+cw= sed -n "31p"  /home/pi/MMDVMHost/$PLUS;
 
 echo -n "\33[1;36m  19)\33[0m Modificar Tramas      - \33[1;33m"
-lg=`grep -n -m 1 '\<DisplayLevel\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+lg=`grep -n -m 1 '\<DisplayLevel\>' /home/pi/MMDVMHost/$PLUS`
 lg1=`expr substr $lg 4 30`
 echo -n "$lg1"
 
 echo -n "\33[1;36m  f)\33[0m RFModeHang  - \33[1;33m"
-modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/$PLUS`
 if [ $modehang = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
 else
-modehang=`grep -n -m 1 '\<RFModeHang\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+modehang=`grep -n -m 1 '\<RFModeHang\>' /home/pi/MMDVMHost/$PLUS`
 modehang1=`expr substr $modehang 3 30`
 echo "$modehang1"
 fi
 
 echo -n "\33[1;36m  20)\33[0m Modificar Slot1       - \33[1;33m"
-sl=`grep -n -m 1 '\<Slot1\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+sl=`grep -n -m 1 '\<Slot1\>' /home/pi/MMDVMHost/$PLUS`
 sl1=`expr substr $sl 5 30`
 echo -n "$sl1"
 
 echo -n "\33[1;36m         g)\33[0m Timeout     - \33[1;33m"
-timeo=`grep -n -m 1 -c '\<Timeout\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+timeo=`grep -n -m 1 -c '\<Timeout\>' /home/pi/MMDVMHost/$PLUS`
 if [ $timeo = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
 else
-timeo=`grep -n -m 1 '\<Timeout\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+timeo=`grep -n -m 1 '\<Timeout\>' /home/pi/MMDVMHost/$PLUS`
 timeo1=`expr substr $timeo 3 30`
 echo "$timeo1"
 fi
 
 echo -n "\33[1;36m  21)\33[0m Tipo Pantalla Display - \33[1;33m"
-Display=`grep -n -m 1 -c '\<Display\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+Display=`grep -n -m 1 -c '\<Display\>' /home/pi/MMDVMHost/$PLUS`
 if [ $Display = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
 else
-Display=`grep -n -m 1 '\<Display\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+Display=`grep -n -m 1 '\<Display\>' /home/pi/MMDVMHost/$PLUS`
 Display1=`expr substr $Display 3 30`
 echo -n "$Display1"
 fi
 
-var=`grep -n -m 1 "\[Nextion\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+var=`grep -n -m 1 "\[Nextion\]" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
 numero_linea=`expr $numero_linea + 2`
-MODEMNEXTION=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+MODEMNEXTION=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$PLUS)
 letra=c
 linea_sed_MN=$numero_linea$letra
 echo " ${CIAN}h) ${GRIS}Port Nextion- ${AMARILLO}$MODEMNEXTION"
 
 echo -n "\33[1;36m  22)\33[0m Version Display       - \33[1;33m"
-ScreenLayout=`grep -n -m 1 -c '\<ScreenLayout\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+ScreenLayout=`grep -n -m 1 -c '\<ScreenLayout\>' /home/pi/MMDVMHost/$PLUS`
 if [ $ScreenLayout = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
 else
-ScreenLayout=`grep -n -m 1 '\<ScreenLayout\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+ScreenLayout=`grep -n -m 1 '\<ScreenLayout\>' /home/pi/MMDVMHost/$PLUS`
 ScreenLayout1=`expr substr $ScreenLayout 5 30`
 echo -n "$ScreenLayout1"
 fi
 
 # i) NXDN Enable=
-var=`grep -n -m 1 "\[NXDN\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+var=`grep -n -m 1 "\[NXDN\]" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
 numero_linea=`expr $numero_linea + 1`
-NXDN=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+NXDN=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$PLUS)
 letra=c
 linea_sed_NXDN=$numero_linea$letra
 echo "  ${CIAN}i) ${GRIS}NXDN        - ${AMARILLO}$NXDN"
 
 # 23) IdleBrightness=
-var=`grep -n -m 1 "^IdleBrightness=" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+var=`grep -n -m 1 "^IdleBrightness=" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-IdleBrightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+IdleBrightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$PLUS)
 IdleBrightness_CORTO=`expr substr $IdleBrightness 3 22`
 letra=c
 linea_sed_IdleBrightness=$numero_linea$letra
 echo -n "  ${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$IdleBrightness_CORTO"
 
 # j) POCSAG Enable=
-var=`grep -n -m 1 "\[POCSAG\]" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+var=`grep -n -m 1 "\[POCSAG\]" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
 numero_linea=`expr $numero_linea + 1`
-POCSAG=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+POCSAG=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$PLUS)
 letra=c
 linea_sed_POCSAG=$numero_linea$letra
 echo "${CIAN} j) ${GRIS}POCSAG      - ${AMARILLO}$POCSAG"
 
 # 24) Latitude=
 echo -n "\33[1;36m  24)\33[0m Coordenada Latitud    - \33[1;33m"
-lat=`grep -n "Latitude" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+lat=`grep -n "Latitude" /home/pi/MMDVMHost/$PLUS`
 lat1=`expr substr $lat 4 30`
 echo "$lat1"
 
 # 25) Longitude=
 echo -n "\33[1;36m  25)\33[0m Coordenada Longitud   - \33[1;33m"
-long=`grep -n "Longitude" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+long=`grep -n "Longitude" /home/pi/MMDVMHost/$PLUS`
 long1=`expr substr $long 4 30`
 echo "$long1"
 
 echo -n "\33[1;36m  26)\33[0m Modulo D-STAR         - \33[1;33m"
-modu=`grep -n -m 1 '\<Module\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+modu=`grep -n -m 1 '\<Module\>' /home/pi/MMDVMHost/$PLUS`
 modu1=`expr substr $modu 4 30`
 echo -n "$modu1"
 
 # k) Jitter=
-Jitter=`grep -n "Jitter" /home/pi/MMDVMHost/MMDVMPLUS.ini`
+Jitter=`grep -n "Jitter" /home/pi/MMDVMHost/$PLUS`
 buscar=":"
 largo_linea=`expr index $Jitter $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $Jitter 1 $largo_linea`
-Jitter=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+Jitter=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$PLUS)
 letrac=c
 numero_linea_jiter_letrac=$numero_linea$letrac
 echo "  ${CIAN}      k) ${GRIS}Jitter      - ${AMARILLO}$Jitter"
@@ -317,13 +318,13 @@ OPCION=`expr $OPCION + 1`
 linea33port=$OPCION
 letra=p
 linea22port=$OPCION$letra
-var300port= sed -n $linea22port  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+var300port= sed -n $linea22port  /home/pi/MMDVMHost/$PLUS;
 
 echo ""
-echo "\33[1;36m  28)\33[1;33m Abrir fichero MMDVMPLUS.ini para hacer cualquier cambio\33[1;33m"
+echo "\33[1;36m  28)\33[1;33m Abrir fichero $PLUS para hacer cualquier cambio\33[1;33m"
 echo "\33[1;36m  29)\33[1;37m Guardar  fichero de Configuración en M1 \33[1;36m"
 echo -n "\33[1;36m  30)\33[1;32m Utilizar fichero de Configuración de M1: \33[1;36m"
-master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVMPLUS.ini_copia`
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$PLUS_copia`
 buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
@@ -332,7 +333,7 @@ echo "$copia1"
 
 echo "\33[1;36m  31)\33[1;37m Guardar  fichero de Configuración en M2: \33[1;36m"
 echo -n "\33[1;36m  32)\33[1;32m Utilizar fichero de Configuración en M2: \33[1;36m"
-master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVMPLUS.ini_copia2`
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$PLUS_copia2`
 buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
@@ -341,7 +342,7 @@ echo "$copia2"
 
 echo "\33[1;36m  33)\33[1;37m Guardar  fichero de Configuración en M3: \33[1;36m"
 echo -n "\33[1;36m  34)\33[1;32m Utilizar fichero de Configuración en M3: \33[1;36m"
-master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVMPLUS.ini_copia3`
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$PLUS_copia3`
 buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
@@ -349,7 +350,7 @@ copia3=`expr substr $master $largo 40`
 echo "$copia3"
 
 echo ""
-echo "\33[1;36m  35)\33[1;31m Recuperar el fichero original MMDVMPLUS.ini\33[1;33m"
+echo "\33[1;36m  35)\33[1;31m Recuperar el fichero original $PLUS\33[1;33m"
 
 echo ""
 echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
@@ -378,8 +379,8 @@ do
 			                    [sS]* ) echo ""
                           indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
 			                    indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
-                          sed -i "$linea Callsign=$indicativo" /home/pi/MMDVMHost/MMDVMPLUS.ini
-                          indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+                          sed -i "$linea Callsign=$indicativo" /home/pi/MMDVMHost/$PLUS
+                          indi=$(awk "NR==2" /home/pi/MMDVMHost/$PLUS)
                           sed -i "11c $indi" /home/pi/info_panel_control.ini
                           sed -i "40c $indicativo" /home/pi/info_panel_control.ini #escribe solo el indicativ
 			                    break;;
@@ -405,7 +406,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea RXFrequency=$var2" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea RXFrequency=$var2" /home/pi/MMDVMHost/$PLUS
                           sed -i "13c RXFrequency=$var2" /home/pi/info_panel_control.ini
 			                    break;;
 			                    [nN]* ) echo ""
@@ -430,7 +431,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea TXFrequency=$var2" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea TXFrequency=$var2" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -444,7 +445,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$numero_linea_letrac Location=$loc1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_letrac Location=$loc1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -469,7 +470,7 @@ do
                           case $actualizar in
 			                    [sS]* ) echo ""
 			                    ur1=`echo "$ur1" | tr -d '[[:space:]]'`
-                          sed -i "$linea URL=$ur1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea URL=$ur1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -483,7 +484,7 @@ do
 			                    [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
-                          sed -i "$numero_linea_port Port=/dev/ttyAMA0" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_port Port=/dev/ttyAMA0" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -497,7 +498,7 @@ do
 			                    [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
-                          sed -i "$numero_linea_port Port=/dev/ttyACM0" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_port Port=/dev/ttyACM0" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -511,7 +512,7 @@ do
 			                    [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
-                          sed -i "$numero_linea_port Port=/dev/ttyACM1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_port Port=/dev/ttyACM1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -526,7 +527,7 @@ do
 			                    [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
-                          sed -i "$numero_linea_port Port=/dev/ttyUSB0" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_port Port=/dev/ttyUSB0" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -550,7 +551,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea Id=$miid" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea Id=$miid" /home/pi/MMDVMHost/$PLUS
                           sed -i "12c Id=$miid" /home/pi/info_panel_control.ini
 			                    break;;
 			                    [nN]* ) echo ""
@@ -567,7 +568,7 @@ do
                       [sS]* ) echo ""
                       master1=`echo "$master1" | tr -d '[[:space:]]'`
                       master1=`echo "$master1" | tr [:upper:] [:lower:]`
-                      sed -i "$linea_master Address=$master1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                      sed -i "$linea_master Address=$master1" /home/pi/MMDVMHost/$PLUS
                       sed -i "14c Address=$master1" /home/pi/info_panel_control.ini
                       break;;
                       [nN]* ) echo ""
@@ -578,14 +579,14 @@ done;;
 while true
 do
                           echo -n "Valor actual del \33[1;37m${var100port#*=}\33[1;37m"
-                          var100port= sed -n $linea2port  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+                          var100port= sed -n $linea2port  /home/pi/MMDVMHost/$PLUS;
                           read -p 'Puerto para Brandmeister=62031 puerto para DMR+=55555 : ' miid
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
                           letra1=c
                           linea4=$linea3port$letra1
-                          sed -i "$linea4 Port=$miid" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea4 Port=$miid" /home/pi/MMDVMHost/$PLUS
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -610,7 +611,7 @@ do
                           case $actualizar in
 			                    [sS]* ) echo ""
 			                    pas1=`echo "$pas1" | tr -d '[[:space:]]'`
-                          sed -i "$linea Password=$pas1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea Password=$pas1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -634,7 +635,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea TXInvert=$txinv1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea TXInvert=$txinv1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -658,7 +659,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea RXLevel=$var2" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea RXLevel=$var2" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -682,7 +683,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea TXLevel=$var2" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea TXLevel=$var2" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -706,7 +707,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea Duplex=$dup1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea Duplex=$dup1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -730,7 +731,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea TXHang=$txh1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea TXHang=$txh1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -754,7 +755,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea DisplayLevel=$lg1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea DisplayLevel=$lg1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -763,11 +764,11 @@ done;;
 20) echo ""
 while true
 do
-                          sl=`grep -n -m 1 -c '\<Slot1\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          sl=`grep -n -m 1 -c '\<Slot1\>' /home/pi/MMDVMHost/$PLUS`
                           if [ $sl = 0 ]; then
                           echo "no existe este comando"
                           else
-                          sl=`grep -n -m 1 '\<Slot1\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          sl=`grep -n -m 1 '\<Slot1\>' /home/pi/MMDVMHost/$PLUS`
                           sl1=`expr substr $sl 5 30`
                           echo "$sl1"
                           fi
@@ -787,7 +788,7 @@ do
                           case $actualizar in                                            
 			                    [sS]* ) echo ""
 			                    V=`echo "$V" | tr -d '[[:space:]]'`			  
-                          sed -i "$linea Slot1=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
+                          sed -i "$linea Slot1=$V" /home/pi/MMDVMHost/$PLUS             
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -796,11 +797,11 @@ done;;
 21) echo ""
 while true
 do
-                          Display=`grep -n -m 1 -c '\<Display\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          Display=`grep -n -m 1 -c '\<Display\>' /home/pi/MMDVMHost/$PLUS`
                           if [ $Display = 0 ]; then
                           echo "no existe este comando"
                           else
-                          Display=`grep -n -m 1 '\<Display\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          Display=`grep -n -m 1 '\<Display\>' /home/pi/MMDVMHost/$PLUS`
                           Display1=`expr substr $Display 5 30`
                           fi
                           buscar=":"
@@ -819,7 +820,7 @@ do
                           case $actualizar in                                            
                           [sS]* ) echo ""
                           V=`echo "$V" | tr -d '[[:space:]]'`       
-                          sed -i "$linea Display=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
+                          sed -i "$linea Display=$V" /home/pi/MMDVMHost/$PLUS             
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -828,11 +829,11 @@ done;;
 22) echo ""
 while true
 do
-                          ScreenLayout=`grep -n -m 1 -c '\<ScreenLayout\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          ScreenLayout=`grep -n -m 1 -c '\<ScreenLayout\>' /home/pi/MMDVMHost/$PLUS`
                           if [ $ScreenLayout = 0 ]; then
                           echo "no existe este comando"
                           else
-                          ScreenLayout=`grep -n -m 1 '\<ScreenLayout\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          ScreenLayout=`grep -n -m 1 '\<ScreenLayout\>' /home/pi/MMDVMHost/$PLUS`
                           ScreenLayout1=`expr substr $ScreenLayout 5 30`
                           fi
                           buscar=":"
@@ -851,7 +852,7 @@ do
                           case $actualizar in                                            
                           [sS]* ) echo ""
                           V=`echo "$V" | tr -d '[[:space:]]'`       
-                          sed -i "$linea ScreenLayout=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
+                          sed -i "$linea ScreenLayout=$V" /home/pi/MMDVMHost/$PLUS             
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -865,7 +866,7 @@ do
                           case $actualizar in                                            
                           [sS]* ) echo ""
                           V=`echo "$V" | tr -d '[[:space:]]'`      
-                          sed -i "$linea_sed_IdleBrightness IdleBrightness=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
+                          sed -i "$linea_sed_IdleBrightness IdleBrightness=$V" /home/pi/MMDVMHost/$PLUS             
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -891,7 +892,7 @@ do
 			                    [sS]* ) echo ""
                           #Convierte indicativo si se introduce en minúsculas a Mayúsculas
                           modu1=`echo "$modu1" | tr [:lower:] [:upper:]`
-                          sed -i "$linea Module=$modu1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea Module=$modu1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -901,12 +902,12 @@ a) echo ""
 while true
 do
                           echo -n "Valor actual D-STAR \33[1;33m${presentar_valor#*=}\33[1;37m"
-                          presenta_valor= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+                          presenta_valor= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/$PLUS;
                           read -p 'Desactivado=0 Activado=1:  '   dmrac1
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$numero_linea_dstar_letrac Enable=$dmrac1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_dstar_letrac Enable=$dmrac1" /home/pi/MMDVMHost/$PLUS
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -916,12 +917,12 @@ b) echo ""
 while true
 do
                           echo -n "Valor  actual  DMR \33[1;33m${presentar_valor#*=}\33[1;37m"
-                          presenta_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+                          presenta_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/$PLUS;
            	              read -p 'Desactivado=0 Activado=1: '   dmrac1
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$numero_linea_dmr_letrac Enable=$dmrac1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_dmr_letrac Enable=$dmrac1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -931,12 +932,12 @@ c) echo ""
 while true
 do
                           echo -n "Valor actual FUSION \33[1;33m${presentar_valor#*=}\33[1;37m"
-                          presenta_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+                          presenta_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/$PLUS;
                           read -p 'Desactivado=0 Activado=1:  '   dmrac1
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$numero_linea_fusion_letrac Enable=$dmrac1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_fusion_letrac Enable=$dmrac1" /home/pi/MMDVMHost/$PLUS
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -946,12 +947,12 @@ d) echo ""
 while true
 do
                           echo -n "Valor  actual  P25 \33[1;33m${presentar_valor#*=}\33[1;37m"
-                          presenta_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/MMDVMPLUS.ini;
+                          presenta_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/$PLUS;
                           read -p 'Desactivado=0 Activado=1: '   dmrac1
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$numero_linea_p25_letrac Enable=$dmrac1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_p25_letrac Enable=$dmrac1" /home/pi/MMDVMHost/$PLUS
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -964,7 +965,7 @@ do
                       actualizar=S 
                       case $actualizar in
                       [sS]* ) echo ""
-                      sed -i "31c Enable=$baliza" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                      sed -i "31c Enable=$baliza" /home/pi/MMDVMHost/$PLUS
                       break;;
                       [nN]* ) echo ""
                       break;;
@@ -973,11 +974,11 @@ done;;
 f) echo ""
 while true
 do
-                          modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/$PLUS`
                           if [ $modehang = 0 ]; then
                           echo "no existe este comando"
                           else
-                          modehang=`grep -n -m 1 '\<RFModeHang\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          modehang=`grep -n -m 1 '\<RFModeHang\>' /home/pi/MMDVMHost/$PLUS`
                           modehang1=`expr substr $modehang 5 30`
                           fi
                           buscar=":"
@@ -996,7 +997,7 @@ do
                           case $actualizar in                                            
                           [sS]* ) echo ""
                           V=`echo "$V" | tr -d '[[:space:]]'`       
-                          sed -i "$linea RFModeHang=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
+                          sed -i "$linea RFModeHang=$V" /home/pi/MMDVMHost/$PLUS             
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -1005,11 +1006,11 @@ done;;
 g) echo ""
 while true
 do
-                          timeo=`grep -n -m 1 -c '\<Timeout\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          timeo=`grep -n -m 1 -c '\<Timeout\>' /home/pi/MMDVMHost/$PLUS`
                           if [ $timeo = 0 ]; then
                           echo "no existe este comando"
                           else
-                          timeo=`grep -n -m 1 '\<Timeout\>' /home/pi/MMDVMHost/MMDVMPLUS.ini`
+                          timeo=`grep -n -m 1 '\<Timeout\>' /home/pi/MMDVMHost/$PLUS`
                           timeo1=`expr substr $timeo 5 30`
                           fi
                           buscar=":"
@@ -1028,7 +1029,7 @@ do
                           case $actualizar in                                            
                           [sS]* ) echo ""
                           V=`echo "$V" | tr -d '[[:space:]]'`       
-                          sed -i "$linea Timeout=$V" /home/pi/MMDVMHost/MMDVMPLUS.ini             
+                          sed -i "$linea Timeout=$V" /home/pi/MMDVMHost/$PLUS             
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -1042,7 +1043,7 @@ do
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$linea_sed_MN Port=$lat1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea_sed_MN Port=$lat1" /home/pi/MMDVMHost/$PLUS
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -1056,7 +1057,7 @@ do
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$linea_sed_NXDN Enable=$NXDN1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea_sed_NXDN Enable=$NXDN1" /home/pi/MMDVMHost/$PLUS
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -1070,7 +1071,7 @@ do
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$linea_sed_POCSAG Enable=$POCSAG1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea_sed_POCSAG Enable=$POCSAG1" /home/pi/MMDVMHost/$PLUS
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -1079,13 +1080,13 @@ done;;
 k) echo ""
 while true
 do                         
-                          valor=$(awk "NR==$numero_linea_jiter_letrap" /home/pi/MMDVMHost/MMDVMPLUS.ini)
+                          valor=$(awk "NR==$numero_linea_jiter_letrap" /home/pi/MMDVMHost/$PLUS)
                           echo "Valor actual  del Jitter: \33[1;33m$valor"
                           read -p 'Introduce valor entre 360 a 600: '   JITTER
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$numero_linea_jiter_letrac Jitter=$JITTER" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$numero_linea_jiter_letrac Jitter=$JITTER" /home/pi/MMDVMHost/$PLUS
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -1109,7 +1110,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea Latitude=$lat1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea Latitude=$lat1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -1134,7 +1135,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea Longitude=$long1" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea Longitude=$long1" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -1149,12 +1150,12 @@ do
 			                    read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
                           letra1=c
                           linea4=$linea33port$letra1
-                          sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    letra1=c
                           linea4=$linea33port$letra1
-			                    sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/MMDVMPLUS.ini
+			                    sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/$PLUS
 			                    break;;
 esac
 done;;
@@ -1164,7 +1165,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          geany /home/pi/MMDVMHost/MMDVMPLUS.ini
+                          geany /home/pi/MMDVMHost/$PLUS
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -1179,7 +1180,7 @@ do
                         clear
                         echo "<<<<<< Haciendo copia de seguridad de la M1 >>>>>"
                         sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMPLUS.ini /home/pi/MMDVMHost/MMDVMPLUS.ini_copia
+                        sudo cp -f /home/pi/MMDVMHost/$PLUS /home/pi/MMDVMHost/$PLUS_copia
 			                  break;;
 			                  [nN]* ) echo ""
 			                  break;;
@@ -1194,7 +1195,7 @@ do
                         clear
                         echo "<<<<<< Restaurando copia de seguridad de la M1 >>>>>"
                         sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMPLUS.ini_copia /home/pi/MMDVMHost/MMDVMPLUS.ini
+                        sudo cp -f /home/pi/MMDVMHost/$PLUS_copia /home/pi/MMDVMHost/$PLUS
 			                  break;;
 			                  [nN]* ) echo ""
 			                  break;;
@@ -1209,7 +1210,7 @@ do
                         clear
                         echo "<<<<<< Haciendo copia de seguridad de la M2 >>>>>"
                         sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMPLUS.ini /home/pi/MMDVMHost/MMDVMPLUS.ini_copia2
+                        sudo cp -f /home/pi/MMDVMHost/$PLUS /home/pi/MMDVMHost/$PLUS_copia2
 			                  break;;
 			                  [nN]* ) echo ""
 			                  break;;
@@ -1224,7 +1225,7 @@ do
                         clear
                         echo "<<<<<< Restaurando copia de seguridad  de la M2 >>>>>"
                         sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMPLUS.ini_copia2 /home/pi/MMDVMHost/MMDVMPLUS.ini
+                        sudo cp -f /home/pi/MMDVMHost/$PLUS_copia2 /home/pi/MMDVMHost/$PLUS
 			                  break;;
 			                  [nN]* ) echo ""
 			                  break;;
@@ -1239,7 +1240,7 @@ do
                         clear
                         echo "<<<<<< Haciendo copia de seguridad de la M3 >>>>>"
                         sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMPLUS.ini /home/pi/MMDVMHost/MMDVMPLUS.ini_copia3
+                        sudo cp -f /home/pi/MMDVMHost/$PLUS /home/pi/MMDVMHost/$PLUS_copia3
 			                  break;;
 			                  [nN]* ) echo ""
 			                  break;;
@@ -1254,7 +1255,7 @@ do
                         clear
                         echo "<<<<<< Restaurando copia de seguridad de la M3 >>>>>"
                         sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMPLUS.ini_copia3 /home/pi/MMDVMHost/MMDVMPLUS.ini
+                        sudo cp -f /home/pi/MMDVMHost/$PLUS_copia3 /home/pi/MMDVMHost/$PLUS
 			                  break;;
 			                  [nN]* ) echo ""
 			                  break;;
@@ -1264,13 +1265,13 @@ done;;
 while true
 do
           	        
-           	            read -p 'Quieres restaurar el fichero original MMDVMPLUS.ini? S/N ' restaurar1   
+           	            read -p 'Quieres restaurar el fichero original $PLUS? S/N ' restaurar1   
                         case $restaurar1 in
 			                  [sS]* ) echo ""
                         clear
-                        echo "<<<<<< Restaurando el fichero original MMDVMPLUS.ini >>>>>"
+                        echo "<<<<<< Restaurando el fichero original $PLUS >>>>>"
                         sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVM.ini_original /home/pi/MMDVMHost/MMDVMPLUS.ini
+                        sudo cp -f /home/pi/MMDVMHost/MMDVM.ini_original /home/pi/MMDVMHost/$PLUS
 			                  break;;
 			                  [nN]* ) echo ""
 			                  break;;
