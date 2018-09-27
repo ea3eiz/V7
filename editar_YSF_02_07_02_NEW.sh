@@ -292,8 +292,6 @@ echo "Valor actual: \33[1;33m$NAME"
                            actualizar=S 
                            case $actualizar in
                            [sS]* ) echo ""
-                           #Quita los espacios
-                           Valor=`echo "$Valor" | tr -d '[[:space:]]'`
                            sed -i "$linea_sed_NAME Name=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
