@@ -344,7 +344,7 @@ echo "Valor de la Ciudad: \33[1;33m${loca#*=}\33[1;37m"
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
             #YSF
-            sed -i "19c Location=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            sed -i "19c Name=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
             #YSF2DMR
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
