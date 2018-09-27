@@ -281,7 +281,7 @@ numero_linea=`expr $numero_linea + 1`
 POCSAG=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
 letra=c
 linea_sed_POCSAG=$numero_linea$letra
-echo "${CIAN}j) ${GRIS} POCSAG      - ${AMARILLO}$POCSAG"
+echo "${CIAN} j) ${GRIS}POCSAG      - ${AMARILLO}$POCSAG"
 
 # 24) Latitude=
 echo -n "\33[1;36m  24)\33[0m Coordenada Latitud    - \33[1;33m"
