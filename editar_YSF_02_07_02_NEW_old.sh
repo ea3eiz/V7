@@ -163,7 +163,7 @@ echo -n "\33[1;36m  10)\33[0m Habilitar FCS         - \33[1;33m"
 echo "$FCS"
 
 echo -n "\33[1;36m  11)\33[0m InactivityTimeout     - "
-echo -n "${AMARILLO}$Inactiv ${CIAN}<Este valor ha de ser 0"
+echo -n "${AMARILLO}$Inactiv"
 
 echo ""
 echo ""
@@ -309,6 +309,9 @@ echo "Valor actual: \33[1;33m$STARTUP"
                            case $actualizar in
                            [sS]* ) echo ""
                            sed -i "$linea_sed_ST Startup=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           #YSF
+                           #master=$(awk "NR==39" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+                           #sed -i "21c $master" /home/pi/info_panel_control.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
