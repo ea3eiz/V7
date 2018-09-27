@@ -162,7 +162,7 @@ sed -i "8c $frec" /home/pi/info_panel_control.ini
 sed -i "9c $master" /home/pi/info_panel_control.ini
 
 #YSF
-master=$(awk "NR==42" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+master=$(awk "NR==39" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
 sed -i "21c $master" /home/pi/info_panel_control.ini
 
 #SVXLINK
