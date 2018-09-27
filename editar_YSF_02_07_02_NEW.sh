@@ -309,6 +309,9 @@ echo "Valor actual: \33[1;33m$STARTUP"
                            case $actualizar in
                            [sS]* ) echo ""
                            sed -i "$linea_sed_ST Startup=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           #YSF
+                           master=$(awk "NR==39" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+                           sed -i "21c $master" /home/pi/info_panel_control.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
