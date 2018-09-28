@@ -969,14 +969,14 @@ done;;
 e) echo ""
 while true
 do
-                      read -p 'Introduce el valor de la Baliza (Ej. 1-activada 0-desactivada) : ' baliza
-                      actualizar=S 
-                      case $actualizar in
-                      [sS]* ) echo ""
-                      sed -i "31c Enable=$baliza" /home/pi/MMDVMHost/$DIRECTORIO
-                      break;;
-                      [nN]* ) echo ""
-                      break;;
+                          read -p 'Introduce el valor de la Baliza (Ej. 1-activada 0-desactivada) : ' baliza
+                          actualizar=S 
+                          case $actualizar in
+                          [sS]* ) echo ""
+                          sed -i "31c Enable=$baliza" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 f) echo ""
