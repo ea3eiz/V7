@@ -431,16 +431,15 @@ do
 			                    break;;
 esac
 done;;
-2) echo ""
+3) echo ""
 while true
 do
-                          echo "Valor actual del RXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
-                          read -p 'Introduce RXFrequency:        ' rxfre
+                          echo "Valor actual del TXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
+                          read -p 'Introduce TXFrequency:        ' txfre
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$numero_linea_rxf RXFrequency=$rxfre" /home/pi/MMDVMHost/$DIRECTORIO
-                          sed -i "$tercero RXFrequency=$rxfre" /home/pi/info_panel_control.ini
+                          sed -i "$numero_linea_txf TXFrequency=$txfre" /home/pi/MMDVMHost/$DIRECTORIO
                           break;;
                           [nN]* ) echo ""
                           break;;
