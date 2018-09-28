@@ -336,8 +336,14 @@ buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia1=`expr substr $master $largo 40`
+
+
+
+
 echo -n "$copia1"
-echo " -4374"
+
+memoria1=$(awk "NR==31" /home/pi/info_panel_control.ini)
+echo " - $memoria1"
 echo "\33[1;36m  31)\33[1;37m Guardar  fichero de Configuración en M2: \33[1;36m"
 echo -n "\33[1;36m  32)\33[1;32m Utilizar fichero de Configuración en M2: \33[1;36m"
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO_copia2`
@@ -1187,6 +1193,7 @@ do
                         clear
                         echo "<<<<<< Haciendo copia de seguridad de la M1 >>>>>"
                         sleep 3
+                        sed -i "31c $memoria1" /home/pi/info_panel_control.ini
                         sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia
 			                  break;;
 			                  [nN]* ) echo ""
