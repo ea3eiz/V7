@@ -388,8 +388,6 @@ case $escoger_menu in
 1) echo ""
 while true
 do
-                          buscar=":"
-                          largo=`expr index $ind $buscar`
                           echo "Valor actual Indicativo: ${AMARILLO}${ind#*=}\33[1;37m"
            	              read -p 'Introduce tu indicativo: ' indicativo
                           actualizar=S 
