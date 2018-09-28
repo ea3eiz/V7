@@ -2,6 +2,10 @@
 while true
 do
 clear
+#Variables para utilizar los editores MMDVM, BM, PLUS depende del que queramos
+DIRECTORIO="MMDVMFUSION.ini"
+
+#Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
 BLANCO="\033[1;37m"
@@ -10,54 +14,82 @@ CIAN="\033[1;36m"
 GRIS="\033[0m"
 echo "${VERDE}"
 echo "   **************************************************************************"
-echo "   *          Script para Modificar MMDVMFUSION.ini            \33[1;31m by EA3EIZ\33[1;32m   *"
+echo "   *           Script para Modificar $DIRECTORIO             \33[1;31m by EA3EIZ\33[1;32m   *"
 echo "   **************************************************************************"
-echo -n "\33[1;36m   1)\33[0m Modificar indicativo  - \33[1;33m"
-ind=`grep -n -m 1 "Callsign" /home/pi/MMDVMHost/MMDVMFUSION.ini`
-ind1=`expr substr $ind 3 30`
-echo "$ind1"
+echo -n "${CIAN}   1)${GRIS} Modificar indicativo  - ${AMARILLO}"
+ind=`grep -n "^Callsign=" /home/pi/MMDVMHost/$DIRECTORIO`
+indi1=`echo "$ind" | tr -d '[[:space:]]'`
+buscar=":"
+largo_linea=`expr index $indi1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $indi1 1 $largo_linea`
+letrac=c
+numero_linea_indi=$numero_linea$letrac
+contenido_indicativo=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+echo "$contenido_indicativo"
 
-echo -n "\33[1;36m   2)\33[0m Modificar RXFrequency - \33[1;33m"
-rxf=`grep -n "RXFrequency" /home/pi/MMDVMHost/MMDVMFUSION.ini`
-rxf1=`expr substr $rxf 4 30`
-echo "$rxf1"
+echo -n "${CIAN}   2)${GRIS} Modificar RXFrequency - ${AMARILLO}"
+rxf=`grep -n "^RXFrequency=" /home/pi/MMDVMHost/$DIRECTORIO`
+rxf1=`echo "$rxf" | tr -d '[[:space:]]'`
+buscar=":"
+largo_linea=`expr index $rxf1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $rxf1 1 $largo_linea`
+letrac=c
+numero_linea_rxf=$numero_linea$letrac
+contenido_rxf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+echo "$contenido_rxf"
 
-echo -n "\33[1;36m   3)\33[0m Modificar TXFrequency - \33[1;33m"
-txf=`grep -n "TXFrequency" /home/pi/MMDVMHost/MMDVMFUSION.ini`
-txf1=`expr substr $txf 4 30`
-echo "$txf1"
+echo -n "${CIAN}   3)${GRIS} Modificar TXFrequency - ${AMARILLO}"
+txf=`grep -n "^TXFrequency=" /home/pi/MMDVMHost/$DIRECTORIO`
+txf1=`echo "$txf" | tr -d '[[:space:]]'`
+buscar=":"
+largo_linea=`expr index $txf1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $txf1 1 $largo_linea`
+letrac=c
+numero_linea_txf=$numero_linea$letrac
+contenido_txf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+echo "$contenido_txf"
 
-echo -n "\33[1;36m   4)\33[0m Modificar Location    - \33[1;33m"
-loca=`grep -n "Locatio" /home/pi/MMDVMHost/MMDVMFUSION.ini`
-loca1=`expr substr $loca 4 30`
-echo "$loca1"
+echo -n "${CIAN}   4)${GRIS} Modificar Location    - ${AMARILLO}"
+loc=`grep -n "^Location=" /home/pi/MMDVMHost/$DIRECTORIO`
+loc1=`echo "$loc" | tr -d '[[:space:]]'`
+buscar=":"
+largo_linea=`expr index $loc1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $loc1 1 $largo_linea`
+letrac=c
+numero_linea_letrac=$numero_linea$letrac
+contenido_location=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+echo "$contenido_location"
 
-echo -n "\33[1;36m   5)\33[0m Modificar URL         - \33[1;33m"
-url=`grep -n "URL" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}   5)${GRIS} Modificar URL         - ${AMARILLO}"
+url=`grep -n "URL" /home/pi/MMDVMHost/$DIRECTORIO`
 url1=`expr substr $url 4 30`
 echo "$url1"
 
-echo "\33[1;36m   6)\33[0m Puerto para DVMEGA pinchado en Raspberri PI (ttyAMA0)\33[1;33m"
-echo "\33[1;36m   7)\33[0m Puerto para placa NTH/ZUM en arduino y Pincho Low Cost (ttyACM0)\33[1;33m"
-echo "\33[1;36m   8)\33[0m Puerto para placa NTH/ZUM en arduino y Pincho Low Cost (ttyACM1)\33[1;33m"
-echo "\33[1;36m   9)\33[0m Puerto para DVMEGA + Bluestack conectado por USB a Raspberry Pi(ttyUSB0)\33[1;33m"
+echo "${CIAN}   6)${GRIS} Puerto para DVMEGA pinchado en Raspberri PI (ttyAMA0)${AMARILLO}"
+echo "${CIAN}   7)${GRIS} Puerto para placa NTH/ZUM en arduino y Pincho Low Cost (ttyACM0)${AMARILLO}"
+echo "${CIAN}   8)${GRIS} Puerto para placa NTH/ZUM en arduino y Pincho Low Cost (ttyACM1)${AMARILLO}"
+echo "${CIAN}   9)${GRIS} Puerto para DVMEGA + Bluestack conectado por USB a Raspberry Pi(ttyUSB0)${AMARILLO}"
 echo -n "                            - "
 
-mode=`grep -n -m 1 "^Port=" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+mode=`grep -n -m 1 "^Port=" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 caracteres=`expr index $mode $buscar`
 caracteres_linea=`expr $caracteres - 1`
 numero_linea_port=`expr substr $mode 1 $caracteres_linea`
-mode=$(awk "NR==$numero_linea_port" /home/pi/MMDVMHost/MMDVMFUSION.ini)
+mode=$(awk "NR==$numero_linea_port" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$mode"
 
-echo -n "\33[1;36m  10)\33[0m Modificar ID          - \33[1;33m"
-idd=`grep -n "Id=" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  10)${GRIS} Modificar ID          - ${AMARILLO}"
+idd=`grep -n "Id=" /home/pi/MMDVMHost/$DIRECTORIO`
 idd1=`expr substr $idd 3 30`
 echo "$idd1"
 
-echo -n "\33[1;36m  11)\33[0m Modificar Address     - \33[1;33m"
-master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  11)${GRIS} Modificar Address     - ${AMARILLO}"
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 1`
@@ -65,354 +97,312 @@ largo1=`expr $largo - 2`
 master1=`expr substr $master $largo 40`
 largo=`expr substr $master 1 $largo1`
 letra=c            
-linea=$largo$letra
+linea_master=$largo$letra
 echo "$master1"
 
-echo -n "\33[1;36m  12)\33[0m Modificar Puerto      - \33[1;33m"
+echo -n "${CIAN}  12)${GRIS} Modificar Puerto      - ${AMARILLO}"
 lineaport=`expr substr $master 1 $largo1`
 lineaport=`expr $lineaport + 1`
 linea3port=$lineaport
 letra=p
 linea2port=$lineaport$letra
-var100port= sed -n $linea2port  /home/pi/MMDVMHost/MMDVMFUSION.ini;
+var100port= sed -n $linea2port  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  13)\33[0m Modificar Password    - \33[1;33m"
-pas=`grep -n '\<Password\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  13)${GRIS} Modificar Password    - ${AMARILLO}"
+pas=`grep -n '\<Password\>' /home/pi/MMDVMHost/$DIRECTORIO`
 pas1=`expr substr $pas 5 30`
 echo "$pas1"
 
-echo -n "\33[1;36m  14)\33[0m Modificar TXInvert    - \33[1;33m"
-txinv=`grep -n '\<TXInvert\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  14)${GRIS} Modificar TXInvert    - ${AMARILLO}"
+txinv=`grep -n '\<TXInvert\>' /home/pi/MMDVMHost/$DIRECTORIO`
 txinv1=`expr substr $txinv 4 30`
 echo -n "$txinv1"
 
-echo -n "\33[1;36m      a)\33[0m D-STAR      - \33[1;33m"
-dstar=`grep -n "\[D-Star\]" /home/pi/MMDVMHost/MMDVMFUSION.ini` # devuelve ejem: 74:Enable=1
+echo -n "${CIAN}      a)${GRIS} D-STAR      - ${AMARILLO}"
+dstar=`grep -n "\[D-Star\]" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
-largo_linea=`expr index $dstar $buscar` #comprueba el largo incluyendo los dos puntos (:)
-largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $dstar 1 $largo_linea` # recoge el numero de linea (74)
-numero_linea_dstar=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
+largo_linea=`expr index $dstar $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $dstar 1 $largo_linea`
+numero_linea_dstar=`expr $numero_linea + 1`
 letra=p
-numero_linea_dstar_letrap=$numero_linea_dstar$letra #crea 74p
+numero_linea_dstar_letrap=$numero_linea_dstar$letra
 letrac=c
-numero_linea_dstar_letrac=$numero_linea_dstar$letrac #crea 74c
-presentar_valo= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/MMDVMFUSION.ini; #presenta el valor en pantalla
+numero_linea_dstar_letrac=$numero_linea_dstar$letrac
+presentar_valo= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  15)\33[0m Modificar RXLevel     - \33[1;33m"
-rx=`grep -n '\<RXLevel\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  15)${GRIS} Modificar RXLevel     - ${AMARILLO}"
+rx=`grep -n '\<RXLevel\>' /home/pi/MMDVMHost/$DIRECTORIO`
 rx1=`expr substr $rx 4 30`
 echo -n "$rx1"
 
-echo -n "\33[1;36m      b)\33[0m DMR         - \33[1;33m"
-dmr=`grep -n "\[DMR\]" /home/pi/MMDVMHost/MMDVMFUSION.ini` # devuelve ejem: 74:Enable=1
+echo -n "${CIAN}      b)${GRIS} DMR         - ${AMARILLO}"
+dmr=`grep -n "\[DMR\]" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
-largo_linea=`expr index $dmr $buscar` #comprueba el largo incluyendo los dos puntos (:)
-largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $dmr 1 $largo_linea` # recoge el numero de linea (74)
-numero_linea_dmr=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
+largo_linea=`expr index $dmr $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $dmr 1 $largo_linea`
+numero_linea_dmr=`expr $numero_linea + 1`
 letra=p
 numero_linea_dmr_letrap=$numero_linea_dmr$letra #crea 74p
 letrac=c
 numero_linea_dmr_letrac=$numero_linea_dmr$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/MMDVMFUSION.ini; #presenta el valor en pantalla
+presentar_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  16)\33[0m Modificar TXLevel     - \33[1;33m"
-tx=`grep -n -m 1 '\<TXLevel\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  16)${GRIS} Modificar TXLevel     - ${AMARILLO}"
+tx=`grep -n -m 1 '\<TXLevel\>' /home/pi/MMDVMHost/$DIRECTORIO`
 tx1=`expr substr $tx 4 30`
 echo -n "$tx1"
 
-echo -n "\33[1;36m      c)\33[0m FUSION      - \33[1;33m"
-fusion=`grep -n "LowDeviation" /home/pi/MMDVMHost/MMDVMFUSION.ini` # devuelve ejem: 74:Enable=1
+echo -n "${CIAN}      c)${GRIS} FUSION      - ${AMARILLO}"
+fusion=`grep -n "LowDeviation" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
-largo_linea=`expr index $fusion $buscar` #comprueba el largo incluyendo los dos puntos (:)
-largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $fusion 1 $largo_linea` # recoge el numero de linea ejemplo (74)
-numero_linea_fusion=`expr $numero_linea - 1` # y le resta uno quedando como: ejemplo (73)
+largo_linea=`expr index $fusion $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $fusion 1 $largo_linea`
+numero_linea_fusion=`expr $numero_linea - 1`
 letra=p
-numero_linea_fusion_letrap=$numero_linea_fusion$letra #crea 74p
+numero_linea_fusion_letrap=$numero_linea_fusion$letra
 letrac=c
-numero_linea_fusion_letrac=$numero_linea_fusion$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/MMDVMFUSION.ini; #presenta el valor en pantalla
+numero_linea_fusion_letrac=$numero_linea_fusion$letrac
+presentar_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  17)\33[0m Modificar Duplex      - \33[1;33m"
-dup=`grep -n -m 1 '\<Duplex\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  17)${GRIS} Modificar Duplex      - ${AMARILLO}"
+dup=`grep -n -m 1 '\<Duplex\>' /home/pi/MMDVMHost/$DIRECTORIO`
 dup1=`expr substr $dup 3 30`
 echo -n "$dup1"
 
-
-echo -n "\33[1;36m        d)\33[0m P25         - \33[1;33m"
-p25=`grep -n "\[P25\]" /home/pi/MMDVMHost/MMDVMFUSION.ini` # devuelve ejem: 74:Enable=1
+echo -n "${CIAN}        d)${GRIS} P25         - ${AMARILLO}"
+p25=`grep -n "\[P25\]" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
-largo_linea=`expr index $p25 $buscar` #comprueba el largo incluyendo los dos puntos (:)
-largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
-numero_linea=`expr substr $p25 1 $largo_linea` # recoge el numero de linea (74)
-numero_linea_p25=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
+largo_linea=`expr index $p25 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $p25 1 $largo_linea`
+numero_linea_p25=`expr $numero_linea + 1`
 letra=p
-numero_linea_p25_letrap=$numero_linea_p25$letra #crea 74p
+numero_linea_p25_letrap=$numero_linea_p25$letra
 letrac=c
-numero_linea_p25_letrac=$numero_linea_p25$letrac #crea 74c
-presentar_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/MMDVMFUSION.ini; #presenta el valor en pantalla
+numero_linea_p25_letrac=$numero_linea_p25$letrac
+presentar_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  18)\33[0m Modificar TXHang      - \33[1;33m"
-txh=`grep -n -m 1 '\<TXHang\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  18)${GRIS} Modificar TXHang      - ${AMARILLO}"
+txh=`grep -n -m 1 '\<TXHang\>' /home/pi/MMDVMHost/$DIRECTORIO`
 txh1=`expr substr $txh 5 30`
 echo -n "$txh1"
 
-echo -n "\33[1;36m        e)\33[0m Baliza      - \33[1;33m"
-cw= sed -n "31p"  /home/pi/MMDVMHost/MMDVMFUSION.ini; #presenta el valor en pantalla
+echo -n "${CIAN}        e)${GRIS} Baliza      - ${AMARILLO}"
+cw= sed -n "31p"  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  19)\33[0m Modificar Tramas      - \33[1;33m"
-lg=`grep -n -m 1 '\<DisplayLevel\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  19)${GRIS} Modificar Tramas      - ${AMARILLO}"
+lg=`grep -n -m 1 '\<DisplayLevel\>' /home/pi/MMDVMHost/$DIRECTORIO`
 lg1=`expr substr $lg 4 30`
 echo -n "$lg1"
 
-echo -n "\33[1;36m  f)\33[0m RFModeHang  - \33[1;33m"
-modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  f)${GRIS} RFModeHang  - ${AMARILLO}"
+modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/$DIRECTORIO`
 if [ $modehang = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
 else
-modehang=`grep -n -m 1 '\<RFModeHang\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+modehang=`grep -n -m 1 '\<RFModeHang\>' /home/pi/MMDVMHost/$DIRECTORIO`
 modehang1=`expr substr $modehang 3 30`
 echo "$modehang1"
 fi
 
-echo -n "\33[1;36m  20)\33[0m Modificar Slot1       - \33[1;33m"
-sl=`grep -n -m 1 '\<Slot1\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  20)${GRIS} Modificar Slot1       - ${AMARILLO}"
+sl=`grep -n -m 1 '\<Slot1\>' /home/pi/MMDVMHost/$DIRECTORIO`
 sl1=`expr substr $sl 5 30`
 echo -n "$sl1"
 
-echo -n "\33[1;36m         g)\33[0m Timeout     - \33[1;33m"
-timeo=`grep -n -m 1 -c '\<Timeout\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}         g)${GRIS} Timeout     - ${AMARILLO}"
+timeo=`grep -n -m 1 -c '\<Timeout\>' /home/pi/MMDVMHost/$DIRECTORIO`
 if [ $timeo = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
 else
-timeo=`grep -n -m 1 '\<Timeout\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+timeo=`grep -n -m 1 '\<Timeout\>' /home/pi/MMDVMHost/$DIRECTORIO`
 timeo1=`expr substr $timeo 3 30`
 echo "$timeo1"
 fi
 
-echo -n "\33[1;36m  21)\33[0m Tipo Pantalla Display - \33[1;33m"
-Display=`grep -n -m 1 -c '\<Display\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  21)${GRIS} Tipo Pantalla Display - ${AMARILLO}"
+Display=`grep -n -m 1 -c '\<Display\>' /home/pi/MMDVMHost/$DIRECTORIO`
 if [ $Display = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
 else
-Display=`grep -n -m 1 '\<Display\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+Display=`grep -n -m 1 '\<Display\>' /home/pi/MMDVMHost/$DIRECTORIO`
 Display1=`expr substr $Display 3 30`
 echo -n "$Display1"
 fi
 
-var=`grep -n -m 1 "\[Nextion\]" /home/pi/MMDVMHost/MMDVMFUSION.ini`
-#var1=`grep -m 1 "\[Nextion\]" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+var=`grep -n -m 1 "\[Nextion\]" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 2` # y le suma uno qudando coomo: (75)
-MODEMNEXTION=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMFUSION.ini)
+numero_linea=`expr $numero_linea + 2`
+MODEMNEXTION=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 letra=c
 linea_sed_MN=$numero_linea$letra
 echo " ${CIAN}h) ${GRIS}Port Nextion- ${AMARILLO}$MODEMNEXTION"
 
-echo -n "\33[1;36m  22)\33[0m Version Display       - \33[1;33m"
-ScreenLayout=`grep -n -m 1 -c '\<ScreenLayout\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  22)${GRIS} Version Display       - ${AMARILLO}"
+ScreenLayout=`grep -n -m 1 -c '\<ScreenLayout\>' /home/pi/MMDVMHost/$DIRECTORIO`
 if [ $ScreenLayout = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
 else
-ScreenLayout=`grep -n -m 1 '\<ScreenLayout\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+ScreenLayout=`grep -n -m 1 '\<ScreenLayout\>' /home/pi/MMDVMHost/$DIRECTORIO`
 ScreenLayout1=`expr substr $ScreenLayout 5 30`
 echo -n "$ScreenLayout1"
 fi
 
 # i) NXDN Enable=
-var=`grep -n -m 1 "\[NXDN\]" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+var=`grep -n -m 1 "\[NXDN\]" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 1` # Se le suma 1 al número de linea
-NXDN=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMFUSION.ini)
+numero_linea=`expr $numero_linea + 1`
+NXDN=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 letra=c
 linea_sed_NXDN=$numero_linea$letra
 echo "  ${CIAN}i) ${GRIS}NXDN        - ${AMARILLO}$NXDN"
 
-# 23) Brightness=
-var=`grep -n -m 1 "\[Nextion\]" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+# 23) IdleBrightness=
+var=`grep -n -m 1 "^IdleBrightness=" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 3` # Se le suma 3 al número de linea
-Brightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMFUSION.ini)
+IdleBrightness=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+IdleBrightness_CORTO=`expr substr $IdleBrightness 3 22`
 letra=c
-linea_sed_Brightness=$numero_linea$letra
-echo -n "  ${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$Brightness"
+linea_sed_IdleBrightness=$numero_linea$letra
+echo -n "  ${CIAN}23) ${GRIS}Brillo Display Nextion- ${AMARILLO}$IdleBrightness_CORTO"
 
 # j) POCSAG Enable=
-var=`grep -n -m 1 "\[POCSAG\]" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+var=`grep -n -m 1 "\[POCSAG\]" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 1` # Se le suma 1 al número de linea
-POCSAG=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMFUSION.ini)
+numero_linea=`expr $numero_linea + 1`
+POCSAG=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 letra=c
 linea_sed_POCSAG=$numero_linea$letra
-echo "  ${CIAN} j) ${GRIS}POCSAG      - ${AMARILLO}$POCSAG"
+echo "${CIAN} j) ${GRIS}POCSAG      - ${AMARILLO}$POCSAG"
 
 # 24) Latitude=
-echo -n "\33[1;36m  24)\33[0m Coordenada Latitud    - \33[1;33m"
-lat=`grep -n "Latitude" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  24)${GRIS} Coordenada Latitud    - ${AMARILLO}"
+lat=`grep -n "Latitude" /home/pi/MMDVMHost/$DIRECTORIO`
 lat1=`expr substr $lat 4 30`
 echo "$lat1"
 
 # 25) Longitude=
-echo -n "\33[1;36m  25)\33[0m Coordenada Longitud   - \33[1;33m"
-long=`grep -n "Longitude" /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  25)${GRIS} Coordenada Longitud   - ${AMARILLO}"
+long=`grep -n "Longitude" /home/pi/MMDVMHost/$DIRECTORIO`
 long1=`expr substr $long 4 30`
 echo "$long1"
 
-echo -n "\33[1;36m  26)\33[0m Modulo D-STAR         - \33[1;33m"
-modu=`grep -n -m 1 '\<Module\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
+echo -n "${CIAN}  26)${GRIS} Modulo D-STAR         - ${AMARILLO}"
+modu=`grep -n -m 1 '\<Module\>' /home/pi/MMDVMHost/$DIRECTORIO`
 modu1=`expr substr $modu 4 30`
-echo "$modu1"
+echo -n "$modu1"
 
-echo -n "\33[1;36m  27)\33[0m Entra reflector DMR+  - \33[1;33m"
+# k) Jitter=
+Jitter=`grep -n "Jitter" /home/pi/MMDVMHost/$DIRECTORIO`
+buscar=":"
+largo_linea=`expr index $Jitter $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $Jitter 1 $largo_linea`
+Jitter=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+letrac=c
+numero_linea_jiter_letrac=$numero_linea$letrac
+echo "  ${CIAN}      k) ${GRIS}Jitter      - ${AMARILLO}$Jitter"
+
+echo -n "${CIAN}  27)${GRIS} Entra reflector DMR+  - ${AMARILLO}"
 OPCION=`expr substr $pas 1 $largo1`
 OPCION=`expr $OPCION + 1`
 linea33port=$OPCION
 letra=p
 linea22port=$OPCION$letra
-var300port= sed -n $linea22port  /home/pi/MMDVMHost/MMDVMFUSION.ini;
+var300port= sed -n $linea22port  /home/pi/MMDVMHost/$DIRECTORIO;
 
 echo ""
-echo "\33[1;36m  28)\33[1;33m Abrir fichero MMDVMFUSION.ini para hacer cualquier cambio\33[1;33m"
+echo "${CIAN}  28)${AMARILLO} Abrir fichero $DIRECTORIO para hacer cualquier cambio${AMARILLO}"
+
 echo ""
-echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
+echo "${CIAN}   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
 echo ""
-echo -n "\33[1;36m   Elige una opción: " 
+echo -n "${CIAN}   Elige una opción: " 
 read escoger_menu
 
 case $escoger_menu in
 1) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $ind $buscar`
-echo "Valor actual Indicativo: \33[1;33m${ind#*=}\33[1;37m"
-           	          read -p 'Introduce tu indicativo: ' indicativo
-                          letra=c
-                          if [ $largo = 3 ]
-                          then
-                          linea=`expr substr $ind 1 1`
-                          else
-                          linea=`expr substr $ind 1 1`
-                          fi
-                          linea=$linea$letra
+                          echo "Valor actual Indicativo: ${AMARILLO}${ind#*=}\33[1;37m"
+                          read -p 'Introduce tu indicativo: ' indicativo
                           actualizar=S 
                           case $actualizar in
-			              [sS]* ) echo ""
-#Convierte indicativo si se introduce en minúsculas a Mayúsculas
-indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
-
-			              indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
-                          sed -i "$linea Callsign=$indicativo" /home/pi/MMDVMHost/MMDVMFUSION.ini
-
-indi=$(awk "NR==2" /home/pi/MMDVMHost/MMDVMFUSION.ini)
-sed -i "1c $indi" /home/pi/info_panel_control.ini
-sed -i "40c $indicativo" /home/pi/info_panel_control.ini #escribe solo el indicativ
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
+                          indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
+                          sed -i "$numero_linea_indi Callsign=$indicativo" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$primero $contenido_indicativo" /home/pi/info_panel_control.ini
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 2) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $rxf $buscar`
-echo "Valor actual del RXFrequency: \33[1;33m${rxf#*=}\33[1;37m"
-
-           	          read -p 'Introduce RXFrequency:        ' var2
-                          letra=c
-                          if [ $largo = 3 ]
-                          then
-                          linea=`expr substr $rxf 1 2`
-                          else
-                          linea=`expr substr $rxf 1 3`
-                          fi
-                          linea=$linea$letra
+                          echo "Valor actual del RXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
+                          read -p 'Introduce RXFrequency:        ' rxfre
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                              sed -i "$linea RXFrequency=$var2" /home/pi/MMDVMHost/MMDVMFUSION.ini
-
-frec=$(awk "NR==13" /home/pi/MMDVMHost/MMDVMFUSION.ini)
-sed -i "3c $frec" /home/pi/info_panel_control.ini
-
-
-			break;;
-			[nN]* ) echo ""
-			break;;
+                          [sS]* ) echo ""
+                          sed -i "$numero_linea_rxf RXFrequency=$rxfre" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$tercero RXFrequency=$rxfre" /home/pi/info_panel_control.ini
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 3) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $txf $buscar`
-echo "Valor actual del TXFrequency: \33[1;33m${txf#*=}\33[1;37m"
-
-           	          read -p 'Introduce TXFrequency:        ' var2
-                          letra=c
-                          if [ $largo = 3 ]
-                          then
-                          linea=`expr substr $txf 1 2`
-                          else
-                          linea=`expr substr $txf 1 3`
-                          fi
-                          linea=$linea$letra
+                          echo "Valor actual del TXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
+                          read -p 'Introduce TXFrequency:        ' txfre
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea TXFrequency=$var2" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$numero_linea_txf TXFrequency=$txfre" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 4) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $loca $buscar`
-echo "Valor de la Ciudad: \33[1;33m${loca#*=}\33[1;37m"
-           	          read -p 'Introduce tu Ciudad ' loc1
-                          letra=c
-                          if [ $largo = 3 ]
-                          then
-                          linea=`expr substr $loca 1 2`
-                          else
-                          linea=`expr substr $loca 1 3`
-                          fi
-                          linea=$linea$letra
+                          echo "Valor de la Ciudad: ${AMARILLO}${contenido_location#*=}\33[1;37m"
+                          read -p 'Introduce tu Ciudad ' loc1
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-			  loc1=`echo "$loc1" | tr -d '[[:space:]]'`
-              sed -i "$linea Location=$loc1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$numero_linea_letrac Location=$loc1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 5) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $url $buscar`
-echo "Valor de  la  URL   Web: \33[1;33m${url#*=}\33[1;37m"
-           	          read -p 'Introduce URL de tu Web: ' ur1
+                          buscar=":"
+                          largo=`expr index $url $buscar`
+                          echo "Valor de  la  URL   Web: ${AMARILLO}${url#*=}\33[1;37m"
+                          read -p 'Introduce URL de tu Web: ' ur1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -423,12 +413,12 @@ echo "Valor de  la  URL   Web: \33[1;33m${url#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-			  ur1=`echo "$ur1" | tr -d '[[:space:]]'`
-                          sed -i "$linea URL=$ur1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          ur1=`echo "$ur1" | tr -d '[[:space:]]'`
+                          sed -i "$linea URL=$ur1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 6) echo ""
@@ -436,13 +426,13 @@ while true
 do
                           actualizar=S 
                           case $actualizar in
-			                    [sS]* ) echo ""
+                          [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
-                          sed -i "$numero_linea_port Port=/dev/ttyAMA0" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          sed -i "$numero_linea_port Port=/dev/ttyAMA0" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 7) echo ""
@@ -450,13 +440,13 @@ while true
 do
                           actualizar=S 
                           case $actualizar in
-			                    [sS]* ) echo ""
+                          [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
-                          sed -i "$numero_linea_port Port=/dev/ttyACM0" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          sed -i "$numero_linea_port Port=/dev/ttyACM0" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 8) echo ""
@@ -464,13 +454,13 @@ while true
 do
                           actualizar=S 
                           case $actualizar in
-			                    [sS]* ) echo ""
+                          [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
-                          sed -i "$numero_linea_port Port=/dev/ttyACM1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          sed -i "$numero_linea_port Port=/dev/ttyACM1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 9) echo ""
@@ -479,22 +469,22 @@ do
                      
                           actualizar=S 
                           case $actualizar in
-			                    [sS]* ) echo ""
+                          [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
-                          sed -i "$numero_linea_port Port=/dev/ttyUSB0" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          sed -i "$numero_linea_port Port=/dev/ttyUSB0" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 10) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $idd $buscar`
-echo "Valor  actual  del Id: \33[1;33m${idd#*=}\33[1;37m"
-           	          read -p 'Introduce un ID válido ' miid
+                          buscar=":"
+                          largo=`expr index $idd $buscar`
+                          echo "Valor  actual  del Id: ${AMARILLO}${idd#*=}\33[1;37m"
+                          read -p 'Introduce un ID válido ' miid
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -505,68 +495,55 @@ echo "Valor  actual  del Id: \33[1;33m${idd#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea Id=$miid" /home/pi/MMDVMHost/MMDVMFUSION.ini
-
-
-ide=$(awk "NR==3" /home/pi/MMDVMHost/MMDVMFUSION.ini)
-sed -i "2c $ide" /home/pi/info_panel_control.ini
-                        
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$linea Id=$miid" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$segundo Id=$miid" /home/pi/info_panel_control.ini
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 11) echo ""
 while true
 do
-echo "Valor actual del Master: \33[1;33m${master#*=}\33[1;37m"
+                      echo "Valor actual del Master: ${AMARILLO}${master#*=}\33[1;37m"
                       read -p 'Brandmeister=master.spain-dmr.es / DMR+=212.237.3.141: ' master1
-                          actualizar=S 
-                          case $actualizar in
-                    [sS]* ) echo ""
-                    master1=`echo "$master1" | tr -d '[[:space:]]'`
-                    letra=c            
-                    linea=$largo$letra
-
-
-#Convierte mayusculas en minúsculas
-master1=`echo "$master1" | tr [:upper:] [:lower:]`
-
-                          sed -i "$linea Address=$master1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-
-master=$(awk "NR==139" /home/pi/MMDVMHost/MMDVMFUSION.ini)
-sed -i "4c $master" /home/pi/info_panel_control.ini
-
-        break;;
-        [nN]* ) echo ""
-        break;;
+                      actualizar=S 
+                      case $actualizar in
+                      [sS]* ) echo ""
+                      master1=`echo "$master1" | tr -d '[[:space:]]'`
+                      master1=`echo "$master1" | tr [:upper:] [:lower:]`
+                      sed -i "$linea_master Address=$master1" /home/pi/MMDVMHost/$DIRECTORIO
+                      sed -i "$cuarto Address=$master1" /home/pi/info_panel_control.ini
+                      break;;
+                      [nN]* ) echo ""
+                      break;;
 esac
 done;;
 12) echo ""
 while true
 do
                           echo -n "Valor actual del \33[1;37m${var100port#*=}\33[1;37m"
-                          var100port= sed -n $linea2port  /home/pi/MMDVMHost/MMDVMFUSION.ini;
-                      read -p 'Puerto para Brandmeister=62031 puerto para DMR+=55555 : ' miid
+                          var100port= sed -n $linea2port  /home/pi/MMDVMHost/$DIRECTORIO;
+                          read -p 'Puerto para Brandmeister=62031 puerto para DMR+=55555 : ' miid
                           actualizar=S 
                           case $actualizar in
-        [sS]* ) echo ""
+                          [sS]* ) echo ""
                           letra1=c
                           linea4=$linea3port$letra1
-                          sed -i "$linea4 Port=$miid" /home/pi/MMDVMHost/MMDVMFUSION.ini
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          sed -i "$linea4 Port=$miid" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 13) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $pas $buscar`
-echo "   Valor actual del Password: \33[1;33m${pas#*=}\33[1;37m"
-           	          read -p '   Introduce el password que corresponda: ' pas1
+                          buscar=":"
+                          largo=`expr index $pas $buscar`
+                          echo "   Valor actual del Password: ${AMARILLO}${pas#*=}\33[1;37m"
+                          read -p 'Brandmeister=passw0rd   DMR+=PASSWORD: ' pas1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -577,23 +554,23 @@ echo "   Valor actual del Password: \33[1;33m${pas#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			              [sS]* ) echo ""
-			              pas1=`echo "$pas1" | tr -d '[[:space:]]'`
-                          sed -i "$linea Password=$pas1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          pas1=`echo "$pas1" | tr -d '[[:space:]]'`
+                          sed -i "$linea Password=$pas1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 14) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $txinv $buscar`
-echo "Valor  actual del  TXInvert: \33[1;33m${txinv#*=}\33[1;37m"
-           	          read -p 'Valor óptimo para DVMEGA=1 : ' txinv1
+                          buscar=":"
+                          largo=`expr index $txinv $buscar`
+                          echo "Valor  actual del  TXInvert: ${AMARILLO}${txinv#*=}\33[1;37m"
+                          read -p 'Valor óptimo para DVMEGA=1 : ' txinv1
                           letra=c
-                         if [ $largo = 3 ]
+                          if [ $largo = 3 ]
                           then
                           linea=`expr substr $txinv 1 2`
                           else
@@ -602,20 +579,20 @@ echo "Valor  actual del  TXInvert: \33[1;33m${txinv#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea TXInvert=$txinv1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$linea TXInvert=$txinv1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 15) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $rx $buscar`
-echo "Valor  actual  del  RXLevel : \33[1;33m${rx#*=}\33[1;37m"
-           	          read -p 'Valor óptimo para DVMEGA=45 : ' var2
+                          buscar=":"
+                          largo=`expr index $rx $buscar`
+                          echo "Valor  actual  del  RXLevel : ${AMARILLO}${rx#*=}\33[1;37m"
+                          read -p 'Valor óptimo para DVMEGA=45 : ' var2
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -626,20 +603,20 @@ echo "Valor  actual  del  RXLevel : \33[1;33m${rx#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea RXLevel=$var2" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$linea RXLevel=$var2" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 16) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $tx $buscar`
-echo "Valor  actual  del  TXLevel : \33[1;33m${tx#*=}\33[1;37m"
-           	          read -p 'Valor óptimo para DVMEGA=50 : ' var2
+                          buscar=":"
+                          largo=`expr index $tx $buscar`
+                          echo "Valor  actual  del  TXLevel : ${AMARILLO}${tx#*=}\33[1;37m"
+                          read -p 'Valor óptimo para DVMEGA=50 : ' var2
                           letra=c
                           if [ $largo = 3 ]3
                           then
@@ -650,20 +627,20 @@ echo "Valor  actual  del  TXLevel : \33[1;33m${tx#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea TXLevel=$var2" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$linea TXLevel=$var2" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 17) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $dup $buscar`
-echo "Valor actual del Duplex: \33[1;33m${dup#*=}\33[1;37m"
-           	          read -p 'Para un repetidor Duplex=1 Para un DVMEGA Duplex=0: ' dup1
+                          buscar=":"
+                          largo=`expr index $dup $buscar`
+                          echo "Valor actual del Duplex: ${AMARILLO}${dup#*=}\33[1;37m"
+                          read -p 'Para un repetidor Duplex=1 Para un DVMEGA Duplex=0: ' dup1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -674,20 +651,20 @@ echo "Valor actual del Duplex: \33[1;33m${dup#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea Duplex=$dup1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$linea Duplex=$dup1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 18) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $txh $buscar`
-echo "Valor actual del TXHang: \33[1;33m${txh#*=}\33[1;37m"
-           	          read -p 'Para un repetidor TXHang=4 Para un DVMEGA TXHang=0: ' txh1
+                          buscar=":"
+                          largo=`expr index $txh $buscar`
+                          echo "Valor actual del TXHang: ${AMARILLO}${txh#*=}\33[1;37m"
+                          read -p 'Para un repetidor TXHang=4 Para un DVMEGA TXHang=0: ' txh1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -698,20 +675,20 @@ echo "Valor actual del TXHang: \33[1;33m${txh#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea TXHang=$txh1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$linea TXHang=$txh1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 19) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $lg $buscar`
-echo "Valor actual del DisplayLevel: \33[1;33m${lg#*=}\33[1;37m"
-           	     read -p 'Para visualizar tramas seguidas introduce 1, para una sola trama introduce 2:' lg1
+                          buscar=":"
+                          largo=`expr index $lg $buscar`
+                          echo "Valor actual del DisplayLevel: ${AMARILLO}${lg#*=}\33[1;37m"
+                          read -p 'Para visualizar tramas seguidas introduce 1, para una sola trama introduce 2:' lg1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -722,28 +699,28 @@ echo "Valor actual del DisplayLevel: \33[1;33m${lg#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea DisplayLevel=$lg1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$linea DisplayLevel=$lg1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 20) echo ""
 while true
 do
-sl=`grep -n -m 1 -c '\<Slot1\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-if [ $sl = 0 ]; then
-echo "no existe este comando"
-else
-sl=`grep -n -m 1 '\<Slot1\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-sl1=`expr substr $sl 5 30`
-echo "$sl1"
-fi
-buscar=":"
-largo=`expr index $sl $buscar`
-echo "Valor actual del Slot1=: \33[1;33m${sl#*=}\33[1;37m"
-           	          read -p 'Para DVMEGA Modificar el valor del Slot1=0: ' V
+                          sl=`grep -n -m 1 -c '\<Slot1\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          if [ $sl = 0 ]; then
+                          echo "no existe este comando"
+                          else
+                          sl=`grep -n -m 1 '\<Slot1\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          sl1=`expr substr $sl 5 30`
+                          echo "$sl1"
+                          fi
+                          buscar=":"
+                          largo=`expr index $sl $buscar`
+                          echo "Valor actual del Slot1=: ${AMARILLO}${sl#*=}\33[1;37m"
+                          read -p 'Para DVMEGA Modificar el valor del Slot1=0: ' V
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -754,29 +731,28 @@ echo "Valor actual del Slot1=: \33[1;33m${sl#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-			              [sS]* ) echo ""
-			              V=`echo "$V" | tr -d '[[:space:]]'`			  
-                          sed -i "$linea Slot1=$V" /home/pi/MMDVMHost/MMDVMFUSION.ini             
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          V=`echo "$V" | tr -d '[[:space:]]'`       
+                          sed -i "$linea Slot1=$V" /home/pi/MMDVMHost/$DIRECTORIO             
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 21) echo ""
 while true
 do
-Display=`grep -n -m 1 -c '\<Display\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-if [ $Display = 0 ]; then
-echo "no existe este comando"
-else
-Display=`grep -n -m 1 '\<Display\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-Display1=`expr substr $Display 5 30`
-#echo "$Display1"
-fi
-buscar=":"
-largo=`expr index $Display $buscar`
-echo "Valor actual del Display=: \33[1;33m${Display1#*=}\33[1;37m"
-                      read -p 'Introcuce el nombre de tu Dispaly: ' V
+                          Display=`grep -n -m 1 -c '\<Display\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          if [ $Display = 0 ]; then
+                          echo "no existe este comando"
+                          else
+                          Display=`grep -n -m 1 '\<Display\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          Display1=`expr substr $Display 5 30`
+                          fi
+                          buscar=":"
+                          largo=`expr index $Display $buscar`
+                          echo "Valor actual del Display=: ${AMARILLO}${Display1#*=}\33[1;37m"
+                          read -p 'Introcuce el nombre de tu Dispaly: ' V
                           letra=c
                           if [ $largo = 2 ]
                           then
@@ -787,29 +763,28 @@ echo "Valor actual del Display=: \33[1;33m${Display1#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-                    [sS]* ) echo ""
-                    V=`echo "$V" | tr -d '[[:space:]]'`       
-                          sed -i "$linea Display=$V" /home/pi/MMDVMHost/MMDVMFUSION.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          [sS]* ) echo ""
+                          V=`echo "$V" | tr -d '[[:space:]]'`       
+                          sed -i "$linea Display=$V" /home/pi/MMDVMHost/$DIRECTORIO             
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 22) echo ""
 while true
 do
-ScreenLayout=`grep -n -m 1 -c '\<ScreenLayout\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-if [ $ScreenLayout = 0 ]; then
-echo "no existe este comando"
-else
-ScreenLayout=`grep -n -m 1 '\<ScreenLayout\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-ScreenLayout1=`expr substr $ScreenLayout 5 30`
-#echo "$ScreenLayout1"
-fi
-buscar=":"
-largo=`expr index $ScreenLayout $buscar`
-echo "Valor actual del ScreenLayout=: \33[1;33m${ScreenLayout1#*=}\33[1;37m"
-                      read -p 'Este parametro puede ser 0 ó 1: ' V
+                          ScreenLayout=`grep -n -m 1 -c '\<ScreenLayout\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          if [ $ScreenLayout = 0 ]; then
+                          echo "no existe este comando"
+                          else
+                          ScreenLayout=`grep -n -m 1 '\<ScreenLayout\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          ScreenLayout1=`expr substr $ScreenLayout 5 30`
+                          fi
+                          buscar=":"
+                          largo=`expr index $ScreenLayout $buscar`
+                          echo "Valor actual del ScreenLayout=: ${AMARILLO}${ScreenLayout1#*=}\33[1;37m"
+                          read -p 'Este parametro puede ser 0 ó 1: ' V
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -820,38 +795,37 @@ echo "Valor actual del ScreenLayout=: \33[1;33m${ScreenLayout1#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-                    [sS]* ) echo ""
-                    V=`echo "$V" | tr -d '[[:space:]]'`       
-                          sed -i "$linea ScreenLayout=$V" /home/pi/MMDVMHost/MMDVMFUSION.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          [sS]* ) echo ""
+                          V=`echo "$V" | tr -d '[[:space:]]'`       
+                          sed -i "$linea ScreenLayout=$V" /home/pi/MMDVMHost/$DIRECTORIO             
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 23) echo ""
 while true
 do
-
-                          read -p 'Introduce el brillo Brightness: ' V
+                          read -p 'Introduce el brillo IdleBrightness: ' V
                           actualizar=S 
                           case $actualizar in                                            
                           [sS]* ) echo ""
                           V=`echo "$V" | tr -d '[[:space:]]'`      
-                          sed -i "$linea_sed_Brightness Brightness=$V" /home/pi/MMDVMHost/MMDVMFUSION.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          sed -i "$linea_sed_IdleBrightness IdleBrightness=$V" /home/pi/MMDVMHost/$DIRECTORIO             
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 26) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $modu $buscar`
-echo "Valor  actual  del  Module: \33[1;33m${modu#*=}\33[1;37m"
-           	          read -p 'Valor óptimo para D-STAR=B: '  modu1
+                          buscar=":"
+                          largo=`expr index $modu $buscar`
+                          echo "Valor  actual  del  Module: ${AMARILLO}${modu#*=}\33[1;37m"
+                          read -p 'Valor óptimo para D-STAR=B: '  modu1
                           letra=c
-                         if [ $largo = 3 ]
+                          if [ $largo = 3 ]
                           then
                           linea=`expr substr $modu 1 2`
                           else
@@ -860,27 +834,25 @@ echo "Valor  actual  del  Module: \33[1;33m${modu#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			                    [sS]* ) echo ""
-
-#Convierte indicativo si se introduce en minúsculas a Mayúsculas
-modu1=`echo "$modu1" | tr [:lower:] [:upper:]`
-
-                          sed -i "$linea Module=$modu1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          #Convierte indicativo si se introduce en minúsculas a Mayúsculas
+                          modu1=`echo "$modu1" | tr [:lower:] [:upper:]`
+                          sed -i "$linea Module=$modu1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 a) echo ""
 while true
 do
-                          echo -n "Valor actual D-STAR \33[1;33m${presentar_valor#*=}\33[1;37m"
-                          presenta_valor= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/MMDVMFUSION.ini;
+                          echo -n "Valor actual D-STAR ${AMARILLO}${presentar_valor#*=}\33[1;37m"
+                          presenta_valor= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
                           read -p 'Desactivado=0 Activado=1:  '   dmrac1
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$numero_linea_dstar_letrac Enable=$dmrac1" /home/pi/MMDVMHost/MMDVMFUSION.ini
+                          sed -i "$numero_linea_dstar_letrac Enable=$dmrac1" /home/pi/MMDVMHost/$DIRECTORIO
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -889,28 +861,28 @@ done;;
 b) echo ""
 while true
 do
-                          echo -n "Valor  actual  DMR \33[1;33m${presentar_valor#*=}\33[1;37m"
-                          presenta_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/MMDVMFUSION.ini;
-           	              read -p 'Desactivado=0 Activado=1: '   dmrac1
+                          echo -n "Valor  actual  DMR ${AMARILLO}${presentar_valor#*=}\33[1;37m"
+                          presenta_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
+                          read -p 'Desactivado=0 Activado=1: '   dmrac1
                           actualizar=S 
                           case $actualizar in
-			                    [sS]* ) echo ""
-                          sed -i "$numero_linea_dmr_letrac Enable=$dmrac1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			                    break;;
-			                    [nN]* ) echo ""
-			                    break;;
+                          [sS]* ) echo ""
+                          sed -i "$numero_linea_dmr_letrac Enable=$dmrac1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 c) echo ""
 while true
 do
-                          echo -n "Valor actual FUSION \33[1;33m${presentar_valor#*=}\33[1;37m"
-                          presenta_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/MMDVMFUSION.ini;
+                          echo -n "Valor actual FUSION ${AMARILLO}${presentar_valor#*=}\33[1;37m"
+                          presenta_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
                           read -p 'Desactivado=0 Activado=1:  '   dmrac1
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$numero_linea_fusion_letrac Enable=$dmrac1" /home/pi/MMDVMHost/MMDVMFUSION.ini
+                          sed -i "$numero_linea_fusion_letrac Enable=$dmrac1" /home/pi/MMDVMHost/$DIRECTORIO
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -919,13 +891,13 @@ done;;
 d) echo ""
 while true
 do
-                          echo -n "Valor  actual  P25 \33[1;33m${presentar_valor#*=}\33[1;37m"
-                          presenta_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/MMDVMFUSION.ini;
+                          echo -n "Valor  actual  P25 ${AMARILLO}${presentar_valor#*=}\33[1;37m"
+                          presenta_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
                           read -p 'Desactivado=0 Activado=1: '   dmrac1
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$numero_linea_p25_letrac Enable=$dmrac1" /home/pi/MMDVMHost/MMDVMFUSION.ini
+                          sed -i "$numero_linea_p25_letrac Enable=$dmrac1" /home/pi/MMDVMHost/$DIRECTORIO
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -934,30 +906,30 @@ done;;
 e) echo ""
 while true
 do
-                      read -p 'Introduce el valor de la Baliza (Ej. 1-activada 0-desactivada) : ' baliza
-                      actualizar=S 
-                      case $actualizar in
-                      [sS]* ) echo ""
-                      sed -i "31c Enable=$baliza" /home/pi/MMDVMHost/MMDVMFUSION.ini
-                      break;;
-                      [nN]* ) echo ""
-                      break;;
+                          read -p 'Introduce el valor de la Baliza (Ej. 1-activada 0-desactivada) : ' baliza
+                          actualizar=S 
+                          case $actualizar in
+                          [sS]* ) echo ""
+                          sed -i "31c Enable=$baliza" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 f) echo ""
 while true
 do
-modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-if [ $modehang = 0 ]; then
-echo "no existe este comando"
-else
-modehang=`grep -n -m 1 '\<RFModeHang\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-modehang1=`expr substr $modehang 5 30`
-fi
-buscar=":"
-largo=`expr index $modehang $buscar`
-echo "Valor actual del RFModeHang = : \33[1;33m${modehang1#*=}\33[1;37m"
-                      read -p 'Introcuce el valor para RFModeHang (optimo=3): ' V
+                          modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          if [ $modehang = 0 ]; then
+                          echo "no existe este comando"
+                          else
+                          modehang=`grep -n -m 1 '\<RFModeHang\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          modehang1=`expr substr $modehang 5 30`
+                          fi
+                          buscar=":"
+                          largo=`expr index $modehang $buscar`
+                          echo "Valor actual del RFModeHang = : ${AMARILLO}${modehang1#*=}\33[1;37m"
+                          read -p 'Introcuce el valor para RFModeHang (optimo=3): ' V
                           letra=c
                           if [ $largo = 2 ]
                           then
@@ -968,28 +940,28 @@ echo "Valor actual del RFModeHang = : \33[1;33m${modehang1#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-                    [sS]* ) echo ""
-                    V=`echo "$V" | tr -d '[[:space:]]'`       
-                          sed -i "$linea RFModeHang=$V" /home/pi/MMDVMHost/MMDVMFUSION.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          [sS]* ) echo ""
+                          V=`echo "$V" | tr -d '[[:space:]]'`       
+                          sed -i "$linea RFModeHang=$V" /home/pi/MMDVMHost/$DIRECTORIO             
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 g) echo ""
 while true
 do
-timeo=`grep -n -m 1 -c '\<Timeout\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-if [ $timeo = 0 ]; then
-echo "no existe este comando"
-else
-timeo=`grep -n -m 1 '\<Timeout\>' /home/pi/MMDVMHost/MMDVMFUSION.ini`
-timeo1=`expr substr $timeo 5 30`
-fi
-buscar=":"
-largo=`expr index $timeo $buscar`
-echo "Valor actual del Timeout = : \33[1;33m${timeo1#*=}\33[1;37m"
-                      read -p 'Introcuce el valor para Timeout (valor optimo=0): ' V
+                          timeo=`grep -n -m 1 -c '\<Timeout\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          if [ $timeo = 0 ]; then
+                          echo "no existe este comando"
+                          else
+                          timeo=`grep -n -m 1 '\<Timeout\>' /home/pi/MMDVMHost/$DIRECTORIO`
+                          timeo1=`expr substr $timeo 5 30`
+                          fi
+                          buscar=":"
+                          largo=`expr index $timeo $buscar`
+                          echo "Valor actual del Timeout = : ${AMARILLO}${timeo1#*=}\33[1;37m"
+                          read -p 'Introcuce el valor para Timeout (valor optimo=0): ' V
                           letra=c
                           if [ $largo = 2 ]
                           then
@@ -1000,23 +972,23 @@ echo "Valor actual del Timeout = : \33[1;33m${timeo1#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-                    [sS]* ) echo ""
-                    V=`echo "$V" | tr -d '[[:space:]]'`       
-                          sed -i "$linea Timeout=$V" /home/pi/MMDVMHost/MMDVMFUSION.ini             
-        break;;
-        [nN]* ) echo ""
-        break;;
+                          [sS]* ) echo ""
+                          V=`echo "$V" | tr -d '[[:space:]]'`       
+                          sed -i "$linea Timeout=$V" /home/pi/MMDVMHost/$DIRECTORIO             
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 h) echo ""
 while true
 do
-echo "Valor del Port: \33[1;33m$MODEMNEXTION"
+                          echo "Valor del Port: ${AMARILLO}$MODEMNEXTION"
                           read -p 'Ejp. modem, /dev/ttyAMA0, /dev/rfcomm0, /dev/ttyUSB0 :' lat1
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$linea_sed_MN Port=$lat1" /home/pi/MMDVMHost/MMDVMFUSION.ini
+                          sed -i "$linea_sed_MN Port=$lat1" /home/pi/MMDVMHost/$DIRECTORIO
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -1025,12 +997,12 @@ done;;
 i) echo ""
 while true
 do
-echo "Valor actual NXDN: \33[1;33m$NXDN"
+                          echo "Valor actual NXDN: ${AMARILLO}$NXDN"
                           read -p 'Desactivado=0 Activado=1: '   NXDN1
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$linea_sed_NXDN Enable=$NXDN1" /home/pi/MMDVMHost/MMDVMFUSION.ini
+                          sed -i "$linea_sed_NXDN Enable=$NXDN1" /home/pi/MMDVMHost/$DIRECTORIO
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -1039,12 +1011,27 @@ done;;
 j) echo ""
 while true
 do
-                          echo "Valor actual POCSAG: \33[1;33m$POCSAG"
+                          echo "Valor actual POCSAG: ${AMARILLO}$POCSAG"
                           read -p 'Desactivado=0 Activado=1: '   POCSAG1
                           actualizar=S 
                           case $actualizar in
                           [sS]* ) echo ""
-                          sed -i "$linea_sed_POCSAG Enable=$POCSAG1" /home/pi/MMDVMHost/MMDVMFUSION.ini
+                          sed -i "$linea_sed_POCSAG Enable=$POCSAG1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
+esac
+done;;
+k) echo ""
+while true
+do                         
+                          valor=$(awk "NR==$numero_linea_jiter_letrap" /home/pi/MMDVMHost/$DIRECTORIO)
+                          echo "Valor actual  del Jitter: ${AMARILLO}$valor"
+                          read -p 'Introduce valor entre 360 a 600: '   JITTER
+                          actualizar=S 
+                          case $actualizar in
+                          [sS]* ) echo ""
+                          sed -i "$numero_linea_jiter_letrac Jitter=$JITTER" /home/pi/MMDVMHost/$DIRECTORIO
                           break;;
                           [nN]* ) echo ""
                           break;;
@@ -1053,10 +1040,10 @@ done;;
 24) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $lat $buscar`
-echo "Valor de la Latitud: \33[1;33m${lat#*=}\33[1;37m"
-           	          read -p 'Introduce la Latitud ' lat1
+                          buscar=":"
+                          largo=`expr index $lat $buscar`
+                          echo "Valor de la Latitud: ${AMARILLO}${lat#*=}\33[1;37m"
+                          read -p 'Introduce la Latitud ' lat1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -1067,21 +1054,21 @@ echo "Valor de la Latitud: \33[1;33m${lat#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea Latitude=$lat1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$linea Latitude=$lat1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 
 25) echo ""
 while true
 do
-buscar=":"
-largo=`expr index $long $buscar`
-echo "Valor de la Longitud: \33[1;33m${long#*=}\33[1;37m"
-           	          read -p 'Introduce la Longitud ' long1
+                          buscar=":"
+                          largo=`expr index $long $buscar`
+                          echo "Valor de la Longitud: ${AMARILLO}${long#*=}\33[1;37m"
+                          read -p 'Introduce la Longitud ' long1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -1092,185 +1079,53 @@ echo "Valor de la Longitud: \33[1;33m${long#*=}\33[1;37m"
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-			  [sS]* ) echo ""
-                          sed -i "$linea Longitude=$long1" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  break;;
+                          [sS]* ) echo ""
+                          sed -i "$linea Longitude=$long1" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 27) echo ""
 while true
 do
-              read -p 'Estas en DMR+ ? S/N ' actualizar     
-           	 
-                          
+                          read -p 'Estas en DMR+ ? S/N ' actualizar                                          
                           case $actualizar in
-			  [sS]* ) echo ""
-			   read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
+                          [sS]* ) echo ""
+                          read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
                           letra1=c
                           linea4=$linea33port$letra1
-                          sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
-			  [nN]* ) echo ""
-			  letra1=c
+                          sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          letra1=c
                           linea4=$linea33port$letra1
-			  sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/MMDVMFUSION.ini
-			  break;;
+                          sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
 esac
 done;;
-#27) echo ""
-#while true
-#do
-#buscar=":"
-#largo=`expr index $rxinv $buscar`
-#echo "Valor  actual del  RXInvert: \33[1;33m${rxinv#*=}\33[1;37m"
-                     #read -p 'Valor óptimo para Motorola=0 para otras=1 : ' rxinv11
-                          #letra=c
-                         #if [ $largo = 3 ]
-                         #then
-                          #linea=`expr substr $rxinv 1 2`
-                          #else
-                          #linea=`expr substr $rxinv 1 3`
-                          #fi
-                          #linea=$linea$letra
-                          #actualizar=S 
-                          #case $actualizar in
-        #[sS]* ) echo ""
-                          #sed -i "$linea RXInvert=$rxinv11" /home/pi/MMDVMHost/MMDVMFUSION.ini
-        #break;;
-        #[nN]* ) echo ""
-        #break;;
-#esac
-#done;;
 28) echo ""
 while true
 do
-                              actualizar=S 
-                              case $actualizar in
-			                        [sS]* ) echo ""
-                              geany /home/pi/MMDVMHost/MMDVMFUSION.ini
-			                        break;;
-			                        [nN]* ) echo ""
-			                        break;;
-esac
-done;;
-29) echo ""
-while true
-do
-                        actualizar=S
-                        case $actualizar in
-			                  [sS]* ) echo ""
-                        clear
-                        echo "<<<<<< Haciendo copia de seguridad de la M1 >>>>>"
-                        sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMFUSION.ini /home/pi/MMDVMHost/MMDVMFUSION.ini_copia
-			                  break;;
-			                  [nN]* ) echo ""
-			                  break;;
-esac
-done;;
-30) echo ""
-while true
-do
-                        actualizar=S
-                        case $actualizar in
-                        [sS]* ) echo ""
-                        clear
-                        echo "<<<<<< Restaurando copia de seguridad de la M1 >>>>>"
-                        sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMFUSION.ini_copia /home/pi/MMDVMHost/MMDVMFUSION.ini
-			                  break;;
-			                  [nN]* ) echo ""
-			                  break;;
-esac
-done;;
-31) echo ""
-while true
-do
-                        actualizar=S 
-                        case $actualizar in
-			                  [sS]* ) echo ""
-                        clear
-                        echo "<<<<<< Haciendo copia de seguridad de la M2 >>>>>"
-                        sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMFUSION.ini /home/pi/MMDVMHost/MMDVMFUSION.ini_copia2
-			                  break;;
-			                  [nN]* ) echo ""
-			                  break;;
-esac
-done;;
-32) echo ""
-while true
-do
-                        actualizar=S 
-                        case $actualizar in
-			                  [sS]* ) echo ""
-                        clear
-                        echo "<<<<<< Restaurando copia de seguridad  de la M2 >>>>>"
-                        sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMFUSION.ini_copia2 /home/pi/MMDVMHost/MMDVMFUSION.ini
-			                  break;;
-			                  [nN]* ) echo ""
-			                  break;;
-esac
-done;;
-33) echo ""
-while true
-do
-                        actualizar=S 
-                        case $actualizar in
-			                  [sS]* ) echo ""
-                        clear
-                        echo "<<<<<< Haciendo copia de seguridad de la M3 >>>>>"
-                        sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMFUSION.ini /home/pi/MMDVMHost/MMDVMFUSION.ini_copia3
-			                  break;;
-			                  [nN]* ) echo ""
-			                  break;;
-esac
-done;;
-34) echo ""
-while true
-do
-                        actualizar=S 
-                        case $actualizar in
-			                  [sS]* ) echo ""
-                        clear
-                        echo "<<<<<< Restaurando copia de seguridad de la M3 >>>>>"
-                        sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVMFUSION.ini_copia3 /home/pi/MMDVMHost/MMDVMFUSION.ini
-			                  break;;
-			                  [nN]* ) echo ""
-			                  break;;
-esac
-done;;
-35) echo ""
-while true
-do
-          	        
-           	        read -p 'Quieres restaurar el fichero original MMDVMFUSION.ini? S/N ' restaurar1   
-                        case $restaurar1 in
-			[sS]* ) echo ""
-                        clear
-                        echo "<<<<<< Restaurando el fichero original MMDVMFUSION.ini >>>>>"
-                        sleep 3
-                        sudo cp -f /home/pi/MMDVMHost/MMDVM.ini_original /home/pi/MMDVMHost/MMDVMFUSION.ini
-			break;;
-			[nN]* ) echo ""
-			break;;
+                          actualizar=S 
+                          case $actualizar in
+                          [sS]* ) echo ""
+                          geany /home/pi/MMDVMHost/$DIRECTORIO
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 0) echo ""
 clear
-echo "\33[1;33m   **************************************************"
+echo "${AMARILLO}   **************************************************"
 echo "   *                                                *"
 echo "   *     CERRANDO SCRIPT                            *"
 echo "   *                                                *"
 echo "   **************************************************"
 sleep 1
 clear
-exit;;	
+exit;;  
 esac
 done
 
