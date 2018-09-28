@@ -329,6 +329,7 @@ var300port= sed -n $linea22port  /home/pi/MMDVMHost/$DIRECTORIO;
 
 echo ""
 echo "\33[1;36m  28)\33[1;33m Abrir fichero $DIRECTORIO para hacer cualquier cambio\33[1;33m"
+
 echo "\33[1;36m  29)\33[1;37m Guardar  fichero de Configuración en M1 \33[1;36m"
 echo -n "\33[1;36m  30)\33[1;32m Utilizar fichero de Configuración de M1: \33[1;36m"
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO_copia`
@@ -336,13 +337,9 @@ buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia1=`expr substr $master $largo 40`
-
-
-
-
 echo -n "$copia1"
-
 memoria1=$(awk "NR==31" /home/pi/info_panel_control.ini)
+
 echo " - $memoria1"
 echo "\33[1;36m  31)\33[1;37m Guardar  fichero de Configuración en M2: \33[1;36m"
 echo -n "\33[1;36m  32)\33[1;32m Utilizar fichero de Configuración en M2: \33[1;36m"
@@ -352,6 +349,7 @@ largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia2=`expr substr $master $largo 40`
 echo "$copia2"
+memoria2=$(awk "NR==32" /home/pi/info_panel_control.ini)
 
 echo "\33[1;36m  33)\33[1;37m Guardar  fichero de Configuración en M3: \33[1;36m"
 echo -n "\33[1;36m  34)\33[1;32m Utilizar fichero de Configuración en M3: \33[1;36m"
@@ -361,6 +359,7 @@ largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia3=`expr substr $master $largo 40`
 echo "$copia3"
+memoria3=$(awk "NR==33" /home/pi/info_panel_control.ini)
 
 echo ""
 echo "\33[1;36m  35)\33[1;31m Recuperar el fichero original $DIRECTORIO\33[1;33m"
@@ -1224,8 +1223,11 @@ do
                         case $actualizar in
 			                  [sS]* ) echo ""
                         clear
+                        echo "Introduce nombre memoria máximo 10 caracteres"
+                        read memoria2
                         echo "<<<<<< Haciendo copia de seguridad de la M2 >>>>>"
                         sleep 3
+                        sed -i "32c $memoria2" /home/pi/info_panel_control.ini
                         sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia2
 			                  break;;
 			                  [nN]* ) echo ""
@@ -1254,8 +1256,11 @@ do
                         case $actualizar in
 			                  [sS]* ) echo ""
                         clear
+                        echo "Introduce nombre memoria máximo 10 caracteres"
+                        read memoria3
                         echo "<<<<<< Haciendo copia de seguridad de la M3 >>>>>"
                         sleep 3
+                        sed -i "33c $memoria3" /home/pi/info_panel_control.ini
                         sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia3
 			                  break;;
 			                  [nN]* ) echo ""
