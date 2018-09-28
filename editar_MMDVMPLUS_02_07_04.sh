@@ -39,7 +39,7 @@ tercer="33c"
 
 #Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
 primer1="31c"
-segun1="33c"
+segun1="32c"
 tercer1="33c"
 
 #Colores
