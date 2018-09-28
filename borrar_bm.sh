@@ -78,7 +78,7 @@ letrac=c
 numero_linea_txf=$numero_linea$letrac
 contenido_txf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_txf"
-
+read a
 echo -n "${CIAN}   4)${GRIS} Modificar Location    - ${AMARILLO}"
 loc=`grep -n "^Location=" /home/pi/MMDVMHost/$DIRECTORIO`
 loc1=`echo "$loc" | tr -d '[[:space:]]'`
