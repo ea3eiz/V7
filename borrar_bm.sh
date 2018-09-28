@@ -68,9 +68,16 @@ contenido_rxf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_rxf"
 
 echo -n "${CIAN}   3)${GRIS} Modificar TXFrequency - ${AMARILLO}"
-txf=`grep -n "TXFrequency" /home/pi/MMDVMHost/$DIRECTORIO`
-txf1=`expr substr $txf 4 30`
-echo "$txf1"
+txf=`grep -n "^TXFrequency=" /home/pi/MMDVMHost/$DIRECTORIO`
+txf1=`echo "$txf" | tr -d '[[:space:]]'`
+buscar=":"
+largo_linea=`expr index $txf1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $txf1 1 $largo_linea`
+letrac=c
+numero_linea_txf=$numero_linea$letrac
+contenido_txf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+echo "$contenido_txf"
 
 echo -n "${CIAN}   4)${GRIS} Modificar Location    - ${AMARILLO}"
 loc=`grep -n "^Location=" /home/pi/MMDVMHost/$DIRECTORIO`
@@ -412,8 +419,6 @@ done;;
 2) echo ""
 while true
 do
-                          buscar=":"
-                          largo=`expr index $rxf $buscar`
                           echo "Valor actual del RXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
            	              read -p 'Introduce RXFrequency:        ' rxfre
                           actualizar=S 
@@ -429,22 +434,10 @@ done;;
 3) echo ""
 while true
 do
-                          buscar=":"
-                          largo=`expr index $txf $buscar`
                           echo "Valor actual del TXFrequency: ${AMARILLO}${txf#*=}\33[1;37m"
-           	              read -p 'Introduce TXFrequency:        ' var2
-                          letra=c
-                          if [ $largo = 3 ]
-                          then
-                          linea=`expr substr $txf 1 2`
-                          else
-                          linea=`expr substr $txf 1 3`
-                          fi
-                          linea=$linea$letra
-                          actualizar=S 
-                          case $actualizar in
-			                    [sS]* ) echo ""
-                          sed -i "$linea TXFrequency=$var2" /home/pi/MMDVMHost/$DIRECTORIO
+           	              read -p 'Introduce TXFrequency:        ' txfre
+                          [sS]* ) echo ""
+                          sed -i "$numero_linea_txf TXFrequency=$txfre" /home/pi/MMDVMHost/$DIRECTORIO
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
