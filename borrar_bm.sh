@@ -56,9 +56,16 @@ contenido_indicativo=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_indicativo"
 
 echo -n "${CIAN}   2)${GRIS} Modificar RXFrequency - ${AMARILLO}"
-rxf=`grep -n "RXFrequency" /home/pi/MMDVMHost/$DIRECTORIO`
-rxf1=`expr substr $rxf 4 30`
-echo "$rxf1"
+rxf=`grep -n "^RXFrequency=" /home/pi/MMDVMHost/$DIRECTORIO`
+rxf1=`echo "$rxf" | tr -d '[[:space:]]'`
+buscar=":"
+largo_linea=`expr index $rxf1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $rxf1 1 $largo_linea`
+letrac=c
+numero_linea_rxf=$numero_linea$letrac
+contenido_rxf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+echo "$contenido_rxf"
 
 echo -n "${CIAN}   3)${GRIS} Modificar TXFrequency - ${AMARILLO}"
 txf=`grep -n "TXFrequency" /home/pi/MMDVMHost/$DIRECTORIO`
@@ -397,7 +404,6 @@ do
 			                    indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
                           sed -i "$numero_linea_indi Callsign=$indicativo" /home/pi/MMDVMHost/$DIRECTORIO
                           sed -i "$primero $contenido_indicativo" /home/pi/info_panel_control.ini
-                          sed -i "40c $indicativo" /home/pi/info_panel_control.ini #escribe solo el indicativ
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
@@ -409,20 +415,12 @@ do
                           buscar=":"
                           largo=`expr index $rxf $buscar`
                           echo "Valor actual del RXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
-           	              read -p 'Introduce RXFrequency:        ' var2
-                          letra=c
-                          if [ $largo = 3 ]
-                          then
-                          linea=`expr substr $rxf 1 2`
-                          else
-                          linea=`expr substr $rxf 1 3`
-                          fi
-                          linea=$linea$letra
+           	              read -p 'Introduce RXFrequency:        ' rxfre
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$linea RXFrequency=$var2" /home/pi/MMDVMHost/$DIRECTORIO
-                          sed -i "$tercero RXFrequency=$var2" /home/pi/info_panel_control.ini
+                          sed -i "$numero_linea_rxf RXFrequency=$var2" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$tercero RXFrequency=$rxfre" /home/pi/info_panel_control.ini
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
