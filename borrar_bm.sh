@@ -45,7 +45,7 @@ echo "   *           Script para Modificar $DIRECTORIO             \33[1;31m by 
 echo "   **************************************************************************"
 echo -n "${CIAN}   1)${GRIS} Modificar indicativo  - ${AMARILLO}"
 ind=`grep -n "^Callsign=" /home/pi/MMDVMHost/$DIRECTORIO`
-indi1=`echo "$indi" | tr -d '[[:space:]]'`
+indi1=`echo "$ind" | tr -d '[[:space:]]'`
 buscar=":"
 largo_linea=`expr index $indi1 $buscar`
 largo_linea=`expr $largo_linea - 1`
@@ -58,9 +58,6 @@ echo "$contenido_indicativo"
 echo "numero_linea_letrac $numero_linea_letrac"
 
 read a
-
-
-
 
 
 
