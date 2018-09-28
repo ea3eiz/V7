@@ -1266,7 +1266,7 @@ do
                         read memoria3
                         echo "<<<<<< Haciendo copia de seguridad de la M3 >>>>>"
                         sleep 3
-                        sed -i "tercer $memoria3" /home/pi/info_panel_control.ini
+                        sed -i "$tercer $memoria3" /home/pi/info_panel_control.ini
                         sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia3
 			                  break;;
 			                  [nN]* ) echo ""
