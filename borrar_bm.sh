@@ -415,12 +415,7 @@ do
                           buscar=":"
                           largo=`expr index $rxf $buscar`
                           echo "Valor actual del RXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
-           	              
-
-
-
-read -n 1 -p "Pulsa una tecla : " rxfre
-                          #read -n 1 -p 'Introduce RXFrequency:        ' rxfre
+           	              read -p -n 9 'Introduce RXFrequency:        ' rxfre
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
