@@ -419,7 +419,7 @@ do
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
-                          sed -i "$numero_linea_rxf RXFrequency=$var2" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$numero_linea_rxf RXFrequency=$rxfre" /home/pi/MMDVMHost/$DIRECTORIO
                           sed -i "$tercero RXFrequency=$rxfre" /home/pi/info_panel_control.ini
 			                    break;;
 			                    [nN]* ) echo ""
