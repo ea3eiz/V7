@@ -32,6 +32,11 @@ linea_master=$largo$letra
 master=$(awk "NR==$linea_master" /home/pi/MMDVMHost/$DIRECTORIO)
 sed -i "$cuarto $master" /home/pi/info_panel_control.ini
 
+#Escribe datos en el fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+primer="31c"
+segun="32c"
+tercer="33c"
+
 #Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
@@ -1190,7 +1195,7 @@ do
                         read memoria1
                         echo "<<<<<< Haciendo copia de seguridad de la M1 >>>>>"
                         sleep 3
-                        sed -i "31c $memoria1" /home/pi/info_panel_control.ini
+                        sed -i "$primer $memoria1" /home/pi/info_panel_control.ini
                         sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia
 			                  break;;
 			                  [nN]* ) echo ""
@@ -1223,7 +1228,7 @@ do
                         read memoria2
                         echo "<<<<<< Haciendo copia de seguridad de la M2 >>>>>"
                         sleep 3
-                        sed -i "32c $memoria2" /home/pi/info_panel_control.ini
+                        sed -i "$segun $memoria2" /home/pi/info_panel_control.ini
                         sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia2
 			                  break;;
 			                  [nN]* ) echo ""
@@ -1256,7 +1261,7 @@ do
                         read memoria3
                         echo "<<<<<< Haciendo copia de seguridad de la M3 >>>>>"
                         sleep 3
-                        sed -i "33c $memoria3" /home/pi/info_panel_control.ini
+                        sed -i "$tercer $memoria3" /home/pi/info_panel_control.ini
                         sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia3
 			                  break;;
 			                  [nN]* ) echo ""
