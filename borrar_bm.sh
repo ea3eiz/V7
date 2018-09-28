@@ -2,15 +2,19 @@
 while true
 do
 clear
-DIRECTORIO="MMDVM.ini"
-DIRECTORIO_copia="MMDVM.ini_copia"
-DIRECTORIO_copia2="MMDVM.ini_copia2"
-DIRECTORIO_copia3="MMDVM.ini_copia3"
-primero="6c"
-segundo="7c"
-tercero="8c"
-cuarto="9c"
-# Datos para el panel de control
+#Variables para utilizar los editores MMDVM, BM, PLUS depende del que queramos
+DIRECTORIO="MMDVMBM.ini"
+DIRECTORIO_copia="MMDVMBM.ini_copia"
+DIRECTORIO_copia2="MMDVMBM.ini_copia2"
+DIRECTORIO_copia3="MMDVMBM.ini_copia3"
+
+#Escribe datos en el fichero /home/pi/info_panel_control.ini para leer desde el panel de control
+primero="1c"
+segundo="2c"
+tercero="3c"
+cuarto="4c"
+
+# Recoge datos para leer desde el panel de control
 indi=$(awk "NR==2" /home/pi/MMDVMHost/$DIRECTORIO)
 sed -i "$primero $indi" /home/pi/info_panel_control.ini
 ide=$(awk "NR==3" /home/pi/MMDVMHost/$DIRECTORIO)
@@ -27,6 +31,7 @@ letra=c
 linea_master=$largo$letra
 master=$(awk "NR==$linea_master" /home/pi/MMDVMHost/$DIRECTORIO)
 sed -i "$cuarto $master" /home/pi/info_panel_control.ini
+
 #Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
@@ -38,22 +43,41 @@ echo "${VERDE}"
 echo "   **************************************************************************"
 echo "   *           Script para Modificar $DIRECTORIO             \33[1;31m by EA3EIZ\33[1;32m   *"
 echo "   **************************************************************************"
-echo -n "\33[1;36m   1)\33[0m Modificar indicativo  - \33[1;33m"
-ind=`grep -n -m 1 "Callsign" /home/pi/MMDVMHost/$DIRECTORIO`
+echo -n "${CIAN}   1)${GRIS} Modificar indicativo  - ${AMARILLO}"
+ind=`grep -n "^Callsign=" /home/pi/MMDVMHost/$DIRECTORIO`
+indi1=`echo "$indi" | tr -d '[[:space:]]'`
+buscar=":"
+largo_linea=`expr index $indi1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $indi1 1 $largo_linea`
+letrac=c
+numero_linea_letrac=$numero_linea$letrac
+contenido_indicativo=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+echo "$contenido_indicativo"
+
+
+
+
+
+
+
+
+
+
 ind1=`expr substr $ind 3 30`
 echo "$ind1"
 
-echo -n "\33[1;36m   2)\33[0m Modificar RXFrequency - \33[1;33m"
+echo -n "${CIAN}   2)${GRIS} Modificar RXFrequency - ${AMARILLO}"
 rxf=`grep -n "RXFrequency" /home/pi/MMDVMHost/$DIRECTORIO`
 rxf1=`expr substr $rxf 4 30`
 echo "$rxf1"
 
-echo -n "\33[1;36m   3)\33[0m Modificar TXFrequency - \33[1;33m"
+echo -n "${CIAN}   3)${GRIS} Modificar TXFrequency - ${AMARILLO}"
 txf=`grep -n "TXFrequency" /home/pi/MMDVMHost/$DIRECTORIO`
 txf1=`expr substr $txf 4 30`
 echo "$txf1"
 
-echo -n "\33[1;36m   4)\33[0m Modificar Location    - \33[1;33m"
+echo -n "${CIAN}   4)${GRIS} Modificar Location    - ${AMARILLO}"
 loc=`grep -n "^Location=" /home/pi/MMDVMHost/$DIRECTORIO`
 loc1=`echo "$loc" | tr -d '[[:space:]]'`
 buscar=":"
@@ -65,15 +89,15 @@ numero_linea_letrac=$numero_linea$letrac
 contenido_location=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_location"
 
-echo -n "\33[1;36m   5)\33[0m Modificar URL         - \33[1;33m"
+echo -n "${CIAN}   5)${GRIS} Modificar URL         - ${AMARILLO}"
 url=`grep -n "URL" /home/pi/MMDVMHost/$DIRECTORIO`
 url1=`expr substr $url 4 30`
 echo "$url1"
 
-echo "\33[1;36m   6)\33[0m Puerto para DVMEGA pinchado en Raspberri PI (ttyAMA0)\33[1;33m"
-echo "\33[1;36m   7)\33[0m Puerto para placa NTH/ZUM en arduino y Pincho Low Cost (ttyACM0)\33[1;33m"
-echo "\33[1;36m   8)\33[0m Puerto para placa NTH/ZUM en arduino y Pincho Low Cost (ttyACM1)\33[1;33m"
-echo "\33[1;36m   9)\33[0m Puerto para DVMEGA + Bluestack conectado por USB a Raspberry Pi(ttyUSB0)\33[1;33m"
+echo "${CIAN}   6)${GRIS} Puerto para DVMEGA pinchado en Raspberri PI (ttyAMA0)${AMARILLO}"
+echo "${CIAN}   7)${GRIS} Puerto para placa NTH/ZUM en arduino y Pincho Low Cost (ttyACM0)${AMARILLO}"
+echo "${CIAN}   8)${GRIS} Puerto para placa NTH/ZUM en arduino y Pincho Low Cost (ttyACM1)${AMARILLO}"
+echo "${CIAN}   9)${GRIS} Puerto para DVMEGA + Bluestack conectado por USB a Raspberry Pi(ttyUSB0)${AMARILLO}"
 echo -n "                            - "
 
 mode=`grep -n -m 1 "^Port=" /home/pi/MMDVMHost/$DIRECTORIO`
@@ -84,12 +108,12 @@ numero_linea_port=`expr substr $mode 1 $caracteres_linea`
 mode=$(awk "NR==$numero_linea_port" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$mode"
 
-echo -n "\33[1;36m  10)\33[0m Modificar ID          - \33[1;33m"
+echo -n "${CIAN}  10)${GRIS} Modificar ID          - ${AMARILLO}"
 idd=`grep -n "Id=" /home/pi/MMDVMHost/$DIRECTORIO`
 idd1=`expr substr $idd 3 30`
 echo "$idd1"
 
-echo -n "\33[1;36m  11)\33[0m Modificar Address     - \33[1;33m"
+echo -n "${CIAN}  11)${GRIS} Modificar Address     - ${AMARILLO}"
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo=`expr index $master $buscar`
@@ -101,7 +125,7 @@ letra=c
 linea_master=$largo$letra
 echo "$master1"
 
-echo -n "\33[1;36m  12)\33[0m Modificar Puerto      - \33[1;33m"
+echo -n "${CIAN}  12)${GRIS} Modificar Puerto      - ${AMARILLO}"
 lineaport=`expr substr $master 1 $largo1`
 lineaport=`expr $lineaport + 1`
 linea3port=$lineaport
@@ -109,17 +133,17 @@ letra=p
 linea2port=$lineaport$letra
 var100port= sed -n $linea2port  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  13)\33[0m Modificar Password    - \33[1;33m"
+echo -n "${CIAN}  13)${GRIS} Modificar Password    - ${AMARILLO}"
 pas=`grep -n '\<Password\>' /home/pi/MMDVMHost/$DIRECTORIO`
 pas1=`expr substr $pas 5 30`
 echo "$pas1"
 
-echo -n "\33[1;36m  14)\33[0m Modificar TXInvert    - \33[1;33m"
+echo -n "${CIAN}  14)${GRIS} Modificar TXInvert    - ${AMARILLO}"
 txinv=`grep -n '\<TXInvert\>' /home/pi/MMDVMHost/$DIRECTORIO`
 txinv1=`expr substr $txinv 4 30`
 echo -n "$txinv1"
 
-echo -n "\33[1;36m      a)\33[0m D-STAR      - \33[1;33m"
+echo -n "${CIAN}      a)${GRIS} D-STAR      - ${AMARILLO}"
 dstar=`grep -n "\[D-Star\]" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo_linea=`expr index $dstar $buscar`
@@ -132,12 +156,12 @@ letrac=c
 numero_linea_dstar_letrac=$numero_linea_dstar$letrac
 presentar_valo= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  15)\33[0m Modificar RXLevel     - \33[1;33m"
+echo -n "${CIAN}  15)${GRIS} Modificar RXLevel     - ${AMARILLO}"
 rx=`grep -n '\<RXLevel\>' /home/pi/MMDVMHost/$DIRECTORIO`
 rx1=`expr substr $rx 4 30`
 echo -n "$rx1"
 
-echo -n "\33[1;36m      b)\33[0m DMR         - \33[1;33m"
+echo -n "${CIAN}      b)${GRIS} DMR         - ${AMARILLO}"
 dmr=`grep -n "\[DMR\]" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo_linea=`expr index $dmr $buscar`
@@ -150,12 +174,12 @@ letrac=c
 numero_linea_dmr_letrac=$numero_linea_dmr$letrac #crea 74c
 presentar_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  16)\33[0m Modificar TXLevel     - \33[1;33m"
+echo -n "${CIAN}  16)${GRIS} Modificar TXLevel     - ${AMARILLO}"
 tx=`grep -n -m 1 '\<TXLevel\>' /home/pi/MMDVMHost/$DIRECTORIO`
 tx1=`expr substr $tx 4 30`
 echo -n "$tx1"
 
-echo -n "\33[1;36m      c)\33[0m FUSION      - \33[1;33m"
+echo -n "${CIAN}      c)${GRIS} FUSION      - ${AMARILLO}"
 fusion=`grep -n "LowDeviation" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo_linea=`expr index $fusion $buscar`
@@ -168,12 +192,12 @@ letrac=c
 numero_linea_fusion_letrac=$numero_linea_fusion$letrac
 presentar_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  17)\33[0m Modificar Duplex      - \33[1;33m"
+echo -n "${CIAN}  17)${GRIS} Modificar Duplex      - ${AMARILLO}"
 dup=`grep -n -m 1 '\<Duplex\>' /home/pi/MMDVMHost/$DIRECTORIO`
 dup1=`expr substr $dup 3 30`
 echo -n "$dup1"
 
-echo -n "\33[1;36m        d)\33[0m P25         - \33[1;33m"
+echo -n "${CIAN}        d)${GRIS} P25         - ${AMARILLO}"
 p25=`grep -n "\[P25\]" /home/pi/MMDVMHost/$DIRECTORIO`
 buscar=":"
 largo_linea=`expr index $p25 $buscar`
@@ -186,20 +210,20 @@ letrac=c
 numero_linea_p25_letrac=$numero_linea_p25$letrac
 presentar_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  18)\33[0m Modificar TXHang      - \33[1;33m"
+echo -n "${CIAN}  18)${GRIS} Modificar TXHang      - ${AMARILLO}"
 txh=`grep -n -m 1 '\<TXHang\>' /home/pi/MMDVMHost/$DIRECTORIO`
 txh1=`expr substr $txh 5 30`
 echo -n "$txh1"
 
-echo -n "\33[1;36m        e)\33[0m Baliza      - \33[1;33m"
+echo -n "${CIAN}        e)${GRIS} Baliza      - ${AMARILLO}"
 cw= sed -n "31p"  /home/pi/MMDVMHost/$DIRECTORIO;
 
-echo -n "\33[1;36m  19)\33[0m Modificar Tramas      - \33[1;33m"
+echo -n "${CIAN}  19)${GRIS} Modificar Tramas      - ${AMARILLO}"
 lg=`grep -n -m 1 '\<DisplayLevel\>' /home/pi/MMDVMHost/$DIRECTORIO`
 lg1=`expr substr $lg 4 30`
 echo -n "$lg1"
 
-echo -n "\33[1;36m  f)\33[0m RFModeHang  - \33[1;33m"
+echo -n "${CIAN}  f)${GRIS} RFModeHang  - ${AMARILLO}"
 modehang=`grep -n -m 1 -c '\<RFModeHang\>' /home/pi/MMDVMHost/$DIRECTORIO`
 if [ $modehang = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
@@ -209,12 +233,12 @@ modehang1=`expr substr $modehang 3 30`
 echo "$modehang1"
 fi
 
-echo -n "\33[1;36m  20)\33[0m Modificar Slot1       - \33[1;33m"
+echo -n "${CIAN}  20)${GRIS} Modificar Slot1       - ${AMARILLO}"
 sl=`grep -n -m 1 '\<Slot1\>' /home/pi/MMDVMHost/$DIRECTORIO`
 sl1=`expr substr $sl 5 30`
 echo -n "$sl1"
 
-echo -n "\33[1;36m         g)\33[0m Timeout     - \33[1;33m"
+echo -n "${CIAN}         g)${GRIS} Timeout     - ${AMARILLO}"
 timeo=`grep -n -m 1 -c '\<Timeout\>' /home/pi/MMDVMHost/$DIRECTORIO`
 if [ $timeo = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
@@ -224,7 +248,7 @@ timeo1=`expr substr $timeo 3 30`
 echo "$timeo1"
 fi
 
-echo -n "\33[1;36m  21)\33[0m Tipo Pantalla Display - \33[1;33m"
+echo -n "${CIAN}  21)${GRIS} Tipo Pantalla Display - ${AMARILLO}"
 Display=`grep -n -m 1 -c '\<Display\>' /home/pi/MMDVMHost/$DIRECTORIO`
 if [ $Display = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
@@ -245,7 +269,7 @@ letra=c
 linea_sed_MN=$numero_linea$letra
 echo " ${CIAN}h) ${GRIS}Port Nextion- ${AMARILLO}$MODEMNEXTION"
 
-echo -n "\33[1;36m  22)\33[0m Version Display       - \33[1;33m"
+echo -n "${CIAN}  22)${GRIS} Version Display       - ${AMARILLO}"
 ScreenLayout=`grep -n -m 1 -c '\<ScreenLayout\>' /home/pi/MMDVMHost/$DIRECTORIO`
 if [ $ScreenLayout = 0 ]; then
 echo "\33[1;31mEsta versión MMDVMHost no trae este parámetro"
@@ -292,18 +316,18 @@ linea_sed_POCSAG=$numero_linea$letra
 echo "${CIAN} j) ${GRIS}POCSAG      - ${AMARILLO}$POCSAG"
 
 # 24) Latitude=
-echo -n "\33[1;36m  24)\33[0m Coordenada Latitud    - \33[1;33m"
+echo -n "${CIAN}  24)${GRIS} Coordenada Latitud    - ${AMARILLO}"
 lat=`grep -n "Latitude" /home/pi/MMDVMHost/$DIRECTORIO`
 lat1=`expr substr $lat 4 30`
 echo "$lat1"
 
 # 25) Longitude=
-echo -n "\33[1;36m  25)\33[0m Coordenada Longitud   - \33[1;33m"
+echo -n "${CIAN}  25)${GRIS} Coordenada Longitud   - ${AMARILLO}"
 long=`grep -n "Longitude" /home/pi/MMDVMHost/$DIRECTORIO`
 long1=`expr substr $long 4 30`
 echo "$long1"
 
-echo -n "\33[1;36m  26)\33[0m Modulo D-STAR         - \33[1;33m"
+echo -n "${CIAN}  26)${GRIS} Modulo D-STAR         - ${AMARILLO}"
 modu=`grep -n -m 1 '\<Module\>' /home/pi/MMDVMHost/$DIRECTORIO`
 modu1=`expr substr $modu 4 30`
 echo -n "$modu1"
@@ -319,7 +343,7 @@ letrac=c
 numero_linea_jiter_letrac=$numero_linea$letrac
 echo "  ${CIAN}      k) ${GRIS}Jitter      - ${AMARILLO}$Jitter"
 
-echo -n "\33[1;36m  27)\33[0m Entra reflector DMR+  - \33[1;33m"
+echo -n "${CIAN}  27)${GRIS} Entra reflector DMR+  - ${AMARILLO}"
 OPCION=`expr substr $pas 1 $largo1`
 OPCION=`expr $OPCION + 1`
 linea33port=$OPCION
@@ -328,10 +352,10 @@ linea22port=$OPCION$letra
 var300port= sed -n $linea22port  /home/pi/MMDVMHost/$DIRECTORIO;
 
 echo ""
-echo "\33[1;36m  28)\33[1;33m Abrir fichero $DIRECTORIO para hacer cualquier cambio\33[1;33m"
+echo "${CIAN}  28)${AMARILLO} Abrir fichero $DIRECTORIO para hacer cualquier cambio${AMARILLO}"
 
-echo "\33[1;36m  29)\33[1;37m Guardar  fichero de Configuración en M1 \33[1;36m"
-echo -n "\33[1;36m  30)\33[1;32m Utilizar fichero de Configuración de M1: \33[1;36m"
+echo "${CIAN}  29)\33[1;37m Guardar  fichero de Configuración en M1 ${CIAN}"
+echo -n "${CIAN}  30)\33[1;32m Utilizar fichero de Configuración de M1: ${CIAN}"
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO_copia`
 buscar=":"
 largo=`expr index $master $buscar`
@@ -341,8 +365,8 @@ echo -n "$copia1"
 memoria1=$(awk "NR==31" /home/pi/info_panel_control.ini)
 echo " - $memoria1"
 
-echo "\33[1;36m  31)\33[1;37m Guardar  fichero de Configuración en M2: \33[1;36m"
-echo -n "\33[1;36m  32)\33[1;32m Utilizar fichero de Configuración en M2: \33[1;36m"
+echo "${CIAN}  31)\33[1;37m Guardar  fichero de Configuración en M2: ${CIAN}"
+echo -n "${CIAN}  32)\33[1;32m Utilizar fichero de Configuración en M2: ${CIAN}"
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO_copia2`
 buscar=":"
 largo=`expr index $master $buscar`
@@ -352,8 +376,8 @@ echo -n "$copia2"
 memoria2=$(awk "NR==32" /home/pi/info_panel_control.ini)
 echo " - $memoria2"
 
-echo "\33[1;36m  33)\33[1;37m Guardar  fichero de Configuración en M3: \33[1;36m"
-echo -n "\33[1;36m  34)\33[1;32m Utilizar fichero de Configuración en M3: \33[1;36m"
+echo "${CIAN}  33)\33[1;37m Guardar  fichero de Configuración en M3: ${CIAN}"
+echo -n "${CIAN}  34)\33[1;32m Utilizar fichero de Configuración en M3: ${CIAN}"
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO_copia3`
 buscar=":"
 largo=`expr index $master $buscar`
@@ -364,12 +388,12 @@ memoria3=$(awk "NR==33" /home/pi/info_panel_control.ini)
 echo " - $memoria3"
 
 echo ""
-echo "\33[1;36m  35)\33[1;31m Recuperar el fichero original $DIRECTORIO\33[1;33m"
+echo "${CIAN}  35)\33[1;31m Recuperar el fichero original $DIRECTORIO${AMARILLO}"
 
 echo ""
-echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
+echo "${CIAN}   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
 echo ""
-echo -n "\33[1;36m   Elige una opción: " 
+echo -n "${CIAN}   Elige una opción: " 
 read escoger_menu
 
 case $escoger_menu in
@@ -378,24 +402,15 @@ while true
 do
                           buscar=":"
                           largo=`expr index $ind $buscar`
-                          echo "Valor actual Indicativo: \33[1;33m${ind#*=}\33[1;37m"
+                          echo "Valor actual Indicativo: ${AMARILLO}${ind#*=}\33[1;37m"
            	              read -p 'Introduce tu indicativo: ' indicativo
-                          letra=c
-                          if [ $largo = 3 ]
-                          then
-                          linea=`expr substr $ind 1 1`
-                          else
-                          linea=`expr substr $ind 1 1`
-                          fi
-                          linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
                           indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
 			                    indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
-                          sed -i "$linea Callsign=$indicativo" /home/pi/MMDVMHost/$DIRECTORIO
-                          indi=$(awk "NR==2" /home/pi/MMDVMHost/$DIRECTORIO)
-                          sed -i "$primero $indi" /home/pi/info_panel_control.ini
+                          sed -i "$numero_linea_letrac Callsign=$indicativo" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$primero $indicativo" /home/pi/info_panel_control.ini
                           sed -i "40c $indicativo" /home/pi/info_panel_control.ini #escribe solo el indicativ
 			                    break;;
 			                    [nN]* ) echo ""
@@ -407,7 +422,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $rxf $buscar`
-                          echo "Valor actual del RXFrequency: \33[1;33m${rxf#*=}\33[1;37m"
+                          echo "Valor actual del RXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
            	              read -p 'Introduce RXFrequency:        ' var2
                           letra=c
                           if [ $largo = 3 ]
@@ -432,7 +447,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $txf $buscar`
-                          echo "Valor actual del TXFrequency: \33[1;33m${txf#*=}\33[1;37m"
+                          echo "Valor actual del TXFrequency: ${AMARILLO}${txf#*=}\33[1;37m"
            	              read -p 'Introduce TXFrequency:        ' var2
                           letra=c
                           if [ $largo = 3 ]
@@ -454,7 +469,7 @@ done;;
 4) echo ""
 while true
 do
-                          echo "Valor de la Ciudad: \33[1;33m${contenido_location#*=}\33[1;37m"
+                          echo "Valor de la Ciudad: ${AMARILLO}${contenido_location#*=}\33[1;37m"
                           read -p 'Introduce tu Ciudad ' loc1
                           actualizar=S 
                           case $actualizar in
@@ -470,7 +485,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $url $buscar`
-                          echo "Valor de  la  URL   Web: \33[1;33m${url#*=}\33[1;37m"
+                          echo "Valor de  la  URL   Web: ${AMARILLO}${url#*=}\33[1;37m"
            	              read -p 'Introduce URL de tu Web: ' ur1
                           letra=c
                           if [ $largo = 3 ]
@@ -552,7 +567,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $idd $buscar`
-                          echo "Valor  actual  del Id: \33[1;33m${idd#*=}\33[1;37m"
+                          echo "Valor  actual  del Id: ${AMARILLO}${idd#*=}\33[1;37m"
            	              read -p 'Introduce un ID válido ' miid
                           letra=c
                           if [ $largo = 3 ]
@@ -575,7 +590,7 @@ done;;
 11) echo ""
 while true
 do
-                      echo "Valor actual del Master: \33[1;33m${master#*=}\33[1;37m"
+                      echo "Valor actual del Master: ${AMARILLO}${master#*=}\33[1;37m"
                       read -p 'Brandmeister=master.spain-dmr.es / DMR+=212.237.3.141: ' master1
                       actualizar=S 
                       case $actualizar in
@@ -611,7 +626,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $pas $buscar`
-                          echo "   Valor actual del Password: \33[1;33m${pas#*=}\33[1;37m"
+                          echo "   Valor actual del Password: ${AMARILLO}${pas#*=}\33[1;37m"
            	              read -p 'Brandmeister=passw0rd   DMR+=PASSWORD: ' pas1
                           letra=c
                           if [ $largo = 3 ]
@@ -636,7 +651,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $txinv $buscar`
-                          echo "Valor  actual del  TXInvert: \33[1;33m${txinv#*=}\33[1;37m"
+                          echo "Valor  actual del  TXInvert: ${AMARILLO}${txinv#*=}\33[1;37m"
            	              read -p 'Valor óptimo para DVMEGA=1 : ' txinv1
                           letra=c
                           if [ $largo = 3 ]
@@ -660,7 +675,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $rx $buscar`
-                          echo "Valor  actual  del  RXLevel : \33[1;33m${rx#*=}\33[1;37m"
+                          echo "Valor  actual  del  RXLevel : ${AMARILLO}${rx#*=}\33[1;37m"
            	              read -p 'Valor óptimo para DVMEGA=45 : ' var2
                           letra=c
                           if [ $largo = 3 ]
@@ -684,7 +699,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $tx $buscar`
-                          echo "Valor  actual  del  TXLevel : \33[1;33m${tx#*=}\33[1;37m"
+                          echo "Valor  actual  del  TXLevel : ${AMARILLO}${tx#*=}\33[1;37m"
            	              read -p 'Valor óptimo para DVMEGA=50 : ' var2
                           letra=c
                           if [ $largo = 3 ]3
@@ -708,7 +723,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $dup $buscar`
-                          echo "Valor actual del Duplex: \33[1;33m${dup#*=}\33[1;37m"
+                          echo "Valor actual del Duplex: ${AMARILLO}${dup#*=}\33[1;37m"
            	              read -p 'Para un repetidor Duplex=1 Para un DVMEGA Duplex=0: ' dup1
                           letra=c
                           if [ $largo = 3 ]
@@ -732,7 +747,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $txh $buscar`
-                          echo "Valor actual del TXHang: \33[1;33m${txh#*=}\33[1;37m"
+                          echo "Valor actual del TXHang: ${AMARILLO}${txh#*=}\33[1;37m"
            	              read -p 'Para un repetidor TXHang=4 Para un DVMEGA TXHang=0: ' txh1
                           letra=c
                           if [ $largo = 3 ]
@@ -756,7 +771,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $lg $buscar`
-                          echo "Valor actual del DisplayLevel: \33[1;33m${lg#*=}\33[1;37m"
+                          echo "Valor actual del DisplayLevel: ${AMARILLO}${lg#*=}\33[1;37m"
            	              read -p 'Para visualizar tramas seguidas introduce 1, para una sola trama introduce 2:' lg1
                           letra=c
                           if [ $largo = 3 ]
@@ -788,7 +803,7 @@ do
                           fi
                           buscar=":"
                           largo=`expr index $sl $buscar`
-                          echo "Valor actual del Slot1=: \33[1;33m${sl#*=}\33[1;37m"
+                          echo "Valor actual del Slot1=: ${AMARILLO}${sl#*=}\33[1;37m"
            	              read -p 'Para DVMEGA Modificar el valor del Slot1=0: ' V
                           letra=c
                           if [ $largo = 3 ]
@@ -820,7 +835,7 @@ do
                           fi
                           buscar=":"
                           largo=`expr index $Display $buscar`
-                          echo "Valor actual del Display=: \33[1;33m${Display1#*=}\33[1;37m"
+                          echo "Valor actual del Display=: ${AMARILLO}${Display1#*=}\33[1;37m"
                           read -p 'Introcuce el nombre de tu Dispaly: ' V
                           letra=c
                           if [ $largo = 2 ]
@@ -852,7 +867,7 @@ do
                           fi
                           buscar=":"
                           largo=`expr index $ScreenLayout $buscar`
-                          echo "Valor actual del ScreenLayout=: \33[1;33m${ScreenLayout1#*=}\33[1;37m"
+                          echo "Valor actual del ScreenLayout=: ${AMARILLO}${ScreenLayout1#*=}\33[1;37m"
                           read -p 'Este parametro puede ser 0 ó 1: ' V
                           letra=c
                           if [ $largo = 3 ]
@@ -891,7 +906,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $modu $buscar`
-                          echo "Valor  actual  del  Module: \33[1;33m${modu#*=}\33[1;37m"
+                          echo "Valor  actual  del  Module: ${AMARILLO}${modu#*=}\33[1;37m"
            	              read -p 'Valor óptimo para D-STAR=B: '  modu1
                           letra=c
                           if [ $largo = 3 ]
@@ -915,7 +930,7 @@ done;;
 a) echo ""
 while true
 do
-                          echo -n "Valor actual D-STAR \33[1;33m${presentar_valor#*=}\33[1;37m"
+                          echo -n "Valor actual D-STAR ${AMARILLO}${presentar_valor#*=}\33[1;37m"
                           presenta_valor= sed -n $numero_linea_dstar_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
                           read -p 'Desactivado=0 Activado=1:  '   dmrac1
                           actualizar=S 
@@ -930,7 +945,7 @@ done;;
 b) echo ""
 while true
 do
-                          echo -n "Valor  actual  DMR \33[1;33m${presentar_valor#*=}\33[1;37m"
+                          echo -n "Valor  actual  DMR ${AMARILLO}${presentar_valor#*=}\33[1;37m"
                           presenta_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
            	              read -p 'Desactivado=0 Activado=1: '   dmrac1
                           actualizar=S 
@@ -945,7 +960,7 @@ done;;
 c) echo ""
 while true
 do
-                          echo -n "Valor actual FUSION \33[1;33m${presentar_valor#*=}\33[1;37m"
+                          echo -n "Valor actual FUSION ${AMARILLO}${presentar_valor#*=}\33[1;37m"
                           presenta_valor= sed -n $numero_linea_fusion_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
                           read -p 'Desactivado=0 Activado=1:  '   dmrac1
                           actualizar=S 
@@ -960,7 +975,7 @@ done;;
 d) echo ""
 while true
 do
-                          echo -n "Valor  actual  P25 \33[1;33m${presentar_valor#*=}\33[1;37m"
+                          echo -n "Valor  actual  P25 ${AMARILLO}${presentar_valor#*=}\33[1;37m"
                           presenta_valor= sed -n $numero_linea_p25_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
                           read -p 'Desactivado=0 Activado=1: '   dmrac1
                           actualizar=S 
@@ -997,7 +1012,7 @@ do
                           fi
                           buscar=":"
                           largo=`expr index $modehang $buscar`
-                          echo "Valor actual del RFModeHang = : \33[1;33m${modehang1#*=}\33[1;37m"
+                          echo "Valor actual del RFModeHang = : ${AMARILLO}${modehang1#*=}\33[1;37m"
                           read -p 'Introcuce el valor para RFModeHang (optimo=3): ' V
                           letra=c
                           if [ $largo = 2 ]
@@ -1029,7 +1044,7 @@ do
                           fi
                           buscar=":"
                           largo=`expr index $timeo $buscar`
-                          echo "Valor actual del Timeout = : \33[1;33m${timeo1#*=}\33[1;37m"
+                          echo "Valor actual del Timeout = : ${AMARILLO}${timeo1#*=}\33[1;37m"
                           read -p 'Introcuce el valor para Timeout (valor optimo=0): ' V
                           letra=c
                           if [ $largo = 2 ]
@@ -1052,7 +1067,7 @@ done;;
 h) echo ""
 while true
 do
-                          echo "Valor del Port: \33[1;33m$MODEMNEXTION"
+                          echo "Valor del Port: ${AMARILLO}$MODEMNEXTION"
                           read -p 'Ejp. modem, /dev/ttyAMA0, /dev/rfcomm0, /dev/ttyUSB0 :' lat1
                           actualizar=S 
                           case $actualizar in
@@ -1066,7 +1081,7 @@ done;;
 i) echo ""
 while true
 do
-                          echo "Valor actual NXDN: \33[1;33m$NXDN"
+                          echo "Valor actual NXDN: ${AMARILLO}$NXDN"
                           read -p 'Desactivado=0 Activado=1: '   NXDN1
                           actualizar=S 
                           case $actualizar in
@@ -1080,7 +1095,7 @@ done;;
 j) echo ""
 while true
 do
-                          echo "Valor actual POCSAG: \33[1;33m$POCSAG"
+                          echo "Valor actual POCSAG: ${AMARILLO}$POCSAG"
                           read -p 'Desactivado=0 Activado=1: '   POCSAG1
                           actualizar=S 
                           case $actualizar in
@@ -1095,7 +1110,7 @@ k) echo ""
 while true
 do                         
                           valor=$(awk "NR==$numero_linea_jiter_letrap" /home/pi/MMDVMHost/$DIRECTORIO)
-                          echo "Valor actual  del Jitter: \33[1;33m$valor"
+                          echo "Valor actual  del Jitter: ${AMARILLO}$valor"
                           read -p 'Introduce valor entre 360 a 600: '   JITTER
                           actualizar=S 
                           case $actualizar in
@@ -1111,7 +1126,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $lat $buscar`
-                          echo "Valor de la Latitud: \33[1;33m${lat#*=}\33[1;37m"
+                          echo "Valor de la Latitud: ${AMARILLO}${lat#*=}\33[1;37m"
            	              read -p 'Introduce la Latitud ' lat1
                           letra=c
                           if [ $largo = 3 ]
@@ -1136,7 +1151,7 @@ while true
 do
                           buscar=":"
                           largo=`expr index $long $buscar`
-                          echo "Valor de la Longitud: \33[1;33m${long#*=}\33[1;37m"
+                          echo "Valor de la Longitud: ${AMARILLO}${long#*=}\33[1;37m"
            	              read -p 'Introduce la Longitud ' long1
                           letra=c
                           if [ $largo = 3 ]
@@ -1302,7 +1317,7 @@ esac
 done;;
 0) echo ""
 clear
-echo "\33[1;33m   **************************************************"
+echo "${AMARILLO}   **************************************************"
 echo "   *                                                *"
 echo "   *     CERRANDO SCRIPT                            *"
 echo "   *                                                *"

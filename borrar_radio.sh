@@ -2,14 +2,14 @@
 while true
 do
 clear
-DIRECTORIO="MMDVMBM.ini"
-DIRECTORIO_copia="MMDVMBM.ini_copia"
-DIRECTORIO_copia2="MMDVMBM.ini_copia2"
-DIRECTORIO_copia3="MMDVMBM.ini_copia3"
-primero="1c"
-segundo="2c"
-tercero="3c"
-cuarto="4c"
+DIRECTORIO="MMDVM.ini"
+DIRECTORIO_copia="MMDVM.ini_copia"
+DIRECTORIO_copia2="MMDVM.ini_copia2"
+DIRECTORIO_copia3="MMDVM.ini_copia3"
+primero="6c"
+segundo="7c"
+tercero="8c"
+cuarto="9c"
 # Datos para el panel de control
 indi=$(awk "NR==2" /home/pi/MMDVMHost/$DIRECTORIO)
 sed -i "$primero $indi" /home/pi/info_panel_control.ini
