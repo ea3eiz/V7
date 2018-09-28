@@ -416,7 +416,7 @@ do
                           largo=`expr index $rxf $buscar`
                           echo "Valor actual del RXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
            	              
-
+sleep 5
 
 
 
