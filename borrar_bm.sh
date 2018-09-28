@@ -437,7 +437,7 @@ do
                           echo "Valor actual del TXFrequency: ${AMARILLO}${txf#*=}\33[1;37m"
            	              read -p 'Introduce TXFrequency:        ' txfre
                           [sS]* ) echo ""
-                          sed -i "$numero_linea_txf TXFrequency=$txfre" /home/pi/MMDVMHost/$DIRECTORIO
+                          #sed -i "$numero_linea_txf TXFrequency=$txfre" /home/pi/MMDVMHost/$DIRECTORIO
 			                    break;;
 			                    [nN]* ) echo ""
 			                    break;;
