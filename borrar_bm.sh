@@ -55,9 +55,9 @@ numero_linea_letrac=$numero_linea$letrac
 contenido_indicativo=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_indicativo"
 
+echo "numero_linea_letrac $numero_linea_letrac"
 
-
-
+read a
 
 
 
