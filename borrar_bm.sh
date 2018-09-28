@@ -431,7 +431,7 @@ do
 			                    break;;
 esac
 done;;
-3) echo ""
+3333) echo ""
 while true
 do
                           echo "Valor actual del TXFrequency: ${AMARILLO}${txf#*=}\33[1;37m"
