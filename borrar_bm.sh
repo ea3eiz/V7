@@ -68,16 +68,16 @@ contenido_rxf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_rxf"
 
 echo -n "${CIAN}   3)${GRIS} Modificar TXFrequency - ${AMARILLO}"
-rxf=`grep -n "^RXFrequency=" /home/pi/MMDVMHost/$DIRECTORIO`
-rxf1=`echo "$rxf" | tr -d '[[:space:]]'`
+txf=`grep -n "^TXFrequency=" /home/pi/MMDVMHost/$DIRECTORIO`
+txf1=`echo "$txf" | tr -d '[[:space:]]'`
 buscar=":"
-largo_linea=`expr index $rxf1 $buscar`
+largo_linea=`expr index $txf1 $buscar`
 largo_linea=`expr $largo_linea - 1`
-numero_linea=`expr substr $rxf1 1 $largo_linea`
+numero_linea=`expr substr $txf1 1 $largo_linea`
 letrac=c
-numero_linea_rxf=$numero_linea$letrac
-contenido_rxf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
-echo "$contenido_rxf"
+numero_linea_txf=$numero_linea$letrac
+contenido_txf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+echo "$contenido_txf"
 
 echo -n "${CIAN}   4)${GRIS} Modificar Location    - ${AMARILLO}"
 loc=`grep -n "^Location=" /home/pi/MMDVMHost/$DIRECTORIO`
@@ -431,16 +431,19 @@ do
 			                    break;;
 esac
 done;;
-3333) echo ""
+2) echo ""
 while true
 do
-                          echo "Valor actual del TXFrequency: ${AMARILLO}${txf#*=}\33[1;37m"
-           	              read -p 'Introduce TXFrequency:        ' txfre
+                          echo "Valor actual del RXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
+                          read -p 'Introduce RXFrequency:        ' rxfre
+                          actualizar=S 
+                          case $actualizar in
                           [sS]* ) echo ""
-                          #sed -i "$numero_linea_txf TXFrequency=$txfre" /home/pi/MMDVMHost/$DIRECTORIO
-			                    break;;
-			                    [nN]* ) echo ""
-			                    break;;
+                          sed -i "$numero_linea_rxf RXFrequency=$rxfre" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$tercero RXFrequency=$rxfre" /home/pi/info_panel_control.ini
+                          break;;
+                          [nN]* ) echo ""
+                          break;;
 esac
 done;;
 4) echo ""
