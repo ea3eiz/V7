@@ -348,7 +348,7 @@ buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia2=`expr substr $master $largo 40`
-echo "$copia2"
+echo -n "$copia2"
 memoria2=$(awk "NR==32" /home/pi/info_panel_control.ini)
 echo " - $memoria2"
 
@@ -359,7 +359,7 @@ buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia3=`expr substr $master $largo 40`
-echo "$copia3"
+echo -n "$copia3"
 memoria3=$(awk "NR==33" /home/pi/info_panel_control.ini)
 echo " - $memoria3"
 
