@@ -336,8 +336,8 @@ buscar=":"
 largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia1=`expr substr $master $largo 40`
-echo "$copia1$option"
-
+echo -n "$copia1"
+echo "4374"
 echo "\33[1;36m  31)\33[1;37m Guardar  fichero de Configuración en M2: \33[1;36m"
 echo -n "\33[1;36m  32)\33[1;32m Utilizar fichero de Configuración en M2: \33[1;36m"
 master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO_copia2`
