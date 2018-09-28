@@ -420,7 +420,7 @@ sleep 5
 
 
 
-                          read -n 9 -p 'Introduce RXFrequency:        ' rxfre
+                          read -n 1 -p 'Introduce RXFrequency:        ' rxfre
                           actualizar=S 
                           case $actualizar in
 			                    [sS]* ) echo ""
