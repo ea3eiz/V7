@@ -51,7 +51,7 @@ largo_linea=`expr index $indi1 $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $indi1 1 $largo_linea`
 letrac=c
-numero_linea_letrac=$numero_linea$letrac
+numero_linea_indi=$numero_linea$letrac
 contenido_indicativo=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_indicativo"
 
@@ -395,7 +395,7 @@ do
 			                    [sS]* ) echo ""
                           indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
 			                    indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
-                          sed -i "$numero_linea_letrac Callsign=$indicativo" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$numero_linea_indi Callsign=$indicativo" /home/pi/MMDVMHost/$DIRECTORIO
                           sed -i "$primero $contenido_indicativo" /home/pi/info_panel_control.ini
                           sed -i "40c $indicativo" /home/pi/info_panel_control.ini #escribe solo el indicativ
 			                    break;;
