@@ -68,17 +68,17 @@ contenido_rxf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_rxf"
 
 echo -n "${CIAN}   3)${GRIS} Modificar TXFrequency - ${AMARILLO}"
-txf=`grep -n "^TXFrequency=" /home/pi/MMDVMHost/$DIRECTORIO`
-txf1=`echo "$txf" | tr -d '[[:space:]]'`
+rxf=`grep -n "^RXFrequency=" /home/pi/MMDVMHost/$DIRECTORIO`
+rxf1=`echo "$rxf" | tr -d '[[:space:]]'`
 buscar=":"
-largo_linea=`expr index $txf1 $buscar`
+largo_linea=`expr index $rxf1 $buscar`
 largo_linea=`expr $largo_linea - 1`
-numero_linea=`expr substr $txf1 1 $largo_linea`
+numero_linea=`expr substr $rxf1 1 $largo_linea`
 letrac=c
-numero_linea_txf=$numero_linea$letrac
-contenido_txf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
-echo "$contenido_txf"
-read a
+numero_linea_rxf=$numero_linea$letrac
+contenido_rxf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
+echo "$contenido_rxf"
+
 echo -n "${CIAN}   4)${GRIS} Modificar Location    - ${AMARILLO}"
 loc=`grep -n "^Location=" /home/pi/MMDVMHost/$DIRECTORIO`
 loc1=`echo "$loc" | tr -d '[[:space:]]'`
