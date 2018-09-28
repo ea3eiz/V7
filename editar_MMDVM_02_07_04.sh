@@ -37,6 +37,11 @@ primer="37c"
 segun="38c"
 tercer="39c"
 
+#Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+primer1="37c"
+segun1="38c"
+tercer1="39c"
+
 #Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
@@ -369,7 +374,7 @@ largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia1=`expr substr $master $largo 40`
 echo -n "$copia1"
-memoria1=$(awk "NR==31" /home/pi/info_panel_control.ini)
+memoria1=$(awk "NR==$primer1" /home/pi/info_panel_control.ini)
 echo " - $memoria1"
 
 echo "${CIAN}  31)\33[1;37m Guardar  fichero de Configuración en M2: ${CIAN}"
@@ -380,7 +385,7 @@ largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia2=`expr substr $master $largo 40`
 echo -n "$copia2"
-memoria2=$(awk "NR==32" /home/pi/info_panel_control.ini)
+memoria2=$(awk "NR==$segun1" /home/pi/info_panel_control.ini)
 echo " - $memoria2"
 
 echo "${CIAN}  33)\33[1;37m Guardar  fichero de Configuración en M3: ${CIAN}"
@@ -391,7 +396,7 @@ largo=`expr index $master $buscar`
 largo=`expr $largo + 9`
 copia3=`expr substr $master $largo 40`
 echo -n "$copia3"
-memoria3=$(awk "NR==33" /home/pi/info_panel_control.ini)
+memoria3=$(awk "NR==$tercer1" /home/pi/info_panel_control.ini)
 echo " - $memoria3"
 
 echo ""
