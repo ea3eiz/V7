@@ -1191,6 +1191,8 @@ do
                         case $actualizar in
 			                  [sS]* ) echo ""
                         clear
+                        echo "Introduce nombre memoria máximo 10 caracteres"
+                        read memoria1
                         echo "<<<<<< Haciendo copia de seguridad de la M1 >>>>>"
                         sleep 3
                         sed -i "31c $memoria1" /home/pi/info_panel_control.ini
