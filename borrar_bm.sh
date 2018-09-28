@@ -55,15 +55,6 @@ numero_linea_letrac=$numero_linea$letrac
 contenido_indicativo=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_indicativo"
 
-echo "numero_linea_letrac $numero_linea_letrac"
-
-read a
-
-
-
-ind1=`expr substr $ind 3 30`
-echo "$ind1"
-
 echo -n "${CIAN}   2)${GRIS} Modificar RXFrequency - ${AMARILLO}"
 rxf=`grep -n "RXFrequency" /home/pi/MMDVMHost/$DIRECTORIO`
 rxf1=`expr substr $rxf 4 30`
