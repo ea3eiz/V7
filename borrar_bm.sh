@@ -410,7 +410,7 @@ do
                           indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
 			                    indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
                           sed -i "$numero_linea_letrac Callsign=$indicativo" /home/pi/MMDVMHost/$DIRECTORIO
-                          sed -i "$primero $indicativo" /home/pi/info_panel_control.ini
+                          sed -i "$primero $contenido_indicativo" /home/pi/info_panel_control.ini
                           sed -i "40c $indicativo" /home/pi/info_panel_control.ini #escribe solo el indicativ
 			                    break;;
 			                    [nN]* ) echo ""
