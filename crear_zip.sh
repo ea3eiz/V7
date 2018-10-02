@@ -52,7 +52,9 @@
             cd /usr/local/etc/svxlink/svxlink.d/
             sudo cp -f ModuleEchoLink.conf /home/pi/Downloads
 
-
+            cp /usr/local/etc/opendv/ircddbgateway /home/pi/Downloads
+            cp /usr/local/etc/opendv/dstarrepeater /home/pi/Downloads
+            
 cd /home/pi/
 tar -zcvf copia.tar.gz Downloads
 cp  copia.tar.gz /var/www/html/upload/files
