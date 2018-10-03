@@ -7470,9 +7470,9 @@ clear
                     cp MMDVM.ini MMDVMPLUS.ini_copia3
 
                     cp MMDVM.ini MMDVMDSTAR.ini
-                    cp MMDVM.ini MMMMDVMDSTAR.ini_copia
-                    cp MMDVM.ini MMMMDVMDSTAR.ini_copia2
-                    cp MMDVM.ini MMMMDVMDSTAR.ini_copia3
+                    cp MMDVM.ini MMDVMDSTAR.ini_copia
+                    cp MMDVM.ini MMDVMDSTAR.ini_copia2
+                    cp MMDVM.ini MMDVMDSTAR.ini_copia3
 
                     cp MMDVM.ini MMDVMFUSION.ini
                     cp MMDVM.ini MMDVMFUSION.ini_copia
