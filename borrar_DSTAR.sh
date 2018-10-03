@@ -3,13 +3,13 @@ while true
 do
 clear
             #comprueba si el fichero existe
-            if [ -f /home/pi/MMDVMHos/MMDVMDSTAR.ini_copia ];
+            if [ -f /home/pi/MMDVMHost/MMDVMDSTAR.ini_copia ];
             then
             echo ""
             else
-            sudo cp -f /home/pi/MMDVMHos/MMDVMDSTAR.ini /home/pi/MMDVMHos/MMDVMDSTAR.ini_copia
-            sudo cp -f /home/pi/MMDVMHos/MMDVMDSTAR.ini /home/pi/MMDVMHos/MMDVMDSTAR.ini_copia2
-            sudo cp -f /home/pi/MMDVMHos/MMDVMDSTAR.ini /home/pi/MMDVMHos/MMDVMDSTAR.ini_copia3
+            sudo cp -f /home/pi/MMDVMHost/MMDVMDSTAR.ini /home/pi/MMDVMHost/MMDVMDSTAR.ini_copia
+            sudo cp -f /home/pi/MMDVMHost/MMDVMDSTAR.ini /home/pi/MMDVMHost/MMDVMDSTAR.ini_copia2
+            sudo cp -f /home/pi/MMDVMHost/MMDVMDSTAR.ini /home/pi/MMDVMHost/MMDVMDSTAR.ini_copia3
             fi
             #================================
 
