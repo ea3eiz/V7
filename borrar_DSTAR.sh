@@ -2,8 +2,32 @@
 while true
 do
 clear
+            #comprueba si el fichero existe
+            if [ -f /home/pi/MMDVMHos/MMMMDVMDSTAR.ini_copia ];
+            then
+            echo ""
+            else
+            sudo cp -f /home/pi/MMDVMHos/MMDVMDSTAR.ini /home/pi/MMDVMHos/MMMMDVMDSTAR.ini_copia
+            sudo cp -f /home/pi/MMDVMHos/MMDVMDSTAR.ini /home/pi/MMDVMHos/MMMMDVMDSTAR.ini_copia2
+            sudo cp -f /home/pi/MMDVMHos/MMDVMDSTAR.ini /home/pi/MMDVMHos/MMMMDVMDSTAR.ini_copia3
+            fi
+            #================================
+
 #Variables para utilizar los editores MMDVM, BM, PLUS depende del que queramos
 DIRECTORIO="MMDVMDSTAR.ini"
+DIRECTORIO_copia="MMDVMDSTAR.ini_copia"
+DIRECTORIO_copia2="MMDVMDSTAR.ini_copia2"
+DIRECTORIO_copia3="MMDVMDSTAR.ini_copia3"
+
+#Escribe datos en el fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+primer="15c"
+segun="16c"
+tercer="17c"
+
+#Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+primer1="15c"
+segun1="16c"
+tercer1="17c"
 
 #Colores
 ROJO="\033[1;31m"
@@ -329,6 +353,42 @@ var300port= sed -n $linea22port  /home/pi/MMDVMHost/$DIRECTORIO;
 echo ""
 echo "${CIAN}  28)${AMARILLO} Abrir fichero $DIRECTORIO para hacer cualquier cambio${AMARILLO}"
 
+echo "${CIAN}  29)\33[1;37m Guardar  fichero de Configuración en M1 ${CIAN}"
+echo -n "${CIAN}  30)\33[1;32m Utilizar fichero de Configuración de M1: ${CIAN}"
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO_copia`
+buscar=":"
+largo=`expr index $master $buscar`
+largo=`expr $largo + 9`
+copia1=`expr substr $master $largo 40`
+echo -n "$copia1"
+memoria1=$(awk "NR==$primer1" /home/pi/info_panel_control.ini)
+echo " - $memoria1"
+
+echo "${CIAN}  31)\33[1;37m Guardar  fichero de Configuración en M2: ${CIAN}"
+echo -n "${CIAN}  32)\33[1;32m Utilizar fichero de Configuración en M2: ${CIAN}"
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO_copia2`
+buscar=":"
+largo=`expr index $master $buscar`
+largo=`expr $largo + 9`
+copia2=`expr substr $master $largo 40`
+echo -n "$copia2"
+memoria2=$(awk "NR==$segun1" /home/pi/info_panel_control.ini)
+echo " - $memoria2"
+
+echo "${CIAN}  33)\33[1;37m Guardar  fichero de Configuración en M3: ${CIAN}"
+echo -n "${CIAN}  34)\33[1;32m Utilizar fichero de Configuración en M3: ${CIAN}"
+master=`grep -n -m 1 "^Address=" /home/pi/MMDVMHost/$DIRECTORIO_copia3`
+buscar=":"
+largo=`expr index $master $buscar`
+largo=`expr $largo + 9`
+copia3=`expr substr $master $largo 40`
+echo -n "$copia3"
+memoria3=$(awk "NR==$tercer1" /home/pi/info_panel_control.ini)
+echo " - $memoria3"
+
+echo ""
+echo "${CIAN}  35)\33[1;31m Recuperar el fichero original $DIRECTORIO${AMARILLO}"
+
 echo ""
 echo "${CIAN}   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
 echo ""
@@ -340,32 +400,32 @@ case $escoger_menu in
 while true
 do
                           echo "Valor actual Indicativo: ${AMARILLO}${ind#*=}\33[1;37m"
-                          read -p 'Introduce tu indicativo: ' indicativo
+           	              read -p 'Introduce tu indicativo: ' indicativo
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           indicativo=`echo "$indicativo" | tr [:lower:] [:upper:]`
-                          indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
+			                    indicativo=`echo "$indicativo" | tr -d '[[:space:]]'`
                           sed -i "$numero_linea_indi Callsign=$indicativo" /home/pi/MMDVMHost/$DIRECTORIO
                           sed -i "$primero $contenido_indicativo" /home/pi/info_panel_control.ini
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 2) echo ""
 while true
 do
                           echo "Valor actual del RXFrequency: ${AMARILLO}${rxf#*=}\33[1;37m"
-                          read -p 'Introduce RXFrequency:        ' rxfre
+           	              read -p 'Introduce RXFrequency:        ' rxfre
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$numero_linea_rxf RXFrequency=$rxfre" /home/pi/MMDVMHost/$DIRECTORIO
                           sed -i "$tercero RXFrequency=$rxfre" /home/pi/info_panel_control.ini
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 3) echo ""
@@ -389,11 +449,11 @@ do
                           read -p 'Introduce tu Ciudad ' loc1
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$numero_linea_letrac Location=$loc1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 5) echo ""
@@ -402,7 +462,7 @@ do
                           buscar=":"
                           largo=`expr index $url $buscar`
                           echo "Valor de  la  URL   Web: ${AMARILLO}${url#*=}\33[1;37m"
-                          read -p 'Introduce URL de tu Web: ' ur1
+           	              read -p 'Introduce URL de tu Web: ' ur1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -413,12 +473,12 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
-                          ur1=`echo "$ur1" | tr -d '[[:space:]]'`
+			                    [sS]* ) echo ""
+			                    ur1=`echo "$ur1" | tr -d '[[:space:]]'`
                           sed -i "$linea URL=$ur1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 6) echo ""
@@ -426,13 +486,13 @@ while true
 do
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
                           sed -i "$numero_linea_port Port=/dev/ttyAMA0" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 7) echo ""
@@ -440,13 +500,13 @@ while true
 do
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
                           sed -i "$numero_linea_port Port=/dev/ttyACM0" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 8) echo ""
@@ -454,13 +514,13 @@ while true
 do
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
                           sed -i "$numero_linea_port Port=/dev/ttyACM1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 9) echo ""
@@ -469,13 +529,13 @@ do
                      
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           letrac=c
                           numero_linea_port=$numero_linea_port$letrac
                           sed -i "$numero_linea_port Port=/dev/ttyUSB0" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 10) echo ""
@@ -484,7 +544,7 @@ do
                           buscar=":"
                           largo=`expr index $idd $buscar`
                           echo "Valor  actual  del Id: ${AMARILLO}${idd#*=}\33[1;37m"
-                          read -p 'Introduce un ID válido ' miid
+           	              read -p 'Introduce un ID válido ' miid
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -495,12 +555,12 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea Id=$miid" /home/pi/MMDVMHost/$DIRECTORIO
                           sed -i "$segundo Id=$miid" /home/pi/info_panel_control.ini
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 11) echo ""
@@ -543,7 +603,7 @@ do
                           buscar=":"
                           largo=`expr index $pas $buscar`
                           echo "   Valor actual del Password: ${AMARILLO}${pas#*=}\33[1;37m"
-                          read -p 'Brandmeister=passw0rd   DMR+=PASSWORD: ' pas1
+           	              read -p 'Brandmeister=passw0rd   DMR+=PASSWORD: ' pas1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -554,12 +614,12 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
-                          pas1=`echo "$pas1" | tr -d '[[:space:]]'`
+			                    [sS]* ) echo ""
+			                    pas1=`echo "$pas1" | tr -d '[[:space:]]'`
                           sed -i "$linea Password=$pas1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 14) echo ""
@@ -568,7 +628,7 @@ do
                           buscar=":"
                           largo=`expr index $txinv $buscar`
                           echo "Valor  actual del  TXInvert: ${AMARILLO}${txinv#*=}\33[1;37m"
-                          read -p 'Valor óptimo para DVMEGA=1 : ' txinv1
+           	              read -p 'Valor óptimo para DVMEGA=1 : ' txinv1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -579,11 +639,11 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea TXInvert=$txinv1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 15) echo ""
@@ -592,7 +652,7 @@ do
                           buscar=":"
                           largo=`expr index $rx $buscar`
                           echo "Valor  actual  del  RXLevel : ${AMARILLO}${rx#*=}\33[1;37m"
-                          read -p 'Valor óptimo para DVMEGA=45 : ' var2
+           	              read -p 'Valor óptimo para DVMEGA=45 : ' var2
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -603,11 +663,11 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea RXLevel=$var2" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 16) echo ""
@@ -616,7 +676,7 @@ do
                           buscar=":"
                           largo=`expr index $tx $buscar`
                           echo "Valor  actual  del  TXLevel : ${AMARILLO}${tx#*=}\33[1;37m"
-                          read -p 'Valor óptimo para DVMEGA=50 : ' var2
+           	              read -p 'Valor óptimo para DVMEGA=50 : ' var2
                           letra=c
                           if [ $largo = 3 ]3
                           then
@@ -627,11 +687,11 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea TXLevel=$var2" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 17) echo ""
@@ -640,7 +700,7 @@ do
                           buscar=":"
                           largo=`expr index $dup $buscar`
                           echo "Valor actual del Duplex: ${AMARILLO}${dup#*=}\33[1;37m"
-                          read -p 'Para un repetidor Duplex=1 Para un DVMEGA Duplex=0: ' dup1
+           	              read -p 'Para un repetidor Duplex=1 Para un DVMEGA Duplex=0: ' dup1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -651,11 +711,11 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea Duplex=$dup1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 18) echo ""
@@ -664,7 +724,7 @@ do
                           buscar=":"
                           largo=`expr index $txh $buscar`
                           echo "Valor actual del TXHang: ${AMARILLO}${txh#*=}\33[1;37m"
-                          read -p 'Para un repetidor TXHang=4 Para un DVMEGA TXHang=0: ' txh1
+           	              read -p 'Para un repetidor TXHang=4 Para un DVMEGA TXHang=0: ' txh1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -675,11 +735,11 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea TXHang=$txh1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 19) echo ""
@@ -688,7 +748,7 @@ do
                           buscar=":"
                           largo=`expr index $lg $buscar`
                           echo "Valor actual del DisplayLevel: ${AMARILLO}${lg#*=}\33[1;37m"
-                          read -p 'Para visualizar tramas seguidas introduce 1, para una sola trama introduce 2:' lg1
+           	              read -p 'Para visualizar tramas seguidas introduce 1, para una sola trama introduce 2:' lg1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -699,11 +759,11 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea DisplayLevel=$lg1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 20) echo ""
@@ -720,7 +780,7 @@ do
                           buscar=":"
                           largo=`expr index $sl $buscar`
                           echo "Valor actual del Slot1=: ${AMARILLO}${sl#*=}\33[1;37m"
-                          read -p 'Para DVMEGA Modificar el valor del Slot1=0: ' V
+           	              read -p 'Para DVMEGA Modificar el valor del Slot1=0: ' V
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -731,12 +791,12 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in                                            
-                          [sS]* ) echo ""
-                          V=`echo "$V" | tr -d '[[:space:]]'`       
+			                    [sS]* ) echo ""
+			                    V=`echo "$V" | tr -d '[[:space:]]'`			  
                           sed -i "$linea Slot1=$V" /home/pi/MMDVMHost/$DIRECTORIO             
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 21) echo ""
@@ -823,7 +883,7 @@ do
                           buscar=":"
                           largo=`expr index $modu $buscar`
                           echo "Valor  actual  del  Module: ${AMARILLO}${modu#*=}\33[1;37m"
-                          read -p 'Valor óptimo para D-STAR=B: '  modu1
+           	              read -p 'Valor óptimo para D-STAR=B: '  modu1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -834,13 +894,13 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           #Convierte indicativo si se introduce en minúsculas a Mayúsculas
                           modu1=`echo "$modu1" | tr [:lower:] [:upper:]`
                           sed -i "$linea Module=$modu1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 a) echo ""
@@ -863,14 +923,14 @@ while true
 do
                           echo -n "Valor  actual  DMR ${AMARILLO}${presentar_valor#*=}\33[1;37m"
                           presenta_valor= sed -n $numero_linea_dmr_letrap  /home/pi/MMDVMHost/$DIRECTORIO;
-                          read -p 'Desactivado=0 Activado=1: '   dmrac1
+           	              read -p 'Desactivado=0 Activado=1: '   dmrac1
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$numero_linea_dmr_letrac Enable=$dmrac1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 c) echo ""
@@ -1043,7 +1103,7 @@ do
                           buscar=":"
                           largo=`expr index $lat $buscar`
                           echo "Valor de la Latitud: ${AMARILLO}${lat#*=}\33[1;37m"
-                          read -p 'Introduce la Latitud ' lat1
+           	              read -p 'Introduce la Latitud ' lat1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -1054,11 +1114,11 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea Latitude=$lat1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 
@@ -1068,7 +1128,7 @@ do
                           buscar=":"
                           largo=`expr index $long $buscar`
                           echo "Valor de la Longitud: ${AMARILLO}${long#*=}\33[1;37m"
-                          read -p 'Introduce la Longitud ' long1
+           	              read -p 'Introduce la Longitud ' long1
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -1079,29 +1139,29 @@ do
                           linea=$linea$letra
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           sed -i "$linea Longitude=$long1" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
 esac
 done;;
 27) echo ""
 while true
 do
-                          read -p 'Estas en DMR+ ? S/N ' actualizar                                          
+                          read -p 'Estas en DMR+ ? S/N ' actualizar             	                           
                           case $actualizar in
-                          [sS]* ) echo ""
-                          read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
+			                    [sS]* ) echo ""
+			                    read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
                           letra1=c
                           linea4=$linea33port$letra1
                           sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          letra1=c
+			                    break;;
+			                    [nN]* ) echo ""
+			                    letra1=c
                           linea4=$linea33port$letra1
-                          sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
+			                    sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/$DIRECTORIO
+			                    break;;
 esac
 done;;
 28) echo ""
@@ -1109,11 +1169,126 @@ while true
 do
                           actualizar=S 
                           case $actualizar in
-                          [sS]* ) echo ""
+			                    [sS]* ) echo ""
                           geany /home/pi/MMDVMHost/$DIRECTORIO
-                          break;;
-                          [nN]* ) echo ""
-                          break;;
+			                    break;;
+			                    [nN]* ) echo ""
+			                    break;;
+esac
+done;;
+29) echo ""
+while true
+do
+                        actualizar=S
+                        case $actualizar in
+			                  [sS]* ) echo ""
+                        clear
+                        echo "Introduce nombre memoria máximo 10 caracteres"
+                        read memoria1
+                        echo "<<<<<< Haciendo copia de seguridad de la M1 >>>>>"
+                        sleep 3
+                        sed -i "$primer $memoria1" /home/pi/info_panel_control.ini
+                        sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia
+			                  break;;
+			                  [nN]* ) echo ""
+			                  break;;
+esac
+done;;
+30) echo ""
+while true
+do
+                        actualizar=S
+                        case $actualizar in
+                        [sS]* ) echo ""
+                        clear
+                        echo "<<<<<< Restaurando copia de seguridad de la M1 >>>>>"
+                        sleep 3
+                        sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO_copia /home/pi/MMDVMHost/$DIRECTORIO
+			                  break;;
+			                  [nN]* ) echo ""
+			                  break;;
+esac
+done;;
+31) echo ""
+while true
+do
+                        actualizar=S 
+                        case $actualizar in
+			                  [sS]* ) echo ""
+                        clear
+                        echo "Introduce nombre memoria máximo 10 caracteres"
+                        read memoria2
+                        echo "<<<<<< Haciendo copia de seguridad de la M2 >>>>>"
+                        sleep 3
+                        sed -i "$segun $memoria2" /home/pi/info_panel_control.ini
+                        sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia2
+			                  break;;
+			                  [nN]* ) echo ""
+			                  break;;
+esac
+done;;
+32) echo ""
+while true
+do
+                        actualizar=S 
+                        case $actualizar in
+			                  [sS]* ) echo ""
+                        clear
+                        echo "<<<<<< Restaurando copia de seguridad  de la M2 >>>>>"
+                        sleep 3
+                        sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO_copia2 /home/pi/MMDVMHost/$DIRECTORIO
+			                  break;;
+			                  [nN]* ) echo ""
+			                  break;;
+esac
+done;;
+33) echo ""
+while true
+do
+                        actualizar=S 
+                        case $actualizar in
+			                  [sS]* ) echo ""
+                        clear
+                        echo "Introduce nombre memoria máximo 10 caracteres"
+                        read memoria3
+                        echo "<<<<<< Haciendo copia de seguridad de la M3 >>>>>"
+                        sleep 3
+                        sed -i "$tercer $memoria3" /home/pi/info_panel_control.ini
+                        sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia3
+			                  break;;
+			                  [nN]* ) echo ""
+			                  break;;
+esac
+done;;
+34) echo ""
+while true
+do
+                        actualizar=S 
+                        case $actualizar in
+			                  [sS]* ) echo ""
+                        clear
+                        echo "<<<<<< Restaurando copia de seguridad de la M3 >>>>>"
+                        sleep 3
+                        sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO_copia3 /home/pi/MMDVMHost/$DIRECTORIO
+			                  break;;
+			                  [nN]* ) echo ""
+			                  break;;
+esac
+done;;
+35) echo ""
+while true
+do
+          	        
+           	            read -p 'Quieres restaurar el fichero original $DIRECTORIO? S/N ' restaurar1   
+                        case $restaurar1 in
+			                  [sS]* ) echo ""
+                        clear
+                        echo "<<<<<< Restaurando el fichero original $DIRECTORIO >>>>>"
+                        sleep 3
+                        sudo cp -f /home/pi/MMDVMHost/MMDVM.ini_original /home/pi/MMDVMHost/$DIRECTORIO
+			                  break;;
+			                  [nN]* ) echo ""
+			                  break;;
 esac
 done;;
 0) echo ""
@@ -1125,7 +1300,7 @@ echo "   *                                                *"
 echo "   **************************************************"
 sleep 1
 clear
-exit;;  
+exit;;	
 esac
 done
 
