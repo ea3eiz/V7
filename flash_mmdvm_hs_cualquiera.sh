@@ -46,6 +46,7 @@ clear
                         cd /home/pi/
                         sudo rm -R MMDVM_HS 
                         git clone http://github.com/ea3eiz/MMDVM_HS
+                        sudo chmod -R 777 /home/pi/MMDVM_HS
                         cd MMDVM_HS/
                         git submodule init
                         git submodule update
