@@ -638,7 +638,7 @@ clear
                         [sS]* ) echo ""
                         clear
                         cd /home/pi/$SCRIPTS_version/
-                        sudo sh flash_mmdvm_hs_v30.sh                  
+                        sudo sh flash_zumspot.sh                  
                         break;;
                         [nN]* ) echo ""
                         clear
