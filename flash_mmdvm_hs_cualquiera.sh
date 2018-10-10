@@ -45,7 +45,7 @@ clear
                         echo "${CIAN}"
                         cd /home/pi/
                         sudo rm -R MMDVM_HS 
-                        git clone https://github.com/ea3eiz/MMDVM_HS
+                        git clone http://github.com/ea3eiz/MMDVM_HS
                         cd MMDVM_HS/
                         git submodule init
                         git submodule update
