@@ -57,7 +57,7 @@ echo ">>>>>>>>> ACTUALIZAR FIRMWARE ZUMSpot"
     chmod +x /tmp/zumfirmware/flash.sh
     cd  /tmp/zumfirmware
     ./flash.sh
-    rm -rf /tmp/zumfirmware 2> /dev/null
+    #rm -rf /tmp/zumfirmware 2> /dev/null
     echo "${BLANCO}"
     echo "SE HA ACTUALIZADO A LA ÚLTIMA VERSIÓN:"
     echo "${VERDE}"
