@@ -54,6 +54,9 @@
 
             cp /usr/local/etc/opendv/ircddbgateway /home/pi/Downloads
             cp /usr/local/etc/opendv/dstarrepeater /home/pi/Downloads
+
+            cd /home/pi
+            cp info_panel_control.ini /home/pi/Downloads
             
 cd /home/pi/
 tar -zcvf copia.tar.gz Downloads
