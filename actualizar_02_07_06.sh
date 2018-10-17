@@ -220,6 +220,9 @@ frplus=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 rbm=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMBM.ini`
 rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 
+sudo cp /home/pi/$SCRIPTS_version/Desktop/Menu_Autoarranque /home/pi/Desktop
+
+
 						#comprueba si el fichero existe
 						if [ -f /home/pi/prueba.sh ];
 						then
@@ -234,4 +237,4 @@ indicativo=`sed -n '2p'  /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
 sudo wget -post-data http://associacioader.com/prueba1.php?callBM=$bm'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version'&'DMR2YSF=$masterDMR2YSF'&'YSFGateway=$masterYSFGateway
 
 
-sudo cp /home/pi/V7/Desktop/Menu_Autoarranque /home/pi/Desktop
+
