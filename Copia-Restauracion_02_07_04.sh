@@ -101,6 +101,12 @@ sed -i "1c $match1" /home/pi/info.ini
             cd /usr/local/etc/svxlink/svxlink.d/
             sudo cp -f ModuleEchoLink.conf /home/pi/Downloads
 
+            sudo cp /usr/local/etc/opendv/ircddbgateway /home/pi/Downloads
+            sudo cp /usr/local/etc/opendv/dstarrepeater /home/pi/Downloads
+
+            cd /home/pi
+            sudo cp info_panel_control.ini /home/pi/Downloads
+
                   echo ""
                   echo "Ok, se ha ejecutado correctamente"
                   echo ""
