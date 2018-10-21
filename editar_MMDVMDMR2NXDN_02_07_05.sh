@@ -2,6 +2,7 @@
 while true
 do
 clear
+SCRIPTS_version=$(awk "NR==1" /home/pi/.config/autostart/version)
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
 BLANCO="\033[1;37m"
@@ -1282,7 +1283,7 @@ do
                           cd /home/pi/NXDNClients/NXDNGateway/
                           rm -R private
                           mkdir private
-                          cd /home/pi/V7
+                          cd /home/pi/$SCRIPTS_version
                           cp NXDNHosts.txt /home/pi/NXDNClients/NXDNGateway/private
                           cd /home/pi/NXDNClients/NXDNGateway/
                           rm NXDNHosts.txt
