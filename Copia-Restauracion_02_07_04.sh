@@ -13,7 +13,9 @@ echo "   *       Script para Copiar y Restaurar Configuraciones \33[1;33m\33[1;3
 echo "   *                          \33[1;31mby EA3EIZ\33[1;32m                                     *"
 echo "   **************************************************************************"
 echo "\33[1;36m   1)\33[1;37m Hacer Copia de seguridad de BM, DMR+, LIBRE, RADIO, solo D-STAR"
-echo "      solo FUSION, YSF2DMR, DMR2YSFF, DMR2NXDN, YSF, BlueDV, SVXLINK, ircDDB y D-STAR Repeater"
+echo "      solo FUSION, YSF2DMR, DMR2YSFF, DMR2NXDN, YSF, BlueDV, SVXLINK, ircDDB, "
+echo "      y D-STAR Repeater"
+
 echo ""
 echo "\33[1;36m   2)\33[1;32m Restaurar Copia de BM, DMR+, LIBRE, RADIO, solo D-STAR "
 echo "      solo FUSION, YSF2DMR, DMR2YSFF, DMR2NXDN, YSF, BlueDV, SVXLINK, ircDDB y D-STAR Repeater"
