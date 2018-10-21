@@ -440,7 +440,7 @@ done;;
 13) echo ""
 while true
 do                      
-                          echo "\33[1;32m   Brandmeister=master.spain-dmr.es  DMR+=eamaster04.xreflector.es\33[1;37m" 
+                          echo "\33[1;32m   Brandmeister=master.spain-dmr.es  DMR+=212.237.3.141\33[1;37m" 
                           read -p '   Introduce Address = ' lon
                           actualizar=S 
                           case $actualizar in
