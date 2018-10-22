@@ -11,10 +11,13 @@ clear
                     master=$(awk "NR==31" /home/pi/YSF2DMR/YSF2DMR.ini)
                     sed -i "25c $master" /home/pi/info_panel_control.ini
 
+#Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
 BLANCO="\033[1;37m"
 AMARILLO="\033[1;33m"
+CIAN="\033[1;36m"
+GRIS="\033[0m"
 echo "${VERDE}"
 echo "   **************************************************************************"
 echo "   *             Script para Modificar YSF2DMR.ini             \33[1;31m by EA3EIZ\33[1;32m   *"
@@ -134,20 +137,11 @@ letra=c
 linea_sed_15=$numero_linea_pass$letra
 echo "$pass"
 
-
-
 echo -n "${CIAN}  27)${GRIS} Entra reflector DMR+  - ${AMARILLO}"
 OPCION=`expr $numero_linea_pass + 1`
 OPCION1=$(awk "NR==$OPCION" /home/pi/YSF2DMR/YSF2DMR.ini)
 linea33port=$OPCION
-#letra=p
-#linea22port=$OPCION$letra
-#var300port= sed -n $linea22port  /home/pi/YSF2DMR/YSF2DMR.ini;
 echo "$OPCION1"
-
-
-
-
 
 echo ""
 echo "\33[1;36m  16)\33[1;37m Guardar  fichero de Configuración en M1 \33[1;36m"
@@ -672,12 +666,12 @@ do
                           read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
                           letra1=c
                           linea4=$linea33port$letra1
-                          sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/YSF2DMR/YSF2DMR.ini
                           break;;
                           [nN]* ) echo ""
                           letra1=c
                           linea4=$linea33port$letra1
-                          sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/MMDVMHost/$DIRECTORIO
+                          sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/YSF2DMR/YSF2DMR.ini
                           break;;
 esac
 done;;
