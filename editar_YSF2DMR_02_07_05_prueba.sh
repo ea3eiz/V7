@@ -128,7 +128,7 @@ buscar=":"
 largo_linea=`expr index $var2 $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var2 1 $largo_linea`
-numero_linea_pass=`expr $numero_linea_pass + 7`
+numero_linea_pass=`expr $numero_linea + 7`
 pass=$(awk "NR==$numero_linea_pass" /home/pi/YSF2DMR/YSF2DMR.ini)
 letra=c
 linea_sed_15=$numero_linea_pass$letra
