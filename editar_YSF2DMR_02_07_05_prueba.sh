@@ -143,7 +143,7 @@ linea33port=$OPCION
 letra=p
 linea22port=$OPCION$letra
 #var300port= sed -n $linea22port  /home/pi/YSF2DMR/YSF2DMR.ini;
-echo "$pass"
+echo "$OPCION"
 
 
 
