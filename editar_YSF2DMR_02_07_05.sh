@@ -11,10 +11,13 @@ clear
                     master=$(awk "NR==31" /home/pi/YSF2DMR/YSF2DMR.ini)
                     sed -i "25c $master" /home/pi/info_panel_control.ini
 
+#Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
 BLANCO="\033[1;37m"
 AMARILLO="\033[1;33m"
+CIAN="\033[1;36m"
+GRIS="\033[0m"
 echo "${VERDE}"
 echo "   **************************************************************************"
 echo "   *             Script para Modificar YSF2DMR.ini             \33[1;31m by EA3EIZ\33[1;32m   *"
@@ -128,11 +131,17 @@ buscar=":"
 largo_linea=`expr index $var2 $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var2 1 $largo_linea`
-numero_linea=`expr $numero_linea + 7`
-pass=$(awk "NR==$numero_linea" /home/pi/YSF2DMR/YSF2DMR.ini)
+numero_linea_pass=`expr $numero_linea + 7`
+pass=$(awk "NR==$numero_linea_pass" /home/pi/YSF2DMR/YSF2DMR.ini)
 letra=c
-linea_sed_15=$numero_linea$letra
+linea_sed_15=$numero_linea_pass$letra
 echo "$pass"
+
+echo -n "${CIAN}  27)${GRIS} Entra reflector DMR+  - ${AMARILLO}"
+OPCION=`expr $numero_linea_pass + 1`
+OPCION1=$(awk "NR==$OPCION" /home/pi/YSF2DMR/YSF2DMR.ini)
+linea33port=$OPCION
+echo "$OPCION1"
 
 echo ""
 echo "\33[1;36m  16)\33[1;37m Guardar  fichero de Configuración en M1 \33[1;36m"
@@ -163,7 +172,7 @@ reflector=`expr substr $reflector 12 40`
 echo "$reflector"
 
 echo ""
-echo "\33[1;36m  24)\33[1;33m Abrir fichero YSF2DMR.ini para hacer cualquier cambio\33[1;33m"
+echo "\33[1;36m  28)\33[1;33m Abrir fichero YSF2DMR.ini para hacer cualquier cambio\33[1;33m"
 
 echo ""
 echo "\33[1;36m   0)\33[1;32m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
@@ -648,7 +657,25 @@ sed -i "26c $tg" /home/pi/info_panel_control.ini
                         break;;
 esac
 done;;
-24) echo ""
+27) echo ""
+while true
+do
+                          read -p 'Estas en DMR+ ? S/N ' actualizar                                          
+                          case $actualizar in
+                          [sS]* ) echo ""
+                          read -p 'Intruduce reflector DMR+ al que se conectara (ej:4370) ' opcion
+                          letra1=c
+                          linea4=$linea33port$letra1
+                          sed -i "$linea4 Options=StartRef=$opcion;RelinkTime=10;" /home/pi/YSF2DMR/YSF2DMR.ini
+                          break;;
+                          [nN]* ) echo ""
+                          letra1=c
+                          linea4=$linea33port$letra1
+                          sed -i "$linea4 #Options=" /home/pi/YSF2DMR/YSF2DMR.ini
+                          break;;
+esac
+done;;
+28) echo ""
 while true
 do
                               actualizar=S 
