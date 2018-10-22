@@ -671,7 +671,7 @@ do
                           [nN]* ) echo ""
                           letra1=c
                           linea4=$linea33port$letra1
-                          sed -i "$linea4 #Options=StartRef=4370;RelinkTime=10;" /home/pi/YSF2DMR/YSF2DMR.ini
+                          sed -i "$linea4 #Options=" /home/pi/YSF2DMR/YSF2DMR.ini
                           break;;
 esac
 done;;
