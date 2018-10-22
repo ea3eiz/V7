@@ -138,12 +138,12 @@ echo "$pass"
 
 echo -n "${CIAN}  27)${GRIS} Entra reflector DMR+  - ${AMARILLO}"
 OPCION=`expr $numero_linea_pass + 1`
-OPCION=$(awk "NR==$OPCION" /home/pi/YSF2DMR/YSF2DMR.ini)
+OPCION1=$(awk "NR==$OPCION" /home/pi/YSF2DMR/YSF2DMR.ini)
 linea33port=$OPCION
-letra=p
-linea22port=$OPCION$letra
+#letra=p
+#linea22port=$OPCION$letra
 #var300port= sed -n $linea22port  /home/pi/YSF2DMR/YSF2DMR.ini;
-echo "$OPCION"
+echo "$OPCION1"
 
 
 
