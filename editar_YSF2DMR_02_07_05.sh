@@ -1,7 +1,4 @@
 ﻿#!/bin/bash
-SCRIPTS_version=$(awk "NR==1" /home/pi/.config/autostart/version)
-cd /home/pi/$SCRIPTS_version
-sudo sh editar_MMDVMFUSION_02_07_04.sh
 while true
 do
 clear
