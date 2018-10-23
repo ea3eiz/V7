@@ -690,6 +690,9 @@ esac
 done;;
 
 0) echo ""
+SCRIPTS_version=$(awk "NR==1" /home/pi/.config/autostart/version)
+cd /home/pi/$SCRIPTS_version
+sudo sh editar_MMDVMFUSION_02_07_04.sh
 clear
 echo "\33[1;33m   **************************************************"
 echo "   *                                                *"
