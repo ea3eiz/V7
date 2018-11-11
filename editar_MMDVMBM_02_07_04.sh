@@ -2,17 +2,62 @@
 while true
 do
 clear
-#Variables para utilizar los editores MMDVM, BM, PLUS depende del que queramos
+  #Editor MMDVM.ini
+#DIRECTORIO="MMDVM.ini"
+#DIRECTORIO_copia="MMDVM.ini_copia"
+#DIRECTORIO_copia2="MMDVM.ini_copia2"
+#DIRECTORIO_copia3="MMDVM.ini_copia3"
+  #Escribe datos en el fichero /home/pi/info_panel_control.ini para leer desde el panel de control
+#primero="6c"
+#segundo="7c"
+#tercero="8c"
+#cuarto="9c"
+  #Escribe datos en el fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+#primer="37c"
+#segun="38c"
+#tercer="39c"
+  #Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+#primer1="37c"
+#segun1="38c"
+#tercer1="39c"
+
+  #Editor MMDVMBM.ini
 DIRECTORIO="MMDVMBM.ini"
 DIRECTORIO_copia="MMDVMBM.ini_copia"
 DIRECTORIO_copia2="MMDVMBM.ini_copia2"
 DIRECTORIO_copia3="MMDVMBM.ini_copia3"
-
-#Escribe datos en el fichero /home/pi/info_panel_control.ini para leer desde el panel de control
+  #Escribe datos en el fichero /home/pi/info_panel_control.ini para leer desde el panel de control
 primero="1c"
 segundo="2c"
 tercero="3c"
 cuarto="4c"
+  #Escribe datos en el fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+primer="34c"
+segun="35c"
+tercer="36c"
+  #Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+primer1="34c"
+segun1="35c"
+tercer1="36c"
+
+  #Editor MMDVMPLUS.ini
+#DIRECTORIO="MMDVMPLUS.ini"
+#DIRECTORIO_copia="MMDVMPLUS.ini_copia"
+#DIRECTORIO_copia2="MMDVMPLUS.ini_copia2"
+#DIRECTORIO_copia3="MMDVMPLUS.ini_copia3"
+  #Escribe datos en el fichero /home/pi/info_panel_control.ini para leer desde el panel de control
+#primero="11c"
+#segundo="12c"
+#tercero="13c"
+#cuarto="14c"
+  #Escribe datos en el fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+#primer="31c"
+#segun="32c"
+#tercer="33c"
+  #Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+#primer1="31c"
+#segun1="32c"
+#tercer1="33c"
 
 # Recoge datos para leer desde el panel de control
 indi=$(awk "NR==2" /home/pi/MMDVMHost/$DIRECTORIO)
@@ -32,16 +77,6 @@ linea_master=$largo$letra
 master=$(awk "NR==$linea_master" /home/pi/MMDVMHost/$DIRECTORIO)
 sed -i "$cuarto $master" /home/pi/info_panel_control.ini
 
-#Escribe datos en el fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
-primer="34c"
-segun="35c"
-tercer="36c"
-
-#Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
-primer1="34c"
-segun1="35c"
-tercer1="36c"
-
 #Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
@@ -51,7 +86,7 @@ CIAN="\033[1;36m"
 GRIS="\033[0m"
 echo "${VERDE}"
 echo "   **************************************************************************"
-echo "   *           Script para Modificar $DIRECTORIO             \33[1;31m by EA3EIZ\33[1;32m   *"
+echo "   *          bm Script para Modificar $DIRECTORIO             \33[1;31m by EA3EIZ\33[1;32m   *"
 echo "   **************************************************************************"
 echo -n "${CIAN}   1)${GRIS} Modificar indicativo  - ${AMARILLO}"
 ind=`grep -n "^Callsign=" /home/pi/MMDVMHost/$DIRECTORIO`
