@@ -2,32 +2,44 @@
 while true
 do
 clear
-            #comprueba si el fichero existe
-            if [ -f /home/pi/MMDVMHost/MMDVMFUSION.ini_copia ];
-            then
-            echo ""
-            else
-            sudo cp -f /home/pi/MMDVMHost/MMDVMFUSION.ini /home/pi/MMDVMHost/MMDVMFUSION.ini_copia
-            sudo cp -f /home/pi/MMDVMHost/MMDVMFUSION.ini /home/pi/MMDVMHost/MMDVMFUSION.ini_copia2
-            sudo cp -f /home/pi/MMDVMHost/MMDVMFUSION.ini /home/pi/MMDVMHost/MMDVMFUSION.ini_copia3
-            fi
-            #================================
+  #MMDVMDSTAR.ini
+#DIRECTORIO="MMDVMDSTAR.ini"
+#DIRECTORIO_copia="MMDVMDSTAR.ini_copia"
+#DIRECTORIO_copia2="MMDVMDSTAR.ini_copia2"
+#DIRECTORIO_copia3="MMDVMDSTAR.ini_copia3"
+  #Escribe datos en el fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+#primer="15c"
+#segun="16c"
+#tercer="17c"
+  #Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+#primer1="15c"
+#segun1="16c"
+#tercer1="17c"
 
-#Variables para utilizar los editores MMDVM, BM, PLUS depende del que queramos
+  #MMDVMFUSION.ini
 DIRECTORIO="MMDVMFUSION.ini"
 DIRECTORIO_copia="MMDVMFUSION.ini_copia"
 DIRECTORIO_copia2="MMDVMFUSION.ini_copia2"
 DIRECTORIO_copia3="MMDVMFUSION.ini_copia3"
-
-#Escribe datos en el fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+  #Escribe datos en el fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
 primer="18c"
 segun="19c"
 tercer="20c"
-
-#Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
+  #Lee los datos del fichero /home/pi/info_panel_control.ini para las memorias M1, M2 y M3
 primer1="18c"
 segun1="19c"
 tercer1="20c"
+
+            #comprueba si el fichero existe
+            if [ -f /home/pi/MMDVMHost/$DIRECTORIO_copia ];
+            then
+            echo ""
+            else
+            sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia
+            sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia2
+            sudo cp -f /home/pi/MMDVMHost/$DIRECTORIO /home/pi/MMDVMHost/$DIRECTORIO_copia3
+            fi
+            #================================
 
 #Colores
 ROJO="\033[1;31m"
@@ -38,7 +50,7 @@ CIAN="\033[1;36m"
 GRIS="\033[0m"
 echo "${VERDE}"
 echo "   **************************************************************************"
-echo "   *           Script para Modificar $DIRECTORIO             \33[1;31m by EA3EIZ\33[1;32m   *"
+echo "              Script para Modificar $DIRECTORIO             \33[1;31m by EA3EIZ\33[1;32m   "
 echo "   **************************************************************************"
 echo -n "${CIAN}   1)${GRIS} Modificar indicativo  - ${AMARILLO}"
 ind=`grep -n "^Callsign=" /home/pi/MMDVMHost/$DIRECTORIO`
