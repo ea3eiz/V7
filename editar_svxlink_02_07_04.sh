@@ -52,7 +52,7 @@ var1= sed -n '160p'  /usr/local/etc/svxlink/svxlink.conf
 echo -n "\33[1;36m   15)\33[0m Modificar VOX_THRESH - \33[1;33m"
 var1= sed -n '168p'  /usr/local/etc/svxlink/svxlink.conf
 echo "\33[1;36m   16)\33[1;32m Utilizar para conectarse a la conferencia *ADER*\33[1;33m"
-echo "\33[1;36m   17)\33[1;32m Utilizar para conectarse a la conferencia *SPAIN-ES*\33[1;33m"
+echo "\33[1;36m   17)\33[1;32m Utilizar para conectarse a la conferencia *CZR-ESP*\33[1;33m"
 echo "\33[1;36m   18)\33[1;32m Utilizar para conectarse a la conferencia *REM-ESP*\33[1;33m"
 echo "\33[1;36m   19)\33[1;32m Utilizar si el modem es sound card o similar (este está por defecto)\33[1;33m"
 echo "\33[1;36m   20)\33[1;32m Utilizar si el modem lo haces con transistor y resistencia\33[1;33m"
@@ -312,18 +312,11 @@ done;;
 while true
 do
 
-           	        #read -p 'Pulsa enter para Usar Modem Soundcard o similar: ' var2
             actualizar=S 
             case $actualizar in
 			[sS]* ) echo ""
-sed -i "17c LOCATION=Connect to *SPAIN-ES*" /usr/local/etc/svxlink/svxlink.d/ModuleEchoLink.conf
-sed -i "25c AUTOCON_ECHOLINK_ID=704387" /usr/local/etc/svxlink/svxlink.d/ModuleEchoLink.conf
-#sed -i "227c PTT_PORT=/dev/ttyUSB0" /usr/local/etc/svxlink/svxlink.conf
-#sed -i "226c PTT_TYPE=SerialPin" /usr/local/etc/svxlink/svxlink.conf
-#sed -i "228c PTT_PIN=DTRRTS" /usr/local/etc/svxlink/svxlink.conf
-#sed -i "10c #" /etc/rc.local
-#sed -i "11c #" /etc/rc.local
-#sed -i "12c #" /etc/rc.local
+sed -i "17c LOCATION=Connect to *CZR-ESP*" /usr/local/etc/svxlink/svxlink.d/ModuleEchoLink.conf
+sed -i "25c AUTOCON_ECHOLINK_ID=3268" /usr/local/etc/svxlink/svxlink.d/ModuleEchoLink.conf
 			break;;
 			[nN]* ) echo ""
 			break;;
