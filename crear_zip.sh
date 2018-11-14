@@ -25,10 +25,17 @@
             cp -f /home/pi/NXDNClients/NXDNGateway/NXDNGateway.ini  /home/pi/Downloads
             cp -f /home/pi/DMR2YSF/DMR2YSF.ini  /home/pi/Downloads
 
-            #solo Dstar y solo Fusion
+            #solo Dstar
             cp -f MMDVMDSTAR.ini /home/pi/Downloads
+            cp -f MMDVMDSTAR.ini_copia /home/pi/Downloads
+            cp -f MMDVMDSTAR.ini_copia2 /home/pi/Downloads
+            cp -f MMDVMDSTAR.ini_copia3 /home/pi/Downloads
+
+            #solo Fusion
             cp -f MMDVMFUSION.ini /home/pi/Downloads
-            #fin  Dstar y solo Fusion
+            cp -f MMDVMFUSION.ini_copia /home/pi/Downloads
+            cp -f MMDVMFUSION.ini_copia2 /home/pi/Downloads
+            cp -f MMDVMFUSION.ini_copia3 /home/pi/Downloads
 
             cd  /home/pi/YSF2DMR
             cp -f YSF2DMR.ini /home/pi/Downloads
@@ -56,8 +63,7 @@
             sudo cp /usr/local/etc/opendv/dstarrepeater /home/pi/Downloads
 
             cd /home/pi
-            sudo cp info_panel_control.ini /home/pi/Downloads
-            
+            sudo cp info_panel_control.ini /home/pi/Downloads            
 cd /home/pi/
 tar -zcvf copia.tar.gz Downloads
 cp  copia.tar.gz /var/www/html/upload/files

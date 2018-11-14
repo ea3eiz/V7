@@ -8,7 +8,6 @@ cd /home/pi/Downloads/Downloads
 cp *.* /home/pi/Downloads
 rm -r /home/pi/Downloads/Downloads
 rm /home/pi/Downloads/copia.tar.gz
-
 echo "\33[1;32m" #color verde
 echo "***************************************************"
 echo "* ESTAS RESTAURANDO UNA COPIA DE LA MISMA VERSIÓN *"
@@ -33,10 +32,17 @@ echo "***************************************************"
             sudo cp -f MMDVMPLUS.ini_copia2 /home/pi/MMDVMHost
             sudo cp -f MMDVMPLUS.ini_copia3 /home/pi/MMDVMHost
 
-            #solo Dstar y solo Fusion
+            #solo Dstar
             sudo cp -f MMDVMDSTAR.ini /home/pi/MMDVMHost
+            sudo cp -f MMDVMDSTAR.ini_copia /home/pi/MMDVMHost
+            sudo cp -f MMDVMDSTAR.ini_copia2 /home/pi/MMDVMHost
+            sudo cp -f MMDVMDSTAR.ini_copia3 /home/pi/MMDVMHost
+
+            #solo Fusion
             sudo cp -f MMDVMFUSION.ini /home/pi/MMDVMHost
-            #fin  Dstar y solo Fusion
+            sudo cp -f MMDVMFUSION.ini_copia /home/pi/MMDVMHost
+            sudo cp -f MMDVMFUSION.ini_copia2 /home/pi/MMDVMHost
+            sudo cp -f MMDVMFUSION.ini_copia3 /home/pi/MMDVMHost
 
             cp -f YSF2DMR.ini /home/pi/YSF2DMR
             cp -f YSF2DMR.ini_copia_01 /home/pi/YSF2DMR
