@@ -47,7 +47,8 @@ echo "**********************************************************"
 echo "* El fichero YSFHost.txt se ha actualizado correctamente *"
 echo "**********************************************************"
 sleep 3
-                        fi                                      
+                        fi
+                        cp -R /home/pi/YSF2DMR/ /home/pi/Documents                                     
                         clear
                         cd /home/pi/
                         sudo rm -R /home/pi/MMDVM_CM
@@ -68,7 +69,7 @@ sleep 3
                         if [ "$version_YSF2DMR_actual" = "$version_YSF2DMR_instalada" ];
                         # =================================
                         then 
-
+                        cp -R /home/pi/Documents/YSF2DMR/ /home/pi/
                         clear
                         echo "${VERDE}"
                         echo "***************************************"
@@ -93,14 +94,6 @@ sleep 3
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_03
                         cp /home/pi/YSF2DMR/YSF2DMR.ini YSF2DMR.ini_copia_04
                         fi
-                      
-
-
-
-
-
-
-
                         cp -R /home/pi/DMR2YSF/ /home/pi/Documents
                         clear
                         cd /home/pi/
