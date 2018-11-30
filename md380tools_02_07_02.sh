@@ -344,8 +344,7 @@ clear
         echo "\33[1;32m "
         echo "Pulsa enter para salir"
         read a
-                        clear                                                              
-                        exit;
+
                         break;;
                         [nN]* ) echo ""
                         clear
