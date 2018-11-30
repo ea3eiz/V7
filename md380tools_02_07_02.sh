@@ -182,19 +182,9 @@ clear
         echo "* Perdonar las molestias (es un problema ajeno a esta imagen)  *"
         echo "****************************************************************"
         echo "\33[1;32m "
-        read -p 'Pulsa enter para salir ' installvar4
-                        case $installvar4 in
-                        [sS]* ) echo ""
-                        clear
-                        exit;
-                        break;;
-                        [nN]* ) echo ""
-                        echo ""
-                        echo ""
-                        echo "volver"
-                        echo ""
-                        echo ""
-                        echo ""
+        echo "Pulsa enter para salir"
+                       read a
+                       exit;
                         break;;
 esac
 done;;
