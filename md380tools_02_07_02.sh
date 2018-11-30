@@ -168,39 +168,45 @@ done;;
 
 
 
-
-
-
 5)      echo ""
 while true
 do
 clear
-        echo "\33[1;31m*******************************************************"
-        echo "* Al día de hoy 30-11-2018 hemos bloqueado esta opción         *"
-        echo "* El servidor que recoge los indicativos está offline          *"
-        echo "* en cuanto veamos que lo han arreglado lo desbloquearemos     *"
-        echo "* Perdonar las molestias (es un problema ajeno a esta imagen)  *"
-        echo "****************************************************************"
+
+
+
+
+ejecutar1=S
+                        case $ejecutar1 in
+                        [sS]* ) echo ""
+                        echo "\33[1;31m***************************************************************************"
+        echo "* Conectamos el cable de programación en el USB de la Raspi y en Walki    *"
+        echo "* Ponemos el walki en modo DFU de la siguiente manera:                    *"
+        echo "* Apagamos y encendemos el Walki pulsando la tecla PTT+la tecla de arriba *"
+        echo "***************************************************************************"
         echo "\33[1;32m "
         echo "Pulsa enter para salir"
-                       read a
-                       exit;
+                        clear                                                              
+                        exit;
                         break;;
+                        [nN]* ) echo ""
+                        clear
+                        exit;
+                        break;;
+
+
+
+
+
+
+
 esac
 done;;
 
 
 
 
-
-
-
-
-
-
-
-
-5aaaaaa)      echo ""
+5bloquead)      echo ""
 while true
 do
 clear
@@ -323,44 +329,29 @@ done;;
 while true
 do
 clear
-        
-            
-                        ejecutar1=S
-                        case $ejecutar1 in
-                        [sS]* ) echo ""
-                        echo "\33[1;31m***************************************************************************"
+        echo "\33[1;31m***************************************************************************"
         echo "* Conectamos el cable de programación en el USB de la Raspi y en Walki    *"
         echo "* Ponemos el walki en modo DFU de la siguiente manera:                    *"
         echo "* Apagamos y encendemos el Walki pulsando la tecla PTT+la tecla de arriba *"
         echo "***************************************************************************"
         echo "\33[1;32m "
-        echo "Pulsa enter para salir"
-                        clear                                                              
-                        exit;
+                        read -p 'Quieres Introducir el firmware original D13.020 ? Si/No ' installvar8
+                        case $installvar8 in
+                        [sS]* ) echo ""
+                        clear
+                        echo "Introduciendo firmware original D13.020"
+                        cd md380tools
+                        sudo make clean
+                        sudo make flash_original_D13
                         break;;
                         [nN]* ) echo ""
-                        clear
-                        exit;
+                        echo ""
+                        echo ""
+                        echo "volver"
+                        echo ""
+                        echo ""
+                        echo ""
                         break;;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 esac
 done;;
 0) echo ""
