@@ -323,29 +323,51 @@ done;;
 while true
 do
 clear
-        echo "\33[1;31m***************************************************************************"
+        
+            
+
+
+
+
+
+
+
+
+                        ejecutar1=S
+                        case $ejecutar1 in
+                        [sS]* ) echo ""
+                        echo "\33[1;31m***************************************************************************"
         echo "* Conectamos el cable de programación en el USB de la Raspi y en Walki    *"
         echo "* Ponemos el walki en modo DFU de la siguiente manera:                    *"
         echo "* Apagamos y encendemos el Walki pulsando la tecla PTT+la tecla de arriba *"
         echo "***************************************************************************"
         echo "\33[1;32m "
-                        read -p 'Quieres Introducir el firmware original D13.020 ? Si/No ' installvar8
-                        case $installvar8 in
-                        [sS]* ) echo ""
-                        clear
-                        echo "Introduciendo firmware original D13.020"
-                        cd md380tools
-                        sudo make clean
-                        sudo make flash_original_D13
+        echo "Pulsa enter para salir"
+        read a
+                        clear                                                              
+                        exit;
                         break;;
                         [nN]* ) echo ""
-                        echo ""
-                        echo ""
-                        echo "volver"
-                        echo ""
-                        echo ""
-                        echo ""
+                        clear
+                        exit;
                         break;;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 esac
 done;;
 0) echo ""
