@@ -175,18 +175,18 @@ done;;
 while true
 do
 clear
-        echo "\33[1;31m***************************************************************************"
-        echo "* Al día de hoy 30-11-2018 hemos bloqueado la actualización de los indicativos     *"
-        echo "* El servidor que recoge los indicativos está offline                              *"
-        echo "* en cuanto veamos que lo han arreglado lo desbloquearemos                         *"
-        echo "* Perdonar las molestias (es un problema ajeno a esta imagen)                      *"
-        echo "************************************************************************************"
+        echo "\33[1;31m*******************************************************"
+        echo "* Al día de hoy 30-11-2018 hemos bloqueado esta opción         *"
+        echo "* El servidor que recoge los indicativos está offline          *"
+        echo "* en cuanto veamos que lo han arreglado lo desbloquearemos     *"
+        echo "* Perdonar las molestias (es un problema ajeno a esta imagen)  *"
+        echo "****************************************************************"
         echo "\33[1;32m "
         read -p 'Pulsa enter para salir ' installvar4
                         case $installvar4 in
                         [sS]* ) echo ""
                         clear
-                        
+                        exit;
                         break;;
                         [nN]* ) echo ""
                         echo ""
