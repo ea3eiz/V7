@@ -325,14 +325,6 @@ do
 clear
         
             
-
-
-
-
-
-
-
-
                         ejecutar1=S
                         case $ejecutar1 in
                         [sS]* ) echo ""
@@ -343,13 +335,15 @@ clear
         echo "***************************************************************************"
         echo "\33[1;32m "
         echo "Pulsa enter para salir"
-        read a
-
+                        clear                                                              
+                        exit;
                         break;;
                         [nN]* ) echo ""
                         clear
                         exit;
                         break;;
+
+
 
 
 
