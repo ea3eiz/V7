@@ -165,6 +165,55 @@ clear
                         break;;
 esac
 done;;
+
+
+
+
+
+
+5)      echo ""
+while true
+do
+clear
+        echo "\33[1;31m***************************************************************************"
+        echo "* Al día de hoy 30-11-2018 hemos bloqueado la actualización de los indicativos     *"
+        echo "* El servidor que recoge los indicativos está offline                              *"
+        echo "* en cuanto veamos que lo han arreglado lo desbloquearemos                         *"
+        echo "* Perdonar las molestias (es un problema ajeno a esta imagen)                      *"
+        echo "************************************************************************************"
+        echo "\33[1;32m "
+        read -p 'Quieres Introducir el firmware experimental bajo tu propio riesgo? Si/No ' installvar4
+                        case $installvar4 in
+                        [sS]* ) echo ""
+                        clear
+                        echo "Introduciendo firmware experimental"
+                        cd /home/pi/md380tools
+                        sudo gitpull
+                        sudo make clean
+                        sudo make flash_S13
+                        break;;
+                        [nN]* ) echo ""
+                        echo ""
+                        echo ""
+                        echo "volver"
+                        echo ""
+                        echo ""
+                        echo ""
+                        break;;
+esac
+done;;
+
+
+
+
+
+
+
+
+
+
+
+
 5aaaaaa)      echo ""
 while true
 do
