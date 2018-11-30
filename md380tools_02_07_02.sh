@@ -165,7 +165,7 @@ clear
                         break;;
 esac
 done;;
-5)      echo ""
+5aaaaaa)      echo ""
 while true
 do
 clear
