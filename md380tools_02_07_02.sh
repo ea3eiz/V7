@@ -182,15 +182,11 @@ clear
         echo "* Perdonar las molestias (es un problema ajeno a esta imagen)                      *"
         echo "************************************************************************************"
         echo "\33[1;32m "
-        read -p 'Quieres Introducir el firmware experimental bajo tu propio riesgo? Si/No ' installvar4
+        read -p 'Pulsa enter para salir ' installvar4
                         case $installvar4 in
                         [sS]* ) echo ""
                         clear
-                        echo "Introduciendo firmware experimental"
-                        cd /home/pi/md380tools
-                        sudo gitpull
-                        sudo make clean
-                        sudo make flash_S13
+                        
                         break;;
                         [nN]* ) echo ""
                         echo ""
