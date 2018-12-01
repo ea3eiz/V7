@@ -168,15 +168,11 @@ done;;
 
 
 
-5)      echo ""
+5bloqueado)      echo ""
 while true
 do
 clear
-
-
-
-
-ejecutar1=S
+                        ejecutar1=S
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo "\33[1;31m***************************************************************************"
@@ -194,20 +190,9 @@ ejecutar1=S
                         clear
                         exit;
                         break;;
-
-
-
-
-
-
-
 esac
 done;;
-
-
-
-
-5bloquead)      echo ""
+5)      echo ""
 while true
 do
 clear
