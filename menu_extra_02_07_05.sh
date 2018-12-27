@@ -15,7 +15,7 @@ echo "   *      Script para hacer actualizaciones y varios \33[1;33m       \33[1
 echo "   *                          \33[1;31mby EA3EIZ\33[1;32m                               *"
 echo "   ********************************************************************"
 echo "\33[1;36m   1)\33[1;37m Actualizar imagen"
-echo "\33[1;36m   2)${AMARILLO} ACTUALIZAR YSF, YSF2DMR, DMR2YSF, DMR2NXDN y NXDNClients"
+echo "\33[1;36m   2)${AMARILLO} ACTUALIZAR ${GRIS}YSF,${AMARILLO} YSF2DMR, DMR2YSF, DMR2NXDN y NXDNClients"
 echo ""
 echo "\33[1;32m      APARTADO BLUETOOTH"
 echo "\33[1;32m      =================="
