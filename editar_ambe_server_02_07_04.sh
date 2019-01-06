@@ -18,6 +18,9 @@ var1= sed -n '1p'  /home/pi/ambe_server.ini
 echo -n "\33[1;36m   2)\33[0m Modificar puerto MODEM   - \33[1;33m"
 var1= sed -n '2p'  /home/pi/ambe_server.ini
 
+echo -n "\33[1;36m   2)\33[0m Modificar Velocidad Baut rate   - \33[1;33m"
+var1= sed -n '3p'  /home/pi/ambe_server.ini
+
 echo ""
 
 echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
@@ -53,6 +56,23 @@ do
                     echo "${CIAN}"
                     read -p 'Introduce puerto MODEM:        ' pruter
                     sed -i "2c $pruter" /home/pi/ambe_server.ini
+                    break;;
+                    [nN]* ) echo ""
+                    break;;
+esac
+done;;
+3) echo ""
+while true
+do
+                    echo -n "Valor actual del puerto MODEM: \33[1;33m"
+                    var1= sed -n '3p'  /home/pi/ambe_server.ini
+                    echo "${VERDE}ejp. Ambe 3000= 230400  dv stick 30 = 460800"
+                    actualizar=S
+                    case $actualizar in
+                    [sS]* )
+                    echo "${CIAN}"
+                    read -p 'Introduce puerto MODEM:        ' pruter
+                    sed -i "3c $pruter" /home/pi/ambe_server.ini
                     break;;
                     [nN]* ) echo ""
                     break;;
