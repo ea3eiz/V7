@@ -18,7 +18,7 @@ var1= sed -n '1p'  /home/pi/ambe_server.ini
 echo -n "\33[1;36m   2)\33[0m Modificar puerto MODEM   - \33[1;33m"
 var1= sed -n '2p'  /home/pi/ambe_server.ini
 
-echo -n "\33[1;36m   2)\33[0m Modificar Velocidad Baut rate   - \33[1;33m"
+echo -n "\33[1;36m   2)\33[0m Modificar Baut rate      - \33[1;33m"
 var1= sed -n '3p'  /home/pi/ambe_server.ini
 
 echo ""
