@@ -340,9 +340,9 @@ clear
 		                case $ejecutar1 in
 			            [sS]* ) echo ""
 			            echo ">>>>>>>>> NextionDriver ADER_07.tft >>>>>>>>"
-			            #pasa el fichero nextion.py del Ingles G4KLX al Aleman DB20E
-			            sudo cp -f /home/pi/MMDVMHost/Nextion_G4KLX/nextion.py /home/pi/MMDVMHost/Nextion_DB2OE
-			            cd /home/pi/MMDVMHost/Nextion_DB2OE
+			            #pasa el fichero nextion.py del Ingles G4KLX al ON7LDS
+			            sudo cp -f /home/pi/MMDVMHost/Nextion_G4KLX/nextion.py /home/pi/MMDVMHost/Nextion_ON7LDS
+			            cd /home/pi/MMDVMHost/Nextion_ON7LDS
 			            sudo rm ADER_07.tft
 			            wget http://associacioader.com/ADER_07.tft
                         sudo python nextion.py ADER_07.tft /dev/ttyUSB0
