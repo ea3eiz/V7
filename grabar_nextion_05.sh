@@ -332,7 +332,7 @@ clear
 						break;;
 esac
 done;;
-10) echo ""
+15) echo ""
 while true
 do
 clear
