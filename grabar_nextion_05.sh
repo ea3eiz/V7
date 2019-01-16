@@ -22,6 +22,8 @@ echo '\33[1;36m   12)\33[1;32m Grabar pantalla Nextion 2.8" MMDVM original'
 echo '\33[1;36m   13)\33[1;32m Grabar pantalla Nextion 3.2" MMDVM original'
 echo '\33[1;36m   14)\33[1;32m Grabar pantalla Nextion 4.3" MMDVM original'
 echo ""
+echo '\33[1;36m   15)\33[1;32m Grabar pantalla Nextion 2.4" oara NextionDriver'
+echo ""
 echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
 echo ""
 echo -n "\33[1;36m   Elige una opción: " 
@@ -322,6 +324,28 @@ clear
 			            sudo cp -f /home/pi/MMDVMHost/Nextion_G4KLX/nextion.py /home/pi/MMDVMHost/Nextion_DB2OE
                         cd /home/pi/MMDVMHost/Nextion_DB2OE
                         sudo python nextion.py NX3224T043.tft /dev/ttyUSB0
+                        sleep 10
+		                break;;
+		                [nN]* ) echo ""
+						clear
+						exit;
+						break;;
+esac
+done;;
+10) echo ""
+while true
+do
+clear
+	                    ejecutar1=S
+		                case $ejecutar1 in
+			            [sS]* ) echo ""
+			            echo ">>>>>>>>> NextionDriver ADER_07.tft >>>>>>>>"
+			            #pasa el fichero nextion.py del Ingles G4KLX al Aleman DB20E
+			            sudo cp -f /home/pi/MMDVMHost/Nextion_G4KLX/nextion.py /home/pi/MMDVMHost/Nextion_DB2OE
+			            cd /home/pi/MMDVMHost/Nextion_DB2OE
+			            sudo rm ADER_07.tft
+			            wget http://associacioader.com/ADER_07.tft
+                        sudo python nextion.py ADER_07.tft /dev/ttyUSB0
                         sleep 10
 		                break;;
 		                [nN]* ) echo ""
