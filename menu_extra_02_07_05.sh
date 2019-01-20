@@ -46,6 +46,10 @@ clear
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
+
+                        cd /usr/local/share/opendv/
+                        sudo curl --fail -o DExtra_Hosts.txt -s http://www.pistar.uk/downloads/DExtra_Hosts.txt
+
                         cd /home/pi/$SCRIPTS_version
                         sudo git pull
                         sleep 1
