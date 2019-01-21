@@ -165,33 +165,6 @@ clear
                         break;;
 esac
 done;;
-
-
-
-5bloqueado)      echo ""
-while true
-do
-clear
-                        ejecutar1=S
-                        case $ejecutar1 in
-                        [sS]* ) echo ""
-                        echo "\33[1;31m***************************************************************************"
-        echo "* Conectamos el cable de programación en el USB de la Raspi y en Walki    *"
-        echo "* Ponemos el walki en modo DFU de la siguiente manera:                    *"
-        echo "* Apagamos y encendemos el Walki pulsando la tecla PTT+la tecla de arriba *"
-        echo "***************************************************************************"
-        echo "\33[1;32m "
-        echo "Pulsa enter para salir"
-        read a
-                        clear                                                              
-                        exit;
-                        break;;
-                        [nN]* ) echo ""
-                        clear
-                        exit;
-                        break;;
-esac
-done;;
 5bloqueado)      echo ""
 while true
 do
