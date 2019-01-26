@@ -22,7 +22,7 @@ echo '\33[1;36m   12)\33[1;32m Grabar pantalla Nextion 2.8" MMDVM original'
 echo '\33[1;36m   13)\33[1;32m Grabar pantalla Nextion 3.2" MMDVM original'
 echo '\33[1;36m   14)\33[1;32m Grabar pantalla Nextion 4.3" MMDVM original'
 echo ""
-echo '\33[1;36m   15)\33[1;32m Grabar pantalla Nextion 2.4" oara NextionDriver'
+echo '\33[1;36m   15)\33[1;32m Grabar pantalla Nextion 2.4" para NextionDriver'
 echo ""
 echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
 echo ""
