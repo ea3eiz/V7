@@ -30,8 +30,9 @@ clear
 			echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
                         cd /home/pi/V7
                         cp dv_serial /home/pi/dv4mini
-                        cp dv_serial /home/pi/dv4mini.exe
-                        cp dv_serial /home/pi/xref.ip
+                        cp dv4mini.exe /home/pi/dv4mini
+                        cp pi/xref.ip /home/dv4mini
+                        cp dv_serial /usr/bin/
                         
 clear
 		break;;
