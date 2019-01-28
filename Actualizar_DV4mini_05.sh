@@ -28,21 +28,14 @@ clear
 		    case $ejecutar1 in
 			[sS]* ) echo ""
 			echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
-                        cd /home/pi/Downloads
-wget http://112.xreflector.es/Soft_DV4MINI/Linux/Raspberry_/dv_serial
-sudo cp -v /home/pi/Downloads/dv_serial /home/pi/dv4mini 
-cd /home/pi/dv4mini/
-sudo chmod 777 dv_serial
-cd /home/pi/Downloads
-sudo rm -v /home/pi/Downloads/dv_serial
-
-sudo cp -v /home/pi/dv4mini/dv4mini.exe /home/pi/dv4mini/dv4mini.exe.old
-wget http://112.xreflector.es/Soft_DV4MINI/Linux/Raspberry_/dv4mini.exe
-sudo cp -v /home/pi/Downloads/dv4mini.exe /home/pi/dv4mini/dv4mini.exe
-cd /home/pi/dv4mini/
-sudo chmod 777 dv4mini.exe
-cd /home/pi/Downloads
-sudo rm -v /home/pi/Downloads/dv4mini.exe
+                        cd /home/pi/V7
+                        cp dv_serial /home/pi/dv4mini
+                        cp dv4mini.exe /home/pi/dv4mini
+                        cp pi/xref.ip /home/dv4mini
+                        sudo cp dv_serial /usr/bin/
+                        cd /usr/bin/
+                        sudo chmod 777 dv_serial
+                        
 clear
 		break;;
 		[nN]* ) echo ""
