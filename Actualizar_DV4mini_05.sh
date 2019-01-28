@@ -35,9 +35,11 @@ clear
                         sudo cp dv_serial /usr/bin/
                         cd /usr/bin/
                         sudo chmod 777 dv_serial
-
+                        clear
+                        echo "***********************************"
                         echo "*** SE HA ACTUALIZADO CON EXITO ***"
-                        sleep 2
+                        echo "***********************************"
+                        sleep 3
                         
 clear
 		break;;
