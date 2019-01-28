@@ -32,7 +32,9 @@ clear
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
                         cp pi/xref.ip /home/dv4mini
-                        cp dv_serial /usr/bin/
+                        sudo cp dv_serial /usr/bin/
+                        cd /usr/bin/
+                        sudo chmod 777 dv_serial
                         
 clear
 		break;;
