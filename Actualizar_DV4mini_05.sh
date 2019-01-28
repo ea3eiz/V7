@@ -31,7 +31,7 @@ clear
                         cd /home/pi/V7
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
-                        cp pi/xref.ip /home/pi/dv4mini
+                        cp xref.ip /home/pi/dv4mini
                         sudo cp dv_serial /usr/bin/
                         cd /usr/bin/
                         sudo chmod 777 dv_serial
