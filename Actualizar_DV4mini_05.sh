@@ -19,7 +19,7 @@ case $escoger_menu in
 
 
 
-1bloqueado) echo ""
+1) echo ""
 while true
 do
 clear
