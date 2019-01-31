@@ -700,7 +700,7 @@ do
                           buscar=":"
                           largo=`expr index $rx $buscar`
                           echo "Valor  actual  del  RXLevel : ${AMARILLO}${rx#*=}\33[1;37m"
-           	              read -p 'Valor óptimo para DVMEGA=45 : ' var2
+           	              read -p 'Valor óptimo depende de la emisora del DMO : ' var2
                           letra=c
                           if [ $largo = 3 ]
                           then
@@ -724,7 +724,7 @@ do
                           buscar=":"
                           largo=`expr index $tx $buscar`
                           echo "Valor  actual  del  TXLevel : ${AMARILLO}${tx#*=}\33[1;37m"
-           	              read -p 'Valor óptimo para DVMEGA=50 : ' var2
+           	              read -p 'Valor óptimo=50 : ' var2
                           letra=c
                           if [ $largo = 3 ]3
                           then
