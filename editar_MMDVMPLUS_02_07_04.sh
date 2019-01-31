@@ -700,7 +700,7 @@ do
                           buscar=":"
                           largo=`expr index $rx $buscar`
                           echo "Valor  actual  del  RXLevel : ${AMARILLO}${rx#*=}\33[1;37m"
-                          read -p 'Valor óptimo (en mi caso) para DVMEGA=45, Low cost EA4AOJ=45 en NANO BLAS=60 : ' var2
+                          read -p 'Valor óptimo (en mi caso) para DVMEGA=45, Low cost EA4AOJ=45, NANO BLAS=60 : ' var2
                           letra=c
                           if [ $largo = 3 ]
                           then
