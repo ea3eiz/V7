@@ -52,6 +52,10 @@ clear
                         sudo curl --fail -o DCS_Hosts.txt -s http://www.pistar.uk/downloads/DCS_Hosts.txt
                         sudo curl --fail -o DPlus_Hosts.txt -s http://www.pistar.uk/downloads/DPlus_Hosts.txt
 
+
+                        sudo cp DExtra_Hosts.txt /home/pi/dv4mini/xref.pi
+
+
                         cd /home/pi/$SCRIPTS_version
                         sudo git pull
                         sleep 1
