@@ -53,7 +53,7 @@ clear
                         sudo curl --fail -o DPlus_Hosts.txt -s http://www.pistar.uk/downloads/DPlus_Hosts.txt
 
 
-                        sudo cp DExtra_Hosts.txt /home/pi/dv4mini/xref.pi
+                        sudo cp DExtra_Hosts.txt /home/pi/dv4mini/xref.ip
 
 
                         cd /home/pi/$SCRIPTS_version
