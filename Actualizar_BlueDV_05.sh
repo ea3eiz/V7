@@ -318,6 +318,37 @@ clear
 			break;;
 esac
 done;;
+1a) echo ""
+while true
+do
+clear
+echo "\33[1;33m"
+	        read -p ' Quieres actualizar el BlueDV Si/No: ' ejecutar1
+		    case $ejecutar1 in
+			[sS]* ) echo ""
+			echo "ok >>>>>"
+
+			cd /home/pi/
+  			#mkdir bluedv_anterior
+            #sudo cp bluedv/*.* bluedv_anterior/
+            sudo rm -r /home/pi/bluedv
+			git clone https://github.com/ea3eiz/bluedv09488
+			
+			cd /home/pi/bluedv
+			sudo chmod 777 DExtra_Hosts.txt			
+			echo "\33[1;32m******************************************************"
+			echo "\33[1;32m*  SE HA ACTUALIZADO A LA ÚLTIMA VERSIÓN DISPONIBLE  *"
+			echo "\33[1;32m******************************************************"
+			sleep 3
+exit;
+		    echo ""
+			echo "Ok, se ha ejecutado correctamente"
+			echo ""
+			break;;
+			[nN]* ) echo ""
+			break;;
+esac
+done;;
 0) echo ""
 clear
 echo "\33[1;33m   ******************************"
