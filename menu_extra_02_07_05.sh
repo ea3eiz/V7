@@ -663,6 +663,7 @@ clear
                         case $instalarsi in
                         [sS]* ) echo ""
                         clear
+                        cd /home/pi/
                         git clone https://github.com/on7lds/NextionDriver
                         cd NextionDriver
                         make  
