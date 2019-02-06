@@ -666,7 +666,7 @@ clear
                         git clone https://github.com/on7lds/NextionDriver
                         cd NextionDriver
                         make  
-                        #sudo nano /home/pi/.config/autostart/nextiondriver.desktop             
+                        cp /home/pi/V7/nextiondriver.desktop home/pi/.config/autostart/             
                         break;;
                         [nN]* ) echo ""
                         clear
