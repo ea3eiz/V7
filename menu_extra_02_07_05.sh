@@ -669,7 +669,7 @@ clear
                         make 
                         echo "se instaló NextionDriver con exito"
                         sleep 3 
-                        sudo cp /home/pi/V7/nextiondriver.desktop home/pi/.config/autostart/             
+                        sudo cp /home/pi/V7/nextiondriver.desktop /home/pi/.config/autostart/             
                         break;;
                         [nN]* ) echo ""
                         clear
