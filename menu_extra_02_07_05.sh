@@ -666,8 +666,10 @@ clear
                         cd /home/pi/
                         git clone https://github.com/on7lds/NextionDriver
                         cd NextionDriver
-                        make  
-                        cp /home/pi/V7/nextiondriver.desktop home/pi/.config/autostart/             
+                        make 
+                        echo "se instaló NextionDriver con exito"
+                        sleep 3 
+                        sudo cp /home/pi/V7/nextiondriver.desktop home/pi/.config/autostart/             
                         break;;
                         [nN]* ) echo ""
                         clear
