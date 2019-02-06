@@ -655,6 +655,25 @@ clear
                         break;;
 esac
 done;;
+nextion) echo ""
+while true
+do
+clear                     
+                        instalarsi=S
+                        case $instalarsi in
+                        [sS]* ) echo ""
+                        clear
+                        git clone https://github.com/on7lds/NextionDriver
+                        cd NextionDriver
+                        make  
+                        #sudo nano /home/pi/.config/autostart/nextiondriver.desktop             
+                        break;;
+                        [nN]* ) echo ""
+                        clear
+                        exit;
+                        break;;
+esac
+done;;
 0) echo ""
 clear
 echo "\33[1;33m   ******************************"
