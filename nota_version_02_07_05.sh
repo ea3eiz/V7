@@ -25,7 +25,8 @@ echo "   Imagen Linux basada en Raspbian, creada por: EA3EIZ & EA3EG."
 echo ""
 echo "   Agradecer la colaboración a: EA3ES, EA3HVF, EA3FAB, EA1IVQ."
 echo ""
-echo "\33[1;31m   Prohibido modificar total o parcialmente el contenido de esta imagen."
+echo "\33[1;31m   Recomendación de no modificar total o parcialmente el contenido de esta imagen."
+echo "\33[1;31m   Podria dañar algún fichero del sistema y el funcionamiento de la misma."
 
 						mmdvm=$(awk "NR==22" /home/pi/MMDVMHost/Version.h)
 						var10=`echo "$mmdvm" | tr -d '[[:space:]]'`
