@@ -35,6 +35,8 @@ clear
                         sudo cp dv_serial /usr/bin/
                         cd /usr/bin/
                         sudo chmod 777 dv_serial
+                        cd /home/pi/dv4mini
+                        sudo chmod 777 dv_serial
                         clear
                         echo "***********************************"
                         echo "*** SE HA ACTUALIZADO CON EXITO ***"
