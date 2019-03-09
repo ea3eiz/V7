@@ -57,7 +57,7 @@ clear
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
-                        git clone http://github.com/ea3eiz/DV4MINI_2019-02-24
+                        git clone http://github.com/ea3eiz/DV4MINI_20190224
                         read a
                         cd /home/pi/V7
                         cp dv_serial /home/pi/dv4mini
