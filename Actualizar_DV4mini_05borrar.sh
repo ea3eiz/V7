@@ -58,6 +58,7 @@ clear
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
                         git clone http://github.com/ea3eiz/DV4MINI_20190224
+                        rm /home/pi/dv4mini/*.*
                         read a
                         cd /home/pi/V7
                         cp dv_serial /home/pi/dv4mini
