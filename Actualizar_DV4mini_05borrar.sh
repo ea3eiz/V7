@@ -64,7 +64,6 @@ clear
                         cd /home/pi/V7
                         git clone http://github.com/ea3eiz/DV4MINI
                         sudo rm -r /home/pi/dv4mini
-                        read a
                         sudo mkdir /home/pi/dv4mini
                         cd /home/pi/V7/DV4MINI/20190127
                         cp dv_serial /home/pi/dv4mini
@@ -99,7 +98,6 @@ clear
                         cd /home/pi/V7
                         git clone http://github.com/ea3eiz/DV4MINI
                         sudo rm -r /home/pi/dv4mini
-                        read a
                         sudo mkdir /home/pi/dv4mini
                         cd /home/pi/V7/DV4MINI/20170517
                         cp dv_serial /home/pi/dv4mini
