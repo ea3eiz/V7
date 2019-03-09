@@ -59,8 +59,7 @@ clear
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
                         git clone http://github.com/ea3eiz/DV4MINI_20190224
                         sudo rm /home/pi/dv4mini/*.*
-                        read a
-                        cd /home/pi/V7
+                        cd /home/pi/V7/DV4MINI_20190224
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
                         cp xref.ip /home/pi/dv4mini
