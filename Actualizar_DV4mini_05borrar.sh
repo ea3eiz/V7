@@ -23,12 +23,13 @@ case $escoger_menu in
 while true
 do
 clear
-
-	                ejecutar1=S
-		        case $ejecutar1 in
-			[sS]* ) echo ""
-			echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
-                        cd /home/pi/V7
+                        ejecutar1=S
+                        case $ejecutar1 in
+                        [sS]* ) echo ""
+                        echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
+                        git clone http://github.com/ea3eiz/DV4MINI20190307
+                        sudo rm /home/pi/dv4mini/*.*
+                        cd /home/pi/V7/DV4MINI20190307
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
                         cp xref.ip /home/pi/dv4mini
@@ -43,9 +44,9 @@ clear
                         echo "***********************************"
                         sleep 3                        
                         clear
-		        break;;
-		        [nN]* ) echo ""
-			break;;
+                        break;;
+                        [nN]* ) echo ""
+                        break;;
 esac
 done;;
 2) echo ""
