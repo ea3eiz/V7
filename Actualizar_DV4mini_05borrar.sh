@@ -57,9 +57,9 @@ clear
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
-                        git clone http://github.com/ea3eiz/DV4MINI_20190224
+                        git clone http://github.com/ea3eiz/DV4MINI20190127
                         sudo rm /home/pi/dv4mini/*.*
-                        cd /home/pi/V7/DV4MINI_20190224
+                        cd /home/pi/V7/DV4MINI20190127
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
                         cp xref.ip /home/pi/dv4mini
