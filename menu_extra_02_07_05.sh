@@ -527,6 +527,42 @@ exit;
 break;;
 esac
 done;;
+10a) echo ""
+while true
+do
+clear
+                                ejecutar1=S
+                                case $ejecutar1 in
+                                [sS]* ) echo ""
+
+echo "${ROJO}"
+echo "   *********************************************************"
+echo "   * ATENCIÒN!!! Si estás utilizando la Raspberry pi 3 B+  *"
+echo "   * Dicha máquina tiene los puertos USB de alta velocidad *"
+echo "   * por lo que tendrás que utilizar un ladrón de USB      *"
+echo "   * para poder rebajar la velocidad de los puertos USB    *"
+echo "   * y así poder grabar los pinchos sin ningun problema    *"
+echo "   *********************************************************"
+echo "${VERDE}"
+
+echo "${AMARILLO}"
+echo "   *********************************************************************"
+echo "   * Haz clik en el icono donde tengas conectado el pincho             *"
+echo "   * una vez se abra la consola mostrando que se conectó correctamente *"
+echo "   * cierra dicha consola y utiliza el MENÚ que te aparecerá           *"
+echo "   *********************************************************************"
+echo "${VERDE}"
+echo -n "    Pulsa una tecla para seguir "
+read a
+                                sh flash_mmdvm_hs_gpio.sh
+                                echo ""
+                                break;;
+                                [nN]* ) echo ""
+clear
+exit;
+break;;
+esac
+done;;
 11) echo ""
 while true
 do
