@@ -677,6 +677,23 @@ clear
                         break;;
 esac
 done;;
+a) echo ""
+while true
+do
+clear                     
+                        instalarsi=S
+                        case $instalarsi in
+                        [sS]* ) echo ""
+                        clear
+                        cd /home/pi/$SCRIPTS_version/
+                        sudo sh flash_mmdvm_hs_gpio.sh                  
+                        break;;
+                        [nN]* ) echo ""
+                        clear
+                        exit;
+                        break;;
+esac
+done;;
 0) echo ""
 clear
 echo "\33[1;33m   ******************************"
