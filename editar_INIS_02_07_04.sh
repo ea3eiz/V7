@@ -34,6 +34,7 @@ buscar=":"
 largo_linea=`expr index $loc1 $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $loc1 1 $largo_linea`
+numero_linea_location=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 contenido_location=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMPLUS.ini)
@@ -337,7 +338,9 @@ do
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
             #YSF
-            sed -i "19c Name=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            letrac=c
+            numero_linea_location=$numero_linea_location$letrac
+            sed -i "$numero_linea_location Name=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
             #YSF2DMR
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
