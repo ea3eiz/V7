@@ -77,7 +77,7 @@ clear
                         break;;
 esac
 done;;
-2) echo ""
+2bloqueado) echo ""
 while true
 do
 clear                     
