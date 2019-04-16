@@ -814,17 +814,6 @@ echo "Valor de la Latitud: \33[1;33m${lat#*=}\33[1;37m"
             sed -i "15c Latitude=$tu_latitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "15c Latitude=$tu_latitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "15c Latitude=$tu_latitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-            
-
-
-
-
-
-
-
-
-
-
 #YSF
 loc1=`grep -n "^Latitude=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
@@ -833,20 +822,7 @@ largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
-echo "Latitude: $numero_linea_letrac"
-read a
 sed -i "$numero_linea_letrac Latitude=$tu_latitud" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
-
-            
-
-
-
-
-
-
-
-
-
             #YSF2DMR
             sed -i "5c Latitude=$tu_latitud" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "5c Latitude=$tu_latitud" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
@@ -908,7 +884,24 @@ echo "Valor de la Longitud: \33[1;33m${long#*=}\33[1;37m"
             sed -i "16c Longitude=$tu_longitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "16c Longitude=$tu_longitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "16c Longitude=$tu_longitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-            #YSF
+#YSF
+loc1=`grep -n "^Longitude=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+buscar=":"
+largo_linea=`expr index $loc1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $loc1 1 $largo_linea`
+letrac=c
+numero_linea_letrac=$numero_linea$letrac
+echo "Longitude: $numero_linea_letrac"
+read a
+sed -i "$numero_linea_letrac Longitude=$tu_longitud" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+
+
+
+
+
+
+
             sed -i "17c Longitude=$tu_longitud" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
             #YSF2DMR
             sed -i "6c Longitude=$tu_longitud" /home/pi/YSF2DMR/YSF2DMR.ini
