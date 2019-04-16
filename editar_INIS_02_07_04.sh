@@ -335,8 +335,17 @@ echo "Valor actual del TXFrequency: \33[1;33m${txf#*=}\33[1;37m"
             sed -i "13c TXFrequency=$frecuenciatx" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "13c TXFrequency=$frecuenciatx" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "13c TXFrequency=$frecuenciatx" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-            #YSF
-            sed -i "14c TXFrequency=$frecuenciatx" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+#YSF
+loc1=`grep -n "^TXFrequency=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+buscar=":"
+largo_linea=`expr index $loc1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $loc1 1 $largo_linea`
+letrac=c
+numero_linea_letrac=$numero_linea$letrac
+echo "TXFrequency: $numero_linea_letrac"
+read a
+sed -i "$numero_linea_letrac TXFrequency=$frecuenciatx" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
             #YSF2DMR
             sed -i "3c TXFrequency=$frecuenciatx" /home/pi/YSF2DMR/YSF2DMR.ini      
             sed -i "3c TXFrequency=$frecuenciatx" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01            
