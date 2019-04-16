@@ -259,20 +259,7 @@ largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
-echo "RXFrequency: $numero_linea_letrac"
-read a
 sed -i "$numero_linea_letrac RXFrequency=$frecuenciarx" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
-            
-
-
-
-
-
-
-
-
-
-
             #YSF2DMR
             sed -i "2c RXFrequency=$frecuenciarx" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "2c RXFrequency=$frecuenciarx" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01            
