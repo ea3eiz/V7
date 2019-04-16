@@ -341,6 +341,10 @@ do
             letrac=c
             numero_linea_location=$numero_linea_location$letrac
             sed -i "$numero_linea_location Name=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            echo "$numero_linea_location"
+
+read a
+
             #YSF2DMR
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
