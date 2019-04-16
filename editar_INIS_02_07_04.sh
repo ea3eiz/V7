@@ -508,7 +508,7 @@ letrac=c
 numero_linea_letrac=$numero_linea$letrac
 echo "Id: $numero_linea_letrac"
 read a
-sed -i "numero_linea_letrac Id=$tu_id" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+sed -i "$numero_linea_letrac Id=$tu_id" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
 
 
            
