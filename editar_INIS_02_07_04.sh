@@ -246,8 +246,33 @@ echo "Valor actual del RXFrequency: \33[1;33m${rxf#*=}\33[1;37m"
             sed -i "12c RXFrequency=$frecuenciarx" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "12c RXFrequency=$frecuenciarx" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "12c RXFrequency=$frecuenciarx" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-            #YSF
-            sed -i "13c RXFrequency=$frecuenciarx" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+           
+
+
+
+
+#YSF
+loc1=`grep -n "^RXFrequency=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+buscar=":"
+largo_linea=`expr index $loc1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $loc1 1 $largo_linea`
+letrac=c
+numero_linea_letrac=$numero_linea$letrac
+echo "RXFrequency: $numero_linea_letrac"
+read a
+sed -i "$numero_linea_letrac RXFrequency=$frecuenciarx" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            
+
+
+
+
+
+
+
+
+
+
             #YSF2DMR
             sed -i "2c RXFrequency=$frecuenciarx" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "2c RXFrequency=$frecuenciarx" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01            
@@ -374,8 +399,6 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac Name=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
-
-
             #YSF2DMR
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
@@ -506,12 +529,7 @@ largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
-echo "Id: $numero_linea_letrac"
-read a
 sed -i "$numero_linea_letrac Id=$tu_id" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
-
-
-           
             #YSF2DMR
             var1=`grep -n -m 1 "\[DMR Network\]" /home/pi/YSF2DMR/YSF2DMR.ini`
             var2=`echo "$var1" | tr -d '[[:space:]]'`
