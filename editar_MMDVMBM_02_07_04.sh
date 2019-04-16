@@ -1133,8 +1133,7 @@ done;;
 k) echo ""
 while true
 do                         
-                          valor=$(awk "NR==$numero_linea_jiter_letrap" /home/pi/MMDVMHost/$DIRECTORIO)
-                          echo "Valor actual  del Jitter: ${AMARILLO}$valor"
+                          echo "Valor actual  del Jitter: ${AMARILLO}$Jitter"
                           read -p 'Introduce valor entre 360 a 600: '   JITTER
                           actualizar=S 
                           case $actualizar in
