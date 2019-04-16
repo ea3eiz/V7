@@ -156,7 +156,7 @@ sed -i "40c $tu_indicativo" /home/pi/info_panel_control.ini #escribe solo el ind
                         sed -i "2c Callsign=$tu_indicativo" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
                         
 
-                        #iNDICATIVO YSF
+#iNDICATIVO YSF
 loc1=`grep -n "^Callsign=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
@@ -168,22 +168,8 @@ sed -i "$numero_linea_letrac Callsign=$tu_indicativo" /home/pi/YSFClients/YSFGat
 
 echo "Callsingn: $numero_linea_letrac"
 read a
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        sed -i "numero_linea_letrac Callsign=$tu_indicativo" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+sed -i "numero_linea_letrac Callsign=$tu_indicativo" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
                         
-
 
 
 
@@ -377,10 +363,8 @@ do
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-            #YSF
 
-
-
+#YSF
 loc=`grep -n "^Name=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 loc1=`echo "$loc" | tr -d '[[:space:]]'`
 buscar=":"
@@ -391,8 +375,6 @@ letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac Name=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
 
-echo "$numero_linea_letrac"
-read a
 
             #YSF2DMR
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini
@@ -516,8 +498,19 @@ echo "Valor  actual  del Id: \33[1;33m${idd#*=}\33[1;37m"
             sed -i "54c Id=$tu_id" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "54c Id=$tu_id" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "54c Id=$tu_id" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-            #YSF
-            sed -i "5c Id=$tu_id" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+#YSF
+loc1=`grep -n "^Id=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+buscar=":"
+largo_linea=`expr index $loc1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $loc1 1 $largo_linea`
+letrac=c
+numero_linea_letrac=$numero_linea$letrac
+echo "Id: $numero_linea_letrac"
+read a
+sed -i "numero_linea_letrac Id=$tu_id" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+
+
            
             #YSF2DMR
             var1=`grep -n -m 1 "\[DMR Network\]" /home/pi/YSF2DMR/YSF2DMR.ini`
