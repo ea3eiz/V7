@@ -895,14 +895,6 @@ numero_linea_letrac=$numero_linea$letrac
 echo "Longitude: $numero_linea_letrac"
 read a
 sed -i "$numero_linea_letrac Longitude=$tu_longitud" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
-
-
-
-
-
-
-
-            sed -i "17c Longitude=$tu_longitud" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
             #YSF2DMR
             sed -i "6c Longitude=$tu_longitud" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "6c Longitude=$tu_longitud" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
