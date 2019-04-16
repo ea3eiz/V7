@@ -154,8 +154,6 @@ sed -i "40c $tu_indicativo" /home/pi/info_panel_control.ini #escribe solo el ind
                         sed -i "2c Callsign=$tu_indicativo" /home/pi/MMDVMHost/MMDVMLIBRE.ini
                         sed -i "2c Callsign=$tu_indicativo" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
                         sed -i "2c Callsign=$tu_indicativo" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-                        
-
 #iNDICATIVO YSF
 loc1=`grep -n "^Callsign=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
@@ -165,23 +163,6 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac Callsign=$tu_indicativo" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
-
-echo "Callsingn: $numero_linea_letrac"
-read a
-sed -i "numero_linea_letrac Callsign=$tu_indicativo" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
-                        
-
-
-
-
-
-
-
-
-
-
-
-
                         #iNDICATIVO YSF2DMR
                         sed -i "13c Callsign=$tu_indicativo" /home/pi/YSF2DMR/YSF2DMR.ini
                         sed -i "13c Callsign=$tu_indicativo" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
@@ -330,8 +311,6 @@ largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
-echo "TXFrequency: $numero_linea_letrac"
-read a
 sed -i "$numero_linea_letrac TXFrequency=$frecuenciatx" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
             #YSF2DMR
             sed -i "3c TXFrequency=$frecuenciatx" /home/pi/YSF2DMR/YSF2DMR.ini      
@@ -892,8 +871,6 @@ largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
-echo "Longitude: $numero_linea_letrac"
-read a
 sed -i "$numero_linea_letrac Longitude=$tu_longitud" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
             #YSF2DMR
             sed -i "6c Longitude=$tu_longitud" /home/pi/YSF2DMR/YSF2DMR.ini
