@@ -338,10 +338,26 @@ do
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
             #YSF
-            letrac=c
-            numero_linea_location=$numero_linea_location$letrac
-            sed -i "$numero_linea_location Name=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
-            echo "$numero_linea_location"
+
+
+
+loc=`grep -n "^Name=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+loc1=`echo "$loc" | tr -d '[[:space:]]'`
+buscar=":"
+largo_linea=`expr index $loc1 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $loc1 1 $largo_linea`
+letrac=c
+numero_linea_letrac=$numero_linea$letrac
+
+
+
+
+
+
+
+            sed -i "$numero_linea_letrac Name=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            echo "$numero_linea_letrac"
 
 read a
 
