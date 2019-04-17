@@ -125,8 +125,8 @@ contenido_txf=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/$DIRECTORIO)
 echo "$contenido_txf"
 
 echo -n "${CIAN}   4)${GRIS} Modificar Location    - ${AMARILLO}"
-loc=`grep -n "^Location=" /home/pi/MMDVMHost/$DIRECTORIO`
-loc1=`echo "$loc" | tr -d '[[:space:]]'`
+loc1=`grep -n "^Location=" /home/pi/MMDVMHost/$DIRECTORIO`
+#loc1=`echo "$loc" | tr -d '[[:space:]]'`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
 largo_linea=`expr $largo_linea - 1`
