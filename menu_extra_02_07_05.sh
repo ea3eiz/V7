@@ -60,7 +60,7 @@ clear
                         sleep 1
 
                         # copia prueba.sh en /home/pi
-                        cp /home/pi/$SCRIPTS_version/Desktop/prueba.sh /home/pi
+                        cp /home/pi/$SCRIPTS_version/prueba.sh /home/pi
 
 
                         #comprueba si el fichero existe
