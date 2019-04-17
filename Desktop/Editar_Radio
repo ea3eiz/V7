@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 TryExec=lxterminal
-Exec=sh -c "cd /home/pi/V7;lxterminal --geometry=80x47 -e sudo sh  editar_MMDVM_02_07_04.sh"
+Exec=sh -c "cd /home/pi/V7;lxterminal --geometry=80x50 -e sudo sh  editar_MMDVM_02_07_04.sh"
 Icon=/home/pi/V7/editar_MMDVM.png
 Type=Application
 StartupNotify=false
