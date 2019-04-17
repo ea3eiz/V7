@@ -59,9 +59,9 @@ clear
                         sudo git pull
                         sleep 1
 
-                        # Alarga los editores Solo Fusion y Solo D-STAR
-                        cp /home/pi/$SCRIPTS_version/Desktop/Editar_solofusion /home/pi/Desktop
-                        cp /home/pi/$SCRIPTS_version/Desktop/Editar_solodstar /home/pi/Desktop
+                        # copia prueba.sh en /home/pi
+                        cp /home/pi/$SCRIPTS_version/Desktop/prueba.sh /home/pi
+
 
                         #comprueba si el fichero existe
                         if [ -f /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini ];
