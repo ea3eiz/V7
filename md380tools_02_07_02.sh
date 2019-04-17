@@ -165,7 +165,7 @@ clear
                         break;;
 esac
 done;;
-5bloqueado)      echo ""
+5)      echo ""
 while true
 do
 clear
@@ -182,7 +182,8 @@ clear
                         sudo rm user.bin
                         echo "Introduciendo USER.BIN"
                         #sudo wget http://42561.noip.us/user.bin
-                        sudo wget https://kg5rki.com/MD380_AIO/user.bin
+                        #sudo wget https://kg5rki.com/MD380_AIO/user.bin
+                        sudo wget http://associacioader.com/descargas/user.bin
                         sudo ./md380-tool spiflashwrite user.bin 0x100000
                         break;;
                         [nN]* ) echo ""
@@ -201,7 +202,7 @@ do
 clear
         echo "*************************************************************************"
         echo "* Para que este proceso se efectue correctamente, es imprescindible     *"
-        echo "* actualizar el firmware md380tools en tu Walkie                        *"
+        echo "* actualizar el firmware md380tools en tu Walkie                         *"
         echo "*************************************************************************"
         echo""
         echo "\33[1;31m*************************************************************************"
