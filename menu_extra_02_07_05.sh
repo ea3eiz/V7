@@ -60,8 +60,8 @@ clear
                         sleep 1
 
                         # Alarga los editores Solo Fusion y Solo D-STAR
-                        cp /home/pi/$SCRIPTS_version/Editar_solofusion /home/pi/Desktop
-                        cp /home/pi/$SCRIPTS_version/Editar_solodstar /home/pi/Desktop
+                        cp /home/pi/$SCRIPTS_version/Desktop/Editar_solofusion /home/pi/Desktop
+                        cp /home/pi/$SCRIPTS_version/Desktop/Editar_solodstar /home/pi/Desktop
 
                         #comprueba si el fichero existe
                         if [ -f /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini ];
