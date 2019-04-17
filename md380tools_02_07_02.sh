@@ -184,7 +184,7 @@ clear
                         #sudo wget http://42561.noip.us/user.bin
                         #sudo wget https://kg5rki.com/MD380_AIO/user.bin
                         sudo wget http://associacioader.com/descargas/user.bin
-                        sudo ./md380-tool spiflashwrite user.bin 0x100000
+                        sudo ./md380-tool spiflashwrite user.bin 0x1638400
                         break;;
                         [nN]* ) echo ""
                         echo ""
