@@ -24,6 +24,7 @@ echo "\33[1;36m   4)\33[1;33m Desactivar Bluetooth (esto habilita el puerto /dev
 echo "\33[1;36m   5)\33[1;32m PDF con las instrucciones para emparejar el Bluetooth"
 echo "\33[1;36m   6)\33[1;37m Anclar el puerto rfcomm0 para conectar el Bluetooth para siempre"
 echo "\33[1;36m   7)\33[1;37m Anclar el puerto rfcomm1 para conectar el Bluetooth para siempre"
+echo "\33[1;32m      =================="
 echo ""
 echo "\33[1;36m   8)\33[1;37m INSTALAR ANYDESK ${ROJO}(reiniciar después de instalar)"
 echo "\33[1;36m   9)\33[1;37m Grabar Pantalla Nextion"
