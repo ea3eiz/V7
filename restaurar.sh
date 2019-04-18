@@ -15,6 +15,7 @@ echo "*      DEL MMDVMHOST QUE TIENES ACTUALIZADO       *"
 echo "***************************************************"
             sudo chmod -R 777 /home/pi/Downloads
             cd /home/pi/Downloads
+            sudo cp -f TODOS_LOS_INIS.ini /home/pi/MMDVMHost
             sudo cp -f MMDVM.ini /home/pi/MMDVMHost
             sudo cp -f MMDVM.ini_copia /home/pi/MMDVMHost
             sudo cp -f MMDVM.ini_copia2 /home/pi/MMDVMHost

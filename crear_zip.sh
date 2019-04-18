@@ -1,6 +1,7 @@
 #!/bin/bash
 
             cd /home/pi/MMDVMHost
+            sudo cp -f TODOS_LOS_INIS.ini /home/pi/Downloads
             sudo cp -f MMDVM.ini /home/pi/Downloads
             sudo cp -f MMDVM.ini_copia /home/pi/Downloads
             sudo cp -f MMDVM.ini_copia2 /home/pi/Downloads
