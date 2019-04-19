@@ -12,3 +12,4 @@ cp /home/pi/V7/Desktop/Editar_solofusion /home/pi/Desktop
 cp /home/pi/V7/Desktop/Editar_YSF2DMR /home/pi/Desktop
 cp /home/pi/V7/Desktop/Editar_MMDVMDMR2YSF.desktop /home/pi/Desktop
 cp /home/pi/V7/Desktop/Editar_MMDVMDMR2NXDN.desktop /home/pi/Desktop
+cp /home/pi/V7/Desktop/Editar_Display_Walki /home/pi/Desktop
