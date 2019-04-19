@@ -48,11 +48,11 @@ clear
             fi
             #===============================================
 
-
 match1=$(awk "NR==2" /home/pi/info.ini)
 sed -i "1c $match1" /home/pi/info.ini
             sudo chmod +x -R /home/pi/Downloads
             cd /home/pi/MMDVMHost
+            sudo cp -f TODOS_LOS_INIS.ini /home/pi/Downloads
             sudo cp -f MMDVM.ini /home/pi/Downloads
             sudo cp -f MMDVM.ini_copia /home/pi/Downloads
             sudo cp -f MMDVM.ini_copia2 /home/pi/Downloads
@@ -138,6 +138,7 @@ sleep 3
 
             sudo chmod -R 777 /home/pi/Downloads
             cd /home/pi/Downloads
+            sudo cp -f TODOS_LOS_INIS.ini /home/pi/MMDVMHost
             sudo cp -f MMDVM.ini /home/pi/MMDVMHost
             sudo cp -f MMDVM.ini_copia /home/pi/MMDVMHost
             sudo cp -f MMDVM.ini_copia2 /home/pi/MMDVMHost
