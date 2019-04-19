@@ -7,6 +7,6 @@ Type=Application
 StartupNotify=false
 Categories=GTK;Utility;TerminalEmulator;
 Terminal=false
-Name[es_ES]=
+Name[es_ES]=Nulo
 Hidden=false
 X-KeepTerminal=true
