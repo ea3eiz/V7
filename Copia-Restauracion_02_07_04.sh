@@ -14,12 +14,12 @@ echo "   *                          \33[1;31mby EA3EIZ\33[1;32m                 
 echo "   **************************************************************************"
 echo "\33[1;36m   1)\33[1;37m Hacer Copia de seguridad de BM, DMR+, LIBRE, RADIO, solo D-STAR,"
 echo "      solo FUSION, YSF2DMR, DMR2YSFF, DMR2NXDN, YSF, BlueDV, SVXLINK, ircDDB, "
-echo "      y D-STAR Repeater"
+echo "      D-STAR Repeater y Editor GENERAL"
 
 echo ""
 echo "\33[1;36m   2)\33[1;32m Restaurar Copia de BM, DMR+, LIBRE, RADIO, solo D-STAR, "
 echo "      solo FUSION, YSF2DMR, DMR2YSFF, DMR2NXDN, YSF, BlueDV, SVXLINK, ircDDB, "
-echo "      y D-STAR Repeater"
+echo "      D-STAR Repeater y Editor GENERAL"
 echo ""
 echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
 echo ""
@@ -35,8 +35,10 @@ clear
             ejecutar1=S
             case $ejecutar1 in
             [sS]* ) echo ""
-            echo "Haciendo copias editores BM, DMR+, LIBRE, RADIO"
-            echo "Solo D-STAR, solo FUSION, YSF2DMR, YSF, DMR2YSFF, DMR2NXDN, BlueDV y SVXLINK"
+            clear
+            echo "*****************************************"
+            echo "     Realizando la copia de seguridad"
+            echo "*****************************************"
             sleep 5
             sudo chmod -R 777 /home/pi/Downloads/
             #Comprueba si existe el fichero info.ini
