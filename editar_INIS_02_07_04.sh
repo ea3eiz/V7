@@ -154,7 +154,8 @@ sed -i "40c $tu_indicativo" /home/pi/info_panel_control.ini #escribe solo el ind
                         sed -i "2c Callsign=$tu_indicativo" /home/pi/MMDVMHost/MMDVMLIBRE.ini
                         sed -i "2c Callsign=$tu_indicativo" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
                         sed -i "2c Callsign=$tu_indicativo" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-#iNDICATIVO YSF
+
+#Indicativo YSF
 loc1=`grep -n "^Callsign=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
@@ -163,6 +164,7 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac Callsign=$tu_indicativo" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                        
                         #iNDICATIVO YSF2DMR
                         sed -i "13c Callsign=$tu_indicativo" /home/pi/YSF2DMR/YSF2DMR.ini
                         sed -i "13c Callsign=$tu_indicativo" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
@@ -175,7 +177,6 @@ sed -i "$numero_linea_letrac Callsign=$tu_indicativo" /home/pi/YSFClients/YSFGat
 
                         #MMDVMDMR2NXDN.ini
                         sed -i "2c Callsign=$tu_indicativo" /home/pi/MMDVMHost/MMDVMDMR2NXDN.ini
-
 
                         #iNDICATIVO SOLODSTAR
                         sed -i "2c Callsign=$tu_indicativo" /home/pi/MMDVMHost/MMDVMDSTAR.ini
@@ -227,12 +228,8 @@ echo "Valor actual del RXFrequency: \33[1;33m${rxf#*=}\33[1;37m"
             sed -i "12c RXFrequency=$frecuenciarx" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "12c RXFrequency=$frecuenciarx" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "12c RXFrequency=$frecuenciarx" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-           
 
-
-
-
-#YSF
+#RXFrequency YSF
 loc1=`grep -n "^RXFrequency=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
@@ -241,6 +238,7 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac RXFrequency=$frecuenciarx" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            
             #YSF2DMR
             sed -i "2c RXFrequency=$frecuenciarx" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "2c RXFrequency=$frecuenciarx" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01            
@@ -303,7 +301,8 @@ echo "Valor actual del TXFrequency: \33[1;33m${txf#*=}\33[1;37m"
             sed -i "13c TXFrequency=$frecuenciatx" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "13c TXFrequency=$frecuenciatx" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "13c TXFrequency=$frecuenciatx" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-#YSF
+
+#TXFrequency YSF
 loc1=`grep -n "^TXFrequency=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
@@ -312,6 +311,7 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac TXFrequency=$frecuenciatx" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            
             #YSF2DMR
             sed -i "3c TXFrequency=$frecuenciatx" /home/pi/YSF2DMR/YSF2DMR.ini      
             sed -i "3c TXFrequency=$frecuenciatx" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01            
@@ -364,7 +364,7 @@ do
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "18c Location=$tu_ciudad" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
 
-#YSF
+#Name YSF
 loc=`grep -n "^Name=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 loc1=`echo "$loc" | tr -d '[[:space:]]'`
 buscar=":"
@@ -374,6 +374,7 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac Name=$tu_ciudad" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+           
             #YSF2DMR
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "8c Location=$tu_ciudad" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
@@ -496,7 +497,8 @@ echo "Valor  actual  del Id: \33[1;33m${idd#*=}\33[1;37m"
             sed -i "54c Id=$tu_id" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "54c Id=$tu_id" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "54c Id=$tu_id" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-#YSF
+
+#Id YSF
 loc1=`grep -n "^Id=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
@@ -505,6 +507,7 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac Id=$tu_id" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            
             #YSF2DMR
             var1=`grep -n -m 1 "\[DMR Network\]" /home/pi/YSF2DMR/YSF2DMR.ini`
             var2=`echo "$var1" | tr -d '[[:space:]]'`
@@ -793,7 +796,8 @@ echo "Valor de la Latitud: \33[1;33m${lat#*=}\33[1;37m"
             sed -i "15c Latitude=$tu_latitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "15c Latitude=$tu_latitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "15c Latitude=$tu_latitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-#YSF
+
+#Latitude YSF
 loc1=`grep -n "^Latitude=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
@@ -802,6 +806,7 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac Latitude=$tu_latitud" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            
             #YSF2DMR
             sed -i "5c Latitude=$tu_latitud" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "5c Latitude=$tu_latitud" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
@@ -863,7 +868,8 @@ echo "Valor de la Longitud: \33[1;33m${long#*=}\33[1;37m"
             sed -i "16c Longitude=$tu_longitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini
             sed -i "16c Longitude=$tu_longitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini_uno
             sed -i "16c Longitude=$tu_longitud" /home/pi/MMDVMHost/MMDVMLIBRE.ini_dos
-#YSF
+
+#Longitude YSF
 loc1=`grep -n "^Longitude=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
@@ -872,6 +878,7 @@ numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 numero_linea_letrac=$numero_linea$letrac
 sed -i "$numero_linea_letrac Longitude=$tu_longitud" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+            
             #YSF2DMR
             sed -i "6c Longitude=$tu_longitud" /home/pi/YSF2DMR/YSF2DMR.ini
             sed -i "6c Longitude=$tu_longitud" /home/pi/YSF2DMR/YSF2DMR.ini_copia_01
