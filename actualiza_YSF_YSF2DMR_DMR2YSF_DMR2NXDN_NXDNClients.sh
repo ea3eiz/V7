@@ -9,11 +9,17 @@ GRIS="\033[0m"
 
 
                         #comprueba si la versión a cambiado
+                        cp -R /home/pi/YSFClients/ /home/pi/Documents 
+                        sudo rm -R /home/pi/YSFClients
+                        cd /home/pi
+                        git clone https://github.com/g4klx/YSFClients
+                        cd /home/pi/YSFClients/YSFGateway
                         version_YSFClients_actual=$(awk "NR==22" /home/pi/YSFClients/YSFGateway/Version.h)
                         version_YSFClients_instalada=$(awk "NR==1" /home/pi/versiones_YSF2DMR_DMR2YSF_DMR2NXDN.ini)
                         if [ "$version_YSFClients_actual" = "$version_YSFClients_instalada" ];
                         #=================================
                         then 
+                        cp -R /home/pi/Documents/YSFClients /home/pi/
                         clear
                         echo "************************************************************"
                         echo "*   YA TIENES LA ÚLTIMA VERSIÓN YSFClientes/YSFGateway     *"
