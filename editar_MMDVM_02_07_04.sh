@@ -1326,7 +1326,7 @@ done;;
 while true
 do
           	        
-           	            read -p 'Quieres restaurar el fichero original $DIRECTORIO? S/N ' restaurar1   
+           	            read -p 'Quieres restaurar el fichero original MMDVM.ini? S/N ' restaurar1   
                         case $restaurar1 in
 			                  [sS]* ) echo ""
                         clear
