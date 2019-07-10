@@ -23,7 +23,7 @@ echo "\33[1;33m   - Para salir de cualquier editor es necesario cerrar por el it
 echo "\33[1;32m"
 echo "   Imagen Linux basada en Raspbian, creada por: EA3EIZ & EA3EG."
 echo ""
-echo "   Agradecer la colaboración a: EA3ES, EA3HVF, EA3FAB, EA1IVQ."
+echo "   Agradecer la colaboración a: EA3ES, EA3HVF, EA3FAB, EA4AOJ, EA1IVQ."
 echo ""
 echo "\33[1;31m   Recomendación de no modificar total o parcialmente el contenido de esta imagen."
 echo "\33[1;31m   Podria dañar algún fichero del sistema y el funcionamiento de la misma."
