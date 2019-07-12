@@ -61,6 +61,7 @@ clear
                         sleep 1
 
                         sudo rm -R  /home/pi/AUTOARRANQUEV7
+                        cd /home/pi/
                         git clone http://github.com/ea3eiz/AUTOARRANQUEV7
                         sleep 1
 
