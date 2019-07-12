@@ -60,8 +60,8 @@ clear
                         sudo git pull
                         sleep 1
 
-                        cd /home/pi/AUTOARRANQUEV7
-                        sudo git pull
+                        rm -R  /home/pi/AUTOARRANQUEV7
+                        git clone http://github.com/ea3eiz/AUTOARRANQUEV7
                         sleep 1
 
                         # copia prueba.sh en /home/pi
