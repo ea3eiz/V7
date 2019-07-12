@@ -221,7 +221,6 @@ rbm=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMBM.ini`
 rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
 
 sudo cp /home/pi/$SCRIPTS_version/Desktop/Menu_Autoarranque /home/pi/Desktop
-sudo cp /home/pi/$SCRIPTS_version/Desktop/Abrir_LIBRE /home/pi/Desktop
 
 
 						#comprueba si el fichero existe
