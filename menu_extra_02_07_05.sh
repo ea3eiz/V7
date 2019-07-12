@@ -60,6 +60,10 @@ clear
                         sudo git pull
                         sleep 1
 
+                        cd /home/pi/AUTOARRANQUEV7
+                        sudo git pull
+                        sleep 1
+
                         # copia prueba.sh en /home/pi
                         cp /home/pi/$SCRIPTS_version/prueba.sh /home/pi
 
