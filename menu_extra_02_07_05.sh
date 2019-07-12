@@ -60,7 +60,7 @@ clear
                         sudo git pull
                         sleep 1
 
-                        rm -R  /home/pi/AUTOARRANQUEV7
+                        sudo rm -R  /home/pi/AUTOARRANQUEV7
                         git clone http://github.com/ea3eiz/AUTOARRANQUEV7
                         sleep 1
 
