@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #mode=`grep -n -m 1 "^Port=" /home/pi/MMDVMHost/MMDVMDMR2NXDN.ini`
 #buscar=":"
 #caracteres=`expr index $mode $buscar`
