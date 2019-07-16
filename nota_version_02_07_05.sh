@@ -28,6 +28,7 @@ echo ""
 echo "   Esta imagen utiliza programas de terceros de:" 
 echo "   Jonathan Naylor G4KLX, David PA7LIM, Andy CA6JAU, ON7LDS, DG1HT, DG8FAC y DJ0ABR."
 echo ""
+echo "   Agradecer la colaboración a: EA3ES, EA3EG, EA3HVF, EA3FAB, EA4AOJ y EA1IVQ."
 echo "\33[1;31m   Recomendación de no modificar total o parcialmente el contenido de esta imagen."
 echo "\33[1;31m   Podria dañar algún fichero del sistema y el funcionamiento de la misma."
 
