@@ -60,6 +60,7 @@ clear
                     sudo cp MMDVMHost MMDVMFUSION
                     sudo cp MMDVMHost DMR2NXDN
                     sudo cp MMDVMHost DMR2YSF
+                    sudo cp MMDVMHost MMDVMNXDN
                     #=================================================
 
                     # Rutina solo para el LIBRE ======================
@@ -102,8 +103,10 @@ clear
                     cp MMDVM.ini TODOS_LOS_INIS.ini
 
                     cp MMDVM.ini MMDVMDMR2YSF.ini
+                    
                     cp MMDVM.ini MMDVMDMR2NXDN.ini
 
+                    cp MMDVM.ini MMDVMNXDN.ini
 
                     #=================================================
 
