@@ -16,7 +16,6 @@ echo "   ***********************************************************************
 #echo "\33[1;36m   Gracias por descargar la imagen de ADER V.02.07.0$NUMERO_VERSION"
 echo ""
 echo "\33[1;32m   Imagen multi plataforma para \33[1;33mRADIO AFICIONADOS."
-echo ""
 echo "\33[1;32m"
 echo "   Imagen Linux basada en Raspbian, creada por: EA3EIZ"
 echo ""
