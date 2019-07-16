@@ -13,13 +13,14 @@ echo -n "${CIAN}"
 echo "                             NOTAS DE LA VERSIÓN V.02.07.0$NUMERO_VERSION"
 echo -n "${VERDE}"                                                                                 
 echo "   ************************************************************************************"
+
+
 #echo "\33[1;36m   Gracias por descargar la imagen de ADER V.02.07.0$NUMERO_VERSION"
 echo ""
 echo "\33[1;32m   Imagen multi plataforma para \33[1;33mRADIO AFICIONADOS."
 echo ""
 echo "\33[1;37m   Tener presente las siguientes consideraciones:"
 echo ""
-echo "\33[1;33m   - Utilizar adecuadamente los puertos de los correspondientes Módems."
 #echo "\33[1;33m   - Para salir de cualquier editor es necesario cerrar por el item 0)."
 echo "\33[1;32m"
 echo "   Imagen Linux basada en Raspbian, creada por: EA3EIZ"
@@ -27,8 +28,7 @@ echo ""
 echo "   Esta imagen utiliza programas de terceros de:" 
 echo "   Jonathan Naylor G4KLX, David PA7LIM, Andy CA6JAU, ON7LDS, DG1HT, DG8FAC y DJ0ABR."
 echo ""
-echo -n "${AMARILLO}"
-echo "   Agradecer la colaboración a: EA3ES, EA3EG, EA3HVF, EA3FAB, EA4AOJ y EA1IVQ."
+
 echo ""
 echo "\33[1;31m   Recomendación de no modificar total o parcialmente el contenido de esta imagen."
 echo "\33[1;31m   Podria dañar algún fichero del sistema y el funcionamiento de la misma."
@@ -57,10 +57,12 @@ echo "\33[1;31m   Podria dañar algún fichero del sistema y el funcionamiento d
 						echo "   $var4"
 						echo "   $var5"
 						echo ""
-
+echo "\33[1;33m   - Utilizar adecuadamente los puertos de los correspondientes Módems."
+echo ""
                         echo -n "\33[1;36m   Pulsa la tecla ENTER para salir "
                         read A
 						exit;
 						
-
+#echo -n "${AMARILLO}"
+#echo "   Agradecer la colaboración a: EA3ES, EA3EG, EA3HVF, EA3FAB, EA4AOJ y EA1IVQ."
 
