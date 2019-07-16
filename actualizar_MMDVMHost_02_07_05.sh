@@ -49,7 +49,6 @@ clear
                     PUNTO=";"   
                     
                     sed -i "22c $FIJA$HOY1$PUNTO" /home/pi/MMDVMHost/Version.h
-
                     make clean
                     make
 
@@ -60,7 +59,6 @@ clear
                     sudo cp MMDVMHost MMDVMFUSION
                     sudo cp MMDVMHost DMR2NXDN
                     sudo cp MMDVMHost DMR2YSF
-                    sudo cp MMDVMHost MMDVMNXDN
                     #=================================================
 
                     # Rutina solo para el LIBRE ======================
@@ -105,8 +103,6 @@ clear
                     cp MMDVM.ini MMDVMDMR2YSF.ini
                     
                     cp MMDVM.ini MMDVMDMR2NXDN.ini
-
-                    cp MMDVM.ini MMDVMNXDN.ini
 
                     #=================================================
 
