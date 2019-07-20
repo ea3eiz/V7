@@ -1,8 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
 TryExec=lxterminal
-Exec=sh -c 'cd /home/pi/V10; sudo sh ejecutar_bluedv.sh'
-Icon=/home/pi/V10/BLUEDV.png
+Exec=sh -c 'cd /home/pi/V7; sudo sh ejecutar_bluedv_05.sh'
+Icon=/home/pi/V7/BLUEDV.png
 Type=Application
 StartupNotify=false
 Categories=Network;WebBrowser;
