@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo chmod 777 -R /var/www/html
             cd /home/pi/MMDVMHost
             sudo chmod 777 -R /home/pi/Downloads
             sudo cp -f TODOS_LOS_INIS.ini /home/pi/Downloads
