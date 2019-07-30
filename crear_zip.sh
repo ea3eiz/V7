@@ -1,7 +1,6 @@
 #!/bin/bash
-sudo chmod -R 777 /var/www/html
+
             cd /home/pi/MMDVMHost
-            sudo chmod -R 777 /home/pi/Downloads
             sudo cp -f TODOS_LOS_INIS.ini /home/pi/Downloads
             sudo cp -f MMDVM.ini /home/pi/Downloads
             sudo cp -f MMDVM.ini_copia /home/pi/Downloads
