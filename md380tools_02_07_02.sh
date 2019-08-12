@@ -18,7 +18,7 @@ echo "\33[1;36m   1)\33[1;31m  Actualizar la Raspberry Pi (si ha pasado tiempo s
 echo "\33[1;36m   2)\33[1;37m  Instalar md380tools"
 echo "\33[1;36m   3)\33[1;33m  Introducir firmware experimental en Walki MD380 sin GPS"
 echo "\33[1;36m   4)\33[1;33m  Introducir firmware experimental en Walki MD380 y MD390 con GPS"
-echo "\33[1;36m   5)\33[1;37m  Introducir base de datos indicativos (actualizada 31-07-2019)"
+echo "\33[1;36m   5)\33[1;37m  Introducir base de datos indicativos (actualizada 11-08-2019)"
 echo ""
 echo "\33[1;32m   ********************************************************************"
 echo "   *  Cuando creamos que puede haber una nueva versión de md380tools  *"
