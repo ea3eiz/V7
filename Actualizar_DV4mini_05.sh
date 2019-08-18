@@ -38,9 +38,9 @@ clear
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
                         sudo rm -r /home/pi/$CRIPTS_version/DV4MINI/
                         cd /home/pi/$CRIPTS_version
-                        sudo rm -r /home/pi/dv4mini
-                        sudo rm /usr/bin/dv_serial
                         git clone http://github.com/ea3eiz/DV4MINI
+                        sudo rm /home/pi/dv4mini/*.*
+                        sudo rm /usr/bin/dv_serial
                         cd /home/pi/$CRIPTS_version/DV4MINI/20190307
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
