@@ -10,7 +10,6 @@ BLANCO="\033[1;37m"
 AMARILLO="\033[1;33m"
 CIAN="\033[1;36m"
 GRIS="\033[0m"
-
 echo "${VERDE}" 
 echo "   *********************************************************************"
 echo "   *                                                                   *"
@@ -24,15 +23,12 @@ echo  "\33[1;36m   4)\33[1;33m Actualizar \33[1;32mDV4MINI20190307${AMARILLO} (N
 echo ""
 echo -n "\33[1;36m   Elige una opción: " 
 read escoger_menu
-
 case $escoger_menu in
-
 1) echo ""
 while true
 do
 clear
                         ejecutar1=S
-
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
@@ -67,7 +63,6 @@ while true
 do
 clear
                         ejecutar1=S
-
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
@@ -102,7 +97,6 @@ while true
 do
 clear
                         ejecutar1=S
-
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
@@ -137,7 +131,6 @@ while true
 do
 clear
                         ejecutar1=S
-
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
