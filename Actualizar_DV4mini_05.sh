@@ -19,7 +19,7 @@ echo "   *********************************************************************"
 echo  "\33[1;36m   1)\33[1;33m Actualizar \33[1;32mDV4MINI20190307   \33[1;33m"
 echo  "\33[1;36m   2)\33[1;33m Volver a la versión \33[1;32mDV4MINI20190127   \33[1;33m"
 echo  "\33[1;36m   3)\33[1;33m Volver a la versión \33[1;32mDV4MINI20170517   \33[1;33m"
-echo  "\33[1;36m   4)\33[1;33m Actualizar \33[1;32mDV4MINI20190307${VERDE} (NEW)   \33[1;33m"
+echo  "\33[1;36m   4)\33[1;33m Actualizar \33[1;32mDV4MINI20190307${AMARILLO} (NEW)   \33[1;33m"
 
 
 echo ""
