@@ -24,15 +24,14 @@ echo "\33[1;36m   0)\33[1;33m Salir del script \33[1;31m OJO!! no salir con ctrl
 echo ""
 echo -n "\33[1;36m   Elige una opción: " 
 read escoger_menu
+echo ""
 case $escoger_menu in
-
 1) echo ""
 while true
 do
 clear
 read -p ' Quieres actualizar el listado de reflectores YSF S/N ?' ejecutar1
 		    case $ejecutar1 in
-	                    ejecutar1=S
 		                case $ejecutar1 in
 			            [sS]* ) echo ""
 			            echo "${VERDE}"
