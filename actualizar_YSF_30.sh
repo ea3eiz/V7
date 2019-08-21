@@ -15,12 +15,6 @@ echo "   ***********************************************************************
 echo ""
 echo "\33[1;36m   1)\33[1;37m Actualizar YSFHosts.txt (listado de reflectores)"
 echo "\33[1;36m   2)\33[1;37m Ver el listado de reflectores YSF"
-echo -n "                                            - "
-var1= sed -n '4p'  /home/pi/bluedv/BlueDVconfig.ini
-echo ""
-echo "\33[1;36m   5)\33[1;33m Abrir fichero .ini para hacer cualquier cambio\33[1;33m"
-echo ""
-echo "\33[1;36m   0)\33[1;33m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
 echo ""
 echo -n "\33[1;36m   Elige una opción: " 
 read escoger_menu
