@@ -30,9 +30,8 @@ case $escoger_menu in
 while true
 do
 clear
-read -p ' Quieres actualizar el listado de reflectores YSF S/N ?' ejecutar1
-		    case $ejecutar1 in
-		                case $ejecutar1 in
+						read -p ' Quieres actualizar el listado de reflectores YSF S/N ?' ejecutar1
+		    			case $ejecutar1 in
 			            [sS]* ) echo ""
 			            echo "${VERDE}"
 clear
@@ -40,9 +39,9 @@ echo "*************************************"
 echo "* ACTUALIZANDO LISTADO DE SALAS YSF *"
 echo "* ***********************************"
 sleep 3
-			cd /home/pi/YSFClients/YSFGateway
-			sudo wget -O YSFHosts.txt http://register.ysfreflector.de/export_csv.php
-			sleep 3
+						cd /home/pi/YSFClients/YSFGateway
+						sudo wget -O YSFHosts.txt http://register.ysfreflector.de/export_csv.php
+						sleep 3
 clear
 
 echo "${AMARILLO}"			
@@ -62,16 +61,16 @@ done;;
 while true
 do
 clear
-	        read -p ' Quieres ver el listado de reflectores YSF S/N ?' ejecutar1
-		    case $ejecutar1 in
-			[sS]* ) echo ""
-			echo "ok >>>>>"
-			cd /home/pi/YSFClients/YSFGateway
-			geany YSFHosts.txt
-			echo "Ok"
-			break;;
-			[nN]* ) echo ""
-			break;;
+	        			read -p ' Quieres ver el listado de reflectores YSF S/N ?' ejecutar1
+		    			case $ejecutar1 in
+						[sS]* ) echo ""
+						echo "ok >>>>>"
+						cd /home/pi/YSFClients/YSFGateway
+						geany YSFHosts.txt
+						echo "Ok"
+						break;;
+						[nN]* ) echo ""
+						break;;
 esac
 done;;
 
