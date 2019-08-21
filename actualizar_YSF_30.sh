@@ -43,7 +43,6 @@ echo "**********************************************************"
 echo "* El fichero YSFHost.txt se ha actualizado correctamente *"
 echo "**********************************************************"
 sleep 3
-                        exit;
 		                break;;
 						[nN]* ) echo ""
 						clear
