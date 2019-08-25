@@ -57,6 +57,22 @@ clear
                         break;;
 esac
 done;;
+inis) echo ""
+while true
+do
+clear                     
+                        instalarsi=S
+                        case $instalarsi in
+                        [sS]* ) echo ""
+                        cd /tmp/test
+                        sudo configuracion_inis_neutros.sh                 
+                        break;;
+                        [nN]* ) echo ""
+                        clear
+                        exit;
+                        break;;
+esac
+done;;
 1) echo ""
 while true
 do
