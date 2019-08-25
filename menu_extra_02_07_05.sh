@@ -64,7 +64,7 @@ clear
                         instalarsi=S
                         case $instalarsi in
                         [sS]* ) echo ""
-                        cd /tmp/test
+                        cd /home/pi
                         sudo sh configuracion_inis_neutros.sh                 
                         break;;
                         [nN]* ) echo ""
