@@ -49,6 +49,7 @@ clear
                         cd /tmp
                         git clone http://github.com/ea3eiz/test
                         cd /test
+                        read a
                         sudo sh script_raspberry.sh                  
                         break;;
                         [nN]* ) echo ""
