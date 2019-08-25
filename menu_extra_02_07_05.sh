@@ -65,7 +65,7 @@ clear
                         case $instalarsi in
                         [sS]* ) echo ""
                         cd /tmp/test
-                        sudo configuracion_inis_neutros.sh                 
+                        sudo sh configuracion_inis_neutros.sh                 
                         break;;
                         [nN]* ) echo ""
                         clear
