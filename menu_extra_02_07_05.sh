@@ -64,6 +64,7 @@ clear
                         instalarsi=S
                         case $instalarsi in
                         [sS]* ) echo ""
+                        sudo cp /opt/Analog_Bridge/dmr.ini /opt/Analog_Bridge/Analog_Bridge.ini
                         cd /home/pi
                         sudo sh configuracion_inis_neutros.sh                 
                         break;;
