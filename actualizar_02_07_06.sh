@@ -100,8 +100,10 @@ sed -i "6c Exec=sh -c 'cd /home/pi/$SCRIPTS_version; sudo sh ejecutar_dvrptr_02_
 sed -i "7c Icon=/home/pi/$SCRIPTS_version/DVRPTR.png" /home/pi/Desktop/Boton_3
 sed -i "11c Name[es_ES]=Abrir Dvrptr" /home/pi/Desktop/Boton_3
 
+sudo chmod 777 -R /home/pi/MMDVMHost 
+
 cd /home/pi/$SCRIPTS_version
-sudo git pull 
+git pull 
 
 #=================================================================================
 #pone todos los datos de DMR+ , Brandameiter, svxlink etc en panel_control.ini
