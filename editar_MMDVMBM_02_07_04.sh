@@ -41,7 +41,7 @@ primer1="34c"
 segun1="35c"
 tercer1="36c"
 
-  #Editor MMDVMPLUS.ini
+ 
 #DIRECTORIO="MMDVMPLUS.ini"
 #DIRECTORIO_copia="MMDVMPLUS.ini_copia"
 #DIRECTORIO_copia2="MMDVMPLUS.ini_copia2"
