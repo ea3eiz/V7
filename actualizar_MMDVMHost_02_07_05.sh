@@ -15,7 +15,7 @@ echo "   *                                                                   *"
 echo "   *           Script para Actualizar MMDVMHost         \33[1;31m by EA3EIZ\33[1;32m     *"
 echo "   *                                                                   *"
 echo "   *********************************************************************"
-echo  "${CIAN}   1)${VERDE} Instalación limpia de MMDVMHost\33[1;33m"
+echo  "${CIAN}   1)${VERDE} Instalación limpia de MMDVMHost (Incluye System Fusion II)\33[1;33m"
 echo ""
 echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
 echo ""
@@ -39,7 +39,7 @@ clear
                     echo "ok >>>>>"
                     cd /home/pi 
                     sudo rm -r /home/pi/MMDVMHost
-                    git clone https://github.com/g4klx/MMDVMHost
+                    git clone https://github.com/ea3eiz/MMDVMHost
                     cd /home/pi/MMDVMHost
 
                     HOY=$(date +%Y%m%d)
