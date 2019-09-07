@@ -2,7 +2,7 @@
 clear
 while true
 do
-CRIPTS_version=$(awk "NR==1" /home/pi/.config/autostart/version)
+SCRIPTS_version=$(awk "NR==1" /home/pi/.config/autostart/version)
 #Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
@@ -32,13 +32,13 @@ clear
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
-                        sudo rm -r /home/pi/$CRIPTS_version/DV4MINI/
-                        cd /home/pi/$CRIPTS_version
+                        sudo rm -r /home/pi/$SCRIPTS_version/DV4MINI/
+                        cd /home/pi/$SCRIPTS_version
                         git clone http://github.com/ea3eiz/DV4MINI
                         sudo rm -r /home/pi/dv4mini
                         sudo rm /usr/bin/dv_serial
                         sudo mkdir /home/pi/dv4mini
-                        cd /home/pi/$CRIPTS_version/DV4MINI/20190307
+                        cd /home/pi/$SCRIPTS_version/DV4MINI/20190307
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
                         cp xref.ip /home/pi/dv4mini
@@ -66,13 +66,13 @@ clear
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
-                        sudo rm -r /home/pi/$CRIPTS_version/DV4MINI/
-                        cd /home/pi/$CRIPTS_version
+                        sudo rm -r /home/pi/$SCRIPTS_version/DV4MINI/
+                        cd /home/pi/$SCRIPTS_version
                         git clone http://github.com/ea3eiz/DV4MINI
                         sudo rm -r /home/pi/dv4mini
                         sudo rm /usr/bin/dv_serial
                         sudo mkdir /home/pi/dv4mini
-                        cd /home/pi/$CRIPTS_version/DV4MINI/20190127
+                        cd /home/pi/$SCRIPTS_version/DV4MINI/20190127
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
                         cp xref.ip /home/pi/dv4mini
@@ -100,13 +100,13 @@ clear
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
-                        sudo rm -r /home/pi/$CRIPTS_version/DV4MINI/
-                        cd /home/pi/$CRIPTS_version
+                        sudo rm -r /home/pi/$SCRIPTS_version/DV4MINI/
+                        cd /home/pi/$SCRIPTS_version
                         git clone http://github.com/ea3eiz/DV4MINI
                         sudo rm -r /home/pi/dv4mini
                         sudo rm /usr/bin/dv_serial
                         sudo mkdir /home/pi/dv4mini
-                        cd /home/pi/$CRIPTS_version/DV4MINI/20170517
+                        cd /home/pi/$SCRIPTS_version/DV4MINI/20170517
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
                         cp xref.ip /home/pi/dv4mini
@@ -134,13 +134,13 @@ clear
                         case $ejecutar1 in
                         [sS]* ) echo ""
                         echo ">>>>>>>>> ACTUALIZANDO >>>>>>>>"
-                        sudo rm -r /home/pi/$CRIPTS_version/DV4MINI/
-                        cd /home/pi/$CRIPTS_version
+                        sudo rm -r /home/pi/$SCRIPTS_version/DV4MINI/
+                        cd /home/pi/$SCRIPTS_version
                         git clone http://github.com/ea3eiz/DV4MINI
                         sudo rm -r /home/pi/dv4mini
                         sudo rm /usr/bin/dv_serial
                         sudo mkdir /home/pi/dv4mini
-                        cd /home/pi/$CRIPTS_version/DV4MINI/20190307new
+                        cd /home/pi/$SCRIPTS_version/DV4MINI/20190307new
                         cp dv_serial /home/pi/dv4mini
                         cp dv4mini.exe /home/pi/dv4mini
                         cp xref.ip /home/pi/dv4mini
