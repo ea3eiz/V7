@@ -8,7 +8,7 @@ BLANCO="\033[1;37m"
 AMARILLO="\033[1;33m"
 echo "${VERDE}"
 echo "   **************************************************************************"
-echo "   *           Script para Modificar MMDVMLIBRE.ini        \33[1;31m by EA3EIZ\33[1;32m       *"
+echo "   *           xxScript para Modificar MMDVMLIBRE.ini        \33[1;31m by EA3EIZ\33[1;32m       *"
 echo "   **************************************************************************"
 echo -n "\33[1;36m   1)\33[0m Modificar indicativo  - \33[1;33m"
 ind=`grep -n "Callsign" /home/pi/MMDVMHost/MMDVMLIBRE.ini`
