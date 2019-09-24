@@ -182,7 +182,7 @@ clear
                         sudo rm user.bin
                         echo "Introduciendo USER.BIN"
                         wget --no-check-certificate https://radioid.net/static/user.csv
-                        mv user.csv user.bin
+                        sudo mv user.csv user.bin
                         sleep 1
                         sudo ./md380-tool spiflashwrite user.bin 0x1638400
                         break;;
