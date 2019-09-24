@@ -211,34 +211,6 @@ cp /home/pi/$SCRIPTS_version/conectar_MMDVMPLUS.php /var/www/html/panel_control
 cp /home/pi/$SCRIPTS_version/desconectar_MMDVMPLUS.php /var/www/html/panel_control
 
 
-# Rutina ============================================================================================================================
-bm=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-plus=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-dstar=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMDSTAR.ini`
-fusion=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMFUSION.ini`
 
-frbm=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-frplus=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-rbm=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-
-sudo cp /home/pi/$SCRIPTS_version/Desktop/Menu_Autoarranque /home/pi/Desktop
-
-
-						#comprueba si el fichero existe
-						if [ -f /home/pi/prueba.sh ];
-						then
-						SCRIPTS_version="V7_C"
-						else
-						SCRIPTS_version="V7"	
-					    fi
-						#================================
-# Fin Rutina =========================================================================================================================
-
-indicativo=`sed -n '2p'  /home/pi/MMDVMHost/TODOS_LOS_INIS.ini`
-sudo wget -post-data http://associacioader.com/prueba1.php?callBM=$bm'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version'&'DMR2YSF=$masterDMR2YSF'&'YSFGateway=$masterYSFGateway
-
-sudo rm -R /home/pi/V7/associacioader.com/
-sudo rm -R /home/pi/V7/ea3eiz.com/
 
 
