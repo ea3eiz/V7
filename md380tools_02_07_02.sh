@@ -182,7 +182,7 @@ clear
                         sudo rm user.bin
                         echo "Introduciendo USER.BIN"
                         wget https://radioid.net/static/user.csv
-                        sudo mv user.csv user.bin
+                        
 
 
                         #sudo wget http://42561.noip.us/user.bin
