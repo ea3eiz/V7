@@ -39,41 +39,6 @@ echo -n "\33[1;36m   Elige una opción: "
 read escoger_menu
 echo ""
 case $escoger_menu in
-test) echo ""
-while true
-do
-clear                     
-                        instalarsi=S
-                        case $instalarsi in
-                        [sS]* ) echo ""
-                        cd /tmp
-                        git clone http://github.com/ea3eiz/test
-                        cd test
-                        sudo sh script_raspberry.sh                  
-                        break;;
-                        [nN]* ) echo ""
-                        clear
-                        exit;
-                        break;;
-esac
-done;;
-inis) echo ""
-while true
-do
-clear                     
-                        instalarsi=S
-                        case $instalarsi in
-                        [sS]* ) echo ""
-                        sudo cp /opt/Analog_Bridge/dmr.ini /opt/Analog_Bridge/Analog_Bridge.ini
-                        cd /home/pi
-                        sudo sh configuracion_inis_neutros.sh                 
-                        break;;
-                        [nN]* ) echo ""
-                        clear
-                        exit;
-                        break;;
-esac
-done;;
 1) echo ""
 while true
 do
