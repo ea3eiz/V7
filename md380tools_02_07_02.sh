@@ -165,7 +165,7 @@ clear
                         break;;
 esac
 done;;
-5bloqueado)      echo ""
+5)      echo ""
 while true
 do
 clear
@@ -174,7 +174,7 @@ clear
         echo "*  Encendemos el Walki en modo normal                                   *"
         echo "*************************************************************************"
         echo "\33[1;32m "
-        read -p 'Introducir la base de datos de kg5rki bajo tu propio riesgo? S/N ' installvar5
+        read -p 'Introducir la base de datos de rdioid.net bajo tu propio riesgo? S/N ' installvar5
                         case $installvar5 in
                         [sS]* ) echo ""
                         clear
@@ -185,7 +185,7 @@ clear
                         #sudo wget https://kg5rki.com/MD380_AIO/user.bin
                         sudo wget --no-check-certificate https://radioid.net/static/user.csv
                         sudo mv user.csv user.bin
-                        sleep10
+                        sleep 10
                         sudo ./md380-tool spiflashwrite user.bin 0x1638400
                         break;;
                         [nN]* ) echo ""
