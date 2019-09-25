@@ -18,7 +18,6 @@ echo "\33[1;36m   1)\33[1;31m  Actualizar la Raspberry Pi (si ha pasado tiempo s
 echo "\33[1;36m   2)\33[1;37m  Instalar md380tools"
 echo "\33[1;36m   3)\33[1;33m  Introducir firmware experimental en Walki MD380 sin GPS"
 echo "\33[1;36m   4)\33[1;33m  Introducir firmware experimental en Walki MD380 y MD390 con GPS"
-#echo "\33[1;36m   5)\33[1;37m  Introducir base de datos indicativos radioid.net"
 echo ""
 echo "\33[1;32m   ********************************************************************"
 echo "   *  Cuando creamos que puede haber una nueva versión de md380tools  *"
@@ -154,72 +153,6 @@ clear
                         sudo gitpull
                         sudo make clean
                         sudo make flash_S13
-                        break;;
-                        [nN]* ) echo ""
-                        echo ""
-                        echo ""
-                        echo "volver"
-                        echo ""
-                        echo ""
-                        echo ""
-                        break;;
-esac
-done;;
-5bloqueado)      echo ""
-while true
-do
-clear
-        echo "\33[1;31m*************************************************************************"
-        echo "*  Conectamos el cable de programación en el USB de la Raspi y en Walkie*"
-        echo "*  Encendemos el Walki en modo normal                                   *"
-        echo "*************************************************************************"
-        echo "\33[1;32m "
-        read -p 'Introducir la base de datos de rdioid.net bajo tu propio riesgo? S/N ' installvar5
-                        case $installvar5 in
-                        [sS]* ) echo ""
-                        clear
-                        cd /home/pi/md380tools
-                        sudo rm user.bin
-                        echo "Introduciendo USER.BIN"
-                        #sudo wget http://42561.noip.us/user.bin
-                        #sudo wget https://kg5rki.com/MD380_AIO/user.bin
-                        sudo wget --no-check-certificate https://radioid.net/static/user.csv
-                        sudo mv user.csv user.bin
-                        sleep 10
-                        sudo ./md380-tool spiflashwrite user.bin 0x1638400
-                        break;;
-                        [nN]* ) echo ""
-                        echo ""
-                        echo ""
-                        echo "volver"
-                        echo ""
-                        echo ""
-                        echo ""
-                        break;;
-esac
-done;;
-6bloqueado)      echo ""
-while true
-do
-clear
-        echo "*************************************************************************"
-        echo "* Para que este proceso se efectue correctamente, es imprescindible     *"
-        echo "* actualizar el firmware md380tools en tu Walkie                         *"
-        echo "*************************************************************************"
-        echo""
-        echo "\33[1;31m*************************************************************************"
-        echo "*  Conectamos el cable de programación en el USB de la Raspi y en Walkie*"
-        echo "*  Encendemos el Walkie en modo normal                                  *"
-        echo "*************************************************************************"
-        echo "\33[1;32m "
-                        read -p 'Introducir la base de datos Europa users.csv bajo tu propio riesgo? Si/No ' installvar5
-                        case $installvar5 in
-                        [sS]* ) echo ""
-                        clear
-                        echo "Introduciendo USER.CSV"
-                        cd /home/pi/md380tools
-                        sudo make clean
-                        sudo make updatedb_eur flashdb
                         break;;
                         [nN]* ) echo ""
                         echo ""
