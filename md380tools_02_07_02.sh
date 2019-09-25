@@ -181,6 +181,8 @@ clear
                         cd /home/pi/md380tools
                         sudo rm user.bin
                         echo "Introduciendo USER.BIN"
+                        #sudo wget http://42561.noip.us/user.bin
+                        #sudo wget https://kg5rki.com/MD380_AIO/user.bin
                         sudo wget --no-check-certificate https://radioid.net/static/user.csv
                         sudo mv user.csv user.bin
                         sleep 10
