@@ -289,10 +289,10 @@ largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
 numero_linea=`expr $numero_linea + 5`
-Local_29=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMDMR2NXDN.ini)
+Local=$(awk "NR==$numero_linea" /home/pi/MMDVMHost/MMDVMDMR2NXDN.ini)
 letra=c
 linea_sed_29=$numero_linea$letra
-echo "$Local_29"
+echo "$Local"
 
 echo ""
 var1=`grep -n "\[DMR Network\]" /home/pi/DMR2NXDN/DMR2NXDN.ini` 
@@ -1215,7 +1215,7 @@ done;;
 29) echo ""
 while true
 do
-                          echo "Valor actual Local \33[1;33m${Local_29#*=}\33[1;37m"
+                          echo "Valor actual Local \33[1;33m${Local#*=}\33[1;37m"
                           read -p 'Introducir el puerto: 62032  '   dmrac1
                           actualizar=S 
                           case $actualizar in
