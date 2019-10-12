@@ -49,7 +49,11 @@ clear
                     HOY1=$HOY$PI
                     PUNTO=";"   
                     
+
                     sed -i "22c $FIJA$HOY1$PUNTO" /home/pi/MMDVMHost/Version.h
+
+sudo cp /home/pi/$SCRIPTS_version/YSFControl.cpp /home/pi/MMDVMHost
+                    
                     make clean
                     make
 
