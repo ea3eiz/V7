@@ -1,4 +1,5 @@
 ﻿#!/bin/bash
+clear
 while true
 do
 clear
@@ -860,7 +861,7 @@ do
                           buscar=":"
                           largo=`expr index $Display $buscar`
                           echo "Valor actual del Display=: ${AMARILLO}${Display1#*=}\33[1;37m"
-                          read -p 'Introcuce el nombre de tu Dispaly: ' V
+                          read -p 'Introcuce el nombre de tu Display: ' V
                           letra=c
                           if [ $largo = 2 ]
                           then
