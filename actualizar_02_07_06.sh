@@ -96,9 +96,9 @@ dstar=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMDSTAR.ini`
 fusion=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMFUSION.ini`
 frbm=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMBM.ini`
 frplus=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-rbm=`sed -n '151p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-rplus=`sed -n '151p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-rradio=`sed -n '151p'  /home/pi/MMDVMHost/MMDVM.ini`
+rbm=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMBM.ini`
+rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
+rradio=`sed -n '148p'  /home/pi/MMDVMHost/MMDVM.ini`
 sudo wget -post-data http://associacioader.com/prueba1.php?callBM=$bm'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$rradio'&'version=$SCRIPTS_version'&'DMR2YSF=$masterDMR2YSF'&'YSFGateway=$masterYSFGateway
 sed -i "4c Exec=sh -c 'cd /home/pi/$SCRIPTS_version;lxterminal --geometry=72x15 -e sudo sh ejecutar_DMR2NXDN.sh'" /home/pi/Desktop/Abrir_DMR2NXDN.desktop
 sed -i "5c Icon=/home/pi/$SCRIPTS_version/DMR2NXDN.png" /home/pi/Desktop/Abrir_DMR2NXDN.desktop
