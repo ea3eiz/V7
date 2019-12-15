@@ -90,16 +90,6 @@ sed -i "4c Exec=sh -c 'cd /home/pi/$SCRIPTS_version;lxterminal --geometry=72x15 
 sed -i "5c Icon=/home/pi/$SCRIPTS_version/DMR2YSF.png" /home/pi/Desktop/Abrir_DMR2YSF.desktop
 sed -i "10c Name[es_ES]=Abrir DMR2YSF" /home/pi/Desktop/Abrir_DMR2YSF.desktop
 
-bm=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-plus=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-dstar=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMDSTAR.ini`
-fusion=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMFUSION.ini`
-frbm=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-frplus=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-rbm=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMBM.ini`
-rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
-rradio=`sed -n '149p'  /home/pi/MMDVMHost/MMDVM.ini`
-sudo wget -post-data http://associacioader.com/prueba1.php?callBM=$bm'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$rradio'&'version=$SCRIPTS_version'&'DMR2YSF=$masterDMR2YSF'&'YSFGateway=$masterYSFGateway
 sed -i "4c Exec=sh -c 'cd /home/pi/$SCRIPTS_version;lxterminal --geometry=72x15 -e sudo sh ejecutar_DMR2NXDN.sh'" /home/pi/Desktop/Abrir_DMR2NXDN.desktop
 sed -i "5c Icon=/home/pi/$SCRIPTS_version/DMR2NXDN.png" /home/pi/Desktop/Abrir_DMR2NXDN.desktop
 sed -i "10c Name[es_ES]=Abrir DMR2NXDN" /home/pi/Desktop/Abrir_DMR2NXDN.desktop
@@ -208,7 +198,15 @@ linea_YSFGateway=`expr substr $master 1 $largo1`
 masterYSFGateway=$(awk "NR==$linea_YSFGateway" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
 #Quita los espacios
 masterYSFGateway=`echo "$masterYSFGateway" | tr -d '[[:space:]]'`
-#=================================================================================
+bm=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMBM.ini`
+plus=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
+dstar=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMDSTAR.ini`
+fusion=`sed -n '2p'  /home/pi/MMDVMHost/MMDVMFUSION.ini`
+frbm=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMBM.ini`
+frplus=`sed -n '13p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
+rbm=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMBM.ini`
+rplus=`sed -n '148p'  /home/pi/MMDVMHost/MMDVMPLUS.ini`
+sudo wget -post-data http://associacioader.com/prueba1.php?callBM=$bm'&'callPLUS=$plus'&'masterBM=$rbm'&'masterPLUS=$rplus'&'radio=$masterradio'&'version=$SCRIPTS_version'&'DMR2YSF=$masterDMR2YSF'&'YSFGateway=$masterYSFGateway
 #ACTUALIZA EL  PANEL DE CONTROL"
 cp /home/pi/$SCRIPTS_version/panel_control.php /var/www/html/panel_control
 cp /home/pi/$SCRIPTS_version/conectar_Radio.php /var/www/html/panel_control
