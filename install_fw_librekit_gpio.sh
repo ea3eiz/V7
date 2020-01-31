@@ -17,13 +17,13 @@
 #   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 # Configure latest version
-FW_VERSION="v1.4.5"
+FW_VERSION="v1.4.17"
 
 # Change USB-serial port name ONLY in macOS
-MAC_DEV_USB_SER="/dev/cu.usbmodem1441"
+MAC_DEV_USB_SER="/dev/cu.usbmodem14401"
 	
-# Download latest firmware for ZUMspot Libre Kit
-curl -OL https://github.com/juribeparada/MMDVM_HS/releases/download/$FW_VERSION/zumspot_libre_fw.bin
+# Download latest firmware for MMDVM_HS_Hat
+curl -OL https://github.com/juribeparada/MMDVM_HS/releases/download/$FW_VERSION/mmdvm_hs_hat_fw.bin
 
 # Download STM32F10X_Lib (only for binary tools)
 if [ ! -d "./STM32F10X_Lib/utils" ]; then
@@ -32,7 +32,7 @@ fi
 
 # Configure vars depending on OS
 if [ $(uname -s) == "Linux" ]; then
-	DEV_USB_SER="/dev/ttyAMA0"
+	DEV_USB_SER="/dev/ttyACM0"
 	if [ $(uname -m) == "x86_64" ]; then
 		echo "Linux 64-bit detected"
 		DFU_RST="./STM32F10X_Lib/utils/linux64/upload-reset"
@@ -72,12 +72,5 @@ fi
 # Stop MMDVMHost process to free serial port
 sudo killall MMDVMHost >/dev/null 2>&1
 
-# Reset ZUMspot to enter bootloader mode
-eval sudo $DFU_RST $DEV_USB_SER 750
-
 # Upload the firmware
-eval sudo $DFU_UTIL -D mmdvm_f1bl.bin -d 1eaf:0003 -a 2 -R -R
-
-echo
-echo "Please RESET your ZUMspot !"
-echo
+eval sudo $STM32FLASH -v -w mmdvm_hs_hat_fw.bin -g 0x0 -R -i 20,-21,21:-20,21 /dev/ttyAMA0
