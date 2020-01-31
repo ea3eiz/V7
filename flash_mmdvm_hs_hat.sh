@@ -78,7 +78,8 @@ echo "   ******************************************"
                         sleep 3
 echo "${CIAN}"
                         make clean
-                        make bl
+                        make
+                        make zumspot-pi
                         else
 clear                                
 echo "${ROJO}"
@@ -90,7 +91,8 @@ echo "   ******************************************"
                         sleep 3
 echo "${CIAN}"
                         make clean
-                        make bl
+                        make
+                        make zumspot-pi
                         fi
 clear
 echo "${VERDE}"
