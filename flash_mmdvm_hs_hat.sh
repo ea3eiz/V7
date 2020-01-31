@@ -162,16 +162,20 @@ done;;
 while true
 do
 clear
-                                ejecutar1=S
-                                case $ejecutar1 in
-                                [sS]* ) echo ""
-                                sh flash_zumspot.sh
-                                echo ""
-                                break;;
-                                [nN]* ) echo ""
-clear
-exit;
-break;;
+                        read -p 'Quieres grabar el firmware en tu dispositivo S/N: ' continuar
+                        case $continuar in
+                        [sS]* ) echo ""
+                        echo ""
+                        cd /home/pi/MMDVM_HS/
+                        cp /home/pi/$SCRIPTS_version/install_fw_librekit_gpio.sh /home/pi/MMDVM_HS/bin/
+                        cd /home/pi/MMDVM_HS/bin
+                        sleep 2
+                        sudo chmod 777 install_fw_librekit_gpio.sh
+                        ./install_fw_librekit_gpio.sh
+                        break;;
+                        [nN]* ) echo ""
+                        clear
+                        break;;
 esac
 done;;
 0) echo ""
