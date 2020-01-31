@@ -24,7 +24,8 @@ MAC_DEV_USB_SER="/dev/cu.usbmodem14401"
 	
 # Download latest firmware for MMDVM_HS_Hat
 curl -OL https://github.com/juribeparada/MMDVM_HS/releases/download/$FW_VERSION/mmdvm_hs_hat_fw.bin
-
+echo "parada descargando mmdvm_hs_hat_fw.bin"
+read a
 # Download STM32F10X_Lib (only for binary tools)
 if [ ! -d "./STM32F10X_Lib/utils" ]; then
   git clone https://github.com/juribeparada/STM32F10X_Lib
