@@ -167,7 +167,7 @@ clear
                         [sS]* ) echo ""
                         echo ""
                         cd /home/pi/MMDVM_HS/
-                        cp /home/pi/$SCRIPTS_version/install_fw_librekit.sh /home/pi/MMDVM_HS/bin/
+                        cp /home/pi/$SCRIPTS_version/install_fw_librekit_gpio.sh /home/pi/MMDVM_HS/bin/
                         cd /home/pi/MMDVM_HS/bin
                         sleep 2
                         sudo chmod 777 install_fw_librekit_gpio.sh
