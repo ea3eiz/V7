@@ -77,9 +77,8 @@ echo "   *                                        *"
 echo "   ******************************************"
                         sleep 3
 echo "${CIAN}"
-                        make clean
                         make
-                        make zumspot-pi
+                        sudo make mmdvm_hs_hat
                         else
 clear                                
 echo "${ROJO}"
@@ -90,9 +89,8 @@ echo "   *                                        *"
 echo "   ******************************************"
                         sleep 3
 echo "${CIAN}"
-                        make clean
                         make
-                        make zumspot-pi
+                        sudo make mmdvm_hs_hat
                         fi
 clear
 echo "${VERDE}"
