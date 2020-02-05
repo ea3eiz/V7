@@ -368,6 +368,27 @@ exit;
 break;;
 esac
 done;;
+11) echo ""
+while true
+do
+clear
+                        ejecutar1=S
+                        case $ejecutar1 in
+                        [sS]* ) echo ""
+                        echo ">>> Actualizar YCS Para Conectar Por Protocolo FCS >>>"
+                        sudo rm -R /home/pi/YSFClients
+                        git clone https://github.com/g4klx/YSFClients
+                        cd /home/pi/YSFClients/YSFGateway
+                        make
+                        clear                                                              
+                        exit;
+                        break;;
+                        [nN]* ) echo ""
+                        clear
+                        exit;
+                        break;;
+esac
+done;;
 12) echo ""
 while true
 do
