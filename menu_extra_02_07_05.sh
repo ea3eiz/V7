@@ -377,8 +377,11 @@ clear
                         [sS]* ) echo ""
                         echo ">>> Actualizar YCS Para Conectar Por Protocolo FCS >>>"
                         sudo rm -R /home/pi/YSFClients
+                        read a
                         git clone https://github.com/g4klx/YSFClients
+                        read a
                         cd /home/pi/YSFClients/YSFGateway
+                        read a
                         make
                         clear                                                              
                         exit;
