@@ -28,10 +28,10 @@ echo "\33[1;32m      =================="
 echo ""
 echo "\33[1;36m   8)\33[1;37m Instalar Anydesk ${ROJO}(reiniciar después de instalar)"
 echo "\33[1;36m   9)\33[1;37m Grabar pantalla Nextion"
-echo ""
 echo "\33[1;36m  10)${VERDE} Menú Actualizar MMDVM_HS Libre y MMDVM_HS Chinas"
+echo "\33[1;36m  11)${AMARILLO} Actualizar YCS Para Conectar Por Protocolo FCS"
 echo ""
-echo "\33[1;36m  11)\33[1;31m Reiniciar Sistema"
+echo "\33[1;36m  12)\33[1;31m Reiniciar Sistema"
 echo ""
 echo "\33[1;36m   0)\33[1;34m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
 echo ""
@@ -368,7 +368,7 @@ exit;
 break;;
 esac
 done;;
-11) echo ""
+12) echo ""
 while true
 do
 clear
