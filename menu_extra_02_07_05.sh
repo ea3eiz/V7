@@ -382,7 +382,7 @@ clear
                         cd /home/pi/YSFClients/YSFGateway
                         make
                         clear 
-                        sudo cp /home/pi/V7/FCSHost.txt /home/pi/YSFClients/YSFGateway                                                             
+                        sudo cp /home/pi/V7/FCSRooms.txt /home/pi/YSFClients/YSFGateway                                                             
                         exit;
                         break;;
                         [nN]* ) echo ""
