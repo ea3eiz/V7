@@ -210,3 +210,9 @@ sed -i "10c Name[es_ES]=Abrir DMR2NXDN" /home/pi/Desktop/Abrir_DMR2NXDN.desktop
 sed -i "6c Exec=sh -c 'cd /home/pi/$SCRIPTS_version; sudo sh ejecutar_dvrptr_02_07_05.sh'" /home/pi/Desktop/Boton_3
 sed -i "7c Icon=/home/pi/$SCRIPTS_version/DVRPTR.png" /home/pi/Desktop/Boton_3
 sed -i "11c Name[es_ES]=Abrir Dvrptr" /home/pi/Desktop/Boton_3
+
+sudo rm -R /home/pi/V7/associacioader.com
+sudo rm -R /home/pi/V7/Desktop/associacioader.com
+sudo rm /home/pi/V7/Desktop/st-data
+sudo rm /home/pi/Desktop/st-data
+
