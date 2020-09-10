@@ -1,80 +1,94 @@
 ﻿#!/bin/bash
+clear
 while true
 do
-clear
+clear   
+# path usuario
+usuario="/home/pi"
+# path usuario
+SCRIPTS_version="V7"
+DIRECTORIO="YSFGateway.ini "
+
+#Colores
 ROJO="\033[1;31m"
 VERDE="\033[1;32m"
 BLANCO="\033[1;37m"
 AMARILLO="\033[1;33m"
 CIAN="\033[1;36m"
 GRIS="\033[0m"
-echo "${VERDE}"
-echo "   **************************************************************************"
-echo "   *            Script para Modificar YSFGateway.ini           \33[1;31m by EA3EIZ${VERDE}   *"
-echo "   **************************************************************************"
+MARRON="\33[38;5;138m"
 
-var=`grep -n -m 1 '\<Callsign\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini` # 2:Callsign=EA3EIZ 
-var1=`grep -m 1 '\<Callsign\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini` # Callsign=EA3EIZ
+echo "${VERDE}"
+echo "   ***************************************************************************"
+echo -n "${CIAN}"
+echo "                       Script para Modificar $DIRECTORIO    "
+echo -n "${ROJO}"
+echo "                                  $SCRIPTS_version by EA3EIZ"
+echo -n "${VERDE}"
+echo "   ***************************************************************************"
+
+var=`grep -n -m 1 '\<Callsign\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini` # 2:Callsign=EA3EIZ 
+var1=`grep -m 1 '\<Callsign\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini` # Callsign=EA3EIZ
 buscar=":"
 largo_linea=`expr index $var $buscar` #comprueba el largo incluyendo los dos puntos (:)
 largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
 numero_linea=`expr substr $var 1 $largo_linea` # recoge numero linea (en este caso 2)
-INDICATIVO=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+INDICATIVO=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_INDICATIVO=$numero_linea$letra
 
 
-var=`grep -n -m 1 '\<Id\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini` # 2:Callsign=EA3EIZ
-var1=`grep -m 1 '\<Id\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini` # Callsign=EA3EIZ
+var=`grep -n -m 1 '\<Id\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini` # 2:Callsign=EA3EIZ
+var1=`grep -m 1 '\<Id\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini` # Callsign=EA3EIZ
 buscar=":"
 largo_linea=`expr index $var $buscar` #comprueba el largo incluyendo los dos puntos (:)
 largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
 numero_linea=`expr substr $var 1 $largo_linea` # recoge numero linea (en este caso 2)
-ID=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+ID=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_ID=$numero_linea$letra
 
-var=`grep -n -m 1 '\<RXFrequency\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini` # 2:Callsign=EA3EIZ
-var1=`grep -m 1 '\<RXFrequency\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini` # Callsign=EA3EIZ
+var=`grep -n -m 1 '\<RXFrequency\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini` # 2:Callsign=EA3EIZ
+var1=`grep -m 1 '\<RXFrequency\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini` # Callsign=EA3EIZ
 buscar=":"
 largo_linea=`expr index $var $buscar` #comprueba el largo incluyendo los dos puntos (:)
 largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
 numero_linea=`expr substr $var 1 $largo_linea` # recoge numero linea (en este caso 2)
-RXF=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+RXF=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_RXF=$numero_linea$letra
 
-var=`grep -n -m 1 '\<TXFrequency\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini` # 2:Callsign=EA3EIZ
-var1=`grep -m 1 '\<TXFrequency\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini` # Callsign=EA3EIZ
+var=`grep -n -m 1 '\<TXFrequency\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini` # 2:Callsign=EA3EIZ
+var1=`grep -m 1 '\<TXFrequency\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini` # Callsign=EA3EIZ
 buscar=":"
 largo_linea=`expr index $var $buscar` #comprueba el largo incluyendo los dos puntos (:)
 largo_linea=`expr $largo_linea - 1` #comprueba el largo quitando los dos puntos (:)
 numero_linea=`expr substr $var 1 $largo_linea` # recoge numero linea (en este caso 2)
-TXF=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+TXF=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_TXF=$numero_linea$letra
 
-var=`grep -n -m 1 '\<Latitude\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
-var1=`grep -m 1 '\<Latitude\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+var=`grep -n -m 1 '\<Latitude\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini`
+var1=`grep -m 1 '\<Latitude\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-LATITUD=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+LATITUD=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_LA=$numero_linea$letra
 
-var=`grep -n -m 1 '\<Longitude\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
-var1=`grep -m 1 '\<Longitude\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+var=`grep -n -m 1 '\<Longitude\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini`
+var1=`grep -m 1 '\<Longitude\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-LONGITUD=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+LONGITUD=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_LO=$numero_linea$letra
 
-loc=`grep -n "^Name=" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+loc=`grep -n "^Name=" $usuario/YSFClients/YSFGateway/YSFGateway.ini`
 loc1=`echo "$loc" | tr -d '[[:space:]]'`
 buscar=":"
 largo_linea=`expr index $loc1 $buscar`
@@ -82,55 +96,71 @@ largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $loc1 1 $largo_linea`
 letrac=c
 linea_sed_NAME=$numero_linea$letrac
-NAME=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+NAME=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 
-var=`grep -n -m 1 "\[Network\]" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
-var1=`grep -m 1 "\[Network\]" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+var=`grep -n -m 1 "\[Network\]" $usuario/YSFClients/YSFGateway/YSFGateway.ini`
+var1=`grep -m 1 "\[Network\]" $usuario/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-numero_linea=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
-STARTUP=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+
+                        # Modificación 09-04-2020                    
+                        if [ "$numero_linea" = '38' ];then 
+                        numero_linea=`expr $numero_linea + 4`
+                        sudo sed -i "39c # Startup=" $usuario/YSFClients/YSFGateway/YSFGateway.ini
+                        sudo sed -i "40c # Startup=" $usuario/YSFClients/YSFGateway/YSFGateway.ini
+                        else
+                        numero_linea=`expr $numero_linea + 2`                        
+                        fi
+
+STARTUP=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_ST=$numero_linea$letra
 
-var1=`grep -n -m 1 "\[YSF Network\]" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+var1=`grep -n -m 1 "\[YSF Network\]" $usuario/YSFClients/YSFGateway/YSFGateway.ini`
 var2=`echo "$var1" | tr -d '[[:space:]]'`
 buscar=":"
 largo_linea=`expr index $var2 $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var2 1 $largo_linea`
 numero_linea=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
-YSF=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+YSF=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_YSF=$numero_linea$letra
 
-var1=`grep -n -m 1 "\[FCS Network\]" /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+var1=`grep -n -m 1 "\[FCS Network\]" $usuario/YSFClients/YSFGateway/YSFGateway.ini`
 var2=`echo "$var1" | tr -d '[[:space:]]'`
 buscar=":"
 largo_linea=`expr index $var2 $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var2 1 $largo_linea`
 numero_linea=`expr $numero_linea + 1` # y le suma uno qudando coomo: (75)
-FCS=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+FCS=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_FCS=$numero_linea$letra
 
 
 
-var=`grep -n -m 1 '\<InactivityTimeout\>' /home/pi/YSFClients/YSFGateway/YSFGateway.ini`
+var=`grep -n -m 1 '\<InactivityTimeout\>' $usuario/YSFClients/YSFGateway/YSFGateway.ini`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
 numero_linea=`expr substr $var 1 $largo_linea`
-Inactiv=$(awk "NR==$numero_linea" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
+Inactiv=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
 letra=c
 linea_sed_Inactiv=$numero_linea$letra
 
-
-
-
+#12
+var2=`grep -n -m 1 "\[Network\]" $usuario/YSFClients/YSFGateway/YSFGateway.ini`
+buscar=":"
+largo_linea=`expr index $var2 $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $var2 1 $largo_linea`
+numero_linea=`expr $numero_linea + 5` # y le suma uno qudando coomo: (75)
+OPTIONS=$(awk "NR==$numero_linea" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
+letra=c
+linea_sed_OPTIONS=$numero_linea$letra
 
 echo -n "\33[1;36m   1)\33[0m Modificar Indicativo  - \33[1;33m"
 echo "$INDICATIVO"
@@ -163,14 +193,17 @@ echo -n "\33[1;36m  10)\33[0m Habilitar FCS         - \33[1;33m"
 echo "$FCS"
 
 echo -n "\33[1;36m  11)\33[0m InactivityTimeout     - "
-echo -n "${AMARILLO}$Inactiv"
+echo "${AMARILLO}$Inactiv"
+
+echo -n "\33[1;36m  12)\33[0m Modificar Options     - "
+echo -n "${AMARILLO}$OPTIONS"
 
 echo ""
 echo ""
 echo "\33[1;36m  28)\33[1;33m Abrir fichero YSFGateway.ini para hacer cualquier cambio\33[1;33m"
 
 echo ""
-echo "\33[1;36m   0)\33[1;32m Salir del script \33[1;31m OJO!! no salir con ctrl+c ni con la x"
+echo "   ${ROJO}0) Salir"
 echo ""
 echo -n "\33[1;36m   Elige una opción: " 
 read escoger_menu
@@ -184,11 +217,11 @@ echo "Valor actual:   \33[1;33m$INDICATIVO"
                            actualizar=S 
                            case $actualizar in
 			                     [sS]* ) echo ""
-                            #Convierte de minúsculas a Mayúsculas
+                            #Convierte de minúsculas a Mayúsculas 
                            Valor=`echo "$Valor" | tr [:lower:] [:upper:]`
                            #Quita los espacios
                            Valor=`echo "$Valor" | tr -d '[[:space:]]'`
-                           sed -i "$linea_sed_INDICATIVO Callsign=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_INDICATIVO Callsign=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
 			                     break;;
 			                     [nN]* ) echo ""
 			                     break;;
@@ -206,7 +239,7 @@ echo "Valor actual: \33[1;33m$ID"
                            Valor=`echo "$Valor" | tr [:lower:] [:upper:]`
                            #Quita los espacios
                            Valor=`echo "$Valor" | tr -d '[[:space:]]'`
-                           sed -i "$linea_sed_ID Id=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_ID Id=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -224,7 +257,7 @@ echo "Valor actual: \33[1;33m$RXF"
                            Valor=`echo "$Valor" | tr [:lower:] [:upper:]`
                            #Quita los espacios
                            Valor=`echo "$Valor" | tr -d '[[:space:]]'`
-                           sed -i "$linea_sed_RXF RXFrequency=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_RXF RXFrequency=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -242,7 +275,7 @@ echo "Valor actual: \33[1;33m$TXF"
                            Valor=`echo "$Valor" | tr [:lower:] [:upper:]`
                            #Quita los espacios
                            Valor=`echo "$Valor" | tr -d '[[:space:]]'`
-                           sed -i "$linea_sed_TXF TXFrequency=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_TXF TXFrequency=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -260,7 +293,7 @@ echo "Valor actual: \33[1;33m$LATITUD"
                            Valor=`echo "$Valor" | tr [:lower:] [:upper:]`
                            #Quita los espacios
                            Valor=`echo "$Valor" | tr -d '[[:space:]]'`
-                           sed -i "$linea_sed_LA Latitude=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_LA Latitude=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -278,7 +311,7 @@ echo "Valor actual: \33[1;33m$LONGITUD"
                            Valor=`echo "$Valor" | tr [:lower:] [:upper:]`
                            #Quita los espacios
                            Valor=`echo "$Valor" | tr -d '[[:space:]]'`
-                           sed -i "$linea_sed_LO Longitude=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_LO Longitude=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -292,7 +325,7 @@ echo "Valor actual: \33[1;33m$NAME"
                            actualizar=S 
                            case $actualizar in
                            [sS]* ) echo ""
-                           sed -i "$linea_sed_NAME Name=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_NAME Name=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -306,10 +339,10 @@ echo "Valor actual: \33[1;33m$STARTUP"
                            actualizar=S 
                            case $actualizar in
                            [sS]* ) echo ""
-                           sed -i "$linea_sed_ST Startup=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_ST Startup=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            #YSF
-                           #master=$(awk "NR==39" /home/pi/YSFClients/YSFGateway/YSFGateway.ini)
-                           #sed -i "21c $master" /home/pi/info_panel_control.ini
+                           #master=$(awk "NR==39" $usuario/YSFClients/YSFGateway/YSFGateway.ini)
+                           #sed -i "21c $master" $usuario/info_panel_control.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -323,7 +356,7 @@ echo "Valor actual:   \33[1;33m$YSF"
                            actualizar=S 
                            case $actualizar in
                            [sS]* ) echo ""
-                           sed -i "$linea_sed_YSF Enable=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_YSF Enable=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -337,7 +370,7 @@ echo "Valor actual:   \33[1;33m$FCS"
                            actualizar=S 
                            case $actualizar in
                            [sS]* ) echo ""
-                           sed -i "$linea_sed_FCS Enable=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_FCS Enable=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -351,7 +384,21 @@ echo "Valor actual:   \33[1;33m$Inactiv"
                            actualizar=S 
                            case $actualizar in
                            [sS]* ) echo ""
-                           sed -i "$linea_sed_Inactiv InactivityTimeout=$Valor" /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                           sudo sed -i "$linea_sed_Inactiv InactivityTimeout=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
+                           break;;
+                           [nN]* ) echo ""
+                           break;;
+esac
+done;;
+12) echo ""
+while true
+do
+echo "Valor actual:   \33[1;33m$OPTIONS"
+                           read -p 'Introduce DG-ID Ej. 9,14,24,63,65: ' Valor                     
+                           actualizar=S 
+                           case $actualizar in
+                           [sS]* ) echo ""
+                           sudo sed -i "$linea_sed_OPTIONS Options=$Valor" $usuario/YSFClients/YSFGateway/YSFGateway.ini
                            break;;
                            [nN]* ) echo ""
                            break;;
@@ -363,7 +410,7 @@ do
                               actualizar=S 
                               case $actualizar in
 			                        [sS]* ) echo ""
-                              geany /home/pi/YSFClients/YSFGateway/YSFGateway.ini
+                              geany $usuario/YSFClients/YSFGateway/YSFGateway.ini
 			                        break;;
 			                        [nN]* ) echo ""
 			                        break;;
