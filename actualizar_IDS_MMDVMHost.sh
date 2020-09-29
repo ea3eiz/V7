@@ -12,8 +12,12 @@ letrac=c
 linea_sed=$numero_linea$letrac
 sed -i "$linea_sed DMRIDPATH=/home/pi/MMDVMHost" /home/pi/MMDVMHost/linux/DMRIDUpdate.sh
 
+
+
+
+
 # DMR IDs now served by RadioID.net
-var=`grep -n -m 1 '\<DATABASEURL\>' /home/pi/MMDVMHost/linux/DMRIDUpdate.sh`
+var=`grep -n -m 1 '\<RESTARTCOMMAND\>' /home/pi/MMDVMHost/linux/DMRIDUpdate.sh`
 buscar=":"
 largo_linea=`expr index $var $buscar`
 largo_linea=`expr $largo_linea - 1`
@@ -22,6 +26,14 @@ letrac=c
 linea_sed=$numero_linea$letrac
 sed -i "$linea_sed DATABASEURL='https://ham-digital.org/status/users.csv'" /home/pi/MMDVMHost/linux/DMRIDUpdate.sh
 
-
+# DMR IDs now served by RadioID.net
+var=`grep -n -m 1 '\<DATABASEURL\>' /home/pi/MMDVMHost/linux/DMRIDUpdate.sh`
+buscar=":"
+largo_linea=`expr index $var $buscar`
+largo_linea=`expr $largo_linea - 1`
+numero_linea=`expr substr $var 1 $largo_linea`
+letrac=c
+linea_sed=$numero_linea$letrac
+sed -i "$linea_sed # eval ${RESTARTCOMMAND}" /home/pi/MMDVMHost/linux/DMRIDUpdate.sh
 
 sudo sh /home/pi/MMDVMHost/linux/DMRIDUpdate.sh
