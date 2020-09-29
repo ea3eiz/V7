@@ -24,6 +24,6 @@ linea_sed=$numero_linea$letrac
 sed -i "$linea_sed DATABASEURL='https://ham-digital.org/status/users.csv'" /home/pi/MMDVMHost/linux/DMRIDUpdate.sh
 
 # 
-sed -i "109c #eval ${RESTARTCOMMAND}" /home/pi/MMDVMHost/linux/DMRIDUpdate.sh
+sed -i "109c #eval${RESTARTCOMMAND}" /home/pi/MMDVMHost/linux/DMRIDUpdate.sh
 
 sudo sh /home/pi/MMDVMHost/linux/DMRIDUpdate.sh
