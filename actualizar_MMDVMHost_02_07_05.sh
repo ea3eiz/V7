@@ -21,7 +21,7 @@ echo "${BLANCO}                       DESHABILITADO TEMPORALMENTE "
 echo "${VERDE}"
 echo "   *********************************************************************"
 echo ""
-echo -n "${CIAN}  Pulsa enter para cerrar esta ventana"
+echo -n "${CIAN}  Pulsa enter para cerrar esta ventana: "
 read a
 exit;
 
