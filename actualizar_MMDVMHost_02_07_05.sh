@@ -14,19 +14,16 @@ echo "${VERDE}"
 
 
 echo "   *********************************************************************"
-echo "   *                                                                   *"
+echo ""
 echo "${AMARILLO}                           Actualizar MMDVMHost "
 echo " "
 echo "${BLANCO}                       DESHABILITADO TEMPORALMENTE "
-echo "${VERDE}   *                                                                   *"
+echo "${VERDE}"
 echo "   *********************************************************************"
 echo ""
-echo "${CIAN}  Pulsa enter par acerrar esta ventana"
+echo -n "${CIAN}  Pulsa enter para cerrar esta ventana"
 read a
 exit;
-
-
-
 
 
 
