@@ -1,5 +1,4 @@
 ﻿#!/bin/bash
-exit;
 while true
 do
 clear
@@ -11,6 +10,26 @@ AMARILLO="\033[1;33m"
 CIAN="\033[1;36m"
 GRIS="\033[0m"
 echo "${VERDE}"
+
+
+
+echo "   *********************************************************************"
+echo "   *                                                                   *"
+echo "${AMARILLO}                           Actualizar MMDVMHost "
+echo " "
+echo "${BLANCO}                       DESHABILITADO TEMPORALMENTE "
+echo "${VERDE}   *                                                                   *"
+echo "   *********************************************************************"
+echo ""
+echo "${CIAN}  Pulsa enter par acerrar esta ventana"
+read a
+exit;
+
+
+
+
+
+
 echo "   *********************************************************************"
 echo "   *                                                                   *"
 echo "   *           Script para Actualizar MMDVMHost         \33[1;31m by EA3EIZ\33[1;32m     *"
