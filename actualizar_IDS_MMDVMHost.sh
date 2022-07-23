@@ -28,3 +28,6 @@ sudo sh /home/pi/MMDVMHost/linux/DMRIDUpdate.sh
                         cd /var/lib/mmdvm
                         sudo curl --fail -o DMRIds.dat -s http://www.pistar.uk/downloads/DMRIds.dat
                         sudo chmod 777 -R /var/lib/mmdvm
+
+                        sudo cp DMRIds.dat /home/pi/MMDVMHost/
+                        sudo chmod 777 -R /home/pi/MMDVMHost/
